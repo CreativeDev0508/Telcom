@@ -64,7 +64,7 @@ class AMController extends Controller
 
 	public function indexAspek()
 	{
-		$aspek = DB::table('aspek')->get();
+		$aspek = DB::table('aspek_bisnis')->get();
 		return view('AM.form-aspek', ['aspek'=>$aspek]);
 	}
 
