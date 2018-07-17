@@ -235,19 +235,19 @@
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Deadline</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="saat_penggunaan"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="date" class="form-control mydatepicker"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="pemasukan_dokumen"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="date" class="form-control mydatepicker"> <!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Ready for Service</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="ready_for_service"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="date" class="form-control mydatepicker"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                     </div>
