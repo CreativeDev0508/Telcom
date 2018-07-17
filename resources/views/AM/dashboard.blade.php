@@ -95,7 +95,7 @@
                                 <table class="table color-table danger-table">
                                     <thead>
                                         <tr>
-                                            <th colspan=3>APPROVED</th>
+                                            <th colspan=3>FAILED</th>
                                         </tr>
                                         <tr>
                                             <th style="background-color: white; color: black;">No.</th>
