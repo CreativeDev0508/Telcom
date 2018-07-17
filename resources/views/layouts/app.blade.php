@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/icon" sizes="16x16" href="asset/image/icon/index.ico">
-    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Pengajuan Justifikasi</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -152,7 +152,8 @@
                     @else
                     <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     @endif
-                    <li> <a href="#" class="waves-effect"> <span class="hide-menu"> FORM BIDDING </span></a></li>
+                    <li> <a href="unit-kerja.html" class="waves-effect"> <span class="hide-menu"> UNIT KERJA </span></a></li>
+                    <li> <a href="mitra.html" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
                     <li class="devider"></li>
                     <li><a href="#" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
                 </ul>
