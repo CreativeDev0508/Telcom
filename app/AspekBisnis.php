@@ -8,7 +8,7 @@ class AspekBisnis extends Model
 {
     protected $table = 'aspek_bisnis';
     protected $primaryKey = 'id';
-    protected $fillable = ['id_proyek','layanan_revenue','beban_mitra','nilai_kontrak','margin_tg','rp_margin'];
+    protected $fillable = ['layanan_revenue','beban_mitra','nilai_kontrak','margin_tg','rp_margin'];
     public $incrementing = true;
     public $timestamp = true;
 
@@ -17,8 +17,8 @@ class AspekBisnis extends Model
     	return $this->hasOne('App\AspekBisnis', 'id_aspek', 'id');
     }
 
-    public function proyek()
-    {
-    	return $this->belongsTo('App\Proyek', 'id_proyek', 'id_proyek');
-    }
+    // public function proyek()
+    // {
+    // 	return $this->belongsTo('App\Proyek', 'id_proyek', 'id_proyek');
+    // }
 }

@@ -15,6 +15,12 @@ use DB;
 
 class AMController extends Controller
 {
+    public function indexPelanggan()
+	{
+		$pelanggan = DB::table('pelanggan')->get();
+		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
+	}
+
     public function insertPelanggan(Request $request)
     {
 		$pelanggan = New Pelanggan;
@@ -24,19 +30,26 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
-		return redirect('/AM-dashboard');
+		return redirect('/AM-form-pelanggan');
+	}
+
+	public function indexProyek()
+	{
+		$proyek = DB::table('proyek')->get();
+		$unit = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$mitra = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+		return view('AM.form-proyek', ['proyek'=>$proyek, 'unit'=>$unit, 'mitra'=>$mitra]);
 	}
 
 	public function insertProyek(Request $request)
     {
 		$proyek = New Proyek;
 		$proyek->id_proyek = $request->input('id_proyek');
-		$proyek->id_aspek = $request->input('id_aspek');
 		$proyek->id_mitra = $request->input('id_mitra');
-		$proyek->nik = $request->input('nik');
-		$proyek->id_pelanggan = $request->input('id_pelanggan');
+		// $proyek->nik = $request->input('nik');
+		// $proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
-		$proyek->unit_kerja = $request->input('unit_kerja');
+		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
 		$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
 		$proyek->ready_for_service = $request->input('ready_for_service');
@@ -44,7 +57,28 @@ class AMController extends Controller
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
-		$pelanggan->save();
-		return redirect('/AM-dashboard');
+		$proyek->masa_kontrak = $request->input('masa_kontrak');
+		$proyek->save();
+		return redirect('/AM-form-proyek');
+	}
+
+	public function indexAspek()
+	{
+		$aspek = DB::table('aspek_bisnis')->get();
+		return view('AM.form-aspek', ['aspek'=>$aspek]);
+	}
+
+    public function insertAspek(Request $request)
+    {
+		$aspek = New AspekBisnis;
+		$aspek->id_aspek = $request->input('id_aspek');
+		// $aspek->id_proyek = $request->input('id_proyek');
+		$aspek->layanan_revenue = $request->input('layanan_revenue');
+		$aspek->beban_mitra = $request->input('beban_mitra');
+		$aspek->nilai_kontrak = $request->input('nilai_kontrak');
+		$aspek->margin_tg = $request->input('margin_tg');
+		$aspek->rp_margin = $request->input('rp_margin');
+		$aspek->save();
+		return redirect('/AM-form-aspek');
 	}
 }
