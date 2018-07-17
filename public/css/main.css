@@ -1,0 +1,102 @@
+html, body
+{
+    height: 100%;
+    position: relative;
+}
+.container-fluid, .row{
+    height: 100%;
+}
+.logo{
+    display: block;
+    margin: 15% auto;
+    width: 75%;
+}
+.form-login{
+    position: absolute;
+    top: 28%;
+    left: 2%;
+    right: 2%;
+}
+.login-a:visited{
+    color: white;
+}
+.login-a:hover{
+    color: white;
+}
+.login-a{
+    text-decoration-line: underline;
+    color: white;
+}
+.signup, .login{
+    line-height: 25%;
+    text-align: center;
+}
+.form-signup{
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    right: 2%;
+}
+.form-icon{
+    width: 20%;
+    color: white;
+    fill: currentColor;
+    display: block;
+    margin: 0 auto;
+}
+.logo-mobile{
+    display: none;
+}
+.background-mobile{
+    background-color: #d51100;
+}
+::-webkit-input-placeholder{
+    text-align: center;
+}
+:-moz-placeholder{ /* Firefox 18- */
+    text-align: center;  
+}
+::-moz-placeholder{  /* Firefox 19+ */
+    text-align: center;  
+}
+:-ms-input-placeholde {  
+    text-align: center; 
+}
+select{
+    text-align: center;
+    text-align-last: center;
+}
+option{
+    text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile{
+        display: none;
+    }
+    .logo-mobile{
+
+        display: block;
+        position: relative;
+        margin: auto;
+        top: 5%;
+        bottom: 5%;
+        width: 60%;
+    }
+    .background-mobile{
+        background-color: initial;
+        left: 0;
+        right: 0;
+        padding-bottom: 10%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .form-login{
+        position: absolute;
+        top: 30%;
+    }
+    .form-signup{
+        position: absolute;
+        top: 30%;
+    }
+}
