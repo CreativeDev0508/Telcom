@@ -210,7 +210,6 @@
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
-                                                        <option disabled selected>Unit</option>
                                                         @foreach ($unit as $listunit)
                                                             <option value="{{$listunit->id_unit_kerja}}">{{$listunit->nama_unit_kerja}}</option>
                                                         @endforeach
@@ -219,7 +218,6 @@
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
-                                                        <option disabled selected>Mitra</option>
                                                         @foreach ($mitra as $listmitra)
                                                             <option value="{{$listmitra->id_mitra}}">{{$listmitra->nama_mitra}}</option>
                                                         @endforeach

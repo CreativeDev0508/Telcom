@@ -17,11 +17,6 @@ class Proyek extends Model
     	return $this->hasmany('App\Proyek', 'id_proyek', 'id');
     }
 
-    public function aspek()
-    {
-    	return $this->belongsTo('App\AspekBisnis', 'id_aspek', 'id_aspek');
-    }
-
     public function mitra()
     {
     	return $this->belongsTo('App\Mitra', 'id_mitra', 'id_mitra');
