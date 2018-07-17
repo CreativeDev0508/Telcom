@@ -22,6 +22,7 @@ class AMController extends Controller
 		$pelanggan->nama_pelanggan = $request->input('nama_pelanggan');
 		$pelanggan->nomor_telepon = $request->input('nomor_telepon');
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
+		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
 		return redirect('/AM-dashboard');
 	}
