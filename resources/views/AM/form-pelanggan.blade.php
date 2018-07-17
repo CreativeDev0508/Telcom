@@ -184,20 +184,20 @@
                                     <div class="col-sm-9 radio-list">
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input name="radio" id="radio1" value="goverment" active type="radio">
+                                                <input name="radio" id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
                                                 <label for="radio1">Government</label>
                                             </div>
                                         </label>
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input name="radio" id="radio2" value="enterprise" type="radio">
+                                                <input name="radio" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
                                                 <label for="radio2">Enterprise</label>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    <button type="submit" style="float: right;" class="btn btn-info waves-effect waves-light m-t-10">Sign in</button>
+                                    <button type="submit" style="float: right;" class="btn btn-info waves-effect waves-light m-t-10">Next</button>
                                     {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
                                 </div>
                                 
