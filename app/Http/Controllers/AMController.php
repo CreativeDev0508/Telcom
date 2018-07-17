@@ -45,6 +45,7 @@ class AMController extends Controller
     {
 		$proyek = New Proyek;
 		$proyek->id_proyek = $request->input('id_proyek');
+		$proyek->id_mitra = $request->input('id_mitra');
 		$proyek->nik = $request->input('nik');
 		$proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
