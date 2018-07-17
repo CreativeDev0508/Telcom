@@ -15,7 +15,7 @@ use DB;
 
 class AMController extends Controller
 {
-    public function indexPelanggan()
+	public function indexPelanggan()
 	{
 		$pelanggan = DB::table('pelanggan')->get();
 		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
