@@ -257,7 +257,7 @@
                                 <div class="form-group m-b-0">
                                     {{-- <a href="form-justifikasi.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
                                     <a href="form-justifikasi-aspek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
-                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</button>
+                                    {{-- <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</button> --}}
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                 </div>
                             </form>

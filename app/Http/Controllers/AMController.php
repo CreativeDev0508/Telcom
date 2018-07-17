@@ -15,6 +15,12 @@ use DB;
 
 class AMController extends Controller
 {
+    public function indexPelanggan()
+	{
+		$pelanggan = DB::table('pelanggan')->get();
+		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
+	}
+
     public function insertPelanggan(Request $request)
     {
 		$pelanggan = New Pelanggan;
@@ -24,7 +30,7 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
-		return redirect('/AM/form-proyek');
+		return redirect('/AM/form-pelanggan');
 	}
 
 	public function indexProyek()
