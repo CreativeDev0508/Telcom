@@ -250,6 +250,12 @@
                                                 <input type="date" class="form-control" name="ready_for_service"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
