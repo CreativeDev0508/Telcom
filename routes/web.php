@@ -20,9 +20,9 @@ Route::get('/AM-dashboard', function ()
     return view('AM.dashboard');
 });
 
-Route::get('/AM/form-pelanggan','AMController@indexPelanggan');
-Route::post('/AM/form-pelanggan/insert','AMController@insertPelanggan');
+Route::get('/AM-form-pelanggan','AMController@indexPelanggan');
+Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
 
-Route::get('/AM/form-proyek','AMController@indexProyek');
-Route::post('/AM/form-proyek/insert','AMController@insertProyek');
+Route::get('/AM-form-proyek','AMController@indexProyek');
+Route::post('/AM-form-proyek/insert','AMController@insertProyek');
 

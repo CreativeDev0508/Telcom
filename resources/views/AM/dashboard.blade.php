@@ -138,7 +138,7 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li> <a href="index.html" class="waves-effect"> <span class="hide-menu"> DASHBOARD </span></a></li>
-                    <li> <a href="{{url('/AM/form-pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
+                    <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     <li> <a href="#" class="waves-effect"> <span class="hide-menu"> FORM BIDDING </span></a></li>
                     <li class="devider"></li>
                     <li><a href="#" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>

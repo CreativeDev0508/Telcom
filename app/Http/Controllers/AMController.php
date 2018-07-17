@@ -30,7 +30,7 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
-		return redirect('/AM/form-pelanggan');
+		return redirect('/AM-form-pelanggan');
 	}
 
 	public function indexProyek()
@@ -59,6 +59,6 @@ class AMController extends Controller
 		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
 		$pelanggan->save();
-		return redirect('/AM/form-proyek');
+		return redirect('/AM-form-proyek');
 	}
 }
