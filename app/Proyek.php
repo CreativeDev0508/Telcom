@@ -31,4 +31,9 @@ class Proyek extends Model
     {
     	return $this->belongsTo('App\Pelanggan', 'id_pelanggan', 'id_pelanggan');
     }
+
+    public function unit_kerja()
+    {
+        return $this->belongsTo('App\User', 'id_unit_kerja', 'id_unit_kerja');
+    }
 }
