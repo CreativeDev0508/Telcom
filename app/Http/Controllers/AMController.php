@@ -45,7 +45,6 @@ class AMController extends Controller
     {
 		$proyek = New Proyek;
 		$proyek->id_proyek = $request->input('id_proyek');
-		$proyek->id_aspek = $request->input('id_aspek');
 		$proyek->id_mitra = $request->input('id_mitra');
 		$proyek->nik = $request->input('nik');
 		$proyek->id_pelanggan = $request->input('id_pelanggan');
@@ -58,7 +57,7 @@ class AMController extends Controller
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
-		$pelanggan->save();
+		$proyek->save();
 		return redirect('/AM-form-proyek');
 	}
 }
