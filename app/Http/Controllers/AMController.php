@@ -57,7 +57,28 @@ class AMController extends Controller
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
+		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->save();
 		return redirect('/AM-form-proyek');
+	}
+
+	public function indexAspek()
+	{
+		$aspek = DB::table('aspek')->get();
+		return view('AM.form-aspek', ['aspek'=>$aspek]);
+	}
+
+    public function insertAspek(Request $request)
+    {
+		$aspek = New AspekBisnis;
+		$aspek->id_aspek = $request->input('id_aspek');
+		// $aspek->id_proyek = $request->input('id_proyek');
+		$aspek->layanan_revenue = $request->input('layanan_revenue');
+		$aspek->beban_mitra = $request->input('beban_mitra');
+		$aspek->nilai_kontrak = $request->input('nilai_kontrak');
+		$aspek->margin_tg = $request->input('margin_tg');
+		$aspek->rp_margin = $request->input('rp_margin');
+		$aspek->save();
+		return redirect('/AM-form-aspek');
 	}
 }
