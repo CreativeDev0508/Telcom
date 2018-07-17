@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/AM-dashboard', function ()
+{
+    return view('AM.form-pelanggan');
+});
+Route::post('/AM/form-pelanggan/insert','AMController@insertPelanggan');
