@@ -19,4 +19,7 @@ Route::get('/AM-dashboard', function ()
 {
     return view('AM.form-pelanggan');
 });
+
+Route::get('/AM/form-proyek','AMController@indexProyek');
+Route::post('/AM/form-proyek/insert','AMController@insertProyek');
 Route::post('/AM/form-pelanggan/insert','AMController@insertPelanggan');

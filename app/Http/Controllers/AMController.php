@@ -24,7 +24,15 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
-		return redirect('/AM-dashboard');
+		return redirect('/AM/form-proyek');
+	}
+
+	public function indexProyek()
+	{
+		$proyek = DB::table('proyek')->get();
+		$unit = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$mitra = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+		return view('AM.form-proyek', ['proyek'=>$proyek, 'unit'=>$unit, 'mitra'=>$mitra]);
 	}
 
 	public function insertProyek(Request $request)
@@ -36,7 +44,7 @@ class AMController extends Controller
 		$proyek->nik = $request->input('nik');
 		$proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
-		$proyek->unit_kerja = $request->input('unit_kerja');
+		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
 		$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
 		$proyek->ready_for_service = $request->input('ready_for_service');
@@ -45,6 +53,6 @@ class AMController extends Controller
 		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
 		$pelanggan->save();
-		return redirect('/AM-dashboard');
+		return redirect('/AM/form-proyek');
 	}
 }

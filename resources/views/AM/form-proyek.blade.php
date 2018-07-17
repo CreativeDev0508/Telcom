@@ -209,51 +209,56 @@
                                         <div class="row">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
-                                                    <option selected>RNO</option>
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
+                                                        <option disabled selected>Unit</option>
                                                         @foreach ($unit as $listunit)
                                                             <option value="{{$listunit->id_unit_kerja}}">{{$listunit->nama_unit_kerja}}</option>
                                                         @endforeach
+                                                    </select>
                                                 </div>
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
                                                 <div class="col-sm-9">
-                                                    <select class="selectpicker m-b-20" data-style="form-control">
-                                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
+                                                        <option disabled selected>Mitra</option>
+                                                        @foreach ($mitra as $listmitra)
+                                                            <option value="{{$listmitra->id_mitra}}">{{$listmitra->nama_mitra}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Skema Bisnis</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control">
-                                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                                        <option value="Sewa Murni">Sewa Murni</option>
+                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                        <option value="Pengadaan Beli">Pengadaan Beli</option>
                                                     </select>
                                                 </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Deadline</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="saat_penggunaan"><span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="pemasukan_dokumen"><span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Ready for Service</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy"><span class="input-group-addon"><i class="icon-calender"></i></span>
+                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="ready_for_service"><span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    <a href="form-justifikasi.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
-                                    <a href="form-justifikasi-aspek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a>
+                                    {{-- <a href="form-justifikasi.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
+                                    <a href="form-justifikasi-aspek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
+                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</button>
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                 </div>
                             </form>
                         </div>
