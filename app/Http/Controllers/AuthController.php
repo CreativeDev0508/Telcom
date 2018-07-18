@@ -31,10 +31,10 @@ class AuthController extends Controller
         }
 
         $user = new User();
-        $user->nik = $request->nik;
-        $user->password = bcrypt($request->password);
-        $user->id_jabatan = $request->id_jabatan;
-        $user->nama = $request->nama;
+        $user->nik = $request->input('nik');
+        $user->password = bcrypt($request->input('password'));
+        $user->id_jabatan = $request->input('id_jabatan');
+        $user->nama = $request->input('nama');
         $user->save();
 
         return redirect('/login');
@@ -55,8 +55,12 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if(Auth::attempt(['nik' => $request->input('nik'),
-        'password' => $request->input('password')]))
+        $credentials = [
+        'nik' => $request['nik'],
+        'password' => $request['password'] ];
+
+        // dd($credentials);
+        if(Auth::attempt($credentials))
         {
             return redirect('/home');
         }
@@ -66,7 +70,8 @@ class AuthController extends Controller
     public function home()
     {
         $data['user'] = Auth::user();
-        // dd(Auth::user());
+        
+        dd(Auth::user());
         switch(Auth::user()->id_jabatan)
         {
             case 1:

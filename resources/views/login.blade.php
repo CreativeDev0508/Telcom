@@ -24,7 +24,7 @@
                         <input type="text" class="form-control" placeholder="NIK" name="nik">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" name="nik">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
                     <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">LOGIN</button>
                     <div><br></div>
