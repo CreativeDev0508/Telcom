@@ -30,7 +30,7 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
-		return redirect('/AM-form-pelanggan');
+		return redirect('/AM-form-proyek');
 	}
 
 	public function indexProyek()
@@ -59,7 +59,7 @@ class AMController extends Controller
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->save();
-		return redirect('/AM-form-proyek');
+		return redirect('/AM-form-aspek');
 	}
 
 	public function indexAspek()
@@ -79,6 +79,6 @@ class AMController extends Controller
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
-		return redirect('/AM-form-aspek');
+		return redirect('/AM-dashboard');
 	}
 }
