@@ -155,7 +155,7 @@
                     <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     @endif
                     <li> <a href="{{url('/AM-unit-kerja')}}" class="waves-effect"> <span class="hide-menu"> UNIT KERJA </span></a></li>
-                    <li> <a href="mitra.html" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
+                    <li> <a href="{{url('/AM-mitra')}}" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
                     <li class="devider"></li>
                     <li><a href="#" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
                 </ul>
