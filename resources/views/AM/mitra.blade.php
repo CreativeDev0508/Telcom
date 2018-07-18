@@ -38,7 +38,7 @@
                                                     <div class="form-group m-b-0">
                                                         <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
                                                         <!-- <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> -->
-                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
+                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                     </div>
                                                </form>
                                             </div>
@@ -70,22 +70,23 @@
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listmitra->nama_mitra}}</h4> </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/update/'.$listmitra->id_mitra) }}" method="get">
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="{{$listmitra->nama_mitra}}">
+                                                                        <input type="text" class="form-control" id="inputEmail3" value="{{$listmitra->nama_mitra}}" name="nama_mitra">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Mitra</label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class="form-control" rows="5" placeholder="{{$listmitra->deskripsi_mitra}}"></textarea>
+                                                                        <textarea class="form-control" rows="5" name="deskripsi_mitra">{{$listmitra->deskripsi_mitra}}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                                    <!-- <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> -->
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
                                                            </form>
                                                         </div>

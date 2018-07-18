@@ -114,4 +114,10 @@ class AMController extends Controller
 		$mitra->save();
 		return redirect('/AM-mitra');
 	}
+
+	public function updateMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
+    	return redirect('/AM-mitra');
+    }
 }

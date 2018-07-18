@@ -34,4 +34,5 @@ Route::post('/AM-unit-kerja/insert','AMController@insertUnitKerja');
 
 Route::get('/AM-mitra','AMController@indexMitra');
 Route::post('/AM-mitra/insert','AMController@insertMitra');
+Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
 
