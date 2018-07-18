@@ -61,9 +61,29 @@
                                             <td>{{$listunit_kerja->deskripsi_unit_kerja}}</td>
                                             <td>
                                             <br>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#unit-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="unit-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#delete-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Delete {{$listunit_kerja->nama_unit_kerja}}</h4> 
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/delete/'.$listunit_kerja->id_unit_kerja) }}" method = "get"">
+                                                            <h5> Anda yakin untuk menghapus unit kerja "{{$listunit_kerja->nama_unit_kerja}}"? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#edit-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="edit-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

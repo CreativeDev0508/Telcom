@@ -38,10 +38,10 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('namaMitra', 'KOPKAR SMART MEDIA');
         $templateProcessor->setValue('readyForService', 'Februari 2018');
         $templateProcessor->setValue('alamatDelivery', 'Jl. Mayjen. Prof. Dr. Moestopo No. 6-8, Airlangga Gubeng, Surabaya 60286');
-        $templateProcessor->deleteBlock('skema1');
-        $templateProcessor->deleteBlock('skema2');
-        $templateProcessor->deleteBlock('layanan1');
-        $templateProcessor->deleteBlock('layanan2');
+        // $templateProcessor->deleteBlock('skema1');
+        // $templateProcessor->deleteBlock('skema2');
+        // $templateProcessor->deleteBlock('layanan1');
+        // $templateProcessor->deleteBlock('layanan2');
         $templateProcessor->setValue('nilaiKontrak', '368,520,000');
         $templateProcessor->setValue('bebanMitra', '69,120,000');
         $templateProcessor->setValue('marginTg', '4');
