@@ -29,3 +29,5 @@ Route::post('/AM-form-proyek/insert','AMController@insertProyek');
 Route::get('/AM-form-aspek','AMController@indexAspek');
 Route::post('/AM-form-aspek/insert','AMController@insertAspek');
 
+Route::get('/AM-unit-kerja','AMController@indexUnitKerja');
+
