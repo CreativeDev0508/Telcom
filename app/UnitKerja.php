@@ -8,7 +8,7 @@ class UnitKerja extends Model
 {
     protected $table = 'unit_kerja';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_unit_kerja'];
+    protected $fillable = ['nama_unit_kerja','deskripsi_unit_kerja'];
     public $incrementing = true;
     public $timestamp = true;
 

@@ -21,22 +21,23 @@
                                                 <h4 class="modal-title" id="myLargeModalLabel">Tambah Unit Kerja</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal form-material">
+                                                <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/insert') }}" method = "post">
+                                                    {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja">
+                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja" name="nama_unit_kerja">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
                                                         <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja"></textarea>
+                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja" name="deskripsi_unit_kerja"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-0">
-                                                        <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                        <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                        {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
                                                     </div>
                                                </form>
                                             </div>
