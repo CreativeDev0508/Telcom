@@ -31,3 +31,5 @@ Route::post('/AM-form-aspek/insert','AMController@insertAspek');
 
 Route::get('/AM-unit-kerja','AMController@indexUnitKerja');
 
+Route::get('/AM-mitra','AMController@indexMitra');
+

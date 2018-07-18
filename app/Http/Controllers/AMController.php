@@ -87,4 +87,10 @@ class AMController extends Controller
 		$unitkerja = DB::table('unit_kerja')->get();
 		return view('AM.unit-kerja', ['unitkerja'=>$unitkerja]);
 	}
+
+	public function indexMitra()
+	{
+		$mitra = DB::table('mitra')->get();
+		return view('AM.mitra', ['mitra'=>$mitra]);
+	}
 }
