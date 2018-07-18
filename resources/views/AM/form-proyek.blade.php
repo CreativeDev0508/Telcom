@@ -44,30 +44,30 @@
                                     </div>
                                     <div class="row col-sm-12 col-lg-6">
                                         <div class="row">
-                                                <label class="col-sm-3 control-label">Unit Kerja</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" name="id_unit_kerja">
-                                                        @foreach ($unit as $listunit)
-                                                            <option value="{{$listunit->id_unit_kerja}}">{{$listunit->nama_unit_kerja}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <label class="col-sm-3 control-label">Nama Mitra</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" name="id_mitra">
-                                                        @foreach ($mitra as $listmitra)
-                                                            <option value="{{$listmitra->id_mitra}}">{{$listmitra->nama_mitra}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <label class="col-sm-3 control-label">Skema Bisnis</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" name="skema_bisnis">
-                                                        <option value="Sewa Murni">Sewa Murni</option>
-                                                        <option value="Sewa Beli">Sewa Beli</option>
-                                                        <option value="Pengadaan Beli">Pengadaan Beli</option>
-                                                    </select>
-                                                </div>
+                                            <label class="col-sm-3 control-label">Unit Kerja</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
+                                                    @foreach ($unit as $listunit)
+                                                    <option value="{{$listunit->id_unit_kerja}}">{{$listunit->nama_unit_kerja}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-3 control-label">Nama Mitra</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
+                                                    @foreach ($mitra as $listmitra)
+                                                    <option value="{{$listmitra->id_mitra}}">{{$listmitra->nama_mitra}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-3 control-label">Skema Bisnis</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
+                                                    <option value="Sewa Murni">Sewa Murni</option>
+                                                    <option value="Sewa Beli">Sewa Beli</option>
+                                                    <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Deadline</label>
