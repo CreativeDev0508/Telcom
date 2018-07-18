@@ -120,4 +120,10 @@ class AMController extends Controller
     	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
     	return redirect('/AM-mitra');
     }
+
+    public function deleteMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->delete();
+    	return redirect('/AM-mitra');
+    }
 }

@@ -62,7 +62,10 @@
                                         <td>{{$listmitra->deskripsi_mitra}}</td>
                                         <td>
                                             <br>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
+                                            <form class="form-horizontal" role="form" method="get" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}">
+                                                <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
+                                            </form>
+
                                             <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#mitra-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="mitra-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
