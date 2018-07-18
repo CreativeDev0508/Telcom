@@ -105,6 +105,12 @@ class AMController extends Controller
 		return redirect('/AM-unit-kerja');
 	}
 
+	public function deleteUnitKerja($id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
+		return redirect('/AM-unit-kerja');
+	}
+
 	public function indexMitra()
 	{
 		$mitra = DB::table('mitra')->get();
@@ -120,4 +126,16 @@ class AMController extends Controller
 		$mitra->save();
 		return redirect('/AM-mitra');
 	}
+
+	public function updateMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
+    	return redirect('/AM-mitra');
+    }
+
+    public function deleteMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->delete();
+    	return redirect('/AM-mitra');
+    }
 }
