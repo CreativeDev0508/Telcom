@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ()
+{
+	return view('AM.dashboard');
 });
+
+Route::get('/login', 'AuthController@indexLogin');
+Route::post('/login/insert', 'AuthController@login');
+Route::get('/register', 'AuthController@indexRegister');
+Route::post('/register/insert', 'AuthController@register');
+
+Route::get('/home', 'AuthController@home');
+
+
 
 Route::get('/AM-dashboard', function ()
 {
@@ -22,13 +32,23 @@ Route::get('/AM-dashboard', function ()
 
 Route::get('/AM-form-pelanggan','AMController@indexPelanggan');
 Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
+Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan');
 
 Route::get('/AM-form-proyek','AMController@indexProyek');
 Route::post('/AM-form-proyek/insert','AMController@insertProyek');
+Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek');
 
 Route::get('/AM-form-aspek','AMController@indexAspek');
 Route::post('/AM-form-aspek/insert','AMController@insertAspek');
 
 Route::get('/AM-unit-kerja','AMController@indexUnitKerja');
+Route::post('/AM-unit-kerja/insert','AMController@insertUnitKerja');
+Route::get('/AM-unit-kerja/update/{id}', 'AMController@updateUnitKerja');
+Route::get('/AM-unit-kerja/delete/{id}', 'AMController@deleteUnitKerja');
 
 Route::get('/createWord', ['as'=>'createWord','uses'=>'WordTemplateController@createWordDocxP1']);
+Route::get('/AM-mitra','AMController@indexMitra');
+Route::post('/AM-mitra/insert','AMController@insertMitra');
+Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
+Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
+
