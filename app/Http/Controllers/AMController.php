@@ -13,11 +13,15 @@ use App\Proyek;
 use App\User;
 use App\UnitKerja;
 use DB;
+use Auth;
 
 class AMController extends Controller
 {
 	public function indexPelanggan()
 	{
+		// if(!Auth::user()->id)
+  //       	return redirect('login');
+        
 		$pelanggan = DB::table('pelanggan')->get();
 		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
 	}
@@ -33,6 +37,18 @@ class AMController extends Controller
 		$pelanggan->save();
 		return redirect('/AM-form-proyek');
 	}
+
+	public function updatePelanggan(Request $request, $id)
+    {
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->update($request->all());
+    	return redirect('/AM-form-proyek');
+    }
+
+	public function deletePelanggan($id)
+	{
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->delete();
+    	return redirect('/AM-form-pelanggan');
+    }
 
 	public function indexProyek()
 	{
