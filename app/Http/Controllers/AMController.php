@@ -105,6 +105,12 @@ class AMController extends Controller
 		return redirect('/AM-unit-kerja');
 	}
 
+	public function deleteUnitKerja($id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
+		return redirect('/AM-unit-kerja');
+	}
+
 	public function indexMitra()
 	{
 		$mitra = DB::table('mitra')->get();
