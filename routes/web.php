@@ -31,7 +31,9 @@ Route::post('/AM-form-aspek/insert','AMController@insertAspek');
 
 Route::get('/AM-unit-kerja','AMController@indexUnitKerja');
 Route::post('/AM-unit-kerja/insert','AMController@insertUnitKerja');
+Route::get('/AM-unit-kerja/update/{id}', 'AMController@updateUnitKerja');
 
+Route::get('/createWord', ['as'=>'createWord','uses'=>'WordTemplateController@createWordDocxP1']);
 Route::get('/AM-mitra','AMController@indexMitra');
 Route::post('/AM-mitra/insert','AMController@insertMitra');
 Route::get('/AM-mitra/update/{id}','AMController@updateMitra');

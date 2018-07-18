@@ -37,7 +37,7 @@
                                                     </div>
                                                     <div class="form-group m-b-0">
                                                         <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                        <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                     </div>
                                                </form>
                                             </div>
@@ -69,22 +69,22 @@
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listunit_kerja->nama_unit_kerja}}</h4> </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/update/'.$listunit_kerja->id_unit_kerja) }}" method = "get">
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="{{$listunit_kerja->nama_unit_kerja}}">
+                                                                        <input type="text" class="form-control" id="inputEmail3" value="{{$listunit_kerja->nama_unit_kerja}}" name="nama_unit_kerja">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class="form-control" rows="5" placeholder="{{$listunit_kerja->deskripsi_unit_kerja}}"></textarea>
+                                                                        <textarea class="form-control" rows="5" name="deskripsi_unit_kerja">{{$listunit_kerja->deskripsi_unit_kerja}}</textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group m-b-0">
+                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
                                                            </form>
                                                         </div>

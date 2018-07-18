@@ -99,6 +99,12 @@ class AMController extends Controller
 		return redirect('/AM-unit-kerja');
 	}
 
+	public function updateUnitKerja(Request $request, $id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
+		return redirect('/AM-unit-kerja');
+	}
+
 	public function indexMitra()
 	{
 		$mitra = DB::table('mitra')->get();
