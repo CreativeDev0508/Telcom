@@ -12,11 +12,15 @@ use App\Pelanggan;
 use App\Proyek;
 use App\User;
 use DB;
+use Auth;
 
 class AMController extends Controller
 {
 	public function indexPelanggan()
 	{
+		// if(!Auth::user()->id)
+  //       	return redirect('login');
+        
 		$pelanggan = DB::table('pelanggan')->get();
 		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
 	}

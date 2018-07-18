@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ()
+{
+	return view('AM.dashboard');
 });
+
+Route::get('/login', 'AuthController@indexLogin');
+Route::post('/login/insert', 'AuthController@login');
+Route::get('/register', 'AuthController@indexRegister');
+Route::post('/register/insert', 'AuthController@register');
+
+Route::get('/home', 'AuthController@home');
+
+
 
 Route::get('/AM-dashboard', function ()
 {
