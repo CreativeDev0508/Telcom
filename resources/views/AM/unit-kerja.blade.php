@@ -62,12 +62,12 @@
                                             <td>
                                             <br>
                                             <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#unit-1"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="unit-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#unit-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="unit-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">edit #1</h4> </div>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listunit_kerja->nama_unit_kerja}}</h4> </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material">
                                                                 <div class="form-group">
