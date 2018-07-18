@@ -58,7 +58,7 @@
                                     <tr>
                                         <td align="center" style="width: 9%;">{{$listunit_kerja->nama_unit_kerja}}</td>
                                         <td style="text-align: justify;">{{$listunit_kerja->deskripsi_unit_kerja}}</td>
-                                        <td>
+                                        <td align="center">
                                             <br>
                                             <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#delete-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-trash"></i></button>
                                             <div class="modal fade" id="delete-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
