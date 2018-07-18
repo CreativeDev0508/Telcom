@@ -14,66 +14,81 @@
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">MITRA</h1>
                             <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-mitra">Tambah Mitra</button>
-                                <div class="modal fade" id="tambah-mitra" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myLargeModalLabel">Tambah Mitra</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="form-horizontal form-material" action="{{ url('/AM-mitra/insert') }}" method = "post">
-                                                 {{ csrf_field() }}
-                                                    <div class="form-group">
-                                                        <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Mitra" name="nama_mitra">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Mitra</label>
-                                                        <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Mitra" name="deskripsi_mitra"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group m-b-0">
-                                                        <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                        <!-- <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> -->
-                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                                    </div>
-                                               </form>
-                                            </div>
+                            <div class="modal fade" id="tambah-mitra" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myLargeModalLabel">Tambah Mitra</h4>
                                         </div>
-                                        <!-- /.modal-content -->
+                                        <div class="modal-body">
+                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/insert') }}" method = "post">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Mitra" name="nama_mitra">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Mitra</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" rows="5" placeholder="Deskripsi Mitra" name="deskripsi_mitra"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-0">
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <!-- /.modal-dialog -->
                                 </div>
-                            <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny">
+                            </div>
+                                
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th data-toggle="true"> Mitra </th>
-                                        <th data-hide="all"> Deskripsi </th>
-                                        <th data-hide="all"> Edit </th>
+                                        <th style="text-align: center;">Mitra</th>
+                                        <th style="text-align: center;">Deskripsi</th>
+                                        <th style="text-align: center; width: 15%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($mitra as $listmitra)
                                     <tr>
-                                        <td>{{$listmitra->nama_mitra}}</td>
-                                        <td>{{$listmitra->deskripsi_mitra}}</td>
-                                        <td>
+                                        <td align="center" style="width: 9%;">{{$listmitra->nama_mitra}}</td>
+                                        <td style="text-align: justify;">{{$listmitra->deskripsi_mitra}}</td>
+                                        <td align="center">
                                             <br>
-                                            <form class="form-horizontal" role="form" method="get" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}">
-                                                <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                            </form>
-
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#mitra-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="mitra-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#delete-{{$listmitra->id_mitra}}"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listmitra->nama_mitra}}</h4> </div>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Delete {{$listmitra->nama_mitra}}</h4> 
+                                                        </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/update/'.$listmitra->id_mitra) }}" method="get">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}" method = "get">
+                                                                <h5> Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="edit-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listmitra->nama_mitra}}</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/update/'.$listmitra->id_mitra) }}" method = "get">
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
                                                                     <div class="col-sm-9">
@@ -88,19 +103,16 @@
                                                                 </div>
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                                    <!-- <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> -->
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
-                                                           </form>
+                                                            </form>
                                                         </div>
                                                     </div>
-                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <!-- /.modal-dialog -->
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
