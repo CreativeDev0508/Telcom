@@ -29,6 +29,8 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
      * @param  \Exception  $exception
      * @return void
      */
@@ -44,23 +46,8 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    // public function render($request, Exception $exception)
-    // {
-    //     return parent::render($request, $exception);
-    // }
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        //check if exception is an instance of ModelNotFoundException.
-        if ($e instanceof ModelNotFoundException) {
-            // ajax 404 json feedback
-            if ($request->ajax()) {
-                return response()->json(['error' => 'Not Found'], 404);
-            }
-
-            // normal 404 view page feedback
-            return response()->view('errors.missing', [], 404);
-        }
-
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }
