@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('link')
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
+@endsection()
+
 @section('content')
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -129,4 +140,25 @@
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
         </div>
-    @endsection
+@endsection
+
+@section('script')
+    <script src="{{ asset('plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>    
+    <!-- Menu Plugin JavaScript -->
+    <script src="{{ asset('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
+    <!--slimscroll JavaScript -->
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('js/waves.js') }}"></script>
+    <script src="{{ asset('plugins/bower_components/counterup/jquery.counterup.min.js') }}"></script>
+    <!-- chartist chart -->
+    <script src="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.js') }}"></script>
+    <script src="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}"></script>
+    <!-- Sparkline chart JavaScript -->
+    <script src="{{ asset('plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('js/dashboard1.js') }}"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
+@endsection
