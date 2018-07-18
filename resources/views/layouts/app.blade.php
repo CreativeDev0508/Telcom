@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/icon" sizes="16x16" href="asset/image/icon/index.ico">
+    <link rel="icon" type="image/icon" sizes="16x16" href="{{ asset('asset/image/icon/index.ico') }}">
     <title>Pengajuan Justifikasi</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,6 +27,8 @@
     <link href="{{ asset('plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <!-- morris CSS -->
     <link href="{{ asset('plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+    <!-- Footable CSS -->
+    <link href="{{ asset('plugins/bower_components/footable/css/footable.core.css') }}" rel="stylesheet">
     <!-- chartist CSS -->
     <link href="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
@@ -193,6 +195,10 @@
     <script src="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}"></script>
     <!-- Sparkline chart JavaScript -->
     <script src="{{ asset('plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <!-- Footable -->
+    <script src="{{ asset('plugins/bower_components/footable/js/footable.all.min.js') }}"></script>
+    <!--FooTable init-->
+    <script src="{{ asset('js/footable-init.js') }}"></script>
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('plugins/bower_components/moment/moment.js') }}"></script>
