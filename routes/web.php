@@ -30,6 +30,9 @@ Route::get('/AM-form-aspek','AMController@indexAspek');
 Route::post('/AM-form-aspek/insert','AMController@insertAspek');
 
 Route::get('/AM-unit-kerja','AMController@indexUnitKerja');
+Route::post('/AM-unit-kerja/insert','AMController@insertUnitKerja');
+Route::get('/AM-unit-kerja/update/{id}', 'AMController@updateUnitKerja');
 
 Route::get('/AM-mitra','AMController@indexMitra');
+Route::post('/AM-mitra/insert','AMController@insertMitra');
 

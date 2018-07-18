@@ -13,7 +13,7 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">MITRA</h1>
-                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tamba-mitra">Tambah Mitra</button>
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-mitra">Tambah Mitra</button>
                                 <div class="modal fade" id="tambah-mitra" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -21,22 +21,24 @@
                                                 <h4 class="modal-title" id="myLargeModalLabel">Tambah Mitra</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal form-material">
+                                                <form class="form-horizontal form-material" action="{{ url('/AM-mitra/insert') }}" method = "post">
+                                                 {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Nama Mitra</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Mitra">
+                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Mitra" name="nama_mitra">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Mitra</label>
                                                         <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Mitra"></textarea>
+                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Mitra" name="deskripsi_mitra"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-0">
                                                         <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                        <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                        <!-- <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> -->
+                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                                     </div>
                                                </form>
                                             </div>
@@ -61,12 +63,12 @@
                                         <td>
                                             <br>
                                             <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#mitra-1"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="mitra-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#mitra-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="mitra-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">edit #1</h4> </div>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listmitra->nama_mitra}}</h4> </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material">
                                                                 <div class="form-group">

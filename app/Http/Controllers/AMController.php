@@ -11,6 +11,7 @@ use App\Mitra;
 use App\Pelanggan;
 use App\Proyek;
 use App\User;
+use App\UnitKerja;
 use DB;
 
 class AMController extends Controller
@@ -88,9 +89,35 @@ class AMController extends Controller
 		return view('AM.unit-kerja', ['unit_kerja'=>$unit_kerja]);
 	}
 
+	public function insertUnitKerja(Request $request)
+	{
+		$unit_kerja = new UnitKerja;
+		$unit_kerja->id_unit_kerja = $request->input('id_unit_kerja');
+		$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
+		$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
+		$unit_kerja->save();
+		return redirect('/AM-unit-kerja');
+	}
+
+	public function updateUnitKerja(Request $request, $id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
+		return redirect('/AM-unit-kerja');
+	}
+
 	public function indexMitra()
 	{
 		$mitra = DB::table('mitra')->get();
 		return view('AM.mitra', ['mitra'=>$mitra]);
+	}
+
+	public function insertMitra(Request $request)
+	{
+		$mitra = New Mitra;
+		$mitra->id_mitra = $request->input('id_mitra');
+		$mitra->nama_mitra = $request->input('nama_mitra');
+		$mitra->deskripsi_mitra = $request->input('deskripsi_mitra');
+		$mitra->save();
+		return redirect('/AM-mitra');
 	}
 }

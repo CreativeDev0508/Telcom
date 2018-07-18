@@ -21,22 +21,23 @@
                                                 <h4 class="modal-title" id="myLargeModalLabel">Tambah Unit Kerja</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="form-horizontal form-material">
+                                                <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/insert') }}" method = "post">
+                                                    {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja">
+                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja" name="nama_unit_kerja">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
                                                         <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja"></textarea>
+                                                            <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja" name="deskripsi_unit_kerja"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-0">
                                                         <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                        <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                     </div>
                                                </form>
                                             </div>
@@ -61,29 +62,29 @@
                                             <td>
                                             <br>
                                             <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#unit-1"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="unit-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#unit-{{$listunit_kerja->id_unit_kerja}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="unit-{{$listunit_kerja->id_unit_kerja}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">edit #1</h4> </div>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listunit_kerja->nama_unit_kerja}}</h4> </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/update/'.$listunit_kerja->id_unit_kerja) }}" method = "get">
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="{{$listunit_kerja->nama_unit_kerja}}">
+                                                                        <input type="text" class="form-control" id="inputEmail3" value="{{$listunit_kerja->nama_unit_kerja}}" name="nama_unit_kerja">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class="form-control" rows="5" placeholder="{{$listunit_kerja->deskripsi_unit_kerja}}"></textarea>
+                                                                        <textarea class="form-control" rows="5" name="deskripsi_unit_kerja">{{$listunit_kerja->deskripsi_unit_kerja}}</textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group m-b-0">
+                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
                                                            </form>
                                                         </div>
