@@ -32,9 +32,11 @@ Route::get('/AM-dashboard', function ()
 
 Route::get('/AM-form-pelanggan','AMController@indexPelanggan');
 Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
+Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan');
 
 Route::get('/AM-form-proyek','AMController@indexProyek');
 Route::post('/AM-form-proyek/insert','AMController@insertProyek');
+Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek');
 
 Route::get('/AM-form-aspek','AMController@indexAspek');
 Route::post('/AM-form-aspek/insert','AMController@insertAspek');

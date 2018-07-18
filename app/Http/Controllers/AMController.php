@@ -37,6 +37,18 @@ class AMController extends Controller
 		return redirect('/AM-form-proyek');
 	}
 
+	public function updatePelanggan(Request $request, $id)
+    {
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->update($request->all());
+    	return redirect('/AM-form-proyek');
+    }
+
+	public function deletePelanggan($id)
+	{
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->delete();
+    	return redirect('/AM-form-pelanggan');
+    }
+
 	public function indexProyek()
 	{
 		$proyek = DB::table('proyek')->get();
