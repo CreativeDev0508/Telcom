@@ -93,4 +93,14 @@ class AMController extends Controller
 		$mitra = DB::table('mitra')->get();
 		return view('AM.mitra', ['mitra'=>$mitra]);
 	}
+
+	public function insertMitra(Request $request)
+	{
+		$mitra = New Mitra;
+		$mitra->id_mitra = $request->input('id_mitra');
+		$mitra->nama_mitra = $request->input('nama_mitra');
+		$mitra->deskripsi_mitra = $request->input('deskripsi_mitra');
+		$mitra->save();
+		return redirect('/AM-mitra');
+	}
 }

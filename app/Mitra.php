@@ -8,7 +8,7 @@ class Mitra extends Model
 {
     protected $table = 'mitra';
     protected $primaryKey = 'id';
-    protected $fillable = ['deskripsi_mitra','nama_mitra'];
+    protected $fillable = ['nama_mitra','deskripsi_mitra'];
     public $incrementing = true;
     public $timestamp = true;
 
