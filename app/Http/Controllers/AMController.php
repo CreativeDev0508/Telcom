@@ -81,4 +81,10 @@ class AMController extends Controller
 		$aspek->save();
 		return redirect('/AM-dashboard');
 	}
+
+	public function indexUnitKerja()
+	{
+		$unitkerja = DB::table('unit_kerja')->get();
+		return view('AM.unit-kerja', ['unitkerja'=>$unitkerja]);
+	}
 }
