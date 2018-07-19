@@ -45,11 +45,11 @@
                                     </thead>
                                     <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td>300.000.000</td>
-                                            <td>13%</td>
-                                            <td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;">300.000.000</td>
+                                            <td style="vertical-align: middle;">13%</td>
+                                            <td style="vertical-align: middle;">
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-target="#"><i class="fa fa-edit"></i></button>
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#detail"><i class="fa fa-search"></i></button>
                                                 <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -132,16 +132,16 @@
                                             <th colspan=3>APPROVED</th>
                                         </tr>
                                         <tr>
-                                            <th style="background-color: white; color: black;">No.</th>
-                                            <th style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th style="background-color: white; color: black;">Detail</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;"><a href="#" class="btn btn-default">Lihat</a></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -167,16 +167,16 @@
                                             <th colspan=3>FAILED</th>
                                         </tr>
                                         <tr>
-                                            <th style="background-color: white; color: black;">No.</th>
-                                            <th style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th style="background-color: white; color: black;">Detail</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;"><a href="#" class="btn btn-default">Lihat</a></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
