@@ -86,7 +86,7 @@
                                                                         <tr>
                                                                             <td><span class="text-muted" style="font-weight: 500">Review</span></td>
                                                                             <td><span class="text-muted" style="font-weight: 500">:</td>
-                                                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
+                                                                            <td style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>                                                                    
