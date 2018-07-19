@@ -9,6 +9,12 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
+
+    <style>
+        .table > .detail-text > tr > td {
+            border-top: 0;
+        }
+    </style>
 @endsection()
 
 @section('content')
@@ -51,17 +57,37 @@
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
                                                             <div class="modal-body">
-                                                                    <div class="btn-group btn-group-justified m-b-20">
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
-                                                                        <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
-                                                                    </div>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Status: </span><span class="text-success">Approved</span></p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Oleh: </span>Arya Wiranata S.Kom</p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Tanggal: </span>17 Juli 2018</p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Review: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</p>
+                                                                <div class="btn-group btn-group-justified m-b-20">
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
+                                                                    <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
+                                                                </div>
+                                                                <table class="table table-borderless">
+                                                                    <tbody class="detail-text">
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Status</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td><span class="text-success">Approved</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Oleh</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Arya Wiranata S.Kom</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Tanggal</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>17 Juli 2018</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Review</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>                                                                    
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
