@@ -43,7 +43,35 @@
                                             <td>1</td>
                                             <td>ITS Server</td>
                                             <td class="text-success">Bidding</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
+                                            <td><a href="#" class="btn btn-default" data-toggle="modal" data-target="#detail">Lihat</a>
+                                                <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
+                                                            <div class="modal-body">
+                                                                    <div class="btn-group btn-group-justified m-b-20">
+                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
+                                                                        <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
+                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
+                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
+                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
+                                                                    </div>
+                                                                    <p><span class="text-muted" style="font-weight: 500">Status: </span><span class="text-success">Approved</span></p>
+                                                                    <p><span class="text-muted" style="font-weight: 500">Oleh: </span>Arya Wiranata S.Kom</p>
+                                                                    <p><span class="text-muted" style="font-weight: 500">Tanggal: </span>17 Juli 2018</p>
+                                                                    <p><span class="text-muted" style="font-weight: 500">Review: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                            </td>
                                             <td>300.000.000</td>
                                             <td>13%</td>
                                         </tr>
