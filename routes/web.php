@@ -37,3 +37,4 @@ Route::post('/AM-mitra/insert','AMController@insertMitra');
 Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
 Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
 
+Route::get('/AM-dashboard/print/{id}', 'WordTemplateController@createWordDocxP1');
