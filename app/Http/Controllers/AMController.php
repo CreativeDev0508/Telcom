@@ -13,11 +13,15 @@ use App\Proyek;
 use App\User;
 use App\UnitKerja;
 use DB;
+use Auth;
 
 class AMController extends Controller
 {
 	public function indexPelanggan()
 	{
+		// if(!Auth::user()->id)
+  //       	return redirect('login');
+        
 		$pelanggan = DB::table('pelanggan')->get();
 		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
 	}
@@ -33,6 +37,18 @@ class AMController extends Controller
 		$pelanggan->save();
 		return redirect('/AM-form-proyek');
 	}
+
+	public function updatePelanggan(Request $request, $id)
+    {
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->update($request->all());
+    	return redirect('/AM-form-proyek');
+    }
+
+	public function deletePelanggan($id)
+	{
+    	DB::table('pelanggan')->where('id_pelanggan',$id)->delete();
+    	return redirect('/AM-form-pelanggan');
+    }
 
 	public function indexProyek()
 	{
@@ -96,6 +112,18 @@ class AMController extends Controller
 		$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
 		$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
 		$unit_kerja->save();
+		return redirect('/AM-unit-kerja');
+	}
+
+	public function updateUnitKerja(Request $request, $id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
+		return redirect('/AM-unit-kerja');
+	}
+
+	public function deleteUnitKerja($id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
 		return redirect('/AM-unit-kerja');
 	}
 

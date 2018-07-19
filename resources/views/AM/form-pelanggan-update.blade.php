@@ -3,8 +3,6 @@
 @section('link')
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="{{ asset('plugins/bower_components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
     <!-- animation CSS -->
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -23,50 +21,51 @@
                 <br>
                 <br>
                 <div class="row">
+                    @foreach($pelanggan as $listpelanggan)
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ url('/AM-form-aspek/insert') }}" method = "post">
-                                {{ csrf_field() }}
-                                <div class="row">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
-                                        <div class="col-sm-9">
-                                            <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                                <option value="Bulanan">Bulanan</option>
-                                                <option value="Tahunan">Tahunan</option>
-                                                <option value="OTC">OTC</option>
-                                            </select>
-                                        </div>
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
+                            <form class="form-horizontal form-material" action="{{ url('/AM-form-pelanggan/update.$listpelanggan->id_pelanggan') }}" method = "get">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}"> </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan" value="{{$listpelanggan->alamat_pelanggan}}"> </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
+                                    <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon" value="{{$listpelanggan->nomor_telepon}}"> </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin"> </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg"> </div>
+                                    <label class="col-sm-3 control-label">Jenis Pelanggan</label>
+                                    <div class="col-sm-9 radio-list">
+                                        <label class="radio-inline p-0">
+                                            <div class="radio radio">
+                                                <input id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
+                                                <label for="radio1">Government</label>
+                                            </div>
+                                        </label>
+                                        <label class="radio-inline p-0">
+                                            <div class="radio radio">
+                                                <input id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                                <label for="radio2">Enterprise</label>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
-                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-t-10" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> --}}
-                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                 </div>
-                                
                             </form>
+                            {{-- <a href="{{ url('/AM-form-pelanggan/insert') }}"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
                         </div>
                     </div>
+                @endforeach
                 </div>
                 <!--/.row -->
             </div>

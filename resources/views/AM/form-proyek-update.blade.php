@@ -23,17 +23,17 @@
                 <br>
                 <br>
                 <div class="row">
+                    @foreach($proyek as $listproyek)
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                            <form class="form-horizontal form-material" action="{{ url('/AM-form-proyek/insert') }}" method = "post">
-                                {{ csrf_field() }}
+                            <form class="form-horizontal form-material" action="{{ url('/AM-form-proyek/update.$listproyek->id_proyek') }}" method = "get">
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6">
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Judul Kegiatan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul">
+                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul" value="{{$listproyek->judul}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -52,7 +52,7 @@
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Alamat Delivery</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery">
+                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery" value="{{$listproyek->alamat_delivery}}">
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@
                                             </div>
                                             <label class="col-sm-3 control-label">Skema Bisnis</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis" value="{{$listproyek->skema_bisnis}}">
                                                     <option value="Sewa Murni">Sewa Murni</option>
                                                     <option value="Sewa Beli">Sewa Beli</option>
                                                     <option value="Pengadaan Beli">Pengadaan Beli</option>
@@ -86,25 +86,25 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Deadline</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="saat_penggunaan"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="pemasukan_dokumen"> <!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="pemasukan_dokumen" value="{{$listproyek->pemasukan_dokumen}}"> <!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Ready for Service</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="ready_for_service"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="ready_for_service" value="{{$listproyek->ready_for_service}}"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
+                                                <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                             </div>
                                         </div>
                                     </div>
@@ -118,6 +118,7 @@
                             </form>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <!--/.row -->
             </div>

@@ -9,7 +9,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "phpoffice/phpword": "v0.14.*"
+        "phpoffice/phpword": "v0.15.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
