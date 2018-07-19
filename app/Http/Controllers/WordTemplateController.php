@@ -5,6 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Settings;
+use App\AspekBisnis;
+use App\Jabatan;
+use App\LatarBelakang;
+use App\Mitra;
+use App\Pelanggan;
+use App\Proyek;
+use App\User;
+use App\UnitKerja;
+use DB;
 
 class WordTemplateController extends Controller
 {
@@ -23,13 +32,15 @@ class WordTemplateController extends Controller
         return response()->download(storage_path('TestWordFile.docx'));
     }
 
-    public function createWordDocxP1(){
+    public function createWordDocxP1(Request $request, $id){
         $settings = new Settings();
         $settings->setOutputEscapingEnabled(true);
+
+        $data = DB::table('proyek')->where('id_proyek','=',$id)->first();
         
         $templateProcessor = new TemplateProcessor('template/template_p1.docx');
         $templateProcessor->setValue('jenisPelanggan', 'ENTERPRISE');
-        $templateProcessor->setValue('judul', 'Pekerjaan Penyediaan CPE Managed Services untuk Layanan Astinet, Indihome dan Wifi Station untuk RSUD Dr Soetomo');
+        $templateProcessor->setValue('judul', $data->judul);
         $templateProcessor->setValue('unitKerja', 'GES WITEL SURABAYA');
         $templateProcessor->setValue('bebanMitra', '69,120,000');
         $templateProcessor->setValue('saatPenggunaan', 'Feb 2018');
@@ -81,12 +92,12 @@ class WordTemplateController extends Controller
 
         // $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
         try{
-            $templateProcessor->saveAs('results/P1 - Pekerjaan Penyediaan CPE Managed Services untuk Layanan Astinet, Indihome dan Wifi Station untuk RSUD Dr Soetomo.docx');
+            $templateProcessor->saveAs('results/P1 - '.$data->judul.'.docx');
             // $objectWriter->save(storage_path('P1 - Pekerjaan Penyediaan CPE Managed Services untuk Layanan Astinet, Indihome dan Wifi Station untuk RSUD Dr Soetomo.docx'));
         }
         catch (Exception $e){
 
         }
-        return response()->download('results/P1 - Pekerjaan Penyediaan CPE Managed Services untuk Layanan Astinet, Indihome dan Wifi Station untuk RSUD Dr Soetomo.docx');
+        return response()->download('results/P1 - '.$data->judul.'.docx');
     }
 }
