@@ -30,6 +30,8 @@ Route::get('/AM-dashboard', function ()
     return view('AM.dashboard');
 });
 
+Route::get('/AM-dashboard','AMController@showproyek');
+
 Route::get('/AM-form-pelanggan','AMController@indexPelanggan');
 Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
 Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan');

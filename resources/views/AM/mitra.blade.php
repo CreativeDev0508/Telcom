@@ -97,28 +97,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
-
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#mitra-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
-                                            <div class="modal fade" id="mitra-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">Delete {{$listmitra->nama_mitra}}</h4> 
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}" method = "get">
-                                                                <h5> Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
-                                                                <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
+                                                                                       
                                             <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
