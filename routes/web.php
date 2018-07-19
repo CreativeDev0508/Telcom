@@ -46,9 +46,9 @@ Route::post('/AM-unit-kerja/insert','AMController@insertUnitKerja');
 Route::get('/AM-unit-kerja/update/{id}', 'AMController@updateUnitKerja');
 Route::get('/AM-unit-kerja/delete/{id}', 'AMController@deleteUnitKerja');
 
-Route::get('/createWord', ['as'=>'createWord','uses'=>'WordTemplateController@createWordDocxP1']);
 Route::get('/AM-mitra','AMController@indexMitra');
 Route::post('/AM-mitra/insert','AMController@insertMitra');
 Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
 Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
 
+Route::get('/AM-dashboard/print/{id}', 'WordTemplateController@createWordDocxP1');
