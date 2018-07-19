@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'user';
+    protected $table = 'users';
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamp = true;
@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nik', 'id_jabatan', 'password', 'nama'
+        'nik', 'id_jabatan', 'password', 'name', 'email'
     ];
 
     /**
@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function user()
     {
-        return $this->hasmany('App\User', 'nik', 'id');
+        return $this->hasmany('App\User', 'id', 'id');
     }
 
     public function jabatan()
