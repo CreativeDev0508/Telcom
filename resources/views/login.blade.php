@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pengajuan Justifikasi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="asset/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="asset/css/main.css" />
+    <link rel="icon" type="image/icon" sizes="16x16" href="{{ asset('asset/image/icon/index.ico') }}">
+    <link rel="stylesheet" href="{{ asset('asset/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('asset/css/main.css') }}" />
 </head>
 <body>
     <div class="container-fluid" style="position: relative;height: 100%">
         <div class="row">
             <div class="col-lg-8 mobile" style="height: 100%">
-                <img src="asset/image/logo_full.png" alt="logo telkom indonesia"  class="logo" >
+                <img src="{{ asset('asset/image/logo_full.png') }}" alt="logo telkom indonesia"  class="logo" >
             </div>
             <div class="col-lg-4 col-md-12 background-mobile" style="height: 100%;">
-                    <img src="asset/image/logo_full.png" alt="logo telkom indonesia"  class="logo-mobile">
+                    <img src="{{ asset('asset/image/logo_full.png') }}" alt="logo telkom indonesia"  class="logo-mobile">
                 <form class="form-login background-mobile" style="background-color: #d51100"action="{{ url('/login/insert') }}" method = "post">
                     {{ csrf_field() }}
                     <br>
@@ -37,9 +38,9 @@
         </div>
     </div>
     <!-- SCRIPT -->
-    <script src="asset/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('asset/js/jquery-3.3.1.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="asset/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="asset/js/main.js"></script>
+    <script src="{{ asset('asset/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('asset/js/main.js') }}"></script>
 </body>
 </html>
