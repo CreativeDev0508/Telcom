@@ -25,22 +25,22 @@
                     
                         <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
                     @if ($errors->has('email'))
-                                    <!-- <span class="invalid-feedback" role="alert" style="color: white;">
+                                    <span class="invalid-feedback" role="alert" style="color: white;">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span> -->
-                                    <div class="alert alert-danger invalid-feedback alert-dismissible fade show" role="alert">
+                                    </span>
+                                    <!-- <div class="alert alert-danger invalid-feedback alert-dismissible fade show" role="alert">
                                         Email atau password salah!
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                    </div>
+                                    </div> -->
                                 @endif
                     </div>
                     <div class="form-group">
                         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
 
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color: white;">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
