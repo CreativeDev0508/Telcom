@@ -9,6 +9,12 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
+
+    <style>
+        .table > .detail-text > tr > td {
+            border-top: 0;
+        }
+    </style>
 @endsection()
 
 @section('content')
@@ -30,20 +36,22 @@
                                             <th colspan=6>ON PROGRESS</th>
                                         </tr>
                                         <tr>
-                                            <th style="background-color: white; color: black;">No.</th>
-                                            <th style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th style="background-color: white; color: black;">Status</th>
-                                            <th style="background-color: white; color: black;">Review</th>
-                                            <th style="background-color: white; color: black;">Nilai Kontrak</th>
-                                            <th style="background-color: white; color: black;">Profit</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                            <th class="text-center" style="background-color: white; color: black; width: 20%">Review</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
                                             <td>1</td>
                                             <td>ITS Server</td>
-                                            <td class="text-success">Bidding</td>
-                                            <td><a href="#" class="btn btn-default" data-toggle="modal" data-target="#detail">Lihat</a>
+                                            <td>300.000.000</td>
+                                            <td>13%</td>
+                                            <td>
+                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-target="#"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#detail"><i class="fa fa-search"></i></button>
                                                 <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
@@ -51,17 +59,37 @@
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
                                                             <div class="modal-body">
-                                                                    <div class="btn-group btn-group-justified m-b-20">
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
-                                                                        <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
-                                                                        <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
-                                                                    </div>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Status: </span><span class="text-success">Approved</span></p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Oleh: </span>Arya Wiranata S.Kom</p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Tanggal: </span>17 Juli 2018</p>
-                                                                    <p><span class="text-muted" style="font-weight: 500">Review: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</p>
+                                                                <div class="btn-group btn-group-justified m-b-20">
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
+                                                                    <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
+                                                                </div>
+                                                                <table class="table table-borderless">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Status</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td><span class="text-success">Approved</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Oleh</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Arya Wiranata S.Kom</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Tanggal</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>17 Juli 2018</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Review</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>                                                                    
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
@@ -71,17 +99,19 @@
                                                     </div>
                                                     <!-- /.modal-dialog -->
                                                 </div>
+                                                <a href="/createWord" class="btn btn-default btn-outline btn-circle btn-lg m-r-5"><i class="fa fa-download"></i></a>
                                             </td>
-                                            <td>300.000.000</td>
-                                            <td>13%</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>Deshmukh</td>
-                                            <td class="text-warning">SE</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
                                             <td>250.000.000</td>
                                             <td>17%</td>
+                                            <td>
+                                                <a href="#" class="btn btn-default">Edit</a>
+                                                <a href="#" class="btn btn-default">Lihat</a>
+                                                <a href="#" class="btn btn-default">Print</a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
