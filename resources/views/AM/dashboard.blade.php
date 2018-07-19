@@ -92,7 +92,13 @@
                                                                 </table>                                                                    
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                                                                <form class="form-horizontal form-material" action="" method = "">
+                                                                    <div class="form-group m-b-0">
+                                                                        <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
+                                                                        <button type="submit" style="float: left;" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
+                                                                        <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-5">Decline</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                         <!-- /.modal-content -->
