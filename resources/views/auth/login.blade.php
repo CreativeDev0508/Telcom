@@ -49,7 +49,7 @@
                     <div><br></div>
                     <div class="signup mx-auto">
                             <p style="color: white">Belum punya akun?</p>
-                            <a class="login-a" href="{{ url('/register') }}">Sign up</a>
+                            <a class="login-a" href="{{ url('/register-index') }}">Sign up</a>
                     </div>
                 </form>
             </div>
