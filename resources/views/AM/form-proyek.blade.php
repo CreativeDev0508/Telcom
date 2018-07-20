@@ -59,6 +59,15 @@
                                                 <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery">
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <label class="col-sm-3 control-label">Rincian Pola Pembayaran</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="rincian_pembayaran">
+                                                    <option value="Sebelum">Sebelum Pembayaran</option>
+                                                    <option value="Setelah">Setelah Pembayaran</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row col-sm-12 col-lg-6">
                                         <div class="row">
