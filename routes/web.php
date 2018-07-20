@@ -44,9 +44,10 @@ Route::get('/', function ()
     return redirect('/home');
 });
 
-Auth::routes();
-
+Route::get('/register-index', 'AuthController@indexRegister');
 Route::get('/logout', 'AuthController@logout');
+
+Auth::routes();
 
 Route::group(['middleware'=>['auth']], function()
 {

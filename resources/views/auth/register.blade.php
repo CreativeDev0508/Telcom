@@ -51,16 +51,16 @@
                                     </span>
                                 @endif
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <input id="nik" type="text" class="form-control{{ $errors->has('nik') ? ' is-invalid' : '' }}" name="nik" value="{{ old('nik') }}" required autofocus placeholder="NIK">
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <select class="custom-select" name="id_jabatan">
                             @foreach ($jabatan as $listjabatan)
                                 <option value="{{$listjabatan->id_jabatan}}">{{$listjabatan->nama_jabatan}}</option>
                             @endforeach
                         </select>
-                    </div> --}}
+                    </div>
                     <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">SIGN UP</button>
                     <div><br></div>
                     <div class="login mx-auto">
