@@ -31,7 +31,7 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">UNIT KERJA</h1>
-                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-unit">Tambah Unit Kerja</button>
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-unit"><i class="fa fa-plus"></i>  Unit Kerja</button>
                             <div class="modal fade" id="tambah-unit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
