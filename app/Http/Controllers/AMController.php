@@ -14,16 +14,24 @@ use App\User;
 use App\UnitKerja;
 use DB;
 use Auth;
+use Session;
 
 class AMController extends Controller
 {
+	public function _construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function indexPelanggan()
 	{
 		// if(!Auth::user()->id)
-  //       	return redirect('login');
+  //       	return redirect('/login');
+
+        $auth = Auth::user()->id;
         
 		$pelanggan = DB::table('pelanggan')->get();
-		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
+		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth]);
 	}
 
     public function insertPelanggan(Request $request)
@@ -35,6 +43,10 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
+
+		$forSession = $pelanggan->id_pelanggan;
+		Session::put('forSession', $forSession);
+		// dd($pelanggan);
 		return redirect('/AM-form-proyek');
 	}
 
@@ -52,10 +64,15 @@ class AMController extends Controller
 
 	public function indexProyek()
 	{
+		$auth = Auth::user()->id;
+		// $getID = DB::select('select pelanggan.id_pelanggan from pelanggan, users, proyek where users.nik = proyek.nik and pelanggan.id_pelanggan = proyek.id_pelanggan');
+
+		$users = DB::table('users')->get();
 		$proyek = DB::table('proyek')->get();
+		$pelanggan = DB::table('pelanggan')->get();
 		$unit = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$mitra = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
-		return view('AM.form-proyek', ['proyek'=>$proyek, 'unit'=>$unit, 'mitra'=>$mitra]);
+		return view('AM.form-proyek', ['users'=>$users, 'proyek'=>$proyek, 'pelanggan'=>$pelanggan, 'unit'=>$unit, 'mitra'=>$mitra, 'auth'=>$auth,]);
 	}
 
 	public function insertProyek(Request $request)
@@ -63,8 +80,8 @@ class AMController extends Controller
 		$proyek = New Proyek;
 		$proyek->id_proyek = $request->input('id_proyek');
 		$proyek->id_mitra = $request->input('id_mitra');
-		// $proyek->nik = $request->input('nik');
-		// $proyek->id_pelanggan = $request->input('id_pelanggan');
+		$proyek->nik = $request->input('nik');
+		$proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
 		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');

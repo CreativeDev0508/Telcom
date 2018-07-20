@@ -27,6 +27,11 @@
                 <br>
                 <br>
                 <div class="row">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="col-sm-12">
                         <div class="white-box">
                             <div class="table-responsive">
