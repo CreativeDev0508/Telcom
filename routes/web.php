@@ -1,19 +1,26 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/**
+ * PHP version 7.1.11
+ * |--------------------------------------------------------------------------
+ * | Web Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Here is where you can register web routes for your application. These
+ * | routes are loaded by the RouteServiceProvider within a group which
+ * | contains the "web" middleware group. Now create something great!
+ * |
+ * 
+ * @category Description
+ * @package  Level1
+ * @author   KP GES Telkom <username@example.com>
+ * @license  example.com none
+ * @link     http://example.com/my/bar Documentation of Foo.
+ **/
 
 // Route::get('/', function ()
 // {
-// 	return view('AM.dashboard');
+// return view('AM.dashboard');
 // });
 
 // Route::get('/login', 'AuthController@indexLogin');
@@ -23,8 +30,18 @@
 
 // Route::get('/AM-dashboard', function ()
 // {
-//     return view('AM.dashboard');
-// });
+    //     return view('AM.dashboard');
+    // });
+Auth::routes();
+Route::get('/logout', 'AuthController@logout');
+    
+Route::get(
+    '/', function () {
+        return redirect('/home');
+    }
+);
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1');
 
 use App\User;
 
