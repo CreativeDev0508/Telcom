@@ -50,5 +50,8 @@ Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
 Route::get('/AM-dashboard/print/{id}', 'WordTemplateController@createWordDocxP1');
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect('/home');
+});
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'AuthController@logout');
