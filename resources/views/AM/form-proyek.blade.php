@@ -23,6 +23,10 @@
                 <br>
                 <br>
                 <div class="row">
+                    <label>ID</label>
+                    <label>{{ Auth::user()->id }}</label>
+                    {{-- <label>ID</label> --}}
+                    {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
