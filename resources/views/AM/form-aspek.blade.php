@@ -30,7 +30,7 @@
                                 {{ csrf_field() }}
                                 <div class="row">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-8">
                                             <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
                                                 <option value="Bulanan">Bulanan</option>
                                                 <option value="Tahunan">Tahunan</option>
@@ -40,22 +40,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg"> </div>
                                 </div>
                                 <div class="form-group m-b-0">

@@ -28,22 +28,22 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Jenis Pelanggan</label>
-                                    <div class="col-sm-9 radio-list">
+                                    <div class="col-sm-8 radio-list">
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
                                                 <input id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
