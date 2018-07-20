@@ -32,16 +32,6 @@
 // {
     //     return view('AM.dashboard');
     // });
-Auth::routes();
-Route::get('/logout', 'AuthController@logout');
-    
-Route::get(
-    '/', function () {
-        return redirect('/home');
-    }
-);
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1');
 
 use App\User;
 
@@ -61,6 +51,9 @@ Route::get('/logout', 'AuthController@logout');
 
 Route::group(['middleware'=>['auth']], function()
 {
+	Route::get('/home', 'HomeController@index');
+	Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1');
+
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan');
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
 	Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan');
@@ -82,6 +75,5 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
 	Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
 
-	Route::get('/AM-dashboard/print/{id}', 'WordTemplateController@createWordDocxP1');
 	
 });
