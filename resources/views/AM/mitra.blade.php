@@ -86,7 +86,7 @@
                                                             <h4 class="modal-title" id="myLargeModalLabel">Hapus {{$listmitra->nama_mitra}}</h4> 
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}" method = "get"">
+                                                            <form class="form-horizontal form-material" action="{{ url('/AM-mitra/delete/'.$listmitra->id_mitra) }}" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
