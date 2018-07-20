@@ -52,11 +52,10 @@ class WordTemplateController extends Controller
         // $templateProcessor->setValue('bebanMitra', $aspekbisnis->beban_mitra);
         $templateProcessor->setValue('saatPenggunaan', $proyek->saat_penggunaan);
 
-        // @foreach ($latarbelakang as $lb) {
+        // foreach ($latarbelakang as $lb) {
         //     $i++;
         //     $templateProcessor->setValue('lb'.$i , $lb->latar_belakang);
         // }
-        // @endforeach
 
         // $templateProcessor->setValue('pelanggan', $pelanggan->nama_pelanggan);
         // $templateProcessor->setValue('namaMitra', $mitra->nama_mitra);
