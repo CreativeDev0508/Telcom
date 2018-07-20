@@ -11,18 +11,27 @@ use App\Mitra;
 use App\Pelanggan;
 use App\Proyek;
 use App\User;
+use App\UnitKerja;
 use DB;
 use Auth;
+use Session;
 
 class AMController extends Controller
 {
+	public function _construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function indexPelanggan()
 	{
 		// if(!Auth::user()->id)
-  //       	return redirect('login');
+  //       	return redirect('/login');
+
+        $auth = Auth::user()->id;
         
 		$pelanggan = DB::table('pelanggan')->get();
-		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan]);
+		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth]);
 	}
 
     public function insertPelanggan(Request $request)
@@ -34,6 +43,10 @@ class AMController extends Controller
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
+
+		$forSession = $pelanggan->id_pelanggan;
+		Session::put('forSession', $forSession);
+		// dd($pelanggan);
 		return redirect('/AM-form-proyek');
 	}
 
@@ -51,10 +64,15 @@ class AMController extends Controller
 
 	public function indexProyek()
 	{
+		$auth = Auth::user()->id;
+		// $getID = DB::select('select pelanggan.id_pelanggan from pelanggan, users, proyek where users.nik = proyek.nik and pelanggan.id_pelanggan = proyek.id_pelanggan');
+
+		$users = DB::table('users')->get();
 		$proyek = DB::table('proyek')->get();
+		$pelanggan = DB::table('pelanggan')->get();
 		$unit = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$mitra = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
-		return view('AM.form-proyek', ['proyek'=>$proyek, 'unit'=>$unit, 'mitra'=>$mitra]);
+		return view('AM.form-proyek', ['users'=>$users, 'proyek'=>$proyek, 'pelanggan'=>$pelanggan, 'unit'=>$unit, 'mitra'=>$mitra, 'auth'=>$auth,]);
 	}
 
 	public function insertProyek(Request $request)
@@ -62,8 +80,8 @@ class AMController extends Controller
 		$proyek = New Proyek;
 		$proyek->id_proyek = $request->input('id_proyek');
 		$proyek->id_mitra = $request->input('id_mitra');
-		// $proyek->nik = $request->input('nik');
-		// $proyek->id_pelanggan = $request->input('id_pelanggan');
+		$proyek->nik = $request->input('nik');
+		$proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
 		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
@@ -104,9 +122,53 @@ class AMController extends Controller
 		return view('AM.unit-kerja', ['unit_kerja'=>$unit_kerja]);
 	}
 
+	public function insertUnitKerja(Request $request)
+	{
+		$unit_kerja = new UnitKerja;
+		$unit_kerja->id_unit_kerja = $request->input('id_unit_kerja');
+		$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
+		$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
+		$unit_kerja->save();
+		return redirect('/AM-unit-kerja');
+	}
+
+	public function updateUnitKerja(Request $request, $id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
+		return redirect('/AM-unit-kerja');
+	}
+
+	public function deleteUnitKerja($id)
+	{
+		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
+		return redirect('/AM-unit-kerja');
+	}
+
 	public function indexMitra()
 	{
 		$mitra = DB::table('mitra')->get();
 		return view('AM.mitra', ['mitra'=>$mitra]);
 	}
+
+	public function insertMitra(Request $request)
+	{
+		$mitra = New Mitra;
+		$mitra->id_mitra = $request->input('id_mitra');
+		$mitra->nama_mitra = $request->input('nama_mitra');
+		$mitra->deskripsi_mitra = $request->input('deskripsi_mitra');
+		$mitra->save();
+		return redirect('/AM-mitra');
+	}
+
+	public function updateMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
+    	return redirect('/AM-mitra');
+    }
+
+    public function deleteMitra(Request $request, $id)
+    {
+    	DB::table('mitra')->where('id_mitra',$id)->delete();
+    	return redirect('/AM-mitra');
+    }
 }

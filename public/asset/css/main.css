@@ -14,8 +14,8 @@ html, body
 .form-login{
     position: absolute;
     top: 28%;
-    left: 2%;
-    right: 2%;
+    left: 20%;
+    right: 20%;
 }
 .login-a:visited{
     color: white;
@@ -34,8 +34,8 @@ html, body
 .form-signup{
     position: absolute;
     top: 20%;
-    left: 2%;
-    right: 2%;
+    left: 20%;
+    right: 20%;
 }
 .form-icon{
     width: 20%;

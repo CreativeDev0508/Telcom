@@ -9,43 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" type="image/icon" sizes="16x16" href="{{ asset('asset/image/icon/index.ico') }}">
     <title>Pengajuan Justifikasi</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="{{ asset('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
-    <!-- page CSS -->
-    <link href="{{ asset('plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/bower_components/custom-select/custom-select.css' )}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/bower_components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('plugins/bower_components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet" />
-    <link href="{{ asset('plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('plugins/bower_components/multiselect/css/multi-select.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Page plugins css -->
-    <link href="{{ asset('plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css') }}" rel="stylesheet">
-    <!-- toast CSS -->
-    <link href="{{ asset('plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
-    <!-- morris CSS -->
-    <link href="{{ asset('plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
-    <!-- Footable CSS -->
-    <link href="{{ asset('plugins/bower_components/footable/css/footable.core.css') }}" rel="stylesheet">
-    <!-- chartist CSS -->
-    <link href="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
-    <!-- Calendar CSS -->
-    <link href="{{ asset('plugins/bower_components/calendar/dist/fullcalendar.css') }}" rel="stylesheet" />
-    <!-- animation CSS -->
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    @yield('link')
 </head>
 
 <body class="fix-header">
@@ -68,7 +32,7 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="/AM-dashboard">
+                    <a class="logo" href="/home">
                         <!-- Logo icon image, you can use font-icon also --><b>
                         <img src="{{ asset('asset/image/logo_sm.png') }}" alt="home" class="dark-logo light-logo" />
                      </b>
@@ -135,7 +99,7 @@
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
                         <div><img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"></div>
-                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Steave Gection <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
                             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
                             <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
@@ -148,7 +112,7 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li> <a href="{{url('/AM-dashboard')}}" class="waves-effect"> <span class="hide-menu"> DASHBOARD </span></a></li>
+                    <li> <a href="{{url('/home')}}" class="waves-effect"> <span class="hide-menu"> DASHBOARD </span></a></li>
                     @if (\Request::is('AM-form-*'))
                     <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect active"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     @else
@@ -157,7 +121,11 @@
                     <li> <a href="{{url('/AM-unit-kerja')}}" class="waves-effect"> <span class="hide-menu"> UNIT KERJA </span></a></li>
                     <li> <a href="{{url('/AM-mitra')}}" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
                     <li class="devider"></li>
-                    <li><a href="#" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -178,188 +146,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ asset('plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="{{ asset('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
-    <!--slimscroll JavaScript -->
-    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('js/waves.js') }}"></script>
-    <!--Counter js -->
-    <script src="{{ asset('plugins/bower_components/waypoints/lib/jquery.waypoints.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/counterup/jquery.counterup.min.js') }}"></script>
-    <!-- chartist chart -->
-    <script src="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}"></script>
-    <!-- Sparkline chart JavaScript -->
-    <script src="{{ asset('plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
-    <!-- Footable -->
-    <script src="{{ asset('plugins/bower_components/footable/js/footable.all.min.js') }}"></script>
-    <!--FooTable init-->
-    <script src="{{ asset('js/footable-init.js') }}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('js/custom.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/moment/moment.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/switchery/dist/switchery.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/custom-select/custom-select.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('plugins/bower_components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/timepicker/bootstrap-timepicker.min.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js') }}"></script>
-    <script src="{{ asset('js/dashboard1.js') }}"></script>
-    <script src="{{ asset('plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
-    <script>
-    jQuery(document).ready(function() {
-        // Switchery
-        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-        $('.js-switch').each(function() {
-            new Switchery($(this)[0], $(this).data());
-        });
-        // For select 2
-        $(".select2").select2();
-        $('.selectpicker').selectpicker();
-        //Bootstrap-TouchSpin
-        $(".vertical-spin").TouchSpin({
-            verticalbuttons: true,
-            verticalupclass: 'ti-plus',
-            verticaldownclass: 'ti-minus'
-        });
-        var vspinTrue = $(".vertical-spin").TouchSpin({
-            verticalbuttons: true
-        });
-        if (vspinTrue) {
-            $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
-        }
-        $("input[name='tch1']").TouchSpin({
-            min: 0,
-            max: 100,
-            step: 0.1,
-            decimals: 2,
-            boostat: 5,
-            maxboostedstep: 10,
-            postfix: '%'
-        });
-        $("input[name='tch2']").TouchSpin({
-            min: -1000000000,
-            max: 1000000000,
-            stepinterval: 50,
-            maxboostedstep: 10000000,
-            prefix: '$'
-        });
-        $("input[name='tch3']").TouchSpin();
-        $("input[name='tch3_22']").TouchSpin({
-            initval: 40
-        });
-        $("input[name='tch5']").TouchSpin({
-            prefix: "pre",
-            postfix: "post"
-        });
-        // For multiselect
-        $('#pre-selected-options').multiSelect();
-        $('#optgroup').multiSelect({
-            selectableOptgroup: true
-        });
-        $('#public-methods').multiSelect();
-        $('#select-all').click(function() {
-            $('#public-methods').multiSelect('select_all');
-            return false;
-        });
-        $('#deselect-all').click(function() {
-            $('#public-methods').multiSelect('deselect_all');
-            return false;
-        });
-        $('#refresh').on('click', function() {
-            $('#public-methods').multiSelect('refresh');
-            return false;
-        });
-        $('#add-option').on('click', function() {
-            $('#public-methods').multiSelect('addOption', {
-                value: 42,
-                text: 'test 42',
-                index: 0
-            });
-            return false;
-        });
-    });
-    </script>
-    <script>
-    // Clock pickers
-    $('#single-input').clockpicker({
-        placement: 'bottom',
-        align: 'left',
-        autoclose: true,
-        'default': 'now'
-    });
-    $('.clockpicker').clockpicker({
-        donetext: 'Done',
-    }).find('input').change(function() {
-        console.log(this.value);
-    });
-    $('#check-minutes').click(function(e) {
-        // Have to stop propagation here
-        e.stopPropagation();
-        input.clockpicker('show').clockpicker('toggleView', 'minutes');
-    });
-    if (/mobile/i.test(navigator.userAgent)) {
-        $('input').prop('readOnly', true);
-    }
-    // Colorpicker
-    $(".colorpicker").asColorPicker();
-    $(".complex-colorpicker").asColorPicker({
-        mode: 'complex'
-    });
-    $(".gradient-colorpicker").asColorPicker({
-        mode: 'gradient'
-    });
-    // Date Picker
-    jQuery('.mydatepicker, #datepicker').datepicker();
-    jQuery('#datepicker-autoclose').datepicker({
-        autoclose: true,
-        todayHighlight: true
-    });
-    jQuery('#date-range').datepicker({
-        toggleActive: true
-    });
-    jQuery('#datepicker-inline').datepicker({
-        todayHighlight: true
-    });
-    // Daterange picker
-    $('.input-daterange-datepicker').daterangepicker({
-        buttonClasses: ['btn', 'btn-sm'],
-        applyClass: 'btn-danger',
-        cancelClass: 'btn-inverse'
-    });
-    $('.input-daterange-timepicker').daterangepicker({
-        timePicker: true,
-        format: 'MM/DD/YYYY h:mm A',
-        timePickerIncrement: 30,
-        timePicker12Hour: true,
-        timePickerSeconds: false,
-        buttonClasses: ['btn', 'btn-sm'],
-        applyClass: 'btn-danger',
-        cancelClass: 'btn-inverse'
-    });
-    $('.input-limit-datepicker').daterangepicker({
-        format: 'MM/DD/YYYY',
-        minDate: '06/01/2015',
-        maxDate: '06/30/2015',
-        buttonClasses: ['btn', 'btn-sm'],
-        applyClass: 'btn-danger',
-        cancelClass: 'btn-inverse',
-        dateLimit: {
-            days: 6
-        }
-    });
-    </script>
+    @yield('script')
 </body>
 
 </html>
