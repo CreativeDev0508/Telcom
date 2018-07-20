@@ -45,11 +45,11 @@
                                     </thead>
                                     <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td>300.000.000</td>
-                                            <td>13%</td>
-                                            <td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;">300.000.000</td>
+                                            <td style="vertical-align: middle;">13%</td>
+                                            <td style="vertical-align: middle;">
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-target="#"><i class="fa fa-edit"></i></button>
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#detail"><i class="fa fa-search"></i></button>
                                                 <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -92,7 +92,13 @@
                                                                 </table>                                                                    
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                                                                <form class="form-horizontal form-material" action="" method = "">
+                                                                    <div class="form-group m-b-0">
+                                                                        <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
+                                                                        <button type="submit" style="float: left;" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
+                                                                        <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-5">Decline</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                         <!-- /.modal-content -->
@@ -132,16 +138,62 @@
                                             <th colspan=3>APPROVED</th>
                                         </tr>
                                         <tr>
-                                            <th style="background-color: white; color: black;">No.</th>
-                                            <th style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th style="background-color: white; color: black;">Detail</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;">
+                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#detail-approved"><i class="fa fa-search"></i></button>
+                                                <div class="modal fade" id="detail-approved" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
+                                                            <div class="modal-body">
+                                                                <div class="btn-group btn-group-justified m-b-20">
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
+                                                                    <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
+                                                                </div>
+                                                                <table class="table table-borderless">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Status</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td><span class="text-success">Approved</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Oleh</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Arya Wiranata S.Kom</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Tanggal</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>17 Juli 2018</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Review</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>                                                                    
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -167,16 +219,62 @@
                                             <th colspan=3>FAILED</th>
                                         </tr>
                                         <tr>
-                                            <th style="background-color: white; color: black;">No.</th>
-                                            <th style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th style="background-color: white; color: black;">Detail</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                         <tr>
-                                            <td>1</td>
-                                            <td>ITS Server</td>
-                                            <td><a href="#" class="btn btn-default">Lihat</a></td>
+                                            <td style="vertical-align: middle;">1</td>
+                                            <td style="vertical-align: middle;">ITS Server</td>
+                                            <td style="vertical-align: middle;">
+                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#detail-failed"><i class="fa fa-search"></i></button>
+                                                <div class="modal fade" id="detail-failed" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
+                                                            <div class="modal-body">
+                                                                <div class="btn-group btn-group-justified m-b-20">
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
+                                                                    <a class="btn btn-danger waves-effect waves-light disabled" style="opacity: initial; background: #d51100;">Bidding</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Manager</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Deputy</a>
+                                                                    <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">General Manager</a>
+                                                                </div>
+                                                                <table class="table table-borderless">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Status</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td><span class="text-success">Approved</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Oleh</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>Arya Wiranata S.Kom</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Tanggal</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td>17 Juli 2018</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span class="text-muted" style="font-weight: 500">Review</span></td>
+                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                            <td style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, similique tenetur? Facere, officiis laborum, maxime consequuntur temporibus magnam repellendus ad ratione voluptas nostrum, est veritatis repellat assumenda. Iure, sequi adipisci?</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>                                                                    
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>

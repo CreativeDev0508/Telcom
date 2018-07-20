@@ -11,24 +11,20 @@
 |
 */
 
-Route::get('/', function ()
-{
-	return view('AM.dashboard');
-});
+// Route::get('/', function ()
+// {
+// 	return view('AM.dashboard');
+// });
 
-Route::get('/login', 'AuthController@indexLogin');
-Route::post('/login/insert', 'AuthController@login');
-Route::get('/register', 'AuthController@indexRegister');
-Route::post('/register/insert', 'AuthController@register');
+// Route::get('/login', 'AuthController@indexLogin');
+// Route::post('/login/insert', 'AuthController@login');
+// Route::get('/register', 'AuthController@indexRegister');
+// Route::post('/register/insert', 'AuthController@register');
 
-Route::get('/home', 'AuthController@home');
-
-
-
-Route::get('/AM-dashboard', function ()
-{
-    return view('AM.dashboard');
-});
+// Route::get('/AM-dashboard', function ()
+// {
+//     return view('AM.dashboard');
+// });
 
 Route::get('/AM-dashboard','AMController@showproyek');
 
@@ -54,3 +50,7 @@ Route::get('/AM-mitra/update/{id}','AMController@updateMitra');
 Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra');
 
 Route::get('/AM-dashboard/print/{id}', 'WordTemplateController@createWordDocxP1');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'AuthController@logout');
