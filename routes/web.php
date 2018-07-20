@@ -46,7 +46,6 @@ Route::get('/', function ()
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 Route::get('/logout', 'AuthController@logout');
 
 Route::group(['middleware'=>['auth']], function()
