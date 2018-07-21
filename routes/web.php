@@ -18,21 +18,6 @@
  * @link     http://example.com/my/bar Documentation of Foo.
  **/
 
-// Route::get('/', function ()
-// {
-// return view('AM.dashboard');
-// });
-
-// Route::get('/login', 'AuthController@indexLogin');
-// Route::post('/login/insert', 'AuthController@login');
-// Route::get('/register', 'AuthController@indexRegister');
-// Route::post('/register/insert', 'AuthController@register');
-
-// Route::get('/AM-dashboard', function ()
-// {
-    //     return view('AM.dashboard');
-    // });
-
 use App\User;
 
 Route::get('/', function ()
@@ -44,10 +29,10 @@ Route::get('/', function ()
     return redirect('/home');
 });
 
+Auth::routes();
+
 Route::get('/register-index', 'AuthController@indexRegister');
 Route::get('/logout', 'AuthController@logout');
-
-Auth::routes();
 
 Route::group(['middleware'=>['auth']], function()
 {
