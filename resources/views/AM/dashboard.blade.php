@@ -45,14 +45,15 @@
                                             <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                             <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                             <th class="text-center" style="background-color: white; color: black;">Profit</th>
-                                            <th class="text-center" style="background-color: white; color: black; width: 20%">Review</th>
+                                            <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
+                                    @foreach($proyek as $listproyek)
                                         <tr>
-                                            <td style="vertical-align: middle;">1</td>
-                                            <td style="vertical-align: middle;">ITS Server</td>
-                                            <td style="vertical-align: middle;">300.000.000</td>
+                                            <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td>
+                                            <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
+                                            <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                             <td style="vertical-align: middle;">13%</td>
                                             <td style="vertical-align: middle;">
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-target="#"><i class="fa fa-edit"></i></button>
@@ -113,17 +114,7 @@
                                                 <a href="/createWord" class="btn btn-default btn-outline btn-circle btn-lg m-r-5"><i class="fa fa-download"></i></a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>250.000.000</td>
-                                            <td>17%</td>
-                                            <td>
-                                                <a href="#" class="btn btn-default">Edit</a>
-                                                <a href="#" class="btn btn-default">Lihat</a>
-                                                <a href="#" class="btn btn-default">Print</a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
