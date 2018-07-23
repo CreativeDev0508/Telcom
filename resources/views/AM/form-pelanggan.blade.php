@@ -49,7 +49,7 @@
                                     <div class="col-sm-9 radio-list">
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
+                                                <input id="radio1" value="Government" active type="radio" name="jenis_pelanggan">
                                                 <label for="radio1">Government</label>
                                             </div>
                                         </label>
