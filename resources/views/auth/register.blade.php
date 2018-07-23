@@ -67,7 +67,7 @@
                             <p style="color: white">Sudah punya akun?</p>
                             <a class="login-a" href="{{ url('/login') }}">Login</a>
                     </div>
-                    <{{-- div class="form-group row mb-0">
+                    {{-- <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
