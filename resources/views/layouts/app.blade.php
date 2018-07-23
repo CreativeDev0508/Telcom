@@ -100,6 +100,7 @@
                     <div class="dropdown user-pro-body">
                         <div><img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"></div>
                         <p style="font-size:16px;">{{ Auth::user()->name }}</p>
+                        <p style="font-size:16px;">{{ Auth::user()->jabatan->nama_jabatan }}</p>
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
