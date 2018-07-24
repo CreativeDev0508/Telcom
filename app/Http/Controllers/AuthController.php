@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->nama = $request->input('nama');
         $user->save();
 
-        return redirect()->route('login';
+        return redirect()->route('login');
     }
 
     protected function checkNIK($nik)
