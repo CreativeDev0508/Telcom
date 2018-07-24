@@ -89,7 +89,7 @@ class AMController extends Controller
 		$proyek->ready_for_service = $request->input('ready_for_service');
 		$proyek->skema_bisnis = $request->input('skema_bisnis');
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
-		$proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
+		// $proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->save();

@@ -32,7 +32,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $proyek = DB::table('proyek')->leftjoin('aspek_bisnis','aspek_bisnis.id_proyek','=','proyek.id_proyek')->select('proyek.id_proyek','judul','saat_penggunaan','pemasukan_dokumen','ready_for_service','skema_bisnis','masa_kontrak','jenis_pelanggan','alamat_delivery','layanan_revenue','beban_mitra','nilai_kontrak','margin_tg','rp_margin')->get();
+        $proyek = DB::table('proyek')
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek')
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
+            ->select('proyek.id_proyek', 'judul', 'saat_penggunaan', 'pemasukan_dokumen', 'ready_for_service', 'skema_bisnis', 'masa_kontrak', 'pelanggan.jenis_pelanggan', 'alamat_delivery', 'layanan_revenue', 'beban_mitra', 'nilai_kontrak', 'margin_tg', 'rp_margin', 'proyek.id_pelanggan', 'nama_pelanggan', 'nomor_telepon', 'alamat_pelanggan')
+            ->get();
         return view('AM.dashboard', ['proyek'=>$proyek]);
         // return view('AM.dashboard');
     }
