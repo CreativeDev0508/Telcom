@@ -59,7 +59,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                    @foreach($proyek as $listproyek)
+                                    @foreach($proyek->sortBy('id_proyek') as $listproyek)
                                         <tr>
                                             <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
@@ -91,8 +91,8 @@
                                                                                     <table class="table table-borderless">
                                                                                             <tbody class="detail-text text-left">
                                                                                                 <tr>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">Nama Pelanggan</span></td>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">:</td>
+                                                                                                    <td style="width: 17%"><span class="text-muted" style="font-weight: 500">Nama Pelanggan</span></td>
+                                                                                                    <td style="width: 1%"><span class="text-muted" style="font-weight: 500">:</td>
                                                                                                     <td><span>{{$listproyek->nama_pelanggan}}</span></td>
                                                                                                 </tr>
                                                                                                 <tr>
