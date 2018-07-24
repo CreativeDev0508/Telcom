@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->nama = $request->input('nama');
         $user->save();
 
-        return redirect()->route('login';
+        return redirect()->route('login');
     }
 
     protected function checkNIK($nik)
@@ -70,7 +70,7 @@ class AuthController extends Controller
     {
         $data['user'] = Auth::user();
         
-        dd(Auth::user());
+        // dd(Auth::user());
         switch(Auth::user()->id_jabatan)
         {
             case 1:
