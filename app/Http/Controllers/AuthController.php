@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->nama = $request->input('nama');
         $user->save();
 
-        return redirect('/login');
+        return redirect()->route('login');
     }
 
     protected function checkNIK($nik)
@@ -61,9 +61,9 @@ class AuthController extends Controller
         // dd($credentials);
         if(Auth::attempt($credentials))
         {
-            return redirect('/home');
+            return redirect()->route('index');
         }
-        return redirect('/login')->with('error','NIK atau password salah');
+        return redirect()->route('login')->with('error','NIK atau password salah');
     }
 
     public function home()
@@ -74,7 +74,7 @@ class AuthController extends Controller
         switch(Auth::user()->id_jabatan)
         {
             case 1:
-                return redirect('/AM-dashboard');
+                return redirect()->route('home');
                 break;
             case 2:
                 return redirect('/Karyawan/dashboard');
@@ -95,6 +95,6 @@ class AuthController extends Controller
     {
         $user = Auth::User();
         Auth::logout();
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }

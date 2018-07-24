@@ -32,7 +32,7 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="/home">
+                    <a class="logo" href="{{ route('index') }}">
                         <!-- Logo icon image, you can use font-icon also --><b>
                         <img src="{{ asset('asset/image/logo_sm.png') }}" alt="home" class="dark-logo light-logo" />
                      </b>
@@ -104,14 +104,14 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li> <a href="{{url('/home')}}" class="waves-effect"> <span class="hide-menu"> DASHBOARD </span></a></li>
+                    <li> <a href="{{route('index')}}" class="waves-effect"> <span class="hide-menu"> DASHBOARD </span></a></li>
                     @if (\Request::is('AM-form-*'))
-                    <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect active"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
+                    <li> <a href="{{route('pelanggan')}}" class="waves-effect active"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     @else
-                    <li> <a href="{{url('/AM-form-pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
+                    <li> <a href="{{route('pelanggan')}}" class="waves-effect"> <span class="hide-menu"> FORM JUSTIFIKASI </span></a></li>
                     @endif
-                    <li> <a href="{{url('/AM-unit-kerja')}}" class="waves-effect"> <span class="hide-menu"> UNIT KERJA </span></a></li>
-                    <li> <a href="{{url('/AM-mitra')}}" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
+                    <li> <a href="{{route('unit')}}" class="waves-effect"> <span class="hide-menu"> UNIT KERJA </span></a></li>
+                    <li> <a href="{{route('mitra')}}" class="waves-effect"> <span class="hide-menu"> MITRA </span></a></li>
                     <li class="devider"></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

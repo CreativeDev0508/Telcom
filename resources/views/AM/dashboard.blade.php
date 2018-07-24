@@ -240,7 +240,7 @@
                                                     </div>
                                                     <!-- /.modal-dialog -->
                                                 </div>                                            
-                                                <a href="/createWord" class="btn btn-default btn-outline btn-circle btn-lg m-r-5"><i class="fa fa-download"></i></a>
+                                                <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default btn-outline btn-circle btn-lg m-r-5"><i class="fa fa-download"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
