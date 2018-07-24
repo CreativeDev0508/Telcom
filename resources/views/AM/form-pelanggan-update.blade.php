@@ -25,7 +25,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                            <form class="form-horizontal form-material" action="{{ url('/AM-form-pelanggan/update.$listpelanggan->id_pelanggan') }}" method = "get">
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id' => $listpelanggan->id_pelanggan]) }}" method = "get">
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
                                     <div class="col-sm-9">
@@ -62,7 +62,6 @@
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                 </div>
                             </form>
-                            {{-- <a href="{{ url('/AM-form-pelanggan/insert') }}"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
                         </div>
                     </div>
                 @endforeach

@@ -39,7 +39,7 @@
                                             <h4 class="modal-title" id="myLargeModalLabel">Tambah Unit Kerja</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/insert') }}" method = "post">
+                                            <form class="form-horizontal form-material" action="{{ route('unit_insert') }}" method = "post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
@@ -86,7 +86,7 @@
                                                             <h4 class="modal-title" id="myLargeModalLabel">Hapus {{$listunit_kerja->nama_unit_kerja}}</h4> 
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/delete/'.$listunit_kerja->id_unit_kerja) }}" method = "get">
+                                                            <form class="form-horizontal form-material" action="{{ route('unit_delete', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus unit kerja "{{$listunit_kerja->nama_unit_kerja}}"? </h5>
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
@@ -106,7 +106,7 @@
                                                             <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listunit_kerja->nama_unit_kerja}}</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ url('/AM-unit-kerja/update/'.$listunit_kerja->id_unit_kerja) }}" method = "get">
+                                                            <form class="form-horizontal form-material" action="{{ route('unit_update', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
                                                                 <div class="form-group">
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
                                                                     <div class="col-sm-9">
