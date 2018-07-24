@@ -26,7 +26,7 @@ class AMController extends Controller
 	public function indexPelanggan()
 	{
 		// if(!Auth::user()->id)
-  //       	return redirect('/login');
+  //       	return redirect()->route('login');
 
         $auth = Auth::user()->id;
         
@@ -47,19 +47,19 @@ class AMController extends Controller
 		$forSession = $pelanggan->id_pelanggan;
 		Session::put('forSession', $forSession);
 		// dd($pelanggan);
-		return redirect('/AM-form-proyek');
+		return redirect()->route('proyek');
 	}
 
 	public function updatePelanggan(Request $request, $id)
     {
     	DB::table('pelanggan')->where('id_pelanggan',$id)->update($request->all());
-    	return redirect('/AM-form-proyek');
+    	return redirect()->route('proyek');
     }
 
 	public function deletePelanggan($id)
 	{
     	DB::table('pelanggan')->where('id_pelanggan',$id)->delete();
-    	return redirect('/AM-form-pelanggan');
+    	return redirect()->route('pelanggan');
     }
 
 	public function indexProyek()
@@ -93,7 +93,7 @@ class AMController extends Controller
 		$proyek->alamat_delivery = $request->input('alamat_delivery');
 		$proyek->masa_kontrak = $request->input('masa_kontrak');
 		$proyek->save();
-		return redirect('/AM-form-aspek');
+		return redirect()->route('aspek');
 	}
 
 	public function indexAspek()
@@ -113,7 +113,7 @@ class AMController extends Controller
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
-		return redirect('/AM-dashboard');
+		return redirect()->route('home');
 	}
 
 	public function indexUnitKerja()
@@ -129,19 +129,19 @@ class AMController extends Controller
 		$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
 		$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
 		$unit_kerja->save();
-		return redirect('/AM-unit-kerja');
+		return redirect()->route('unit');
 	}
 
 	public function updateUnitKerja(Request $request, $id)
 	{
 		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
-		return redirect('/AM-unit-kerja');
+		return redirect()->route('unit');
 	}
 
 	public function deleteUnitKerja($id)
 	{
 		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
-		return redirect('/AM-unit-kerja');
+		return redirect()->route('unit');
 	}
 
 	public function indexMitra()
@@ -157,18 +157,18 @@ class AMController extends Controller
 		$mitra->nama_mitra = $request->input('nama_mitra');
 		$mitra->deskripsi_mitra = $request->input('deskripsi_mitra');
 		$mitra->save();
-		return redirect('/AM-mitra');
+		return redirect()->route('mitra');
 	}
 
 	public function updateMitra(Request $request, $id)
     {
     	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
-    	return redirect('/AM-mitra');
+    	return redirect()->route('mitra');
     }
 
     public function deleteMitra(Request $request, $id)
     {
     	DB::table('mitra')->where('id_mitra',$id)->delete();
-    	return redirect('/AM-mitra');
+    	return redirect()->route('mitra');
     }
 }

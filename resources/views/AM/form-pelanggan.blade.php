@@ -27,7 +27,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                            <form class="form-horizontal form-material" action="{{ url('/AM-form-pelanggan/insert') }}" method = "post">
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
