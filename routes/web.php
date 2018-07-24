@@ -43,7 +43,7 @@ Route::group(['middleware'=>['auth']], function()
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan');
 	Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan');
 
-	Route::get('/AM-form-proyek','AMController@indexProyek');
+	Route::get('/AM-form-proyek/{id}','AMController@indexProyek');
 	Route::post('/AM-form-proyek/insert','AMController@insertProyek');
 	Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek');
 

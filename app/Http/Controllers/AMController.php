@@ -25,13 +25,11 @@ class AMController extends Controller
 
 	public function indexPelanggan()
 	{
-		// if(!Auth::user()->id)
-  //       	return redirect('/login');
-
         $auth = Auth::user()->id;
         
 		$pelanggan = DB::table('pelanggan')->get();
-		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth]);
+		$proyek = DB::table('proyek')->get();
+		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek]);
 	}
 
     public function insertPelanggan(Request $request)
@@ -44,9 +42,19 @@ class AMController extends Controller
 		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
 		$pelanggan->save();
 
-		$forSession = $pelanggan->id_pelanggan;
-		Session::put('forSession', $forSession);
+		$getID = $pelanggan->id_pelanggan;
+
+		$proyek = New Proyek;
+		$proyek->id_proyek = $request->input('id_proyek');
+		$proyek->id_pelanggan = $request->input('id_pelanggan',$getID);
+		$proyek->id_users = Auth::user()->id;
+		$proyek->save();
+
+        
+		// $forSession = $pelanggan->id_pelanggan;
+		// Session::put('forSession', $forSession);
 		// dd($pelanggan);
+		// dd($proyek)
 		return redirect('/AM-form-proyek');
 	}
 
@@ -59,20 +67,33 @@ class AMController extends Controller
 	public function deletePelanggan($id)
 	{
     	DB::table('pelanggan')->where('id_pelanggan',$id)->delete();
-    	return redirect('/AM-form-pelanggan');
+    	return redirect('/AM-form-proyek');
     }
 
-	public function indexProyek()
+	public function indexProyek($id)
 	{
 		$auth = Auth::user()->id;
-		// $getID = DB::select('select pelanggan.id_pelanggan from pelanggan, users, proyek where users.nik = proyek.nik and pelanggan.id_pelanggan = proyek.id_pelanggan');
+		// $getID = DB::select("
+		// 	SELECT pelanggan.id_pelanggan 
+		// 	FROM pelanggan, users, proyek 
+		// 	WHERE users.id = proyek.id_users 
+		// 	AND pelanggan.id_pelanggan = proyek.id_pelanggan");
+
+		$item = Pelanggan::find($id);
+		
+		$getID = DB::table('proyek')
+            ->join('users', 'proyek.id_users', '=', 'users.id')
+            ->join('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->select('proyek.id_pelanggan',$id)
+            ->get();
+		// Session::get($forSession);
 
 		$users = DB::table('users')->get();
 		$proyek = DB::table('proyek')->get();
 		$pelanggan = DB::table('pelanggan')->get();
 		$unit = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$mitra = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
-		return view('AM.form-proyek', ['users'=>$users, 'proyek'=>$proyek, 'pelanggan'=>$pelanggan, 'unit'=>$unit, 'mitra'=>$mitra, 'auth'=>$auth,]);
+		return view('AM.form-proyek-update', ['users'=>$users, 'proyek'=>$proyek, 'pelanggan'=>$pelanggan, 'unit'=>$unit, 'mitra'=>$mitra, 'auth'=>$auth, 'getID'=>$getID]);
 	}
 
 	public function insertProyek(Request $request)
@@ -95,6 +116,12 @@ class AMController extends Controller
 		$proyek->save();
 		return redirect('/AM-form-aspek');
 	}
+
+	public function updateProyek(Request $request, $id)
+    {
+    	DB::table('proyek')->where('id_proyek',$id)->update($request->all());
+    	return redirect('/AM-form-proyek');
+    }
 
 	public function indexAspek()
 	{
