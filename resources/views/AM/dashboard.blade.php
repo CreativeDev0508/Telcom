@@ -124,15 +124,15 @@
                                                                                                             <td><span>{{$listproyek->judul}}</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Latar Belakang I</span></td>
+                                                                                                        <?php $i=1; ?>
+                                                                                                        @foreach($latarbelakang as $lb)
+                                                                                                        @if($lb->id_proyek === $listproyek->id_proyek)
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</td>
-                                                                                                            <td style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla asperiores impedit hic, deleniti unde perspiciatis quam quo beatae rem voluptates ea voluptatibus esse eveniet deserunt reiciendis. Odio fuga delectus pariatur?</td>
+                                                                                                            <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
                                                                                                         </tr>
-                                                                                                        <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Latar Belakang II</span></td>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</td>
-                                                                                                            <td style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam cum, facere vero nisi ab exercitationem illo ea asperiores quo distinctio alias sequi dolorem tenetur omnis expedita ipsam esse amet eveniet?</td>
-                                                                                                        </tr>
+                                                                                                        @endif
+                                                                                                        @endforeach
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</td>
@@ -152,12 +152,12 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Unit Kerja</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</td>
-                                                                                                            <td><span>Approved</span></td>
+                                                                                                            <td><span>{{$listproyek->nama_unit_kerja}}</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Nama Mitra</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</td>
-                                                                                                            <td>Arya Wiranata S.Kom</td>
+                                                                                                            <td>{{$listproyek->nama_mitra}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Skema Bisnis</span></td>
