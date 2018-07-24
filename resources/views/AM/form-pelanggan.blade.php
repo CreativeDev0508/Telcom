@@ -26,7 +26,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                            <form class="form-horizontal form-material" action="{{ url('/AM-form-pelanggan/insert') }}" method = "post">
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
                                 {{ csrf_field() }}
                                 {{-- <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">ID Pelanggan</label>
@@ -53,7 +53,7 @@
                                     <div class="col-sm-9 radio-list">
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
+                                                <input id="radio1" value="Government" active type="radio" name="jenis_pelanggan">
                                                 <label for="radio1">Government</label>
                                             </div>
                                         </label>

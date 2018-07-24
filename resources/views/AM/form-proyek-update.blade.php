@@ -28,7 +28,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                            <form class="form-horizontal form-material" action="{{ url('/AM-form-proyek/update.$listproyek->id_proyek') }}" method = "get">
+                            <form class="form-horizontal form-material" action="{{ route('proyek_update', ['id' => $listproyek->id_proyek]) }}" method = "get">
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6">
                                         <div class="form-group">
