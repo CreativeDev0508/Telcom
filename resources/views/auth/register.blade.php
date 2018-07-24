@@ -66,7 +66,7 @@
                     </div>
                     <div class="login mx-auto">
                         <p style="color: white">Sudah punya akun?</p>
-                        <a class="login-a" href="{{ url('/login') }}">Login</a>
+                        <a class="login-a" href="{{ route('login') }}">Login</a>
                     </div>
                     {{-- <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
