@@ -23,16 +23,12 @@
                 <div class="row">
                     {{-- <label>ID</label>
                     <label>{{ Auth::user()->id }}</label> --}}
+                    {{ Session::put('forSession') }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
                             <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
                                 {{ csrf_field() }}
-                                {{-- <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">ID Pelanggan</label>
-                                    <div class="col-sm-9">
-                                        <input type="hidden" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" value="{{$pelanggan->id_pelanggan}}"> </div>
-                                </div> --}}
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
                                     <div class="col-sm-9">
@@ -66,10 +62,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    {{-- <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button> --}}
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
-                                    <a href="{{ url('/AM-form-proyek/'.$pelanggan->id_pelanggan) }}" class="btn btn-xs btn-info pull-right">Next</a>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>
