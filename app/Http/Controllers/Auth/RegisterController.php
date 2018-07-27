@@ -31,6 +31,7 @@ class RegisterController extends Controller
     public function redirectPath() {
         return route('index');
     }
+
     // protected $redirectTo = route('index');
 
     /**
@@ -40,7 +41,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo=route('index');
         $this->middleware('guest');
     }
 
