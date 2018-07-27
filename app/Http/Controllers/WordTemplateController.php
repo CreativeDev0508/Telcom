@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\Settings;
+use Carbon\Carbon;
 use App\AspekBisnis;
 use App\Jabatan;
 use App\LatarBelakang;
@@ -36,21 +37,30 @@ class WordTemplateController extends Controller
         $settings = new Settings();
         $settings->setOutputEscapingEnabled(true);
 
-        $proyek = DB::table('proyek')->where('id_proyek','=',$id)->first();
+        $proyek = DB::table('proyek')
+            ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
+
         // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
         // $pelanggan = DB::table('')->where('','=',$id)->first();
-        // $unit_kerja = DB::table('')->where('','=',$id)->first();
+        // $unit_kerja = DB::table('proyek')
+        //     ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+        //     // ->where('proyek.id_unit_kerja', 'unit_kerja.id_unit_kerja')
+        //     ->first();
+        
         // $pelanggan = DB::table('')->where('','=',$id)->first();
         // $mitra = DB::table('')->where('','=',$id)->first();
         // $aspekbisnis = DB::table('AspekBisnis')->where('id_proyek','=',$id)->first();
         
         $templateProcessor = new TemplateProcessor('template/template_p1.docx');
-        $templateProcessor->setValue('jenisPelanggan', $proyek->jenis_pelanggan);
+        $templateProcessor->setValue('jenisPelanggan', strtoupper($proyek->jenis_pelanggan));
         $templateProcessor->setValue('judul', $proyek->judul);
-        // $templateProcessor->setValue('tahun', $proyek->tahun);
-        // $templateProcessor->setValue('unitKerja', $unitkerja->nama_unit_kerja);
-        // $templateProcessor->setValue('bebanMitra', $aspekbisnis->beban_mitra);
-        $templateProcessor->setValue('saatPenggunaan', $proyek->saat_penggunaan);
+        $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
+        $templateProcessor->setValue('unitKerja', $proyek->nama_unit_kerja);
+        $templateProcessor->setValue('bebanMitra', $proyek->beban_mitra);
+        $templateProcessor->setValue('saatPenggunaan', Carbon::createFromFormat('Y-m-d', $proyek->saat_penggunaan)->format('M Y'));
 
         // foreach ($latarbelakang as $lb) {
         //     $i++;
