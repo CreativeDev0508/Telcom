@@ -40,12 +40,13 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1')->name('print');
 
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan')->name('pelanggan');
-	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert') ;
-	Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan')->name('pelanggan_update');
+	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert');
+	// Route::get('/AM-form-pelanggan/update/{id}','AMController@updatePelanggan')->name('pelanggan_update');
 
-	Route::get('/AM-form-proyek','AMController@indexProyek')->name('proyek');
-	Route::post('/AM-form-proyek/insert','AMController@insertProyek')->name('proyek_insert');
-	Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek')->name('proyek_update');
+
+	Route::get('/AM-form-proyek/insert/{id}/{id_pelanggan}','AMController@insertProyek')->name('proyek_insert');
+	Route::get('/AM-form-proyek/{id}/{id_pelanggan}','AMController@indexProyek')->name('proyek');
+	// Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek')->name('proyek_update');
 
 	Route::get('/AM-form-aspek','AMController@indexAspek')->name('aspek');
 	Route::post('/AM-form-aspek/insert','AMController@insertAspek')->name('aspek_insert');
