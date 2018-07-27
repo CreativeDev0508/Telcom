@@ -39,6 +39,8 @@ class WordTemplateController extends Controller
 
         $proyek = DB::table('proyek')
             ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->where('proyek.id_proyek','=',$id)
             ->first();
@@ -59,56 +61,76 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('judul', $proyek->judul);
         $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
         $templateProcessor->setValue('unitKerja', $proyek->nama_unit_kerja);
-        $templateProcessor->setValue('bebanMitra', $proyek->beban_mitra);
+        $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
         $templateProcessor->setValue('saatPenggunaan', Carbon::createFromFormat('Y-m-d', $proyek->saat_penggunaan)->format('M Y'));
+
+        // A. LATAR BELAKANG
 
         // foreach ($latarbelakang as $lb) {
         //     $i++;
-        //     $templateProcessor->setValue('lb'.$i , $lb->latar_belakang);
+        //     $templateProcessor->setValue('lb'.$i, $lb->latar_belakang);
         // }
+        $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
-        // $templateProcessor->setValue('pelanggan', $pelanggan->nama_pelanggan);
-        // $templateProcessor->setValue('namaMitra', $mitra->nama_mitra);
+        // B. LINGKUP PEKERJAAN
+        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+
+        // D. WAKTU PENGGUNAAN
         $templateProcessor->setValue('readyForService', $proyek->ready_for_service);
+
+        // E. LOKASI INSTALASI / LAYANAN
         $templateProcessor->setValue('alamatDelivery', $proyek->alamat_delivery);
 
+        // F. SKEMA BISNIS LAYANAN
+
+        // Sewa Murni / Sewa Beli / Pengadaan Beli Putus (ada masa garansi)
+        //  ̶S̶e̶w̶a̶ ̶M̶u̶r̶n̶i̶   ̶S̶e̶w̶a̶ ̶B̶e̶l̶i̶   ̶P̶e̶n̶g̶a̶d̶a̶a̶n̶ ̶B̶e̶l̶i̶ ̶P̶u̶t̶u̶s̶ ̶(̶a̶d̶a̶ ̶m̶a̶s̶a̶ ̶g̶a̶r̶a̶n̶s̶i̶)̶  ̶ ̶/̶ 
+
         if($proyek->skema_bisnis == 'Sewa Murni'){
-            $templateProcessor->setValue('skema1', 'Sewa Murni');
-            $templateProcessor->setValue('skema2', '̶S̶e̶w̶a̶ ̶B̶e̶l̶i̶');
-            $templateProcessor->setValue('skema3', '̶P̶e̶n̶g̶a̶d̶a̶a̶n̶ ̶B̶e̶l̶i̶ ̶p̶u̶t̶u̶s̶ ̶(̶a̶d̶a̶ ̶m̶a̶s̶a̶ ̶g̶a̶r̶a̶n̶s̶i̶)̶');
+            $templateProcessor->setValue('skema', 'Sewa Murni ̶/̶ ̶S̶e̶w̶a̶ ̶B̶e̶l̶i̶ ̶/̶ ̶̶P̶e̶n̶g̶a̶d̶a̶a̶n̶ ̶B̶e̶l̶i̶ ̶P̶u̶t̶u̶s̶ ̶(̶a̶d̶a̶ ̶m̶a̶s̶a̶ ̶g̶a̶r̶a̶n̶s̶i̶)̶');
         }
         elseif($proyek->skema_bisnis == 'Sewa Beli'){
-            $templateProcessor->setValue('skema1', '̶S̶e̶w̶a̶ ̶M̶u̶r̶n̶i̶');
-            $templateProcessor->setValue('skema2', 'Sewa Beli');
-            $templateProcessor->setValue('skema3', '̶P̶e̶n̶g̶a̶d̶a̶a̶n̶ ̶B̶e̶l̶i̶ ̶p̶u̶t̶u̶s̶ ̶(̶a̶d̶a̶ ̶m̶a̶s̶a̶ ̶g̶a̶r̶a̶n̶s̶i̶)̶');    
+            $templateProcessor->setValue('skema', '̶S̶e̶w̶a̶ ̶M̶u̶r̶n̶i̶ ̶/ Sewa Beli ̶/̶ ̶P̶e̶n̶g̶a̶d̶a̶a̶n̶ ̶B̶e̶l̶i̶ ̶P̶u̶t̶u̶s̶ ̶(̶a̶d̶a̶ ̶m̶a̶s̶a̶ ̶g̶a̶r̶a̶n̶s̶i̶)̶');
         }
         else{
-            $templateProcessor->setValue('skema1', '̶S̶e̶w̶a̶ ̶M̶u̶r̶n̶i̶');
-            $templateProcessor->setValue('skema2', '̶S̶e̶w̶a̶ ̶B̶e̶l̶i̶');
-            $templateProcessor->setValue('skema3', 'Pengadaan Beli putus (ada masa garansi)');
+            $templateProcessor->setValue('skema', '̶S̶e̶w̶a̶ ̶M̶u̶r̶n̶i̶ ̶/̶ ̶S̶e̶w̶a̶ ̶B̶e̶l̶i̶ ̶/ Pengadaan Beli Putus (ada masa garansi)');
         }
         
-        // if($aspekbisnis->layanan_revenue == 'bulanan'){
-        //     $templateProcessor->setValue('layanan1', 'bulanan');
-        //     $templateProcessor->setValue('layanan2', '̶t̶a̶h̶u̶n̶a̶n̶');
-        //     $templateProcessor->setValue('layanan3', '̶O̶T̶C̶');
-        // }
-        // elseif ($aspekbisnis->layanan_revenue == 'tahunan') {
-        //     $templateProcessor->setValue('layanan1', '̶b̶u̶l̶a̶n̶a̶n̶');
-        //     $templateProcessor->setValue('layanan2', 'tahunan');
-        //     $templateProcessor->setValue('layanan3', '̶O̶T̶C̶');
-        // }
-        // else{
-        //     $templateProcessor->setValue('layanan1', '̶b̶u̶l̶a̶n̶a̶n̶');
-        //     $templateProcessor->setValue('layanan2', '̶t̶a̶h̶u̶n̶a̶n̶');
-        //     $templateProcessor->setValue('layanan3', 'OTC');    
-        // }
+        // G. ASPEK BISNIS
+        if($proyek->layanan_revenue == 'Bulanan'){
+            $templateProcessor->setValue('layanan', 'Bulanan ̶/̶ ̶T̶a̶h̶u̶n̶a̶n̶ ̶/̶ ̶O̶T̶C̶');
+        }
+        elseif ($proyek->layanan_revenue == 'Tahunan') {
+            $templateProcessor->setValue('layanan', '̶B̶u̶l̶a̶n̶a̶n̶ ̶/ Tahunan ̶/̶ ̶O̶T̶C̶');
+        }
+        else{
+            $templateProcessor->setValue('layanan', '̶B̶u̶l̶a̶n̶a̶n̶ ̶/̶ ̶T̶a̶h̶u̶n̶a̶n̶ ̶/ OTC');
+        }
+        $templateProcessor->setValue('nilaiKontrak', number_format($proyek->nilai_kontrak));
+        $templateProcessor->setValue('marginTg', $proyek->margin_tg);
+        $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 
-        // $templateProcessor->setValue('nilaiKontrak', $aspekbisnis->nilai_kontrak);
-        // $templateProcessor->setValue('marginTg', $aspekbisnis->margin_tg);
-        // $templateProcessor->setValue('rpMargin', $aspekbisnis->rp_margin);
+        // H. USULAN MEKANISME PEMBAYARAN PADA MITRA
+        $strikethrough = implode('̶', str_split(strtoupper($proyek->jenis_pelanggan)));
+        if($proyek->mekanisme_pembayaran == 'Sebelum'){
+            $templateProcessor->setValue('rincianPembayaran1', 'Dilakukan dengan menunggu pembayaran dari Pelanggan '.strtoupper($proyek->jenis_pelanggan));
+            $templateProcessor->setValue('rincianPembayaran2', ' ̶D̶i̶l̶a̶k̶u̶k̶a̶n̶ ̶s̶e̶t̶e̶l̶a̶h̶ ̶T̶E̶L̶K̶O̶M̶ ̶m̶e̶n̶e̶r̶i̶m̶a̶ ̶p̶e̶m̶b̶a̶y̶a̶r̶a̶n̶ ̶d̶a̶r̶i̶ ̶p̶e̶l̶a̶n̶g̶g̶a̶n̶ ̶'.$strikethrough);
+        }
+        else{
+            $templateProcessor->setValue('rincianPembayaran1', ' ̶D̶i̶l̶a̶k̶u̶k̶a̶n̶ ̶d̶e̶n̶g̶a̶n̶ ̶m̶e̶n̶u̶n̶g̶g̶u̶ ̶p̶e̶m̶b̶a̶y̶a̶r̶a̶n̶ ̶d̶a̶r̶i̶ ̶P̶e̶l̶a̶n̶g̶g̶a̶n̶ ̶'.$strikethrough);
+            $templateProcessor->setValue('rincianPembayaran2', 'Dilakukan setelah TELKOM menerima pembayaran dari pelanggan '.strtoupper($proyek->jenis_pelanggan));
+        }
+        
+        // I. MASA KONTRAK LAYANAN
         $templateProcessor->setValue('masaKontrak', $proyek->masa_kontrak);
-        $templateProcessor->setValue('pemasukanDokumen', $proyek->pemasukan_dokumen);
+
+        // J. JADWAL PEMASUKAN DOKUMEN
+        setlocale(LC_TIME, 'Indonesian');
+        Carbon::setUtf8(true);
+        $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
+        setlocale(LC_TIME, '');
+
+        // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
         $templateProcessor->setValue('nikAm', '720336');
         $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
