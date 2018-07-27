@@ -31,7 +31,7 @@ Route::get('/', function ()
 
 Auth::routes();
 
-Route::get('/register-index', 'AuthController@indexRegister')->name('register');
+Route::get('/register-index', 'AuthController@indexRegister')->name('register_index');
 Route::get('/logout', 'AuthController@logout');
 
 Route::group(['middleware'=>['auth']], function()
