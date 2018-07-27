@@ -70,7 +70,7 @@ class AuthController extends Controller
     {
         $data['user'] = Auth::user();
         
-        // dd(Auth::user());
+        dd(Auth::user());
         switch(Auth::user()->id_jabatan)
         {
             case 1:
