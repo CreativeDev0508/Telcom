@@ -59,9 +59,10 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
+                                    <?php $x=1; ?>
                                     @foreach($proyek->sortBy('id_proyek') as $listproyek)
                                         <tr>
-                                            <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td>
+                                            <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                             <td style="vertical-align: middle;">%</td>
@@ -263,16 +264,16 @@
                                             <th colspan=3>APPROVED</th>
                                         </tr>
                                         <tr>
-                                            <th class="text-center" style="background-color: white; color: black;">ID Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
                                             <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                             <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                    <?php $i=1; ?>
+                                    <?php $y=1; ?>
                                     @foreach($proyek->where('status_pengajuan','=','1')->sortBy('id_proyek') as $proyeks)
                                         <tr>
-                                            <td style="vertical-align: middle;">{{$proyeks->id_proyek}}</td>
+                                            <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                             <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                             <td style="vertical-align: middle;">
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
@@ -456,16 +457,16 @@
                                             <th colspan=3>FAILED</th>
                                         </tr>
                                         <tr>
-                                            <th class="text-center" style="background-color: white; color: black;">ID Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
                                             <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                             <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                        <?php $i=1; ?>
+                                        <?php $z=1; ?>
                                     @foreach($proyek->where('status_pengajuan','=','2')->sortBy('id_proyek') as $proyeks)
                                         <tr>
-                                            <td style="vertical-align: middle;">{{$proyeks->id_proyek}}</td>
+                                            <td style="vertical-align: middle;"><?php echo $z; $z=$z+1; ?></td>
                                             <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                             <td style="vertical-align: middle;">
                                             <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
