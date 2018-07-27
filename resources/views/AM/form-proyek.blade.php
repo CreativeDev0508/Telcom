@@ -33,7 +33,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                            <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
+                            <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_aspek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
                                 {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6">

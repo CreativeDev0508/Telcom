@@ -29,7 +29,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
                                 {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>

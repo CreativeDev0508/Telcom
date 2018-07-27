@@ -23,6 +23,8 @@ class AMController extends Controller
 		$this->middleware('auth');
 	}
 
+
+	///////////////////// PELANGGAN ////////////////////////////
 	public function indexPelanggan()
 	{
         $auth = Auth::user()->id;
@@ -51,13 +53,20 @@ class AMController extends Controller
 		$proyek->save();
 
 		// dd($pelanggan,$proyek);
-		return redirect()->route('proyek', ['id' => $proyek->id_proyek, 'id_pelanggan'=>$pelanggan->id_pelanggan]);
+		return redirect()->route('proyek', ['id_proyek' => $proyek->id_proyek, 'id_pelanggan'=>$pelanggan->id_pelanggan]);
 	
 	}
 
-	public function updatePelanggan(Request $request, $id)
+	public function singlePelanggan($id_pelanggan,$id_proyek)
     {
-    	DB::table('pelanggan')->where('id_pelanggan',$id)->update($request->all());
+    	$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
+		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->select('id_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
+    	return view('AM.form-proyek-update',$data);
+    }
+
+	public function updatePelanggan(Request $request,$id_pelanggan,$id_proyek)
+    {
+    	DB::table('pelanggan')->where('id_pelanggan',$id_pelanggan)->update($request->all());
     	return redirect()->route('proyek');
     }
 
@@ -67,20 +76,22 @@ class AMController extends Controller
     	return redirect()->route('pelanggan');
     }
 
-	public function indexProyek($id,$id_pelanggan)
+
+    //////////////////////// PROYEK /////////////////////////////
+	public function indexProyek($id_proyek,$id_pelanggan)
     {
-    	$data['proyek'] = Proyek::find($id)->select('id_proyek')->where('id_proyek',$id)->get();
+    	$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
 		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->select('id_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
     	return view('AM.form-proyek',$data);
     }
 
-	public function insertProyek(Request $request,$id,$id_pelanggan)
+	public function insertProyek(Request $request,$id_proyek,$id_pelanggan)
     {
-		$proyek = Proyek::find($id);
+		$proyek = Proyek::find($id_proyek);
 		// dd($proyek);
-		$proyek->id_proyek = $request->input('id_proyek',$id);
+		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 		$proyek->id_mitra = $request->input('id_mitra');
 		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 		$proyek->judul = $request->input('judul');
@@ -103,7 +114,7 @@ class AMController extends Controller
 		$aspek->save();
 
 		// dd($proyek,$aspek);
-		return redirect()->route('aspek', ['id' => $aspek->id_aspek, 'id_proyek' => $proyek->id_proyek]);
+		return redirect()->route('aspek', ['id_aspek' => $aspek->id_aspek, 'id_proyek' => $proyek->id_proyek]);
 	}
 
 	public function updateProyek(Request $request, $id)
@@ -112,17 +123,17 @@ class AMController extends Controller
     	return redirect('/AM-form-proyek');
     }
 
-	public function indexAspek($id,$id_proyek)
+	public function indexAspek($id_aspek,$id_proyek)
 	{
+		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
 		$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
-		$data['aspek'] = AspekBisnis::find($id)->select('id_aspek')->where('id_aspek',$id)->get();
 		return view('AM.form-aspek',$data);
 	}
 
-    public function insertAspek(Request $request,$id,$id_proyek)
+    public function insertAspek(Request $request,$id_aspek,$id_proyek)
     {
-		$aspek = AspekBisnis::find($id);
-		$aspek->id_aspek = $request->input('id_aspek',$id);
+		$aspek = AspekBisnis::find($id_aspek);
+		$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
 		$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
 		$aspek->layanan_revenue = $request->input('layanan_revenue');
 		$aspek->beban_mitra = $request->input('beban_mitra');
