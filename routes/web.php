@@ -47,6 +47,7 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-form-proyek','AMController@indexProyek')->name('proyek');
 	Route::post('/AM-form-proyek/insert','AMController@insertProyek')->name('proyek_insert');
 	Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek')->name('proyek_update');
+	Route::get('/AM-form-proyek/delete/{id}','AMController@deleteProyek')->name('proyek_delete');
 
 	Route::get('/AM-form-aspek','AMController@indexAspek')->name('aspek');
 	Route::post('/AM-form-aspek/insert','AMController@insertAspek')->name('aspek_insert');

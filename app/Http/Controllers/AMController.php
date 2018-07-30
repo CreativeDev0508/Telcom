@@ -125,6 +125,16 @@ class AMController extends Controller
     	return redirect('/AM-form-proyek');
     }
 
+    public function deleteProyek(Request $request, $id)
+    {
+    	$idProyek = $id;
+    	DB::table('aspek_bisnis')->where('id_proyek',$id)->delete($request->all());
+    	$idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$idProyek)->get();
+    	DB::table('proyek')->where('id_proyek',$idProyek)->delete($request->all());
+    	DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete($request->all());
+    	return redirect()->route('home');
+    }
+
 	public function indexAspek()
 	{
 		$aspek = DB::table('aspek_bisnis')->get();
