@@ -23,10 +23,13 @@
                 <br>
                 <br>
                 <div class="row">
-                    <label>ID</label>
-                    <label>{{ Auth::user()->id }}</label>
+                    {{-- <label>ID</label>
+                    <label>{{ Auth::user()->id }}</label> --}}
                     {{-- <label>ID</label> --}}
                     {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
+                @foreach($proyek as $listproyek)
+                    @foreach($pelanggan as $listpelanggan)
+                    {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
@@ -134,6 +137,8 @@
                                 </div>
                         </div>
                     </div>
+                        @endforeach
+                @endforeach
                 </div>
                 <!--/.row -->
             </div>
@@ -169,7 +174,7 @@
     <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script> 
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
-    <script> 
+    {{-- <script> 
     jQuery(document).ready(function() { 
         // For select 2 
         $(".select2").select2(); 
@@ -237,5 +242,5 @@
             return false; 
         }); 
     }); 
-    </script> 
+    </script>  --}}
 @endsection
