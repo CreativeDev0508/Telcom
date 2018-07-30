@@ -36,7 +36,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah Unit Kerja</h4>
+                                            <h4 class="modal-title" id="myLargeModalLabel">Tambah Unit Kerja</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal form-material" action="{{ route('unit_insert') }}" method = "post">
@@ -83,7 +83,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus {{$listunit_kerja->nama_unit_kerja}}</h4> 
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Hapus {{$listunit_kerja->nama_unit_kerja}}</h4> 
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('unit_delete', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
@@ -103,7 +103,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Edit {{$listunit_kerja->nama_unit_kerja}}</h4>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listunit_kerja->nama_unit_kerja}}</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('unit_update', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
+            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
         </div>
         <!-- ============================================================== -->
         <!-- End Page Content -->

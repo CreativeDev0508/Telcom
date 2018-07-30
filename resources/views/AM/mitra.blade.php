@@ -36,7 +36,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah Mitra</h4>
+                                            <h4 class="modal-title" id="myLargeModalLabel">Tambah Mitra</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal form-material" action="{{ route('mitra_insert') }}" method = "post">
@@ -83,7 +83,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus {{$listmitra->nama_mitra}}</h4> 
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Hapus {{$listmitra->nama_mitra}}</h4> 
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('mitra_delete', ['id'=>$listmitra->id_mitra]) }}" method = "get">
@@ -103,7 +103,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Edit {{$listmitra->nama_mitra}}</h4>
+                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit {{$listmitra->nama_mitra}}</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('mitra_update', ['id'=>$listmitra->id_mitra]) }}" method = "get">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
+            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
         </div>
         <!-- ============================================================== -->
         <!-- End Page Content -->
