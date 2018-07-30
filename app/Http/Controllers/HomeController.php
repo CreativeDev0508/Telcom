@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
-            ->select('proyek.id_proyek', 'judul', 'saat_penggunaan', 'pemasukan_dokumen', 'ready_for_service', 'skema_bisnis', 'masa_kontrak', 'pelanggan.jenis_pelanggan', 'alamat_delivery', 'layanan_revenue', 'beban_mitra', 'nilai_kontrak', 'margin_tg', 'rp_margin', 'proyek.id_pelanggan', 'nama_pelanggan', 'nomor_telepon', 'alamat_pelanggan','nama_mitra','nama_unit_kerja')
+            ->select('proyek.id_proyek', 'judul', 'saat_penggunaan', 'pemasukan_dokumen', 'ready_for_service', 'skema_bisnis', 'masa_kontrak', 'pelanggan.jenis_pelanggan', 'alamat_delivery', 'status_pengajuan', 'layanan_revenue', 'beban_mitra', 'nilai_kontrak', 'margin_tg', 'rp_margin', 'proyek.id_pelanggan', 'nama_pelanggan', 'nomor_telepon', 'alamat_pelanggan','nama_mitra','nama_unit_kerja')
             ->get();
         $latarbelakang = DB::table('proyek')
             ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
@@ -45,5 +45,21 @@ class HomeController extends Controller
             ->get();
         return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang]);
         // return view('AM.dashboard');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        switch ($request->input('status'))
+        {
+            case 'Approve':
+                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'1'));    
+                break;
+            
+            case 'Decline':
+                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'2'));
+                break;
+        }
+        
+        return redirect()->route('index');
     }
 }
