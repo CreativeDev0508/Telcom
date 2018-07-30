@@ -23,21 +23,24 @@
                 <br>
                 <br>
                 <div class="row">
-                    <label>ID</label>
-                    <label>{{ Auth::user()->id }}</label>
+                    {{-- <label>ID</label>
+                    <label>{{ Auth::user()->id }}</label> --}}
                     {{-- <label>ID</label> --}}
                     {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
+                @foreach($proyek as $listproyek)
+                    @foreach($pelanggan as $listpelanggan)
+                    {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                            <form class="form-horizontal form-material" action="{{ route('proyek_insert') }}" method = "post">
-                                {{ csrf_field() }}
+                            <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_aspek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
+                                {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6">
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Judul Kegiatan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul">
+                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul" value="{{$listproyek->judul}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -56,7 +59,7 @@
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Alamat Delivery</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery">
+                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery" value="{{$listproyek->alamat_delivery}}">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -99,25 +102,25 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Deadline</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="saat_penggunaan"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="pemasukan_dokumen"> <!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="pemasukan_dokumen" value="{{$listproyek->pemasukan_dokumen}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Ready for Service</label>
                                             <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                <input type="date" class="form-control" name="ready_for_service"><!-- <span class="input-group-addon"><i class="icon-calender"></i></span> -->
+                                                <input type="date" class="form-control" name="ready_for_service" value="{{$listproyek->ready_for_service}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
+                                                <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                             </div>
                                         </div>
                                     </div>
@@ -129,8 +132,13 @@
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                 </div>
                             </form>
+                                <div class="form-group m-b-0">
+                                    <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                </div>
                         </div>
                     </div>
+                        @endforeach
+                @endforeach
                 </div>
                 <!--/.row -->
             </div>
@@ -166,7 +174,7 @@
     <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script> 
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
-    <script> 
+    {{-- <script> 
     jQuery(document).ready(function() { 
         // For select 2 
         $(".select2").select2(); 
@@ -234,5 +242,5 @@
             return false; 
         }); 
     }); 
-    </script> 
+    </script>  --}}
 @endsection

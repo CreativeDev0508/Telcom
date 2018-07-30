@@ -23,11 +23,14 @@
                 <br>
                 <br>
                 <div class="row">
+                @foreach($aspek as $listaspek)
+                    @foreach($proyek as $listproyek)
+                    {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert') }}" method = "post">
-                                {{ csrf_field() }}
+                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                                {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
                                         <div class="col-sm-9">
@@ -63,10 +66,14 @@
                                     <a href="#" class="fcbtn btn btn-danger btn-1f m-t-10" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> --}}
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                 </div>
-                                
                             </form>
+                            <div class="form-group m-b-0">
+                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
+                @endforeach
                 </div>
                 <!--/.row -->
             </div>

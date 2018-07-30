@@ -23,7 +23,8 @@
                 <div class="row">
                     {{-- <label>ID</label>
                     <label>{{ Auth::user()->id }}</label> --}}
-                    {{ Session::put('forSession') }}
+                    {{-- {{ Session::put('forSession') }} --}}
+                    
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
