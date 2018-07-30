@@ -179,12 +179,24 @@ class AMController extends Controller
 		terdapat proyek baru yakni <b>".$proyek->judul."</b>
 		";
 
-        $response = $telegram->sendMessage([
-            'chat_id' => '502299226', 
-            'text' => $text,
-            'parse_mode' => 'HTML'
-        ]);
-        
+        // $response = $telegram->sendMessage([
+        //     'chat_id' => '502299226', 
+        //     'text' => $text,
+        //     'parse_mode' => 'HTML'
+		// ]);
+		
+		$json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		$obj = json_decode($json, true);
+
+		for ($i=0; $i<count($obj['result']); $i++)
+		{
+			$response = $telegram->sendMessage([
+				'chat_id' => $obj['result'][$i]['message']['chat']['id'], 
+				'text' => $text,
+				'parse_mode' => 'HTML'
+			]);
+		}
+
         $messageId = $response->getMessageId();
 
 		return redirect()->route('index');
