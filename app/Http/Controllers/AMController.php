@@ -148,10 +148,11 @@ class AMController extends Controller
     public function deleteProyek(Request $request, $id)
     {
     	$idProyek = $id;
-    	DB::table('aspek_bisnis')->where('id_proyek',$id)->delete($request->all());
-    	$idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$idProyek)->get();
-    	DB::table('proyek')->where('id_proyek',$idProyek)->delete($request->all());
-    	DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete($request->all());
+    	$idAspek = DB::table('aspek_bisnis')->select('id_aspek')->where('id_proyek',$id)->get();
+    	//$idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$idProyek)->get();
+    	//DB::table('aspek_bisnis')->where('id_aspek',$idAspek)->delete($request->all());
+    	//DB::table('proyek')->where('id_proyek',$idProyek)->delete($request->all());
+    	//DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete($request->all());
     	return redirect()->route('home');
     }
 
