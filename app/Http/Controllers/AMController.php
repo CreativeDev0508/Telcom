@@ -187,16 +187,22 @@ class AMController extends Controller
 		
 		$json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
 		$obj = json_decode($json, true);
+		$array = array();
 
 		for ($i=0; $i<count($obj['result']); $i++)
 		{
+			$array[] = $obj['result'][$i]['message']['chat']['id'];
+		}
+		$result = array_values(array_unique($array));
+
+		for ($i=0; $i<count($result); $i++)
+		{
 			$response = $telegram->sendMessage([
-				'chat_id' => $obj['result'][$i]['message']['chat']['id'], 
+				'chat_id' => $result[$i], 
 				'text' => $text,
 				'parse_mode' => 'HTML'
 			]);
 		}
-
         $messageId = $response->getMessageId();
 
 		return redirect()->route('index');
