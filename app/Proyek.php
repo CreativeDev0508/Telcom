@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Proyek extends Model
 {
     protected $table = 'proyek';
-    protected $primaryKey = 'id_proyek';
+    protected $primaryKey = 'id';
     protected $fillable = ['id_mitra','id_users','id_pelanggan','judul','tahun','id_unit_kerja','saat_penggunaan','pemasukan_dokumen','ready_for_service','skema_bisnis','masa_kontrak','jenis_pelanggan','alamat_delivery','masa_kontrak'];
     public $incrementing = true;
     public $timestamp = true;
 
     public function proyek()
     {
-    	return $this->hasmany('App\Proyek', 'id_proyek', 'id_proyek');
+    	return $this->hasmany('App\Proyek', 'id_proyek', 'id');
     }
 
     public function mitra()
