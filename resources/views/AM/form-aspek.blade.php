@@ -14,72 +14,75 @@
 @endsection
 
 @section('content')
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Different data widgets -->
-                <!-- ============================================================== -->
-                <!-- .row -->
-                <br>
-                <br>
-                <div class="row">
-                @foreach($aspek as $listaspek)
-                    @foreach($proyek as $listproyek)
-                    {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
-                                {{-- {{ csrf_field() }} --}}
-                                <div class="row">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
-                                        <div class="col-sm-9">
-                                            <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                                <option value="Bulanan">Bulanan</option>
-                                                <option value="Tahunan">Tahunan</option>
-                                                <option value="OTC">OTC</option>
-                                            </select>
-                                        </div>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!-- .row -->
+        <br>
+        <br>
+        <div class="row">
+            @foreach($aspek as $listaspek)
+                @foreach($proyek as $listproyek)
+                {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
+                        <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                            {{-- {{ csrf_field() }} --}}
+                            <div class="row">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
+                                <div class="col-sm-9">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
+                                        <option value="Bulanan">Bulanan</option>
+                                        <option value="Tahunan">Tahunan</option>
+                                        <option value="OTC">OTC</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra">
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak">
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin">
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg">
                                 </div>
-                                <div class="form-group m-b-0">
-                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group m-b-0">
+                                <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
+                            </div>
+                        </form>
                     </div>
-                    @endforeach
-                @endforeach
                 </div>
-                <!--/.row -->
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+                @endforeach
+            @endforeach
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
+        <!--/.row -->
     </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
 @endsection
 
 @section('script')
