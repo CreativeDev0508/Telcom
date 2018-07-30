@@ -48,13 +48,21 @@
                                     <div class="col-sm-9 radio-list">
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input id="radio1" value="Goverment" active type="radio" name="jenis_pelanggan">
+                                                @if($listpelanggan->jenis_pelanggan == 'Government')
+                                                <input active checked="checked" id="radio1" value="Government" type="radio" name="jenis_pelanggan">
+                                                @else
+                                                <input active id="radio1" value="Government" type="radio" name="jenis_pelanggan">
+                                                @endif
                                                 <label for="radio1">Government</label>
                                             </div>
                                         </label>
                                         <label class="radio-inline p-0">
                                             <div class="radio radio">
-                                                <input id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                                @if($listpelanggan->jenis_pelanggan == 'Enterprise')
+                                                <input active checked="checked" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                                @else
+                                                <input active id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                                @endif
                                                 <label for="radio2">Enterprise</label>
                                             </div>
                                         </label>

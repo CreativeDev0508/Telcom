@@ -41,10 +41,11 @@ Route::group(['middleware'=>['auth']], function()
 
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan')->name('pelanggan');
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert');
-	Route::get('/AM-form-pelanggan/single/{id_pelanggan}/{id_proyek}','AMController@singlePelanggan')->name('pelanggan_single');
+	Route::get('/AM-form-pelanggan/{id_pelanggan}/{id_proyek}','AMController@singlePelanggan')->name('pelanggan_single');
 	Route::get('/AM-form-pelanggan/update/{id_pelanggan}/{id_proyek}','AMController@updatePelanggan')->name('pelanggan_update');
 
 	Route::get('/AM-form-proyek/{id_proyek}/{id_pelanggan}','AMController@indexProyek')->name('proyek');
+	Route::get('/AM-form-proyek/{id_proyek}','AMController@singleProyek')->name('proyek_single');
 	Route::get('/AM-form-proyek/insert/{id_proyek}/{id_pelanggan}','AMController@insertProyek')->name('proyek_insert');
 	Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek')->name('proyek_update');
 

@@ -66,8 +66,10 @@
                                     <a href="#" class="fcbtn btn btn-danger btn-1f m-t-10" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> --}}
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                 </div>
-                                
                             </form>
+                            <div class="form-group m-b-0">
+                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                            </div>
                         </div>
                     </div>
                     @endforeach

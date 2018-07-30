@@ -59,15 +59,28 @@ class AMController extends Controller
 
 	public function singlePelanggan($id_pelanggan,$id_proyek)
     {
-    	$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
-		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->select('id_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
-    	return view('AM.form-proyek-update',$data);
+    	$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
+		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->where('id_pelanggan',$id_pelanggan)->get();
+    	return view('AM.form-pelanggan-update',$data);
     }
 
 	public function updatePelanggan(Request $request,$id_pelanggan,$id_proyek)
     {
-    	DB::table('pelanggan')->where('id_pelanggan',$id_pelanggan)->update($request->all());
-    	return redirect()->route('proyek');
+    	$pelanggan = Pelanggan::find($id_pelanggan);
+		$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+		$pelanggan->nama_pelanggan = $request->input('nama_pelanggan');
+		$pelanggan->nomor_telepon = $request->input('nomor_telepon');
+		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
+		$pelanggan->jenis_pelanggan = $request->input('jenis_pelanggan');
+		$pelanggan->save();
+    	
+    	$proyek = Proyek::find($id_proyek);
+		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+		$proyek->id_users = Auth::user()->id;
+		$proyek->save();
+
+    	return redirect()->route('proyek', ['id_proyek' => $proyek->id_proyek, 'id_pelanggan'=>$pelanggan->id_pelanggan]);
     }
 
 	public function deletePelanggan($id)
@@ -80,7 +93,7 @@ class AMController extends Controller
     //////////////////////// PROYEK /////////////////////////////
 	public function indexProyek($id_proyek,$id_pelanggan)
     {
-    	$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
+    	$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
 		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->select('id_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
@@ -117,12 +130,23 @@ class AMController extends Controller
 		return redirect()->route('aspek', ['id_aspek' => $aspek->id_aspek, 'id_proyek' => $proyek->id_proyek]);
 	}
 
+	public function singleProyek($id_proyek)
+    {
+    	$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
+		$data['pelanggan'] = DB::table('pelanggan')->select('id_pelanggan')->get();
+		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+    	return view('AM.form-proyek',$data);
+    }
+
 	public function updateProyek(Request $request, $id)
     {
     	DB::table('proyek')->where('id_proyek',$id)->update($request->all());
     	return redirect('/AM-form-proyek');
     }
 
+
+    /////////////////////////////// ASPEK ///////////////////////////
 	public function indexAspek($id_aspek,$id_proyek)
 	{
 		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
