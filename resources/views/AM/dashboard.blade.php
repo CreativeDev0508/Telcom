@@ -64,7 +64,7 @@
                                     <tbody class="text-center">
                                     <?php $x=1; ?>
                                     @foreach($proyek->sortBy('id_proyek') as $listproyek)
-                                        <tr>
+                                        <tr id="onProgress">
                                             <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
