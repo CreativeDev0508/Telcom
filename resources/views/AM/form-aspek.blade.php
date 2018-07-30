@@ -62,14 +62,10 @@
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg"> </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
-                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-t-10" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> --}}
+                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                 </div>
                             </form>
-                            <div class="form-group m-b-0">
-                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                            </div>
                         </div>
                     </div>
                     @endforeach
