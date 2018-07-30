@@ -66,14 +66,16 @@
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                             <td style="vertical-align: middle;">13%</td>
                                             <td style="vertical-align: middle;">
-                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-target="#"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                            <button type="button" class="btn btn-default" data-target="#"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                            <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
                                             <div class="modal fade" id="{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h4 class="modal-title" id="myLargeModalLabel">{{$listproyek->judul}}</h4> </div>
+                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4> </div>
                                                             <div class="modal-body">
                                                                 <section style="text-align:left">
                                                                     <div class="sttabs tabs-style-bar">
@@ -240,7 +242,6 @@
                                                     </div>
                                                     <!-- /.modal-dialog -->
                                                 </div>                                            
-                                                <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default btn-outline btn-circle btn-lg m-r-5"><i class="fa fa-download"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -279,7 +280,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
+                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">ITS Server</h4> </div>
                                                             <div class="modal-body">
                                                                 <div class="btn-group btn-group-justified m-b-20">
                                                                     <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
@@ -360,7 +361,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h4 class="modal-title" id="myLargeModalLabel">ITS Server</h4> </div>
+                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">ITS Server</h4> </div>
                                                             <div class="modal-body">
                                                                 <div class="btn-group btn-group-justified m-b-20">
                                                                     <a class="btn btn-danger btn-outline waves-effect waves-light disabled" style="opacity: initial; color: #d51100; border: 0;">Sales Engineer</a>
@@ -419,7 +420,7 @@
                 </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+            <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
         </div>
 @endsection
 
