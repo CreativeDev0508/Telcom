@@ -99,7 +99,7 @@
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
                         <div><img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"></div>
-                        <p style="font-size:16px; font-weight: 450;">{{ Auth::user()->name }}</p>
+                        <p style="font-size:16px;font-weight: 450;">{{ Auth::user()->name }}</p>
                         <p style="font-size:12px;">{{ Auth::user()->jabatan->nama_jabatan }}</p>
                     </div>
                 </div>

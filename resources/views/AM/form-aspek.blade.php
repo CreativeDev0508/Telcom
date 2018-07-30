@@ -23,9 +23,6 @@
                 <br>
                 <br>
                 <div class="row">
-                @foreach($aspek as $listaspek)
-                    @foreach($proyek as $listproyek)
-                    {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
@@ -72,8 +69,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                @endforeach
                 </div>
                 <!--/.row -->
             </div>

@@ -27,6 +27,9 @@ class AMController extends Controller
 	///////////////////// PELANGGAN ////////////////////////////
 	public function indexPelanggan()
 	{
+		// if(!Auth::user()->id)
+  //       	return redirect()->route('login');
+
         $auth = Auth::user()->id;
         
 		$pelanggan = DB::table('pelanggan')->get();
@@ -106,7 +109,8 @@ class AMController extends Controller
 		// dd($proyek);
 		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 		$proyek->id_mitra = $request->input('id_mitra');
-		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+		$proyek->nik = $request->input('nik');
+		$proyek->id_pelanggan = $request->input('id_pelanggan');
 		$proyek->judul = $request->input('judul');
 		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
@@ -165,7 +169,7 @@ class AMController extends Controller
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
-		return redirect()->route('index');
+		return redirect()->route('home');
 	}
 
 	public function indexUnitKerja()
