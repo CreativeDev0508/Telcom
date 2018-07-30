@@ -24,7 +24,7 @@
         .table > .detail-text > tr > td {
             border-top: 0;
         }
-        #onProgress > td{
+        .fuckOffPadding > td{
             padding: 1%;
         }
     </style>
@@ -64,7 +64,7 @@
                                     <tbody class="text-center">
                                     <?php $x=1; ?>
                                     @foreach($proyek->sortBy('id_proyek') as $listproyek)
-                                        <tr id="onProgress">
+                                        <tr class="fuckOffPadding">
                                             <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
@@ -276,12 +276,12 @@
                                     <tbody class="text-center">
                                     <?php $y=1; ?>
                                     @foreach($proyek->where('status_pengajuan','=','1')->sortBy('id_proyek') as $proyeks)
-                                        <tr>
+                                        <tr class="fuckOffPadding">
                                             <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                             <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                             <td style="vertical-align: middle;">
-                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
-                                            <div class="modal fade" id="approve-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
+                                                <div class="modal fade" id="approve-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -469,12 +469,12 @@
                                     <tbody class="text-center">
                                         <?php $z=1; ?>
                                     @foreach($proyek->where('status_pengajuan','=','2')->sortBy('id_proyek') as $proyeks)
-                                        <tr>
+                                        <tr class="fuckOffPadding">
                                             <td style="vertical-align: middle;"><?php echo $z; $z=$z+1; ?></td>
                                             <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                             <td style="vertical-align: middle;">
-                                            <button type="button" class="btn btn-default btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
-                                            <div class="modal fade" id="failed-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                                <div class="modal fade" id="failed-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
