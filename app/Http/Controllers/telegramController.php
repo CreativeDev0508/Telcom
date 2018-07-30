@@ -9,14 +9,15 @@ class telegramController extends Controller
 {
     public function sendMessage(){
         $telegram = new Api('577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk');
+
+        $text = 
+        "#ALERT!#
+        terdapat proyek baru yakni *"."'INSERT PROJECT NAME HERE'"."*
+        ";
+
         $response = $telegram->sendMessage([
             'chat_id' => '502299226', 
-            'text' => 
-            '*bold text*
-            _italic text_
-            [text](URL)
-            `inline fixed-width code`
-            `pre-formatted fixed-width code block`',
+            'text' => $text.'yeet',
             'parse_mode' => 'markdown'
         ]);
         

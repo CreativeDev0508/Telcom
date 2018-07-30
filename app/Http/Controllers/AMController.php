@@ -15,6 +15,7 @@ use App\UnitKerja;
 use DB;
 use Auth;
 use Session;
+use Telegram\Bot\Api;
 
 class AMController extends Controller
 {
@@ -142,7 +143,23 @@ class AMController extends Controller
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
-		return redirect()->route('home');
+
+		$telegram = new Api('577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk');
+        
+		$text = 
+		"<b>ALERT!</b>
+		terdapat proyek baru yakni <b>"."'INSERT PROJECT NAME HERE'"."</b>
+		";
+
+        $response = $telegram->sendMessage([
+            'chat_id' => '502299226', 
+            'text' => $text,
+            'parse_mode' => 'HTML'
+        ]);
+        
+        $messageId = $response->getMessageId();
+
+		return redirect()->route('index');
 	}
 
 	public function indexUnitKerja()
