@@ -24,6 +24,9 @@
         .table > .detail-text > tr > td {
             border-top: 0;
         }
+        #onProgress > td{
+            padding: 1%;
+        }
     </style>
 @endsection()
 
@@ -60,7 +63,7 @@
                                     </thead>
                                     <tbody class="text-center">
                                     @foreach($proyek->sortBy('id_proyek') as $listproyek)
-                                        <tr>
+                                        <tr id="onProgress">
                                             <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
