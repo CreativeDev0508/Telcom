@@ -233,7 +233,7 @@
                                                                 </section>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                {{-- <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get"> --}}
+                                                                <!-- <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get"> -->
                                                                     <div class="form-group m-b-0">
                                                                         <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
                                                                         <button type="submit" style="float: left;" name="status" value="Approve" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
