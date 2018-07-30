@@ -167,11 +167,16 @@ class AMController extends Controller
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
 
+		$proyek = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id_proyek)
+			->first();
+		// $proyek = DB::table('proyek')->select('judul')->where('id_proyek', $id_proyek)->get();
 		$telegram = new Api('577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk');
-        
+		
 		$text = 
 		"<b>ALERT!</b>
-		terdapat proyek baru yakni <b>"."'INSERT PROJECT NAME HERE'"."</b>
+		terdapat proyek baru yakni <b>".$proyek->judul."</b>
 		";
 
         $response = $telegram->sendMessage([
