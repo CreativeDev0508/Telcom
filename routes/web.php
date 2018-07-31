@@ -45,9 +45,10 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-form-pelanggan/update/{id_pelanggan}/{id_proyek}','AMController@updatePelanggan')->name('pelanggan_update');
 
 	Route::get('/AM-form-proyek/{id_proyek}/{id_pelanggan}','AMController@indexProyek')->name('proyek');
-	Route::get('/AM-form-proyek/{id_proyek}','AMController@singleProyek')->name('proyek_single');
 	Route::get('/AM-form-proyek/insert/{id_proyek}/{id_pelanggan}','AMController@insertProyek')->name('proyek_insert');
-	Route::get('/AM-form-proyek/update/{id}','AMController@updateProyek')->name('proyek_update');
+	Route::get('/AM-form-proyek/{id_proyek}/{id_aspek}','AMController@singleProyek')->name('proyek_single');
+	Route::get('/AM-form-proyek/update/{id_proyek}/(id_aspek)','AMController@updateProyek')->name('proyek_update');
+	Route::get('/AM-form-proyek/delete/{id_proyek}','AMController@deleteProyek')->name('proyek_delete');
 
 	Route::get('/AM-form-aspek/{id_aspek}/{id_proyek}','AMController@indexAspek')->name('aspek');
 	Route::get('/AM-form-aspek/insert/{id_aspek}/{id_proyek}','AMController@insertAspek')->name('aspek_insert');

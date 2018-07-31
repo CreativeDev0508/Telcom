@@ -23,7 +23,8 @@
                 <div class="row">
                 @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
-                    {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
+                        {{-- @foreach($aspek as $listaspek) --}}
+                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
@@ -74,6 +75,7 @@
                             </form>
                         </div>
                     </div>
+                    {{-- @endforeach --}}
                     @endforeach
                 @endforeach
                 </div>

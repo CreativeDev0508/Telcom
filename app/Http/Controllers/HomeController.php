@@ -43,7 +43,8 @@ class HomeController extends Controller
             ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
             ->select('latar_belakang.id_proyek','latar_belakang')
             ->get();
-        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang]);
+        $pelanggan = DB::table('pelanggan')->get();
+        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang, 'pelanggan'=>$pelanggan]);
         // return view('AM.dashboard');
     }
 

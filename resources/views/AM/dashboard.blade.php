@@ -55,7 +55,9 @@
                                         </tr>
                                         <tr>
                                             <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                            {{-- <th class="text-center" style="background-color: white; color: black;">ID Proyek</th> --}}
                                             <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                            <th class="text-center" style="background-color: white; color: black;">Nama Pelanggan</th>
                                             <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                             <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                             <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
@@ -63,14 +65,17 @@
                                     </thead>
                                     <tbody class="text-center">
                                     <?php $x=1; ?>
+                                    {{-- @foreach($pelanggan as $listpelanggan) --}}
                                     @foreach($proyek->sortBy('id_proyek') as $listproyek)
                                         <tr id="onProgress">
                                             <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                            {{-- <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td> --}}
                                             <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
+                                            <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                             <td style="vertical-align: middle;">%</td>
                                             <td style="vertical-align: middle;">
-                                            <button type="button" class="btn btn-default" data-target="#"><i class="fa fa-edit"></i></button>
+                                            <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
                                             <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
@@ -253,7 +258,7 @@
                                                             <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$listproyek->judul}}"</h4> 
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form class="form-horizontal form-material" method = "get">
+                                                            <form class="form-horizontal form-material" method = "get" action="{{ route('proyek_delete', ['id_proyek' => $listproyek->id_proyek]) }}">
                                                             <h5> Apakah Anda yakin untuk menghapus proyek "{{$listproyek->judul}}"? </h5>
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
@@ -266,6 +271,7 @@
                                             </div>                                            
                                             </td>
                                         </tr>
+                                        {{-- @endforeach --}}
                                         @endforeach
                                     </tbody>
                                 </table>
