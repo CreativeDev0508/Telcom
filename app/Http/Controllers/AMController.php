@@ -16,6 +16,7 @@ use DB;
 use Auth;
 use Session;
 use Telegram\Bot\Api;
+use Telegram;
 
 class AMController extends Controller
 {
@@ -167,43 +168,37 @@ class AMController extends Controller
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->save();
 
-		$proyek = DB::table('proyek')
-            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
-            ->where('proyek.id_proyek','=',$id_proyek)
-			->first();
-		// $proyek = DB::table('proyek')->select('judul')->where('id_proyek', $id_proyek)->get();
-		$telegram = new Api('577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk');
+		// $proyek = DB::table('proyek')
+        //     ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+        //     ->where('proyek.id_proyek','=',$id_proyek)
+		// 	->first();
+		// $telegram = new Api('577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk');
 		
-		$text = 
-		"<b>ALERT!</b>
-		terdapat proyek baru yakni <b>".$proyek->judul."</b>
-		";
-
-        // $response = $telegram->sendMessage([
-        //     'chat_id' => '502299226', 
-        //     'text' => $text,
-        //     'parse_mode' => 'HTML'
-		// ]);
+		// $text = 
+		// "<b>ALERT!</b>
+		// terdapat proyek baru yakni <b>".$proyek->judul."</b>
+		// ";;
 		
-		$json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
-		$obj = json_decode($json, true);
-		$array = array();
+		// $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		
+		// $obj = json_decode($json, true);
+		// $array = array();
 
-		for ($i=0; $i<count($obj['result']); $i++)
-		{
-			$array[] = $obj['result'][$i]['message']['chat']['id'];
-		}
-		$result = array_values(array_unique($array));
+		// for ($i=0; $i<count($obj['result']); $i++)
+		// {
+		// 	$array[] = $obj['result'][$i]['message']['chat']['id'];
+		// }
+		// $result = array_values(array_unique($array));
 
-		for ($i=0; $i<count($result); $i++)
-		{
-			$response = $telegram->sendMessage([
-				'chat_id' => $result[$i], 
-				'text' => $text,
-				'parse_mode' => 'HTML'
-			]);
-		}
-        $messageId = $response->getMessageId();
+		// for ($i=0; $i<count($result); $i++)
+		// {
+		// 	$response = Telegram::sendMessage([
+		// 		'chat_id' => $result[$i], 
+		// 		'text' => $text,
+		// 		'parse_mode' => 'HTML'
+		// 	]);
+		// }
+        // $messageId = $response->getMessageId();
 
 		return redirect()->route('index');
 	}
