@@ -16,6 +16,7 @@ use DB;
 use Auth;
 use Session;
 use Telegram\Bot\Api;
+use Telegram;
 
 class AMController extends Controller
 {
@@ -186,6 +187,7 @@ class AMController extends Controller
 		// ]);
 		
 		$json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		
 		$obj = json_decode($json, true);
 		$array = array();
 
@@ -197,7 +199,7 @@ class AMController extends Controller
 
 		for ($i=0; $i<count($result); $i++)
 		{
-			$response = $telegram->sendMessage([
+			$response = Telegram::sendMessage([
 				'chat_id' => $result[$i], 
 				'text' => $text,
 				'parse_mode' => 'HTML'
