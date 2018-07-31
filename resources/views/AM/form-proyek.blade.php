@@ -27,158 +27,141 @@
                     <label>{{ Auth::user()->id }}</label> --}}
                     {{-- <label>ID</label> --}}
                     {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
-                @foreach($proyek as $listproyek)
-                    @foreach($pelanggan as $listpelanggan)
-                    {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                            <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_proyek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
-                                {{-- {{ csrf_field() }} --}}
-                                <div class="row">
-                                    <div class="col-sm-12 col-lg-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-3 control-label">Judul Kegiatan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul" value="{{$listproyek->judul}}">
+                    @foreach($proyek as $listproyek)
+                        @foreach($pelanggan as $listpelanggan)
+                        {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
+                        <div class="col-sm-12">
+                            <div class="white-box">
+                                <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
+                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_proyek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
+                                    {{-- {{ csrf_field() }} --}}
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Judul Kegiatan</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Judul Kegiatan" name="judul" value="{{$listproyek->judul}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Delivery</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery" value="{{$listproyek->alamat_delivery}}">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-3 control-label">Rincian Pola Pembayaran</label>
+                                                <div class="col-sm-9">
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="rincian_pembayaran">
+                                                        @if($listproyek->rincian_pembayaran == 'Sebelum')
+                                                        <option value="Sebelum" selected>Sebelum Pembayaran</option>
+                                                        @else
+                                                        <option value="Sesudah">Sesudah Pembayaran</option>
+                                                        @endif
+                                                        
+                                                        @if($listproyek->rincian_pembayaran == 'Setelah')
+                                                        <option value="Setelah" selected>Setelah Pembayaran</option>
+                                                        @else
+                                                        <option value="Sebelum">Sebelum Pembayaran</option>
+                                                        @endif
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
-                                        <div class="col-sm-9">
-                                            <textarea class="form-control" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
-                                        <div class="col-sm-9">
-                                            <textarea class="form-control" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Alamat Delivery</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery" value="{{$listproyek->alamat_delivery}}">
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-3 control-label">Rincian Pola Pembayaran</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="rincian_pembayaran">
-                                                    @if($listproyek->rincian_pembayaran == 'Sebelum')
-                                                    <option value="Sebelum" selected>Sebelum Pembayaran</option>
-                                                    @else
-                                                    <option value="Sesudah">Sesudah Pembayaran</option>
-                                                    @endif
-                                                    
-                                                    @if($listproyek->rincian_pembayaran == 'Setelah')
-                                                    <option value="Setelah" selected>Setelah Pembayaran</option>
-                                                    @else
-                                                    <option value="Sebelum">Sebelum Pembayaran</option>
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row col-sm-12 col-lg-6">
-                                        <div class="row">
-                                            <label class="col-sm-3 control-label">Unit Kerja</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
-                                                    @foreach ($unit as $listunit)
-                                                    <option value="{{$listunit->id_unit_kerja}}" @if($listunit->id_unit_kerja == $listproyek->id_unit_kerja) selected @endif>{{$listunit->nama_unit_kerja}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <label class="col-sm-3 control-label">Nama Mitra</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
-                                                    @foreach ($mitra as $listmitra)
-                                                    <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <label class="col-sm-3 control-label">Skema Bisnis</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
-                                                    @if($listproyek->skema_bisnis == 'Sewa Murni')
-                                                    <option value="Sewa Murni" selected>Sewa Murni</option>
-                                                    @else
-                                                    <option value="Sewa Beli">Sewa Beli</option>
-                                                    @endif
+                                        <div class="row col-sm-12 col-lg-6">
+                                            <div class="row">
+                                                <label class="col-sm-3 control-label">Unit Kerja</label>
+                                                <div class="col-sm-9">
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
+                                                        @foreach ($unit as $listunit)
+                                                        <option value="{{$listunit->id_unit_kerja}}" @if($listunit->id_unit_kerja == $listproyek->id_unit_kerja) selected @endif>{{$listunit->nama_unit_kerja}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <label class="col-sm-3 control-label">Nama Mitra</label>
+                                                <div class="col-sm-9">
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
+                                                        @foreach ($mitra as $listmitra)
+                                                        <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <label class="col-sm-3 control-label">Skema Bisnis</label>
+                                                <div class="col-sm-9">
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
+                                                        @if($listproyek->skema_bisnis == 'Sewa Murni')
+                                                        <option value="Sewa Murni" selected>Sewa Murni</option>
+                                                        @else
+                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                        @endif
 
-                                                    @if($listproyek->skema_bisnis == 'Sewa Beli')
-                                                    <option value="Sewa Beli" selected>Sewa Beli</option>
-                                                    @else
-                                                    <option value="Pengadaan Beli">Pengadaan Beli</option>
-                                                    @endif
+                                                        @if($listproyek->skema_bisnis == 'Sewa Beli')
+                                                        <option value="Sewa Beli" selected>Sewa Beli</option>
+                                                        @else
+                                                        <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                        @endif
 
-                                                    @if($listproyek->skema_bisnis == 'Pengadaan Beli')
-                                                    <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
-                                                    @else
-                                                    <option value="Sewa Beli">Sewa Beli</option>
-                                                    @endif
-                                                </select>
+                                                        @if($listproyek->skema_bisnis == 'Pengadaan Beli')
+                                                        <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
+                                                        @else
+                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Deadline</label>
+                                                <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                                                    <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
+                                                <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                                                    <input type="date" class="form-control" name="pemasukan_dokumen" value="{{$listproyek->pemasukan_dokumen}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Ready for Service</label>
+                                                <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                                                    <input type="date" class="form-control" name="ready_for_service" value="{{$listproyek->ready_for_service}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <label class="col-sm-3 control-label">Nama Mitra</label>
-                                        <div class="col-sm-9">
-                                            <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra">
-                                                @foreach ($mitra as $listmitra)
-                                                <option value="{{$listmitra->id_mitra}}">{{$listmitra->nama_mitra}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <label class="col-sm-3 control-label">Skema Bisnis</label>
-                                        <div class="col-sm-9">
-                                            <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
-                                                <option value="Sewa Murni">Sewa Murni</option>
-                                                <option value="Sewa Beli">Sewa Beli</option>
-                                                <option value="Pengadaan Beli">Pengadaan Beli</option>
-                                            </select>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Deadline</label>
-                                        <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                            <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
-                                        </div>
+                                    <div class="form-group m-b-0">
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
-                                        <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                            <input type="date" class="form-control" name="pemasukan_dokumen" value="{{$listproyek->pemasukan_dokumen}}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Ready for Service</label>
-                                        <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                            <input type="date" class="form-control" name="ready_for_service" value="{{$listproyek->ready_for_service}}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                            <div class="form-group m-b-0">
-                                <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        @endforeach
+                    @endforeach
                 </div>
-                @endforeach
-            @endforeach
-        </div>
         <!--/.row -->
-    </div>
+            </div>
     <!-- /.container-fluid -->
     <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
-</div>
+    </div>
 <!-- ============================================================== -->
 <!-- End Page Content -->
 <!-- ============================================================== -->

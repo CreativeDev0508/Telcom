@@ -23,7 +23,6 @@
                 <div class="row">
                 @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
-                        {{-- @foreach($aspek as $listaspek) --}}
                     {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }}
                     <div class="col-sm-12">
                         <div class="white-box">
@@ -34,7 +33,6 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}"> </div>
                                 </div>
-                            </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
                                 <div class="col-sm-9">
@@ -75,12 +73,11 @@
                             <div class="form-group m-b-0">
                                 <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                             </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                    {{-- @endforeach --}}
                     @endforeach
                 @endforeach
-            @endforeach
             </div>
              <!--/.row -->
         </div>
