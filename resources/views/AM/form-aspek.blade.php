@@ -82,18 +82,18 @@
                             </form>
                         </div>
                     </div>
-                    @endforeach
-                @endforeach
                 </div>
-                <!--/.row -->
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+                @endforeach
+            @endforeach
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
+        <!--/.row -->
     </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
 @endsection
 
 @section('script')

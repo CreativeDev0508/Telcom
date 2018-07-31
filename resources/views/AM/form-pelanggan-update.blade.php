@@ -34,60 +34,62 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}"> </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan" value="{{$listpelanggan->alamat_pelanggan}}"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan" value="{{$listpelanggan->alamat_pelanggan}}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon" value="{{$listpelanggan->nomor_telepon}}"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon" value="{{$listpelanggan->nomor_telepon}}">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Jenis Pelanggan</label>
-                                    <div class="col-sm-9 radio-list">
-                                        <label class="radio-inline p-0">
-                                            <div class="radio radio">
-                                                @if($listpelanggan->jenis_pelanggan == 'Government')
-                                                <input active checked="checked" id="radio1" value="Government" type="radio" name="jenis_pelanggan">
-                                                @else
-                                                <input active id="radio1" value="Government" type="radio" name="jenis_pelanggan">
-                                                @endif
-                                                <label for="radio1">Government</label>
-                                            </div>
-                                        </label>
-                                        <label class="radio-inline p-0">
-                                            <div class="radio radio">
-                                                @if($listpelanggan->jenis_pelanggan == 'Enterprise')
-                                                <input active checked="checked" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
-                                                @else
-                                                <input active id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
-                                                @endif
-                                                <label for="radio2">Enterprise</label>
-                                            </div>
-                                        </label>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Jenis Pelanggan</label>
+                                <div class="col-sm-9 radio-list">
+                                    <label class="radio-inline p-0">
+                                        <div class="radio radio">
+                                            @if($listpelanggan->jenis_pelanggan == 'Government')
+                                            <input active checked="checked" id="radio1" value="Government" type="radio" name="jenis_pelanggan">
+                                            @else
+                                            <input active id="radio1" value="Government" type="radio" name="jenis_pelanggan">
+                                            @endif
+                                            <label for="radio1">Government</label>
+                                        </div>
+                                    </label>
+                                    <label class="radio-inline p-0">
+                                        <div class="radio radio">
+                                            @if($listpelanggan->jenis_pelanggan == 'Enterprise')
+                                            <input active checked="checked" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                            @else
+                                            <input active id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                            @endif
+                                            <label for="radio2">Enterprise</label>
+                                        </div>
+                                    </label>
                                 </div>
-                                <div class="form-group m-b-0">
-                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group m-b-0">
+                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                            </div>
+                        </form>
                     </div>
                     {{-- @endforeach --}}
                     @endforeach
                 @endforeach
-                </div>
-                <!--/.row -->
+            @endforeach
             </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+             <!--/.row -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
     </div>
+    <!-- ============================================================== -->
+    <!-- End Page Content -->
+    <!-- ============================================================== -->
 @endsection
 
 @section('script')
