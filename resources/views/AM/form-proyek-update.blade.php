@@ -13,6 +13,8 @@
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 @endsection
 
+
+
 @section('content')
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -33,7 +35,7 @@
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_proyek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
+                                <form class="form-horizontal form-material" action="{{ route('proyek_update', ['id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                     {{-- {{ csrf_field() }} --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
@@ -148,7 +150,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                         <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     </div>
                                 </form>
