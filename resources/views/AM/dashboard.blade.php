@@ -75,7 +75,7 @@
                                             <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                             <td style="vertical-align: middle;">%</td>
                                             <td style="vertical-align: middle;">
-                                            <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
                                             <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>

@@ -23,13 +23,14 @@
                 <br>
                 <br>
                 <div class="row">
-                @foreach($aspek as $listaspek)
+                    @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
-                    {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                    @foreach($aspek as $listaspek)
+                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} 
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                 {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
@@ -38,7 +39,7 @@
                                                 @if($listaspek->layanan_revenue == 'Bulanan')
                                                 <option value="Bulanan" selected>Bulanan</option>
                                                 @else
-                                                <option value="Tahunani">Tahunan</option>
+                                                <option value="Tahunan">Tahunan</option>
                                                 @endif
 
                                                 @if($listaspek->layanan_revenue == 'Tahunan')
@@ -76,14 +77,15 @@
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                    <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                @endforeach
+            @endforeach
+            @endforeach
             @endforeach
         </div>
         <!--/.row -->
