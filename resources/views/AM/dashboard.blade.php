@@ -489,7 +489,7 @@
                                                             <div class="panel panel-default">
                                                                 <div class="panel-body">
                                                                     <ul class="nav nav-pills m-b-30 ">
-                                                                        <li class="active"> <a href="#profilpelanggan-failed-`{{$proyeks->id_proyek}}" data-toggle="tab" aria-expanded="false">Profil Pelanggan</a> </li>
+                                                                        <li class="active"> <a href="#profilpelanggan-failed-{{$proyeks->id_proyek}}" data-toggle="tab" aria-expanded="false">Profil Pelanggan</a> </li>
                                                                         <li class=""> <a href="#proyekkegiatan-failed-{{$proyeks->id_proyek}}" data-toggle="tab" aria-expanded="false">Proyek/Kegiatan</a> </li>
                                                                         <li> <a href="#aspekbisnis-failed-{{$proyeks->id_proyek}}" data-toggle="tab" aria-expanded="true">Aspek Bisnis</a> </li>
                                                                     </ul>
