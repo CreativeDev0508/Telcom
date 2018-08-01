@@ -246,7 +246,7 @@
                                                         <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$listproyek->judul}}"</h4> 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form class="form-horizontal form-material" method = "get">
+                                                        <form class="form-horizontal form-material" action = "{{ route('proyek_delete', ['id_proyek' => $listproyek->id_proyek]) }}" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus proyek "{{$listproyek->judul}}"? </h5>
                                                             <div class="form-group m-b-0">
                                                                 <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>

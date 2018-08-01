@@ -63,4 +63,13 @@ class HomeController extends Controller
         
         return redirect()->route('index');
     }
+
+    public function deleteProyek($id_proyek)
+    {
+        $idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
+        DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete();
+        DB::table('latar_belakang')->where('id_proyek',$id_proyek)->delete();
+        DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
+        return redirect()->route('index');
+    }
 }

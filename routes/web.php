@@ -38,6 +38,7 @@ Route::group(['middleware'=>['auth']], function()
 {
 	Route::get('/home', 'HomeController@index')->name('index');
 	Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1')->name('print');
+	Route::get('/home/delete/{id_proyek}','HomeController@deleteProyek')->name('proyek_delete');
 
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan')->name('pelanggan');
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert');
