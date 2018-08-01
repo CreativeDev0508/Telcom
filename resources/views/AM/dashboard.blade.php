@@ -238,14 +238,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$listproyek->judul}}"</h4> 
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form class="form-horizontal form-material" method = "get" action="{{ route('proyek_delete', ['id_proyek' => $listproyek->id_proyek]) }}">
+                                        </div>
+                                        <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$listproyek->judul}}"</h4> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-material" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus proyek "{{$listproyek->judul}}"? </h5>
                                                             <div class="form-group m-b-0">
                                                                 <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
@@ -254,15 +255,13 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>                                            
-                                            </td>
-                                        </tr>
-                                        {{-- @endforeach --}}
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>                                            
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
