@@ -31,74 +31,66 @@
 @endsection
 
 @section('content')
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Different data widgets -->
-                <!-- ============================================================== -->
-                <!-- .row -->
-                <br>
-                <br>
-                <div class="row">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <div class="table-responsive">
-                                <table class="table color-table warning-table">
-                                    <thead>
-                                        <tr>
-                                            <th colspan=6>ON PROGRESS</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center" style="background-color: white; color: black;">No.</th>
-                                            {{-- <th class="text-center" style="background-color: white; color: black;">ID Proyek</th> --}}
-                                            <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                            <th class="text-center" style="background-color: white; color: black;">Nama Pelanggan</th>
-                                            <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
-                                            <th class="text-center" style="background-color: white; color: black;">Profit</th>
-                                            <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                    <?php $x=1; ?>
-                                    {{-- @foreach($pelanggan as $listpelanggan) --}}
-                                    @foreach($proyek->sortBy('id_proyek') as $listproyek)
-                                        <tr id="onProgress">
-                                            <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
-                                            {{-- <td style="vertical-align: middle;">{{$listproyek->id_proyek}}</td> --}}
-                                            <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                            <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
-                                            <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
-                                            <td style="vertical-align: middle;">%</td>
-                                            <td style="vertical-align: middle;">
-                                            <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
-                                            <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
-                                            <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4> </div>
-                                                            <div class="modal-body">
-                                                                <section style="text-align:left">
-                                                                    <div class="sttabs tabs-style-bar">
-                                                                        <nav>
-                                                                            <ul>
-                                                                                <li><a href="#profil-pelanggan"><span>Profil Pelanggan</span></a></li>
-                                                                                <li><a href="#proyek-kegiatan"><span>Proyek/Kegiatan</span></a></li>
-                                                                                <li><a href="#aspek-bisnis"><span>Aspek Bisnis</span></a></li>
-                                                                                <li></li>
-                                                                                <li></li>
-                                                                            </ul>
-                                                                        </nav>
-                                                                        <div class="content-wrap">
-                                                                            <section id="profil-pelanggan">
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!-- .row -->
+        <br>
+        <br>
+        <div class="row">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <div class="table-responsive">
+                        <table class="table color-table warning-table">
+                            <thead>
+                                <tr>
+                                    <th colspan=6>ON PROGRESS</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <?php $x=1; ?>
+                                @foreach($proyek->sortBy('id_proyek') as $listproyek)
+                                <tr class="fuckOffPadding">
+                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
+                                    <td style="vertical-align: middle;">%</td>
+                                    <td style="vertical-align: middle;">
+                                        <button type="button" class="btn btn-default" data-target="#"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <ul class="nav nav-pills m-b-30 ">
+                                                                    <li class="active"> <a href="#profilpelanggan-onprogress-{{$listproyek->id_proyek}}" data-toggle="tab" aria-expanded="false">Profil Pelanggan</a> </li>
+                                                                    <li class=""> <a href="#proyekkegiatan-onprogress-{{$listproyek->id_proyek}}" data-toggle="tab" aria-expanded="false">Proyek/Kegiatan</a> </li>
+                                                                    <li> <a href="#aspekbisnis-onprogress-{{$listproyek->id_proyek}}" data-toggle="tab" aria-expanded="true">Aspek Bisnis</a> </li>
+                                                                </ul>
+                                                                <div class="tab-content br-n pn">
+                                                                            <div id="profilpelanggan-onprogress-{{$listproyek->id_proyek}}" class="tab-pane active">
                                                                                     <table class="table table-borderless">
                                                                                             <tbody class="detail-text text-left">
                                                                                                 <tr>
