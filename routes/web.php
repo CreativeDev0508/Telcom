@@ -63,6 +63,6 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-mitra/update/{id}','AMController@updateMitra')->name('mitra_update');
 	Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra')->name('mitra_delete');
 
-	Route::get('/yeboi', 'telegramController@sendMessage');
-
+	
 });
+Route::get('/yeboi', 'telegramController@sendMessage');
