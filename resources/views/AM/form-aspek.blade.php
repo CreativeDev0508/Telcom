@@ -14,62 +14,73 @@
 @endsection
 
 @section('content')
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Different data widgets -->
-        <!-- ============================================================== -->
-        <!-- .row -->
-        <br>
-        <br>
-        <div class="row">
-            @foreach($aspek as $listaspek)
-                @foreach($proyek as $listproyek)
-                {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
-                <div class="col-sm-12">
-                    <div class="white-box">
-                        <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                        <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
-                            {{-- {{ csrf_field() }} --}}
-                            <div class="row">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                        <option value="Bulanan">Bulanan</option>
-                                        <option value="Tahunan">Tahunan</option>
-                                        <option value="OTC">OTC</option>
-                                    </select>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Different data widgets -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <br>
+                <br>
+                <div class="row">
+                @foreach($aspek as $listaspek)
+                    @foreach($proyek as $listproyek)
+                    {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
+                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_aspek' => $listaspek->id_aspek, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                                {{-- {{ csrf_field() }} --}}
+                                <div class="row">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
+                                        <div class="col-sm-9">
+                                            <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
+                                                @if($listaspek->layanan_revenue == 'Bulanan')
+                                                <option value="Bulanan" selected>Bulanan</option>
+                                                @else
+                                                <option value="Tahunani">Tahunan</option>
+                                                @endif
+
+                                                @if($listaspek->layanan_revenue == 'Tahunan')
+                                                <option value="Tahunan" selected>Tahunan</option>
+                                                @else
+                                                <option value="OTC">OTC</option>
+                                                @endif
+
+                                                @if($listaspek->layanan_revenue == 'Pengadaan Beli')
+                                                <option value="OTC" selected>OTC</option>
+                                                @else
+                                                <option value="Bulanan">Bulanan</option>
+                                                @endif
+                                            </select>
+                                        </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak" value="{{$listaspek->nilai_kontrak}}"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group m-b-0">
-                                <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
-                            </div>
-                        </form>
+                                <div class="form-group m-b-0">
+                                    <a href="{{ route('proyek_single', ['id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 @endforeach
