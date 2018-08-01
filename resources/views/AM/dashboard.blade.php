@@ -2,8 +2,6 @@
 
 @section('link')
 <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-<link href="asset/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 <!-- animation CSS -->
 <link href="css/animate.css" rel="stylesheet">
 <!-- Menu CSS -->
@@ -50,7 +48,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table id="myTable" class="table color-table warning-table">
+                        <table class="table color-table warning-table">
                             <thead>
                                 <tr>
                                     <th colspan=6>ON PROGRESS</th>
@@ -273,7 +271,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table id="myTable" class="table color-table success-table">
+                        <table class="table color-table success-table">
                             <thead>
                                 <tr>
                                     <th colspan=3>APPROVED</th>
@@ -461,7 +459,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table id="myTable" class="table color-table danger-table">
+                        <table class="table color-table danger-table">
                             <thead>
                                 <tr>
                                     <th colspan=3>FAILED</th>
@@ -673,13 +671,6 @@
 <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="js/cbpFWTabs.js"></script>
-<script src="js/custom.min.js"></script>
-<script src="plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
-<script src="asset/js/dataTables.buttons.min.js"></script>
-<script src="asset/js/buttons.flash.min.js"></script>
-<script src="asset/js/jszip.min.js"></script>
-<script src="js/dashboard1.js"></script>
-<script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script type="text/javascript">
 (function() {
     [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
@@ -687,45 +678,7 @@
     });
 });
 </script>
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
-                "order": [
-                    [2, 'asc']
-                ],
-                "displayLength": 25,
-                "drawCallback": function(settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function(group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
-                }
-            });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function() {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
-        });
-    });
-    </script>
+<script src="js/custom.min.js"></script>
+<script src="js/dashboard1.js"></script>
+<script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 @endsection
