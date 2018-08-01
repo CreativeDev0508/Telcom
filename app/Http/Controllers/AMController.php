@@ -179,7 +179,9 @@ class AMController extends Controller
             print '<br>';
             $chatid=Chatroom::where('chat_id','=', input::get('chat_id', $obj['result'][$i]['message']['chat']['id']))->first();
             if($chatid === null){
-                $chatroom = new Chatroom;
+				$chatroom = new Chatroom;
+				$count = Chatroom::count();
+				$chatroom->id = Chatroom::count()+1;
                 $chatroom->chat_id = input::get('chat_id', $obj['result'][$i]['message']['chat']['id']);
                 $chatroom->save();
 			}
