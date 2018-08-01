@@ -255,13 +255,15 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>                                            
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                            </div>                                           
+                                            </td>
+                                        </tr>
+                                        {{-- @endforeach --}}
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -174,24 +174,7 @@ class AMController extends Controller
     	return redirect()->route('aspek', ['id_aspek' => $aspek->id_aspek, 'id_proyek' => $proyek->id_proyek]);
     }
 
-    public function deleteProyek($id_proyek)
-	{
-    	DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
-    	return redirect()->route('/home');
-    }
-
-    public function deleteProyek(Request $request, $id)
-    {
-    	$idProyek = $id;
-    	$idAspek = DB::table('aspek_bisnis')->select('id_aspek')->where('id_proyek',$id)->get();
-    	//$idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$idProyek)->get();
-    	//DB::table('aspek_bisnis')->where('id_aspek',$idAspek)->delete($request->all());
-    	//DB::table('proyek')->where('id_proyek',$idProyek)->delete($request->all());
-    	//DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete($request->all());
-    	return redirect()->route('home');
-    }
-
-	public function indexAspek($id_aspek,$id_proyek)
+   	public function indexAspek($id_aspek,$id_proyek)
 	{
 		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
 		$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();

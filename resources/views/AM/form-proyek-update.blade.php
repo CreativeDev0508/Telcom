@@ -118,7 +118,7 @@
                                                         @if($listproyek->skema_bisnis == 'Pengadaan Beli')
                                                         <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
                                                         @else
-                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                        <option value="Sewa Murni">Sewa Murni</option>
                                                         @endif
                                                     </select>
                                                 </div>
@@ -162,7 +162,7 @@
         <!--/.row -->
             </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+    <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
     </div>
 <!-- ============================================================== -->
 <!-- End Page Content -->
