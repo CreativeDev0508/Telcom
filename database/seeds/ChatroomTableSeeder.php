@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = [
-            ['chat_id' => 502299226],
             ['chat_id' => -180862215],
         ];
 
