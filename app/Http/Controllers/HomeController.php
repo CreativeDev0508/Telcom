@@ -96,7 +96,7 @@ Dengan rincian sebagai berikut:
         - Account Manager : ".Auth::user()->name."
         - Pelanggan : ".$proyek2->nama_pelanggan."
         - Ready for service : ".date('d F Y', strtotime($proyek2->ready_for_service))."
-        - Nilai kontrak : ".$proyek->nilai_kontrak."
+        - Nilai kontrak : ".number_format($proyek2->nilai_kontrak)."
 
         ";
 
