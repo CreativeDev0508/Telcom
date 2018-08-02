@@ -83,8 +83,6 @@
                             </form>
                         </div>
                     </div>
-                    @endforeach
-                @endforeach
                 </div>
             @endforeach
             @endforeach
