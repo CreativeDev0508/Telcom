@@ -66,6 +66,7 @@ class HomeController extends Controller
             ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->where('proyek.id_proyek',$id_proyek)
             ->first();
 
     if($proyek2->status_pengajuan == 1)
