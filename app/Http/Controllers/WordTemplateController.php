@@ -70,6 +70,9 @@ class WordTemplateController extends Controller
         //     $i++;
         //     $templateProcessor->setValue('lb'.$i, $lb->latar_belakang);
         // }
+        $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
+        $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
+
         $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
         // B. LINGKUP PEKERJAAN

@@ -122,6 +122,8 @@ class AMController extends Controller
 		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 		$proyek->judul = $request->input('judul');
 		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+		$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+		$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
 		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
 		$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
 		$proyek->ready_for_service = $request->input('ready_for_service');
