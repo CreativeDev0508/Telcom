@@ -63,11 +63,11 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $x=1; ?>
-                                @foreach($proyek->sortBy('id_proyek') as $listproyek)
+                                @foreach($proyek->where('status_pengajuan','=',NULL)->sortBy('id_proyek') as $listproyek)
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
+                                    <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">%</td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
@@ -203,17 +203,17 @@
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Beban Mitra</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td>{{$listproyek->beban_mitra}}</td>
+                                                                                                    <td>{{number_format($listproyek->beban_mitra)}}</td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Nilai Kontrak</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td>{{$listproyek->nilai_kontrak}}</td>
+                                                                                                    <td>{{number_format($listproyek->nilai_kontrak)}}</td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Margin (Rp)</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td>{{$listproyek->rp_margin}}</td>
+                                                                                                    <td>{{number_format($listproyek->rp_margin)}}</td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Margin (%)</span></td>
@@ -228,13 +228,15 @@
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        {{-- <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get"> --}}
-                                                            <div class="form-group m-b-0">
-                                                                <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
-                                                                <button type="submit" style="float: left;" name="status" value="Approve" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
-                                                                <button type="submit" style="float: left;" name="status" value="Decline" class="btn btn-danger waves-effect waves-light m-l-5">Decline</button>
-                                                            </div>
-                                                        {{-- </form> --}}
+                                                        <div class="form-group m-b-0">
+                                                            <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
+                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
+                                                            </form>
+                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="2" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,7 +286,8 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $y=1; ?>
-                                @foreach($proyek->where('status_pengajuan','=','1')->sortBy('id_proyek') as $proyeks)
+                                @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $proyeks)
+                                {{-- {{ $proyeks->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
@@ -419,17 +422,17 @@
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Beban Mitra</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->beban_mitra}}</td>
+                                                                                                        <td>{{number_format($proyeks->beban_mitra)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Nilai Kontrak</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->nilai_kontrak}}</td>
+                                                                                                        <td>{{number_format($proyeks->nilai_kontrak)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Margin (Rp)</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->rp_margin}}</td>
+                                                                                                        <td>{{number_format($proyeks->rp_margin)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Margin (%)</span></td>
@@ -448,6 +451,27 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <a href="{{ route('print', ['id' => $proyeks->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$proyeks->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="delete-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$proyeks->judul}}"</h4> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-material" action = "{{ route('proyek_delete', ['id_proyek' => $proyeks->id_proyek]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus proyek "{{$proyeks->judul}}"? </h5>
+                                                            <div class="form-group m-b-0">
+                                                                <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -607,17 +631,17 @@
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Beban Mitra</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->beban_mitra}}</td>
+                                                                                                        <td>{{number_format($proyeks->beban_mitra)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Nilai Kontrak</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->nilai_kontrak}}</td>
+                                                                                                        <td>{{number_format($proyeks->nilai_kontrak)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Margin (Rp)</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$proyeks->rp_margin}}</td>
+                                                                                                        <td>{{number_format($proyeks->rp_margin)}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Margin (%)</span></td>
@@ -636,6 +660,26 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <a href="{{ route('print', ['id' => $proyeks->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$proyeks->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="delete-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$proyeks->judul}}"</h4> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-material" action = "{{ route('proyek_delete', ['id_proyek' => $proyeks->id_proyek]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus proyek "{{$proyeks->judul}}"? </h5>
+                                                            <div class="form-group m-b-0">
+                                                                <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
                                     </td>
                                 </tr>
                                 @endforeach
