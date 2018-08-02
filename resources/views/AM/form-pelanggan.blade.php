@@ -21,74 +21,64 @@
                 <br>
                 <br>
                 <div class="row">
-                @foreach($pelanggan as $listpelanggan)
-                @foreach($proyek as $listproyek)
-                @foreach($aspek as $listaspek)
-                {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                    {{-- <label>ID</label>
+                    <label>{{ Auth::user()->id }}</label> --}}
+                    {{ Session::put('forSession') }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                            <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan"> </div>
                                 </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan" value="{{$listpelanggan->alamat_pelanggan}}">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Pelanggan" name="alamat_pelanggan"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon" value="{{$listpelanggan->nomor_telepon}}">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon"> </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Jenis Pelanggan</label>
-                                <div class="col-sm-9 radio-list">
-                                    <label class="radio-inline p-0">
-                                        <div class="radio radio">
-                                            @if($listpelanggan->jenis_pelanggan == 'Government')
-                                            <input active checked="checked" id="radio1" value="Government" type="radio" name="jenis_pelanggan">
-                                            @else
-                                            <input active id="radio1" value="Government" type="radio" name="jenis_pelanggan">
-                                            @endif
-                                            <label for="radio1">Government</label>
-                                        </div>
-                                    </label>
-                                    <label class="radio-inline p-0">
-                                        <div class="radio radio">
-                                            @if($listpelanggan->jenis_pelanggan == 'Enterprise')
-                                            <input active checked="checked" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
-                                            @else
-                                            <input active id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
-                                            @endif
-                                            <label for="radio2">Enterprise</label>
-                                        </div>
-                                    </label>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Jenis Pelanggan</label>
+                                    <div class="col-sm-9 radio-list">
+                                        <label class="radio-inline p-0">
+                                            <div class="radio radio">
+                                                <input id="radio1" value="Government" active type="radio" name="jenis_pelanggan">
+                                                <label for="radio1">Government</label>
+                                            </div>
+                                        </label>
+                                        <label class="radio-inline p-0">
+                                            <div class="radio radio">
+                                                <input id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                                <label for="radio2">Enterprise</label>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group m-b-0">
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
-                            </div>
+                                <div class="form-group m-b-0">
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
+                                </div>
+                                
                             </form>
                         </div>
                     </div>
-                @endforeach
-                @endforeach
-                @endforeach
+                </div>
+                <!--/.row -->
             </div>
-             <!--/.row -->
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
         </div>
-        <!-- /.container-fluid -->
-        <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page Content -->
-    <!-- ============================================================== -->
 @endsection
 
 @section('script')
