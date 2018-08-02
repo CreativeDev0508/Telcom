@@ -95,8 +95,8 @@ Ada proyek baru yang telah disetujui '".$proyek2->judul."'
 Dengan rincian sebagai berikut:
         - Account Manager : ".Auth::user()->name."
         - Pelanggan : ".$proyek2->nama_pelanggan."
-        - Ready for service : ".$proyek2->ready_for_service."
-        - Nilai kontrak : ".$proyek2->nilai_kontrak."
+        - Ready for service : ".date('d F Y', strtotime($proyek2->ready_for_service))."
+        - Nilai kontrak : ".$proyek->nilai_kontrak."
 
         ";
 
@@ -113,7 +113,7 @@ Dengan rincian sebagai berikut:
 
         return redirect()->route('index');
     }
-    
+
     else
     {
         return redirect()->route('index');
