@@ -180,44 +180,45 @@ class AMController extends Controller
 
 		// dd($aspek,$pelanggan,$proyek);
 
-		$json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
-		$obj = json_decode($json, true);
-		$array = array();
+		// $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		// $obj = json_decode($json, true);
+		// $array = array();
 
-		for ($i=0; $i<count($obj['result']); $i++)
-		{
-            print ($obj['result'][$i]['message']['chat']['id']);
-            print '<br>';
-            $chatid=Chatroom::where('chat_id','=', input::get('chat_id', $obj['result'][$i]['message']['chat']['id']))->first();
-            if($chatid === null){
-				$chatroom = new Chatroom;
-				$count = Chatroom::count();
-				$chatroom->id = Chatroom::count()+1;
-                $chatroom->chat_id = input::get('chat_id', $obj['result'][$i]['message']['chat']['id']);
-                $chatroom->save();
-			}
-		}
+		// for ($i=0; $i<count($obj['result']); $i++)
+		// {
+  //           print ($obj['result'][$i]['message']['chat']['id']);
+  //           print '<br>';
+  //           $chatid=Chatroom::where('chat_id','=', input::get('chat_id', $obj['result'][$i]['message']['chat']['id']))->first();
+  //           if($chatid === null){
+		// 		$chatroom = new Chatroom;
+		// 		$count = Chatroom::count();
+		// 		$chatroom->id = Chatroom::count()+1;
+  //               $chatroom->chat_id = input::get('chat_id', $obj['result'][$i]['message']['chat']['id']);
+  //               $chatroom->save();
+		// 	}
+		// }
 		
-		$proyek = DB::table('proyek')
-			->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
-			->where('proyek.id_proyek','=',$id_proyek)
-			->first();
+		// $proyek = DB::table('proyek')
+		// 	->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+		// 	->where('proyek.id_proyek','=',$id_proyek)
+		// 	->where('status_pengajuan','=',1)
+		// 	->first();
 
-		$text = 
-		"<b>ALERT!</b>
-		terdapat proyek baru yakni <b>".$proyek->judul."</b>
-		";
+		// $text = 
+		// "<b>ALERT!</b>
+		// Terdapat proyek baru yakni yang telah disetujui<b>".$proyek->judul."</b>
+		// ";
 
-		for ($i=1; $i<=Chatroom::count(); $i++)
-		{
-			$result = Chatroom::select('chat_id')->where('id', $i)->first();
-			$response = Telegram::sendMessage([
-				'chat_id' => $result->chat_id, 
-				'text' => $text,
-				'parse_mode' => 'HTML'
-			]);
-		}
-		$messageId = $response->getMessageId();
+		// for ($i=1; $i<=Chatroom::count(); $i++)
+		// {
+		// 	$result = Chatroom::select('chat_id')->where('id', $i)->first();
+		// 	$response = Telegram::sendMessage([
+		// 		'chat_id' => $result->chat_id, 
+		// 		'text' => $text,
+		// 		'parse_mode' => 'HTML'
+		// 	]);
+		// }
+		// $messageId = $response->getMessageId();
 		
 		
 		// $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');

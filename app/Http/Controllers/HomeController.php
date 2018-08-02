@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\AspekBisnis;
+use App\ChatRoom;
 use App\Jabatan;
 use App\LatarBelakang;
 use App\Mitra;
@@ -12,6 +14,10 @@ use App\Proyek;
 use App\User;
 use App\UnitKerja;
 use DB;
+use Auth;
+use Session;
+use Telegram\Bot\Api;
+use Telegram;
 
 class HomeController extends Controller
 {
@@ -48,19 +54,61 @@ class HomeController extends Controller
         // return view('AM.dashboard');
     }
 
-    public function updateStatus(Request $request, $id)
+    public function updateStatus(Request $request, $id_proyek)
     {
-        switch ($request->input('status'))
+        $proyek = Proyek::find($id_proyek);
+        $proyek->status_pengajuan = $request->input('status_pengajuan');
+        $proyek->save();
+
+        // dd($proyek);        
+        
+        $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+        $obj = json_decode($json, true);
+        $array = array();
+
+        for ($i=0; $i<count($obj['result']); $i++)
         {
-            case 'Approve':
-                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'1'));    
-                break;
-            
-            case 'Decline':
-                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'2'));
-                break;
+            print ($obj['result'][$i]['message']['chat']['id']);
+            print '<br>';
+            $chatid=Chatroom::where('chat_id','=', input::get('chat_id', $obj['result'][$i]['message']['chat']['id']))->first();
+            if($chatid === null){
+                $chatroom = new Chatroom;
+                $count = Chatroom::count();
+                $chatroom->id = Chatroom::count()+1;
+                $chatroom->chat_id = input::get('chat_id', $obj['result'][$i]['message']['chat']['id']);
+                $chatroom->save();
+            }
         }
         
+        $proyek2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->where('status_pengajuan','=',1)
+            ->first();
+
+        $text = 
+        "ALERT!
+Terdapat proyek baru yang telah disetujui '".$proyek2->judul."'
+Dengan rincian sebagai berikut:
+        - Account Manager : ".Auth::user()->name."
+        - Pelanggan : ".$proyek2->nama_pelanggan."
+        - Ready for service : ".$proyek2->ready_for_service."
+        - Nilai kontrak : ".$proyek2->nilai_kontrak."
+
+        ";
+
+        for ($i=1; $i<=Chatroom::count(); $i++)
+        {
+            $result = Chatroom::select('chat_id')->where('id', $i)->first();
+            $response = Telegram::sendMessage([
+                'chat_id' => $result->chat_id, 
+                'text' => $text,
+                'parse_mode' => 'HTML'
+            ]);
+        }
+        $messageId = $response->getMessageId();
+
         return redirect()->route('index');
     }
 

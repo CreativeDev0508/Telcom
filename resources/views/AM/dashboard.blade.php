@@ -228,13 +228,15 @@
                                                                 </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        {{-- <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get"> --}}
-                                                            <div class="form-group m-b-0">
-                                                                <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
-                                                                <button type="submit" style="float: left;" name="status" value="Approve" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
-                                                                <button type="submit" style="float: left;" name="status" value="Decline" class="btn btn-danger waves-effect waves-light m-l-5">Decline</button>
-                                                            </div>
-                                                        {{-- </form> --}}
+                                                        <div class="form-group m-b-0">
+                                                            <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
+                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
+                                                            </form>
+                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="0" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,6 +287,7 @@
                             <tbody class="text-center">
                                 <?php $y=1; ?>
                                 @foreach($proyek->where('status_pengajuan','=','1')->sortBy('id_proyek') as $proyeks)
+                                {{-- {{ $proyeks->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
