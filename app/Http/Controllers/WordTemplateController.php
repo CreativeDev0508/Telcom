@@ -62,7 +62,10 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
         $templateProcessor->setValue('unitKerja', $proyek->nama_unit_kerja);
         $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
+        setlocale(LC_TIME, 'Indonesian');
+        Carbon::setUtf8(true);
         $templateProcessor->setValue('saatPenggunaan', Carbon::createFromFormat('Y-m-d', $proyek->saat_penggunaan)->format('M Y'));
+        setlocale(LC_TIME, '');
 
         // A. LATAR BELAKANG
 
@@ -79,7 +82,10 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
         // D. WAKTU PENGGUNAAN
-        $templateProcessor->setValue('readyForService', $proyek->ready_for_service);
+        setlocale(LC_TIME, 'Indonesian');
+        Carbon::setUtf8(true);
+        $templateProcessor->setValue('readyForService', Carbon::createFromFormat('Y-m-d', $proyek->ready_for_service)->formatLocalized('%B %Y'));
+        setlocale(LC_TIME, '');
 
         // E. LOKASI INSTALASI / LAYANAN
         $templateProcessor->setValue('alamatDelivery', $proyek->alamat_delivery);
