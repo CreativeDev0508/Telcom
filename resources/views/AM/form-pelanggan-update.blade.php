@@ -22,12 +22,13 @@
                 <br>
                 <div class="row">
                 @foreach($pelanggan as $listpelanggan)
-                    @foreach($proyek as $listproyek)
-                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }}
+                @foreach($proyek as $listproyek)
+                @foreach($aspek as $listaspek)
+                {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                            <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
                                     <div class="col-sm-9">
@@ -76,7 +77,8 @@
                             </form>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
+                @endforeach
                 @endforeach
             </div>
              <!--/.row -->

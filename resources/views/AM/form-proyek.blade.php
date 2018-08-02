@@ -27,13 +27,14 @@
                     <label>{{ Auth::user()->id }}</label> --}}
                     {{-- <label>ID</label> --}}
                     {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
+                    @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
-                        @foreach($pelanggan as $listpelanggan)
-                        {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
+                    @foreach($aspek as $listaspek)
+                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} 
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_proyek' => $listproyek->id_proyek, 'id_pelanggan' => $listpelanggan->id_pelanggan]) }}" method = "get">
+                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                     {{-- {{ csrf_field() }} --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
@@ -148,13 +149,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                         <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        @endforeach
+                    @endforeach
+                    @endforeach
                     @endforeach
                 </div>
         <!--/.row -->
