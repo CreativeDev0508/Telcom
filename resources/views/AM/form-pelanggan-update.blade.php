@@ -12,28 +12,28 @@
 @endsection
 
 @section('content')
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Different data widgets -->
-            <!-- ============================================================== -->
-            <!-- .row -->
-            <br>
-            <br>
-            <div class="row">
-            @foreach($pelanggan as $listpelanggan)
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Different data widgets -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <br>
+                <br>
+                <div class="row">
+                @foreach($pelanggan as $listpelanggan)
                 @foreach($proyek as $listproyek)
-                {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
-                <div class="col-sm-12">
-                    <div class="white-box">
-                        <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
-                        <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}" method = "get">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}">
+                @foreach($aspek as $listaspek)
+                {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
+                            <form class="form-horizontal form-material" action="{{ route('pelanggan_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Pelanggan</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pelanggan" name="nama_pelanggan" value="{{$listpelanggan->nama_pelanggan}}"> </div>
                                 </div>
-                            </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat Pelanggan</label>
                                 <div class="col-sm-9">
@@ -74,11 +74,12 @@
                             <div class="form-group m-b-0">
                                 <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                             </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
                 @endforeach
-            @endforeach
+                @endforeach
+                @endforeach
             </div>
              <!--/.row -->
         </div>

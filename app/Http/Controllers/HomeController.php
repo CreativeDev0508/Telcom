@@ -37,13 +37,14 @@ class HomeController extends Controller
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
-            ->select('proyek.id_proyek', 'judul', 'saat_penggunaan', 'pemasukan_dokumen', 'ready_for_service', 'skema_bisnis', 'masa_kontrak', 'pelanggan.jenis_pelanggan', 'alamat_delivery', 'status_pengajuan', 'layanan_revenue', 'beban_mitra', 'nilai_kontrak', 'margin_tg', 'rp_margin', 'proyek.id_pelanggan', 'nama_pelanggan', 'nomor_telepon', 'alamat_pelanggan','nama_mitra','nama_unit_kerja')
+            ->select('proyek.id_proyek', 'judul', 'saat_penggunaan', 'pemasukan_dokumen', 'ready_for_service', 'skema_bisnis', 'masa_kontrak', 'pelanggan.jenis_pelanggan', 'alamat_delivery', 'status_pengajuan', 'layanan_revenue', 'beban_mitra', 'nilai_kontrak', 'margin_tg', 'rp_margin', 'proyek.id_pelanggan', 'nama_pelanggan', 'nomor_telepon', 'alamat_pelanggan','nama_mitra','nama_unit_kerja', 'aspek_bisnis.id_aspek')
             ->get();
         $latarbelakang = DB::table('proyek')
             ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
             ->select('latar_belakang.id_proyek','latar_belakang')
             ->get();
-        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang]);
+        $pelanggan = DB::table('pelanggan')->get();
+        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang, 'pelanggan'=>$pelanggan]);
         // return view('AM.dashboard');
     }
 
@@ -60,6 +61,15 @@ class HomeController extends Controller
                 break;
         }
         
+        return redirect()->route('index');
+    }
+
+    public function deleteProyek($id_proyek)
+    {
+        $idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
+        DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete();
+        DB::table('latar_belakang')->where('id_proyek',$id_proyek)->delete();
+        DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
         return redirect()->route('index');
     }
 }

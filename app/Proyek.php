@@ -36,4 +36,11 @@ class Proyek extends Model
     {
         return $this->belongsTo('App\User', 'id_unit_kerja', 'id_unit_kerja');
     }
+
+    public function delete()
+    {
+        $this->checks()->delete();
+        $this->results()->delete();
+        parent::delete();
+    }
 }
