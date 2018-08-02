@@ -14,7 +14,7 @@ class AspekBisnis extends Model
 
     public function aspek()
     {
-    	return $this->hasMany('App\AspekBisnis', 'id_aspek', 'id_aspek');
+    	return $this->hasOne('App\AspekBisnis', 'id_aspek', 'id_aspek');
     }
 
     public function proyek()
