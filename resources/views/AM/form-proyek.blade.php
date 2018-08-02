@@ -47,13 +47,13 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <textarea class="form-control" rows="5" name="latar_belakang_1" value="{{$listproyek->latar_belakang_1}}"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <textarea class="form-control" rows="5" name="latar_belakang_2" value="{{$listproyek->latar_belakang_2}}"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
