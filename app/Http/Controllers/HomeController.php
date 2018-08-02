@@ -60,7 +60,16 @@ class HomeController extends Controller
         $proyek->status_pengajuan = $request->input('status_pengajuan');
         $proyek->save();
 
-        // dd($proyek);        
+        // dd($proyek);
+
+        $proyek2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->first();
+
+    if($proyek2->status_pengajuan == 1)
+    {     
         
         $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
         $obj = json_decode($json, true);
@@ -79,17 +88,10 @@ class HomeController extends Controller
                 $chatroom->save();
             }
         }
-        
-        $proyek2 = DB::table('proyek')
-            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
-            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
-            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
-            ->where('status_pengajuan','=',1)
-            ->first();
 
         $text = 
         "ALERT!
-Terdapat proyek baru yang telah disetujui '".$proyek2->judul."'
+Ada proyek baru yang telah disetujui '".$proyek2->judul."'
 Dengan rincian sebagai berikut:
         - Account Manager : ".Auth::user()->name."
         - Pelanggan : ".$proyek2->nama_pelanggan."
@@ -110,6 +112,14 @@ Dengan rincian sebagai berikut:
         $messageId = $response->getMessageId();
 
         return redirect()->route('index');
+    }
+    
+    else
+    {
+        return redirect()->route('index');
+    }
+
+        
     }
 
     public function deleteProyek($id_proyek)

@@ -63,7 +63,7 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $x=1; ?>
-                                @foreach($proyek->sortBy('id_proyek') as $listproyek)
+                                @foreach($proyek->where('status_pengajuan','=',NULL)->sortBy('id_proyek') as $listproyek)
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
@@ -234,7 +234,7 @@
                                                                 <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
                                                             </form>
                                                             <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="0" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
+                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="2" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -286,7 +286,7 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $y=1; ?>
-                                @foreach($proyek->where('status_pengajuan','=','1')->sortBy('id_proyek') as $proyeks)
+                                @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $proyeks)
                                 {{-- {{ $proyeks->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
@@ -451,6 +451,27 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <a href="{{ route('print', ['id' => $proyeks->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$proyeks->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="delete-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$proyeks->judul}}"</h4> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-material" action = "{{ route('proyek_delete', ['id_proyek' => $proyeks->id_proyek]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus proyek "{{$proyeks->judul}}"? </h5>
+                                                            <div class="form-group m-b-0">
+                                                                <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -639,6 +660,26 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <a href="{{ route('print', ['id' => $proyeks->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$proyeks->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="delete-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus "{{$proyeks->judul}}"</h4> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-material" action = "{{ route('proyek_delete', ['id_proyek' => $proyeks->id_proyek]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus proyek "{{$proyeks->judul}}"? </h5>
+                                                            <div class="form-group m-b-0">
+                                                                <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
                                     </td>
                                 </tr>
                                 @endforeach
