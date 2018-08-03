@@ -40,24 +40,27 @@
         <br>
         <br>
         <div class="row">
-            @if (session('status'))
+{{--             @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
-            @endif
+            @endif --}}
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
                         <table class="table color-table warning-table">
                             <thead>
                                 <tr>
-                                    <th colspan=6>ON PROGRESS</th>
+                                    <th colspan=10>ON PROGRESS</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Pelanggan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Deadline</th>
                                     <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
                                 </tr>
                             </thead>
@@ -66,11 +69,13 @@
                                 @foreach($proyek->where('status_pengajuan','=',NULL)->sortBy('id_proyek') as $listproyek)
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$listproyek->name}}</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
-                                    <td style="vertical-align: middle;">%</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
+                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
                                         <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -226,17 +231,6 @@
                                                                     </div>
                                                                 </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <div class="form-group m-b-0">
-                                                            <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
-                                                            </form>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="2" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>                                          
@@ -257,10 +251,11 @@
                         <table class="table color-table success-table">
                             <thead>
                                 <tr>
-                                    <th colspan=3>APPROVED</th>
+                                    <th colspan=5>APPROVED</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                 </tr>
@@ -271,6 +266,7 @@
                                 {{-- {{ $proyeks->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$proyeks->name}}</td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
@@ -451,6 +447,7 @@
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                 </tr>
@@ -460,6 +457,7 @@
                                 @foreach($proyek->where('status_pengajuan','=','2')->sortBy('id_proyek') as $proyeks)
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $z; $z=$z+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$proyeks->name}}</td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>

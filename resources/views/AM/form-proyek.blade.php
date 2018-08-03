@@ -47,13 +47,13 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_1" value="{{$listproyek->latar_belakang_1}}"></textarea>
+                                                    <textarea class="form-control" rows="5" name="latar_belakang_1">{{$listproyek->latar_belakang_1}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_2" value="{{$listproyek->latar_belakang_2}}"></textarea>
+                                                    <textarea class="form-control" rows="5" name="latar_belakang_2">{{$listproyek->latar_belakang_2}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -102,22 +102,28 @@
                                                 <label class="col-sm-3 control-label">Skema Bisnis</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
-                                                        @if($listproyek->skema_bisnis == 'Sewa Murni')
-                                                        <option value="Sewa Murni" selected>Sewa Murni</option>
+                                                        @if($listproyek->skema_bisnis == NULL)
+                                                            <option value="Sewa Murni">Sewa Murni</option>
+                                                            <option value="Sewa Beli">Sewa Beli</option>
+                                                            <option value="Pengadaan Beli">Pengadaan Beli</option>
                                                         @else
-                                                        <option value="Sewa Beli">Sewa Beli</option>
-                                                        @endif
+                                                            @if($listproyek->skema_bisnis == 'Sewa Murni')
+                                                                <option value="Sewa Murni" selected>Sewa Murni</option>
+                                                            @else
+                                                                <option value="Sewa Beli">Sewa Beli</option>
+                                                            @endif
 
-                                                        @if($listproyek->skema_bisnis == 'Sewa Beli')
-                                                        <option value="Sewa Beli" selected>Sewa Beli</option>
-                                                        @else
-                                                        <option value="Pengadaan Beli">Pengadaan Beli</option>
-                                                        @endif
+                                                            @if($listproyek->skema_bisnis == 'Sewa Beli')
+                                                                <option value="Sewa Beli" selected>Sewa Beli</option>
+                                                            @else
+                                                                <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                            @endif
 
-                                                        @if($listproyek->skema_bisnis == 'Pengadaan Beli')
-                                                        <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
-                                                        @else
-                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                            @if($listproyek->skema_bisnis == 'Pengadaan Beli')
+                                                                <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
+                                                            @else
+                                                                <option value="Sewa Beli">Sewa Beli</option>
+                                                            @endif
                                                         @endif
                                                     </select>
                                                 </div>

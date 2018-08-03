@@ -40,6 +40,7 @@
         <br>
         <br>
         <div class="row">
+
             @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
@@ -58,6 +59,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Deadline</th>
                                     <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
                                 </tr>
                             </thead>
@@ -68,7 +70,8 @@
                                     <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
-                                    <td style="vertical-align: middle;">%</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
+                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>

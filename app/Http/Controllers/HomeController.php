@@ -39,6 +39,7 @@ class HomeController extends Controller
     public function index()
     {
         $proyek = DB::table('proyek')
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek')
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
