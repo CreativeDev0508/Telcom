@@ -295,6 +295,7 @@
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $proyeks->id_pelanggan, 'id_proyek' => $proyeks->id_proyek, 'id_aspek' => $proyeks->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
                                         <div class="modal fade" id="approve-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
