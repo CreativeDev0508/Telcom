@@ -59,8 +59,8 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Deadline</th>
-                                    <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -74,10 +74,11 @@
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
-                                        <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
+                                        <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -252,6 +253,47 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fade" id="upload-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Upload File</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <div class="row">
+                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <hr>
+                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
+                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
+                                                                    </form>
+                                                                        
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -304,7 +346,8 @@
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
                                         <div class="modal fade" id="approve-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -471,8 +514,49 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <div class="modal fade" id="upload-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Upload File</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <div class="row">
+                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <hr>
+                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
+                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
+                                                                    </form>
+                                                                        
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
                                         <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -521,7 +605,7 @@
                                     <td style="vertical-align: middle;"><?php echo $z; $z=$z+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
                                         <div class="modal fade" id="failed-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -689,7 +773,7 @@
                                             <!-- /.modal-dialog -->
                                         </div>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
+                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
                                         <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">

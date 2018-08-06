@@ -40,6 +40,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1')->name('print');
 	Route::get('/home/delete/{id_proyek}','HomeController@deleteProyek')->name('proyek_delete');
 	Route::get('/home/status/{id_proyek}','HomeController@updateStatus')->name('status_update');
+	Route::post('/home/bukti/insert/{id_proyek}','HomeController@insertBukti')->name('bukti_insert');
+	Route::post('/home/bukti/update/{id_proyek}','HomeController@updateBukti')->name('bukti_update');
 
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan')->name('pelanggan');
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert');
