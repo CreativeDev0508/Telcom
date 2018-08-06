@@ -24,7 +24,7 @@
                 @foreach($pelanggan as $listpelanggan)
                 @foreach($proyek as $listproyek)
                 @foreach($aspek as $listaspek)
-                {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                {{-- {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} --}}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
