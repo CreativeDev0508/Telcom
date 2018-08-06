@@ -39,6 +39,7 @@ class HomeController extends Controller
     public function index()
     {
         $proyek = DB::table('proyek')
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek')
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
@@ -66,6 +67,7 @@ class HomeController extends Controller
             ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->where('proyek.id_proyek',$id_proyek)
             ->first();
 
     if($proyek2->status_pengajuan == 1)
@@ -96,7 +98,7 @@ Dengan rincian sebagai berikut:
         - Account Manager : ".Auth::user()->name."
         - Pelanggan : ".$proyek2->nama_pelanggan."
         - Ready for service : ".date('d F Y', strtotime($proyek2->ready_for_service))."
-        - Nilai kontrak : ".$proyek->nilai_kontrak."
+        - Nilai kontrak : ".number_format($proyek2->nilai_kontrak)."
 
         ";
 

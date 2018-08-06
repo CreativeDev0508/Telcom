@@ -67,4 +67,3 @@ Route::group(['middleware'=>['auth']], function()
 });
 Route::get('/yeboi', 'telegramController@sendMessage');
 Route::get('/karyawan-home', 'KaryawanController@index')->name('karyawan-home');
-

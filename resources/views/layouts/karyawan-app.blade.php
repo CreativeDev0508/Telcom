@@ -32,7 +32,7 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="{{ route('index') }}">
+                    <a class="logo" href="{{ route('index') }}"x>
                         <!-- Logo icon image, you can use font-icon also -->
                         <b>
                             <img src="{{ asset('asset/image/logo_sm.png') }}" alt="home" class="dark-logo light-logo" />
@@ -147,8 +147,8 @@
                         <div>
                             <img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle">
                         </div>
-                        <p style="font-size:16px;font-weight: 450;">{{ Auth::user()->name }}</p>
-                        <p style="font-size:12px;">{{ Auth::user()->jabatan->nama_jabatan }}</p>
+                        {{-- <p style="font-size:16px;font-weight: 450;">{{ Auth::user()->name }}</p> --}}
+                        {{-- <p style="font-size:12px;">{{ Auth::user()->jabatan->nama_jabatan }}</p> --}}
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
@@ -160,11 +160,11 @@
                    
                     <li class="devider"></li>
                     <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="waves-effect">
+                        <a href="{{ route('login') }}"  class="waves-effect">
                             <i class="mdi mdi-logout fa-fw"></i>
-                            <span class="hide-menu">Log out</span>
+                            <span class="hide-menu">Log in</span>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('login') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </li>
