@@ -161,6 +161,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
                                                 </div>
+                                                {{-- <img src="{{asset('images/'. $listproyek->file)}}"> --}}
                                             </div>
                                             {{-- @endif --}}
                                         </div>
