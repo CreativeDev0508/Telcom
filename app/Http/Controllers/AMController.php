@@ -141,6 +141,7 @@ class AMController extends Controller
 			$proyek->masa_kontrak = $request->input('masa_kontrak');
 			$proyek->alamat_delivery = $request->input('alamat_delivery');
 			$proyek->masa_kontrak = $request->input('masa_kontrak');
+			$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
 			$proyek->file = $name;
 			// dd($proyek);
 			$proyek->save();
