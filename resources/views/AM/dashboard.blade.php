@@ -19,15 +19,13 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
+<!-- CSS tambahan -->
+<link href="css/mystyle.css" rel="stylesheet">
+<!-- Toggle CSS -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
-<style>
-    .table > .detail-text > tr > td {
-        border-top: 0;
-    }
-    .fuckOffPadding > td{
-        padding: 1%;
-    }
-</style>
+
+
 @endsection
 
 @section('content')
@@ -74,7 +72,7 @@
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button>
                                         <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -232,13 +230,29 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
-                                                            <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
-                                                            </form>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="2" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
-                                                            </form>
+                                                            <table class="table table-borderless">
+                                                                <tbody class="detail-text text-left">
+                                                                    <tr id="footer-padding">
+                                                                        <td style="font-weight: 450; color: black">Status Pengajuan <span>
+                                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                                <input type="checkbox" checked data-toggle="toggle" data-on="Approved" data-off="Not Approved" data-onstyle="success" data-offstyle="default" data-width="150">
+                                                                            </form>
+                                                                        </td>   
+                                                                    </tr>
+                                                                    <tr id="footer-padding">
+                                                                        <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                    </tr>
+                                                                    <tr id="footer-padding">
+                                                                        <td>
+                                                                            <form class="col-sm-9">
+                                                                                    <textarea class="form-control" rows="5" name="keterangan" placeholder="Tulis keterangan tentang proyek di sini...."></textarea>
+                                                                                    <br>
+                                                                                     <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>                
                                                         </div>
                                                     </div>
                                                 </div>
@@ -295,7 +309,7 @@
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="modal fade" id="approve-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -417,7 +431,7 @@
                                                                                 <div id="aspekbisnis-approved-{{$proyeks->id_proyek}}" class="tab-pane">
                                                                                         <table class="table table-borderless">
                                                                                                 <tbody class="detail-text text-left">
-                                                                                                    <tr>
+                                                                                                    <tr >
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Layanan Revenue</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                         <td><span>{{$proyeks->layanan_revenue}}</span></td>
@@ -504,7 +518,7 @@
                                     <td style="vertical-align: middle;"><?php echo $z; $z=$z+1; ?></td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="modal fade" id="failed-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -728,4 +742,7 @@
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">
+    
+</script>
 @endsection
