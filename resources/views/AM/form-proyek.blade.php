@@ -105,7 +105,7 @@
                                                         @if($listproyek->skema_bisnis == NULL)
                                                             <option value="Sewa Murni">Sewa Murni</option>
                                                             <option value="Sewa Beli">Sewa Beli</option>
-                                                            <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                            <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
                                                         @else
                                                             @if($listproyek->skema_bisnis == 'Sewa Murni')
                                                                 <option value="Sewa Murni" selected>Sewa Murni</option>
@@ -116,11 +116,11 @@
                                                             @if($listproyek->skema_bisnis == 'Sewa Beli')
                                                                 <option value="Sewa Beli" selected>Sewa Beli</option>
                                                             @else
-                                                                <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                                <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
                                                             @endif
 
                                                             @if($listproyek->skema_bisnis == 'Pengadaan Beli')
-                                                                <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
+                                                                <option value="Pengadaan Beli Putus" selected>Pengadaan Beli Putus</option>
                                                             @else
                                                                 <option value="Sewa Beli">Sewa Beli</option>
                                                             @endif
@@ -129,7 +129,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Deadline</label>
+                                                <label class="col-sm-3 control-label">Saat Penggunaan</label>
                                                 <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
                                                     <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
                                                 </div>
