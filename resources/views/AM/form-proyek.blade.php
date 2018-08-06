@@ -34,8 +34,8 @@
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
-                                    {{-- {{ csrf_field() }} --}}
+                                <form enctype="multipart/form-data" class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
                                             <div class="form-group">
@@ -149,9 +149,20 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
+                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
                                                 </div>
                                             </div>
+                                            {{-- @if($listproyek->file != null)
+                                            <div class="form-group">
+                                            </div>
+                                            @else --}}
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
+                                                </div>
+                                            </div>
+                                            {{-- @endif --}}
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
