@@ -23,60 +23,79 @@
                 <br>
                 <br>
                 <div class="row">
+                    @foreach($pelanggan as $listpelanggan)
+                    @foreach($proyek as $listproyek)
+                    @foreach($aspek as $listaspek)
+                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} 
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert') }}" method = "post">
-                                {{ csrf_field() }}
+                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
+                                {{-- {{ csrf_field() }} --}}
                                 <div class="row">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
                                         <div class="col-sm-9">
                                             <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                                <option value="Bulanan">Bulanan</option>
+                                                @if($listaspek->layanan_revenue == 'Bulanan')
+                                                <option value="Bulanan" selected>Bulanan</option>
+                                                @else
                                                 <option value="Tahunan">Tahunan</option>
+                                                @endif
+
+                                                @if($listaspek->layanan_revenue == 'Tahunan')
+                                                <option value="Tahunan" selected>Tahunan</option>
+                                                @else
                                                 <option value="OTC">OTC</option>
+                                                @endif
+
+                                                @if($listaspek->layanan_revenue == 'Pengadaan Beli')
+                                                <option value="OTC" selected>OTC</option>
+                                                @else
+                                                <option value="Bulanan">Bulanan</option>
+                                                @endif
                                             </select>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak" value="{{$listaspek->nilai_kontrak}}"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg"> </div>
+                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
                                 </div>
                                 <div class="form-group m-b-0">
-                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-left m-t-30" style="color: #d51100; float: left; font-size: 250%"></i></a>
-                                    <a href="#" class="fcbtn btn btn-danger btn-1f m-t-10" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; background: #d51100; border: #d51100;">Simpan</a> --}}
+                                    <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
                                 </div>
-                                
                             </form>
                         </div>
                     </div>
                 </div>
-                <!--/.row -->
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+            @endforeach
+            @endforeach
+            @endforeach
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
+        <!--/.row -->
     </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
 @endsection
 
 @section('script')
