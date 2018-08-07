@@ -46,6 +46,7 @@
                 {{ session('status') }}
             </div>
             @endif
+            {{Auth::user()->id_jabatan}}
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
