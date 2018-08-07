@@ -89,6 +89,7 @@ class HomeController extends Controller
     {
         $proyek = Proyek::find($id_proyek);
         $proyek->status_pengajuan = $request->input('status_pengajuan');
+        $proyek->keterangan_proyek = $request->input('keterangan_proyek');
         $proyek->save();
 
         // dd($proyek);
