@@ -20,7 +20,7 @@
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
 {{-- Datatable --}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
 
 <style>
@@ -875,8 +875,8 @@
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-<script src="datatables/jquery.dataTables.min.js"></script>
-<script src="datatables/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
