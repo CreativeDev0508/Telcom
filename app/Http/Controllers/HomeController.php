@@ -16,8 +16,8 @@ use App\UnitKerja;
 use DB;
 use Auth;
 use Session;
-use Telegram\Bot\Api;
 use Telegram;
+use Telegram\Bot\Api;
 
 class HomeController extends Controller
 {
@@ -38,20 +38,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $proyek = DB::table('proyek')
-            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
-            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek')
-            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
-            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
-            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
-            ->get();
-        $latarbelakang = DB::table('proyek')
-            ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
-            ->select('latar_belakang.id_proyek','latar_belakang')
-            ->get();
-        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang]);
-        // return view('AM.dashboard');
+        $data['user'] = Auth::user();
+        // dd(Auth::user());
+        switch(Auth::user()->id_jabatan){
+            case 1:
+                $proyek = DB::table('proyek')
+                    ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+                    ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek')
+                    ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
+                    ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+                    ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+                    ->get();
+                return view('AM.dashboard', ['proyek'=>$proyek]);
+            case 2:
+                return redirect('/karyawan-home');
+                break;
+            case 3:
+                return redirect('/karyawan-home');
+                break;
+            default:
+                Auth::logout();
+                return redirect('/')->with('error','User tidak dikenali');
+        }
     }
+
 
     public function insertBukti(Request $request,$id_proyek)
     {
@@ -125,10 +135,10 @@ class HomeController extends Controller
         "ALERT!
 Ada proyek baru yang telah disetujui '".$proyek2->judul."'
 Dengan rincian sebagai berikut:
-        - Account Manager : ".Auth::user()->name."
-        - Pelanggan : ".$proyek2->nama_pelanggan."
-        - Ready for service : ".date('d F Y', strtotime($proyek2->ready_for_service))."
-        - Nilai kontrak : ".number_format($proyek2->nilai_kontrak)."
+    - Account Manager : ".Auth::user()->name."
+    - Pelanggan : ".$proyek2->nama_pelanggan."
+    - Ready for service : ".date('d F Y', strtotime($proyek2->ready_for_service))."
+    - Nilai kontrak : ".number_format($proyek2->nilai_kontrak)."
 
         ";
 

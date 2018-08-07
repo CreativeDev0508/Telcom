@@ -65,6 +65,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-mitra/delete/{id}','AMController@deleteMitra')->name('mitra_delete');
 
 	
+Route::get('/karyawan-home', 'KaryawanController@index')->name('karyawan-home');
+
+	
 });
 Route::get('/yeboi', 'telegramController@sendMessage');
-Route::get('/karyawan-home', 'KaryawanController@index')->name('karyawan-home');
