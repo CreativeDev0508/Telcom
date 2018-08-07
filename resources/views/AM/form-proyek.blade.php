@@ -30,12 +30,12 @@
                     @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
                     @foreach($aspek as $listaspek)
-                    {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} 
+                    {{-- {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}  --}}
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
-                                    {{-- {{ csrf_field() }} --}}
+                                <form enctype="multipart/form-data" class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
                                             <div class="form-group">
@@ -105,7 +105,7 @@
                                                         @if($listproyek->skema_bisnis == NULL)
                                                             <option value="Sewa Murni">Sewa Murni</option>
                                                             <option value="Sewa Beli">Sewa Beli</option>
-                                                            <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                            <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
                                                         @else
                                                             @if($listproyek->skema_bisnis == 'Sewa Murni')
                                                                 <option value="Sewa Murni" selected>Sewa Murni</option>
@@ -116,11 +116,11 @@
                                                             @if($listproyek->skema_bisnis == 'Sewa Beli')
                                                                 <option value="Sewa Beli" selected>Sewa Beli</option>
                                                             @else
-                                                                <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                                <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
                                                             @endif
 
                                                             @if($listproyek->skema_bisnis == 'Pengadaan Beli')
-                                                                <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
+                                                                <option value="Pengadaan Beli Putus" selected>Pengadaan Beli Putus</option>
                                                             @else
                                                                 <option value="Sewa Beli">Sewa Beli</option>
                                                             @endif
@@ -129,7 +129,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Deadline</label>
+                                                <label class="col-sm-3 control-label">Saat Penggunaan</label>
                                                 <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
                                                     <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
                                                 </div>
@@ -149,9 +149,21 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
+                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
                                                 </div>
                                             </div>
+                                            {{-- @if($listproyek->file != null)
+                                            <div class="form-group">
+                                            </div>
+                                            @else --}}
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
+                                                </div>
+                                                {{-- <img src="{{asset('images/'. $listproyek->file)}}"> --}}
+                                            </div>
+                                            {{-- @endif --}}
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
