@@ -40,6 +40,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/home/print/{id}', 'WordTemplateController@createWordDocxP1')->name('print');
 	Route::get('/home/delete/{id_proyek}','HomeController@deleteProyek')->name('proyek_delete');
 	Route::get('/home/status/{id_proyek}','HomeController@updateStatus')->name('status_update');
+	Route::post('/home/bukti/insert/{id_proyek}','HomeController@insertBukti')->name('bukti_insert');
+	Route::post('/home/bukti/update/{id_proyek}','HomeController@updateBukti')->name('bukti_update');
 
 	Route::get('/AM-form-pelanggan','AMController@indexPelanggan')->name('pelanggan');
 	Route::post('/AM-form-pelanggan/insert','AMController@insertPelanggan')->name('pelanggan_insert');
@@ -47,8 +49,7 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/AM-form-pelanggan/update/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@updatePelanggan')->name('pelanggan_update');
 
 	Route::get('/AM-form-proyek/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@indexProyek')->name('proyek_single');
-	Route::get('/AM-form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@insertProyek')->name('proyek_insert');
-	Route::get('/AM-form-proyek/update/{id_proyek}/(id_aspek)','AMController@updateProyek')->name('proyek_update');
+	Route::post('/AM-form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@insertProyek')->name('proyek_insert');
 
 	Route::get('/AM-form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@indexAspek')->name('aspek_single');
 	Route::get('/AM-form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AMController@insertAspek')->name('aspek_insert');

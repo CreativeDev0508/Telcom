@@ -19,6 +19,7 @@ use Auth;
 use Session;
 use Telegram\Bot\Api;
 use Telegram;
+// use Input;
 
 class AMController extends Controller
 {
@@ -116,35 +117,52 @@ class AMController extends Controller
 
 	public function insertProyek(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
     {
-		$proyek = Proyek::find($id_proyek);
-		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
-		$proyek->id_mitra = $request->input('id_mitra');
-		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-		$proyek->judul = $request->input('judul');
-		$proyek->id_unit_kerja = $request->input('id_unit_kerja');
-		$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
-		$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
-		$proyek->saat_penggunaan = $request->input('saat_penggunaan');
-		$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
-		$proyek->ready_for_service = $request->input('ready_for_service');
-		$proyek->skema_bisnis = $request->input('skema_bisnis');
-		$proyek->masa_kontrak = $request->input('masa_kontrak');
-		// $proyek->jenis_pelanggan = $request->input('jenis_pelanggan');
-		$proyek->alamat_delivery = $request->input('alamat_delivery');
-		$proyek->masa_kontrak = $request->input('masa_kontrak');
-		$proyek->save();
+    	// $this->validate($request, ['gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ]);
 
-		$pelanggan = Pelanggan::find($id_pelanggan);
-		$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-		$pelanggan->save();
+    	if($request->hasFile('file'))
+    	{
+			$file = $request->file('file');
+        	$name = $file->getClientOriginalName();
+        	$destinationPath = public_path('/images');
+        	$file->move($destinationPath, $name);
 
-		$aspek = AspekBisnis::find($id_aspek);
-		$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
-		$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
-		$aspek->save();
+			$proyek = Proyek::find($id_proyek);
+			$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+			$proyek->id_mitra = $request->input('id_mitra');
+			$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+			$proyek->judul = $request->input('judul');
+			$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+			$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+			$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
+			$proyek->saat_penggunaan = $request->input('saat_penggunaan');
+			$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
+			$proyek->ready_for_service = $request->input('ready_for_service');
+			$proyek->skema_bisnis = $request->input('skema_bisnis');
+			$proyek->masa_kontrak = $request->input('masa_kontrak');
+			$proyek->alamat_delivery = $request->input('alamat_delivery');
+			$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
+			$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
+			$proyek->file = $name;
+			// dd($proyek);
+			$proyek->save();
+
+			$pelanggan = Pelanggan::find($id_pelanggan);
+			$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+			$pelanggan->save();
+
+			$aspek = AspekBisnis::find($id_aspek);
+			$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
+			$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
+			$aspek->save();
 
 		// dd($proyek, $pelanggan, $aspek);
 		return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+		}
+		else
+		{
+			echo "File tidak ditemukan!";
+		}
+		
 	}
 
 
@@ -168,6 +186,10 @@ class AMController extends Controller
 		$aspek->nilai_kontrak = $request->input('nilai_kontrak');
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
+		$aspek->colocation = $request->input('colocation');
+		$aspek->revenue_connectivity = $request->input('revenue_connectivity');
+		$aspek->revenue_cpe_proyek = $request->input('revenue_cpe_proyek');
+		$aspek->revenue_cpe_mitra = $request->input('revenue_cpe_mitra');
 		$aspek->save();
 
 		$pelanggan = Pelanggan::find($id_pelanggan);
@@ -182,7 +204,7 @@ class AMController extends Controller
 
 		// dd($aspek,$pelanggan,$proyek);
 
-		// $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		// $json = file_get_contents('https://api.telegram.org/bot637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI/getUpdates');
 		// $obj = json_decode($json, true);
 		// $array = array();
 
@@ -223,7 +245,8 @@ class AMController extends Controller
 		// $messageId = $response->getMessageId();
 		
 		
-		// $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+		// $json = file_get_contents('https://api.telegram.org/bot637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI/getUpdates');
+		
 		
 		// $obj = json_decode($json, true);
 		// $array = array();
