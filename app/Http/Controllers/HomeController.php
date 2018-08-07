@@ -102,8 +102,7 @@ class HomeController extends Controller
 
     if($proyek2->status_pengajuan == 1)
     {     
-        
-        $json = file_get_contents('https://api.telegram.org/bot577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk/getUpdates');
+        $json = file_get_contents('https://api.telegram.org/bot637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI/getUpdates');
         $obj = json_decode($json, true);
         $array = array();
 
