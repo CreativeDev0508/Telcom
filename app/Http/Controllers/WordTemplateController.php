@@ -139,9 +139,10 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
-
+        list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
         // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
-        $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
+        // $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
+        $templateProcessor->setImg('selector',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
