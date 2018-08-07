@@ -13,6 +13,8 @@
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 @endsection
 
+
+
 @section('content')
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -27,15 +29,14 @@
                     <label>{{ Auth::user()->id }}</label> --}}
                     {{-- <label>ID</label> --}}
                     {{-- <label>{{$pelanggan->id_pelanggan}}</label> --}}
-                    @foreach($pelanggan as $listpelanggan)
                     @foreach($proyek as $listproyek)
-                    @foreach($aspek as $listaspek)
-                    {{-- {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}  --}}
+                        @foreach($pelanggan as $listpelanggan)
+                        {{ $listproyek->id_proyek }} {{ $listpelanggan->id_pelanggan }}
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form enctype="multipart/form-data" class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
-                                    {{ csrf_field() }}
+                                <form class="form-horizontal form-material" action="{{ route('proyek_update', ['id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
+                                    {{-- {{ csrf_field() }} --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
                                             <div class="form-group">
@@ -47,37 +48,19 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_1">{{$listproyek->latar_belakang_1}}</textarea>
+                                                    <textarea class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_2">{{$listproyek->latar_belakang_2}}</textarea>
+                                                    <textarea class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Alamat Delivery</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Alamat Delivery" name="alamat_delivery" value="{{$listproyek->alamat_delivery}}">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <label class="col-sm-3 control-label">Mekanisme Pembayaran</label>
-                                                <div class="col-sm-9">
-                                                    <select class="selectpicker m-b-20" data-style="form-control" name="mekanisme_pembayaran">
-                                                        @if($listproyek->rincian_pembayaran == 'Back to Back')
-                                                        <option value="Back to Back" selected>Back to Back</option>
-                                                        @else
-                                                        <option value="MRC">MRC</option>
-                                                        @endif
-                                                        
-                                                        @if($listproyek->rincian_pembayaran == 'MRC')
-                                                        <option value="MRC" selected>MRC</option>
-                                                        @else
-                                                        <option value="Back to Back">Back to Back</option>
-                                                        @endif
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -120,34 +103,28 @@
                                                 <label class="col-sm-3 control-label">Skema Bisnis</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="skema_bisnis">
-                                                        @if($listproyek->skema_bisnis == NULL)
-                                                            <option value="Sewa Murni">Sewa Murni</option>
-                                                            <option value="Sewa Beli">Sewa Beli</option>
-                                                            <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
+                                                        @if($listproyek->skema_bisnis == 'Sewa Murni')
+                                                        <option value="Sewa Murni" selected>Sewa Murni</option>
                                                         @else
-                                                            @if($listproyek->skema_bisnis == 'Sewa Murni')
-                                                                <option value="Sewa Murni" selected>Sewa Murni</option>
-                                                            @else
-                                                                <option value="Sewa Beli">Sewa Beli</option>
-                                                            @endif
+                                                        <option value="Sewa Beli">Sewa Beli</option>
+                                                        @endif
 
-                                                            @if($listproyek->skema_bisnis == 'Sewa Beli')
-                                                                <option value="Sewa Beli" selected>Sewa Beli</option>
-                                                            @else
-                                                                <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
-                                                            @endif
+                                                        @if($listproyek->skema_bisnis == 'Sewa Beli')
+                                                        <option value="Sewa Beli" selected>Sewa Beli</option>
+                                                        @else
+                                                        <option value="Pengadaan Beli">Pengadaan Beli</option>
+                                                        @endif
 
-                                                            @if($listproyek->skema_bisnis == 'Pengadaan Beli')
-                                                                <option value="Pengadaan Beli Putus" selected>Pengadaan Beli Putus</option>
-                                                            @else
-                                                                <option value="Sewa Beli">Sewa Beli</option>
-                                                            @endif
+                                                        @if($listproyek->skema_bisnis == 'Pengadaan Beli')
+                                                        <option value="Pengadaan Beli" selected>Pengadaan Beli</option>
+                                                        @else
+                                                        <option value="Sewa Murni">Sewa Murni</option>
                                                         @endif
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Saat Penggunaan</label>
+                                                <label class="col-sm-3 control-label">Deadline</label>
                                                 <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
                                                     <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
                                                 </div>
@@ -167,32 +144,19 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
+                                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                                 </div>
                                             </div>
-                                            {{-- @if($listproyek->file != null)
-                                            <div class="form-group">
-                                            </div>
-                                            @else --}}
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File</label>
-                                                <div class="col-sm-9">
-                                                    <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
-                                                </div>
-                                                {{-- <img src="{{asset('images/'. $listproyek->file)}}"> --}}
-                                            </div>
-                                            {{-- @endif --}}
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                         <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    @endforeach
-                    @endforeach
+                        @endforeach
                     @endforeach
                 </div>
         <!--/.row -->

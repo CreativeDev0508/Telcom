@@ -140,7 +140,7 @@ class AMController extends Controller
 			$proyek->skema_bisnis = $request->input('skema_bisnis');
 			$proyek->masa_kontrak = $request->input('masa_kontrak');
 			$proyek->alamat_delivery = $request->input('alamat_delivery');
-			$proyek->masa_kontrak = $request->input('masa_kontrak');
+			$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
 			$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
 			$proyek->file = $name;
 			// dd($proyek);
@@ -186,6 +186,10 @@ class AMController extends Controller
 		$aspek->nilai_kontrak = $request->input('nilai_kontrak');
 		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
+		$aspek->colocation = $request->input('colocation');
+		$aspek->revenue_connectivity = $request->input('revenue_connectivity');
+		$aspek->revenue_cpe_proyek = $request->input('revenue_cpe_proyek');
+		$aspek->revenue_cpe_mitra = $request->input('revenue_cpe_mitra');
 		$aspek->save();
 
 		$pelanggan = Pelanggan::find($id_pelanggan);

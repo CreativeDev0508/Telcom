@@ -8,7 +8,7 @@ class AspekBisnis extends Model
 {
     protected $table = 'aspek_bisnis';
     protected $primaryKey = 'id_aspek';
-    protected $fillable = ['layanan_revenue','beban_mitra','nilai_kontrak','margin_tg','rp_margin'];
+    protected $fillable = ['layanan_revenue','beban_mitra','nilai_kontrak','margin_tg','rp_margin','colocation','revenue_connectivity','revenue_cpe_proyek','revenue_cpe_mitra'];
     public $incrementing = true;
     public $timestamp = true;
 
