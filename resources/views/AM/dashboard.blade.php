@@ -19,6 +19,9 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
+{{-- Datatable --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+
 
 <style>
     .table > .detail-text > tr > td {
@@ -49,7 +52,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table">
+                        <table class="table color-table warning-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=6>ON PROGRESS</th>
@@ -361,7 +364,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table">
+                        <table class="table color-table success-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=3>APPROVED</th>
@@ -622,7 +625,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table danger-table">
+                        <table class="table color-table danger-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=3>FAILED</th>
@@ -872,4 +875,20 @@
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+<script src="datatables/jquery.dataTables.min.js"></script>
+<script src="datatables/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#example').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
+    $('#example2').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
 @endsection
