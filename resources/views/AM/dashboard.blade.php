@@ -46,7 +46,7 @@
                 {{ session('status') }}
             </div>
             @endif
-            {{Auth::user()->id_jabatan}}
+            {{-- {{Auth::user()->id_jabatan}} --}}
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
@@ -458,16 +458,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$listproyek->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $listproyek->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
@@ -570,11 +560,11 @@
                                                      <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
-                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$proyeks->id_proyek]) }}" method = "get">
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
                                                                     <tbody class="detail-text text-left">
                                                                         <tr id="footer-padding">
                                                                             <td style="font-weight: 450; color: black">Status Pengajuan
-                                                                                @if($proyeks->status_pengajuan == 1)
+                                                                                @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-toggle" data-toggle="buttons">
                                                                                     <label class="btn btn-success active">
                                                                                       <input type="radio" name="status_pengajuan" value="1"> APPROVED
@@ -591,7 +581,7 @@
                                                                         </tr>
                                                                         <tr id="footer-padding">
                                                                             <td>
-                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$proyeks->keterangan_proyek}}</textarea>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
                                                                                     <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
                                                                             </td>
                                                                         </tr>
@@ -749,16 +739,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$listproyek->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $listproyek->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
