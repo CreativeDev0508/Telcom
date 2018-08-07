@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Word;
 
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\Template;
 use PhpOffice\PhpWord\Settings;
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\AspekBisnis;
 use App\Jabatan;
@@ -16,7 +17,7 @@ use App\User;
 use App\UnitKerja;
 use DB;
 
-class WordTemplateController extends Controller
+class TemplateController extends Controller
 {
 
     public function createWordDocxP0(){
@@ -120,6 +121,7 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 
         // H. USULAN MEKANISME PEMBAYARAN PADA MITRA
+        $templateProcessor->setValue('mekanismePembayaran', $proyek->mekanisme_pembayaran);
         $strikethrough = implode('̶', str_split(strtoupper($proyek->jenis_pelanggan)));
         if($proyek->mekanisme_pembayaran == 'Sebelum'){
             $templateProcessor->setValue('rincianPembayaran1', 'Dilakukan dengan menunggu pembayaran dari Pelanggan '.strtoupper($proyek->jenis_pelanggan));
@@ -139,9 +141,10 @@ class WordTemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
-
+        list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
         // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
-        $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
+        // $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
+        $templateProcessor->setImg('selector',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');

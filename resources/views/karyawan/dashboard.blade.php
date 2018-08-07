@@ -76,7 +76,7 @@
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
                                         <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
@@ -130,16 +130,6 @@
                                                                                                             <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                             <td><span>{{$listproyek->judul}}</span></td>
                                                                                                         </tr>
-                                                                                                        <?php $i=1; ?>
-                                                                                                        @foreach($latarbelakang as $lb)
-                                                                                                        @if($lb->id_proyek === $listproyek->id_proyek)
-                                                                                                        <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                        </tr>
-                                                                                                        @endif
-                                                                                                        @endforeach
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
@@ -269,7 +259,7 @@
                                     <td style="vertical-align: middle;">{{$proyeks->name}}</td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$proyeks->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="modal fade" id="approve-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -322,16 +312,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$proyeks->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $proyeks->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
@@ -460,7 +440,7 @@
                                     <td style="vertical-align: middle;">{{$proyeks->name}}</td>
                                     <td style="vertical-align: middle;">{{$proyeks->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-search"></i></button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#failed-{{$proyeks->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="modal fade" id="failed-{{$proyeks->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -513,16 +493,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$proyeks->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $proyeks->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>

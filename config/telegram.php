@@ -33,8 +33,8 @@ return [
     */
     'bots'                         => [
         'mybot' => [
-            'username'            => 'TelegramBot',
-            'token'               => env('TELEGRAM_BOT_TOKEN', '577845467:AAGE3dmgDDvE9MIDAY3Cyd9wYQQG07xF5Nk'),
+            'username'            => 'telkom_justifikasi_bot',
+            'token'               => env('TELEGRAM_BOT_TOKEN', '637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands'            => [

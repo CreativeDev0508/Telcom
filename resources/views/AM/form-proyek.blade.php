@@ -198,7 +198,7 @@
         <!--/.row -->
             </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+    <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
     </div>
 <!-- ============================================================== -->
 <!-- End Page Content -->
