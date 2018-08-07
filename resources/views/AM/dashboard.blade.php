@@ -602,11 +602,11 @@
                                                      <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
-                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$proyeks->id_proyek]) }}" method = "get">
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
                                                                     <tbody class="detail-text text-left">
                                                                         <tr id="footer-padding">
                                                                             <td style="font-weight: 450; color: black">Status Pengajuan
-                                                                                @if($proyeks->status_pengajuan == 1)
+                                                                                @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-toggle" data-toggle="buttons">
                                                                                     <label class="btn btn-success active">
                                                                                       <input type="radio" name="status_pengajuan" value="1"> APPROVED
@@ -623,7 +623,7 @@
                                                                         </tr>
                                                                         <tr id="footer-padding">
                                                                             <td>
-                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$proyeks->keterangan_proyek}}</textarea>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
                                                                                     <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
                                                                             </td>
                                                                         </tr>
