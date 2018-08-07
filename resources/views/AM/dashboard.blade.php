@@ -231,27 +231,33 @@
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
-                                                                <tbody class="detail-text text-left">
-                                                                    <tr id="footer-padding">
-                                                                        <td style="font-weight: 450; color: black">Status Pengajuan <span>
-                                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                                <input type="checkbox" checked data-toggle="toggle" data-on="Approved" data-off="Not Approved" data-onstyle="success" data-offstyle="default" data-width="150">
-                                                                            </form>
-                                                                        </td>   
-                                                                    </tr>
-                                                                    <tr id="footer-padding">
-                                                                        <td style="font-weight: 450; color: black">Keterangan</td>
-                                                                    </tr>
-                                                                    <tr id="footer-padding">
-                                                                        <td>
-                                                                            <form class="col-sm-9">
-                                                                                    <textarea class="form-control" rows="5" name="keterangan" placeholder="Tulis keterangan tentang proyek di sini...."></textarea>
-                                                                                    <br>
-                                                                                     <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
-                                                                            </form>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Status Pengajuan
+                                                                                @if($listproyek->status_pengajuan == NULL)
+                                                                                <div class="btn-group btn-toggle" data-toggle="buttons">
+                                                                                    <label class="btn btn-default">
+                                                                                      <input type="radio" name="status_pengajuan" value="1">APPROVED
+                                                                                    </label>
+                                                                                    <label class="btn btn-success active">
+                                                                                      <input type="radio" name="status_pengajuan" value="" checked="">NOT APPROVED
+                                                                                    </label>
+                                                                                  </div>
+                                                                                @endif
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                 </form>   
                                                             </table>                
                                                         </div>
                                                     </div>
@@ -462,7 +468,40 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                    </div>
+                                                     <div class="modal-footer">
+                                                        <div class="form-group m-b-0">
+                                                            <table class="table table-borderless">
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$proyeks->id_proyek]) }}" method = "get">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Status Pengajuan
+                                                                                @if($proyeks->status_pengajuan == 1)
+                                                                                <div class="btn-group btn-toggle" data-toggle="buttons">
+                                                                                    <label class="btn btn-success active">
+                                                                                      <input type="radio" name="status_pengajuan" value="1"> APPROVED
+                                                                                    </label>
+                                                                                    <label class="btn btn-default">
+                                                                                      <input type="radio" name="status_pengajuan" value="" checked="">NOT APPROVED
+                                                                                    </label>
+                                                                                  </div>
+                                                                                @endif
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$proyeks->keterangan_proyek}}</textarea>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                 </form>   
+                                                            </table>                
                                                         </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.modal-content -->
                                             </div>
@@ -738,11 +777,29 @@
         new CBPFWTabs(el);
     });
 });
+
+$('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active');  
+    
+    if ($(this).find('.btn-primary').size()>0) {
+        $(this).find('.btn').toggleClass('btn-primary');
+    }
+    if ($(this).find('.btn-danger').size()>0) {
+        $(this).find('.btn').toggleClass('btn-danger');
+    }
+    if ($(this).find('.btn-success').size()>0) {
+        $(this).find('.btn').toggleClass('btn-success');
+    }
+    if ($(this).find('.btn-info').size()>0) {
+        $(this).find('.btn').toggleClass('btn-info');
+    }
+    
+    $(this).find('.btn').toggleClass('btn-default');
+       
+});
 </script>
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">
-    
-</script>
+<!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 @endsection
