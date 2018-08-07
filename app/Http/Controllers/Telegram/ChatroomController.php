@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Telegram;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-use Telegram;
-use Telegram\Bot\Api;
+use App\Http\Controllers\Controller;
 use App\Chatroom;
 use DB;
+use Telegram;
+use Telegram\Bot\Api;
 
-class telegramController extends Controller
+class ChatroomController extends Controller
 {
-    public function sendMessage(){
-
+    public function sendMessage()
+    {
         // $response = Telegram::sendMessage([
         //     'chat_id' => '-180862215', 
         //     'text' => 'Hello World'
