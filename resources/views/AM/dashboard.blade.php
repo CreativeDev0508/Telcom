@@ -19,15 +19,15 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
+<!-- CSS tambahan -->
+<link href="css/mystyle.css" rel="stylesheet">
+<!-- Toggle CSS -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{{-- Datatable --}}
+<link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
-<style>
-    .table > .detail-text > tr > td {
-        border-top: 0;
-    }
-    .fuckOffPadding > td{
-        padding: 1%;
-    }
-</style>
+
+
 @endsection
 
 @section('content')
@@ -49,7 +49,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table">
+                        <table class="table color-table warning-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=6>ON PROGRESS</th>
@@ -275,13 +275,35 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
-                                                            <label style="float: left;" class="control-label m-l-20">Status Pengajuan: </label>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="1" class="btn btn-success waves-effect waves-light m-l-10">Approve</button>
-                                                            </form>
-                                                            <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
-                                                                <button type="submit" style="float: left;" name="status_pengajuan" value="2" class="btn btn-danger waves-effect waves-light m-l-10">Disapprove</button>
-                                                            </form>
+                                                            <table class="table table-borderless">
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Status Pengajuan
+                                                                                @if($listproyek->status_pengajuan == NULL)
+                                                                                <div class="btn-group btn-toggle" data-toggle="buttons">
+                                                                                    <label class="btn btn-default">
+                                                                                      <input type="radio" name="status_pengajuan" value="1">APPROVED
+                                                                                    </label>
+                                                                                    <label class="btn btn-success active">
+                                                                                      <input type="radio" name="status_pengajuan" value="" checked="">NOT APPROVED
+                                                                                    </label>
+                                                                                  </div>
+                                                                                @endif
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                 </form>   
+                                                            </table>                
                                                         </div>
                                                     </div>
                                                 </div>
@@ -360,7 +382,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table">
+                        <table class="table color-table success-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=3>APPROVED</th>
@@ -576,7 +598,40 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                    </div>
+                                                     <div class="modal-footer">
+                                                        <div class="form-group m-b-0">
+                                                            <table class="table table-borderless">
+                                                                <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$proyeks->id_proyek]) }}" method = "get">
+                                                                    <tbody class="detail-text text-left">
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Status Pengajuan
+                                                                                @if($proyeks->status_pengajuan == 1)
+                                                                                <div class="btn-group btn-toggle" data-toggle="buttons">
+                                                                                    <label class="btn btn-success active">
+                                                                                      <input type="radio" name="status_pengajuan" value="1"> APPROVED
+                                                                                    </label>
+                                                                                    <label class="btn btn-default">
+                                                                                      <input type="radio" name="status_pengajuan" value="" checked="">NOT APPROVED
+                                                                                    </label>
+                                                                                  </div>
+                                                                                @endif
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td>
+                                                                                    <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$proyeks->keterangan_proyek}}</textarea>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                 </form>   
+                                                            </table>                
                                                         </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.modal-content -->
                                             </div>
@@ -655,7 +710,7 @@
             <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table danger-table">
+                        <table class="table color-table danger-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=3>FAILED</th>
@@ -935,8 +990,45 @@
         new CBPFWTabs(el);
     });
 });
+
+$('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active');  
+    
+    if ($(this).find('.btn-primary').size()>0) {
+        $(this).find('.btn').toggleClass('btn-primary');
+    }
+    if ($(this).find('.btn-danger').size()>0) {
+        $(this).find('.btn').toggleClass('btn-danger');
+    }
+    if ($(this).find('.btn-success').size()>0) {
+        $(this).find('.btn').toggleClass('btn-success');
+    }
+    if ($(this).find('.btn-info').size()>0) {
+        $(this).find('.btn').toggleClass('btn-info');
+    }
+    
+    $(this).find('.btn').toggleClass('btn-default');
+       
+});
 </script>
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#example').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
+    $('#example2').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
+<!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 @endsection

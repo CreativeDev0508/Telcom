@@ -10,7 +10,9 @@
         "irazasyed/telegram-bot-sdk": "3.*@dev",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "phpoffice/phpword": "v0.15.*"
+        "phpoffice/phpword": "0.14.0",
+        "zendframework/zend-stdlib": "^3.2",
+        "zendframework/zend-validator": "^2.10"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
