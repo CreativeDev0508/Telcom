@@ -13,3 +13,5 @@ yarn-error.log
 .env
 
 public/results/
+
+public/images/

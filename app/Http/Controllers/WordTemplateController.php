@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\Template;
 use PhpOffice\PhpWord\Settings;
 use Carbon\Carbon;
 use App\AspekBisnis;
@@ -20,7 +20,7 @@ class WordTemplateController extends Controller
 {
 
     public function createWordDocxP0(){
-        $templateProcessor = new TemplateProcessor('template/template_p0.docx');
+        $templateProcessor = new Template('template/template_p0.docx');
         $templateProcessor->setValue('rowValue#1', 'Sun');
 
         $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
@@ -56,7 +56,7 @@ class WordTemplateController extends Controller
         // $mitra = DB::table('')->where('','=',$id)->first();
         // $aspekbisnis = DB::table('AspekBisnis')->where('id_proyek','=',$id)->first();
         
-        $templateProcessor = new TemplateProcessor('template/template_p1.docx');
+        $templateProcessor = new Template('template/template_p1_v2.docx');
         $templateProcessor->setValue('jenisPelanggan', strtoupper($proyek->jenis_pelanggan));
         $templateProcessor->setValue('judul', $proyek->judul);
         $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
@@ -141,6 +141,7 @@ class WordTemplateController extends Controller
 
 
         // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
+        $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');

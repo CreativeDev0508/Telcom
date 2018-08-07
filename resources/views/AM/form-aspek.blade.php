@@ -32,50 +32,76 @@
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
                             <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                 {{-- {{ csrf_field() }} --}}
-                                <div class="row">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <div class="row">
+                                            <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
+                                                    @if($listaspek->layanan_revenue == 'Bulanan')
+                                                    <option value="Bulanan" selected>Bulanan</option>
+                                                    @else
+                                                    <option value="Tahunan">Tahunan</option>
+                                                    @endif
+
+                                                    @if($listaspek->layanan_revenue == 'Tahunan')
+                                                    <option value="Tahunan" selected>Tahunan</option>
+                                                    @else
+                                                    <option value="OTC">OTC</option>
+                                                    @endif
+
+                                                    @if($listaspek->layanan_revenue == 'Pengadaan Beli')
+                                                    <option value="OTC" selected>OTC</option>
+                                                    @else
+                                                    <option value="Bulanan">Bulanan</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
                                         <div class="col-sm-9">
-                                            <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                                @if($listaspek->layanan_revenue == 'Bulanan')
-                                                <option value="Bulanan" selected>Bulanan</option>
-                                                @else
-                                                <option value="Tahunan">Tahunan</option>
-                                                @endif
-
-                                                @if($listaspek->layanan_revenue == 'Tahunan')
-                                                <option value="Tahunan" selected>Tahunan</option>
-                                                @else
-                                                <option value="OTC">OTC</option>
-                                                @endif
-
-                                                @if($listaspek->layanan_revenue == 'Pengadaan Beli')
-                                                <option value="OTC" selected>OTC</option>
-                                                @else
-                                                <option value="Bulanan">Bulanan</option>
-                                                @endif
-                                            </select>
-                                        </div>
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak" value="{{$listaspek->nilai_kontrak}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
+                                <div class="row col-sm-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Colocation</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Colocation" name="colocation" value="{{$listaspek->colocation}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Revenue Connectivity</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue Connectivity" name="revenue_connectivity" value="{{$listaspek->revenue_connectivity}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Revenue CPE Proyek</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue CPE Proyek" name="revenue_cpe_proyek" value="{{$listaspek->revenue_cpe_proyek}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Revenue CPE Mitra</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue CPE Mitra" name="revenue_cpe_mitra" value="{{$listaspek->revenue_cpe_mitra}}"> </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak" value="{{$listaspek->nilai_kontrak}}"> </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
-                                </div>
+                            </div>
                                 <div class="form-group m-b-0">
                                     <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>

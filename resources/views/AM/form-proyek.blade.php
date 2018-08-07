@@ -63,6 +63,24 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <label class="col-sm-3 control-label">Mekanisme Pembayaran</label>
+                                                <div class="col-sm-9">
+                                                    <select class="selectpicker m-b-20" data-style="form-control" name="mekanisme_pembayaran">
+                                                        @if($listproyek->rincian_pembayaran == 'Back to Back')
+                                                        <option value="Back to Back" selected>Back to Back</option>
+                                                        @else
+                                                        <option value="MRC">MRC</option>
+                                                        @endif
+                                                        
+                                                        @if($listproyek->rincian_pembayaran == 'MRC')
+                                                        <option value="MRC" selected>MRC</option>
+                                                        @else
+                                                        <option value="Back to Back">Back to Back</option>
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <label class="col-sm-3 control-label">Rincian Pola Pembayaran</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="rincian_pembayaran">
@@ -149,7 +167,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Masa Kontrak</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak">
+                                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                                 </div>
                                             </div>
                                             {{-- @if($listproyek->file != null)
