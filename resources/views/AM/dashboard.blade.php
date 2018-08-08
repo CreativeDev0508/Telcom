@@ -48,7 +48,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table" id="example">
+                        <table class="table color-table warning-table example">
                             <thead>
                                 <tr>
                                     <th colspan=6>SEDANG BERJALAN</th>
@@ -405,7 +405,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table" id="example">
+                        <table class="table color-table success-table example">
                             <thead>
                                 <tr>
                                     <th colspan=6>SUDAH DISETUJUI</th>
@@ -798,14 +798,14 @@ $('.btn-toggle').click(function() {
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('#example').DataTable(
+    $('.example').DataTable(
     {
         "pagingType": "full_numbers"
     } );
-    $('#example2').DataTable(
-    {
-        "pagingType": "full_numbers"
-    } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
 } );
 </script>
 <script>
