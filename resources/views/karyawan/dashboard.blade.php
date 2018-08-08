@@ -130,16 +130,6 @@
                                                                                                             <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                             <td><span>{{$listproyek->judul}}</span></td>
                                                                                                         </tr>
-                                                                                                        <?php $i=1; ?>
-                                                                                                        @foreach($latarbelakang as $lb)
-                                                                                                        @if($lb->id_proyek === $listproyek->id_proyek)
-                                                                                                        <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                        </tr>
-                                                                                                        @endif
-                                                                                                        @endforeach
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
@@ -322,16 +312,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$proyeks->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $proyeks->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
@@ -513,16 +493,6 @@
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
                                                                                                                 <td><span>{{$proyeks->judul}}</span></td>
                                                                                                             </tr>
-                                                                                                            <?php $i=1; ?>
-                                                                                                            @foreach($latarbelakang as $lb)
-                                                                                                            @if($lb->id_proyek === $proyeks->id_proyek)
-                                                                                                            <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Latar Belakang <?php echo $i; $i=$i+1; ?></span></td>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td style="text-align: justify;">{{$lb->latar_belakang}}</td>
-                                                                                                            </tr>
-                                                                                                            @endif
-                                                                                                            @endforeach
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
