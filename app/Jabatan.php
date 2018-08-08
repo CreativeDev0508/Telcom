@@ -14,6 +14,6 @@ class Jabatan extends Model
 
     public function user()
     {
-        return $this->hasMany('App\User', 'id_jabatan');
+        return $this->hasMany('App\User', 'id_jabatan','id');
     }
 }

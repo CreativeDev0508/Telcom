@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Karyawan;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
 use App\AspekBisnis;
 use App\ChatRoom;
 use App\Jabatan;
@@ -16,10 +17,11 @@ use App\UnitKerja;
 use DB;
 use Auth;
 use Session;
-use Telegram\Bot\Api;
 use Telegram;
+use Telegram\Bot\Api;
 
-class KaryawanController extends Controller
+
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,6 +38,12 @@ class KaryawanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $proyek = DB::table('proyek')
@@ -45,12 +53,8 @@ class KaryawanController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
-        // $latarbelakang = DB::table('proyek')
-        //     ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
-        //     ->select('latar_belakang.id_proyek','latar_belakang')
-        //     ->get();
-        $pelanggan = DB::table('pelanggan')->get();
-        return view('karyawan.dashboard', ['proyek'=>$proyek, 'pelanggan'=>$pelanggan]);
+
+        return view('karyawan.dashboard', ['proyek'=>$proyek]);
         // return view('AM.dashboard');
     }
 

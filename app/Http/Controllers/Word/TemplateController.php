@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Word;
 
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\Template;
 use PhpOffice\PhpWord\Settings;
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\AspekBisnis;
 use App\Jabatan;
@@ -16,7 +17,7 @@ use App\User;
 use App\UnitKerja;
 use DB;
 
-class WordTemplateController extends Controller
+class TemplateController extends Controller
 {
 
     public function createWordDocxP0(){
