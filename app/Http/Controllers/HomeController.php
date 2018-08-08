@@ -45,11 +45,11 @@ class HomeController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
-        $latarbelakang = DB::table('proyek')
-            ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
-            ->select('latar_belakang.id_proyek','latar_belakang')
-            ->get();
-        return view('AM.dashboard', ['proyek'=>$proyek,'latarbelakang'=>$latarbelakang]);
+        // $latarbelakang = DB::table('proyek')
+        //     ->leftjoin('latar_belakang','latar_belakang.id_proyek','=','proyek.id_proyek')
+        //     ->select('latar_belakang.id_proyek','latar_belakang')
+        //     ->get();
+        return view('AM.dashboard', ['proyek'=>$proyek]);
         // return view('AM.dashboard');
     }
 
