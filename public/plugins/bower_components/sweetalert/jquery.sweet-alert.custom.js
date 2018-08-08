@@ -19,7 +19,16 @@
 
     //Success Message
     $('#sa-success').click(function(){
-        swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
+        swal("Proyek Telah Disetujui.", "", "success")
+    });
+
+    $('#sa-save').click(function(){
+        swal("Tersimpan!", "Proyek berhasil ditambahkan.", "success")
+    });
+
+    $('#sa-problem').click(function(){
+        var ket = "<?php echo $ket ?>"
+        swal("Proyek Bermasalah!", ket, "warning")
     });
 
     //Warning Message
