@@ -305,11 +305,11 @@
                                                                                     </label>
                                                                                 </div> --}}
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
-                                                                                    <label class="btn btn-success active approved">
-                                                                                        <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> APPROVED
+                                                                                    <label class="btn btn-success btn-outline approved">
+                                                                                        <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                                     </label>
-                                                                                    <label class="btn btn-danger btn-outline notApproved">
-                                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> NOT APPROVED
+                                                                                    <label class="btn btn-danger active notApproved">
+                                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
                                                                                     </label>
                                                                                 </div>
                                                                                 @endif
@@ -408,7 +408,7 @@
                         <table class="table color-table success-table example">
                             <thead>
                                 <tr>
-                                    <th colspan=6>SUDAH DISETUJUI</th>
+                                    <th colspan=7>SUDAH DISETUJUI</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
@@ -417,6 +417,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -641,10 +642,10 @@
                                                                                 @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
                                                                                         <label class="btn btn-success active approved">
-                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> APPROVED
+                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                                         </label>
                                                                                         <label class="btn btn-danger btn-outline notApproved">
-                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> NOT APPROVED
+                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
                                                                                         </label>
                                                                                     </div>
                                                                                 @endif
@@ -727,6 +728,8 @@
                                             </div>
                                         </div>                                            
                                     </td>
+                                    <td>
+                                      
                                 </tr>
                                 @endforeach
                             </tbody>
