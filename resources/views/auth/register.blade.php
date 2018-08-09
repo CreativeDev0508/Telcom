@@ -29,7 +29,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input style="text-align: center" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
+                        <input style="text-align: center" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Kata Sandi">
 
                         @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert" style="color: white">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input style="text-align: center" id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Confirm Password">      
+                        <input style="text-align: center" id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Konfirmasi Kata Sandi">      
                     </div>
                     <div class="form-group">
                         <input style="text-align: center" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus placeholder="Nama Lengkap">
@@ -59,13 +59,13 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">SIGN UP</button>
+                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">DAFTAR</button>
                     <div>
                         <br>
                     </div>
                     <div class="login mx-auto">
                         <p style="color: white">Sudah punya akun?</p>
-                        <a class="login-a" href="{{ route('login') }}">Login</a>
+                        <a class="login-a" href="{{ route('login') }}">Masuk</a>
                     </div>
                     {{-- <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

@@ -35,11 +35,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">SIGN UP</button>
+                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">DAFTAR</button>
                     <div><br></div>
                     <div class="login mx-auto">
                             <p style="color: white">Sudah punya akun?</p>
-                            <a class="login-a" href="{{ url('/login') }}">Login</a>
+                            <a class="login-a" href="{{ url('/login') }}">Masuk</a>
                     </div>
                 </form>
             </div>

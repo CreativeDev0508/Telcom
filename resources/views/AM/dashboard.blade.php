@@ -62,7 +62,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -160,7 +160,6 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">File</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
@@ -187,9 +186,9 @@
                                                                                                             <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                            <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -422,7 +421,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -560,9 +559,9 @@
                                                                                                                 <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                                <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                                <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -645,10 +644,10 @@
                                                                                         </div>
                                                                                     </div>    
                                                                                 </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                        </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
