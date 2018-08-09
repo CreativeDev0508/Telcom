@@ -75,11 +75,17 @@
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
-                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
+                                        <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
+                                        </span>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
+                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
+                                        </span>
+                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
+                                        {{-- <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span> --}}
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -447,11 +453,17 @@
                                         </div>
                                     </td>
                                     <td style="vertical-align: middle;">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
-                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
+                                        <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
+                                        </span>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
+                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
+                                        </span>
+                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
+                                        {{-- <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span> --}}
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">

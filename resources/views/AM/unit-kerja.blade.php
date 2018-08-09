@@ -8,7 +8,7 @@
     <!-- Custom CSS --> 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
     <!-- color CSS --> 
-    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet"> 
+    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// --> 
     <!--[if lt IE 9]> 
@@ -54,8 +54,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group m-b-0">
-                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
-                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -68,7 +68,7 @@
                                     <tr>
                                         <th style="text-align: center;">Unit Kerja</th>
                                         <th style="text-align: center;">Deskripsi</th>
-                                        <th style="text-align: center; width: 15%;">Action</th>
+                                        <th style="text-align: center; width: 15%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +89,7 @@
                                                             <form class="form-horizontal form-material" action="{{ route('unit_delete', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus unit kerja "{{$listunit_kerja->nama_unit_kerja}}"? </h5>
                                                                 <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
                                                                 </div>
                                                             </form>
@@ -103,7 +103,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Edit {{$listunit_kerja->nama_unit_kerja}}</h4>
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting {{$listunit_kerja->nama_unit_kerja}}</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('unit_update', ['id' => $listunit_kerja->id_unit_kerja]) }}" method = "get">
@@ -120,7 +120,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
                                                             </form>
