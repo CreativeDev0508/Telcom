@@ -51,7 +51,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table" id="example">
+                        <table class="table color-table warning-table example">
                             <thead>
                                 <tr>
                                     <th colspan=6>SEDANG BERJALAN</th>
@@ -62,7 +62,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -160,7 +160,6 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">File</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
@@ -187,9 +186,9 @@
                                                                                                             <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                            <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -324,7 +323,8 @@
                                                                         <tr id="footer-padding">
                                                                             <td>
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                                    <hr>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -348,7 +348,7 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Upload File</label>
+                                                                        <label class="control-label">Unggah Dokumen</label>
                                                                         <div class="col-sm-12">
                                                                             {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                             <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
@@ -409,7 +409,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table" id="example">
+                        <table class="table color-table success-table example">
                             <thead>
                                 <tr>
                                     <th colspan=7>SUDAH DISETUJUI</th>
@@ -420,8 +420,8 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -429,7 +429,7 @@
                                 @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $listproyek)
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
-                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
@@ -559,9 +559,9 @@
                                                                                                                 <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                                <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                                <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -644,10 +644,10 @@
                                                                                         </div>
                                                                                     </div>    
                                                                                 </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                        </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
@@ -673,7 +673,8 @@
                                                                         <tr id="footer-padding">
                                                                             <td>
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                                    <hr>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -697,12 +698,13 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Upload File</label>
+                                                                        <label class="control-label">Unggah Dokumen</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -817,14 +819,14 @@ $('.btn-toggle').click(function() {
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('#example').DataTable(
+    $('.example').DataTable(
     {
         "pagingType": "full_numbers"
     } );
-    $('#example2').DataTable(
-    {
-        "pagingType": "full_numbers"
-    } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
 } );
 </script>
 <script>

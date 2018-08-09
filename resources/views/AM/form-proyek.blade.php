@@ -137,7 +137,7 @@
                                                                 <option value="Pengadaan Beli Putus">Pengadaan Beli Putus</option>
                                                             @endif
 
-                                                            @if($listproyek->skema_bisnis == 'Pengadaan Beli')
+                                                            @if($listproyek->skema_bisnis == 'Pengadaan Beli Putus')
                                                                 <option value="Pengadaan Beli Putus" selected>Pengadaan Beli Putus</option>
                                                             @else
                                                                 <option value="Sewa Beli">Sewa Beli</option>
