@@ -27,11 +27,11 @@
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
-                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">LOGIN</button>
+                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">MASUK</button>
                     <div><br></div>
                     <div class="signup mx-auto">
                             <p style="color: white">Belum punya akun?</p>
-                            <a class="login-a" href="{{ url('/register') }}">Sign up</a>
+                            <a class="login-a" href="{{ url('/register') }}">Daftar</a>
                     </div>
                 </form>
             </div>
