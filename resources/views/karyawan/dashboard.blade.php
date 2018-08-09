@@ -314,7 +314,7 @@
                                     	<span data-toggle="modal" data-target="#approve-{{$listproyek->id_proyek}}">
                                         	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
                                         </span>
-                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
                                         <div class="modal fade" id="approve-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">

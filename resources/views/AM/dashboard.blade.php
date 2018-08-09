@@ -82,7 +82,7 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
                                         {{-- <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
                                         </span> --}}
@@ -460,7 +460,7 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
                                         {{-- <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
                                         </span> --}}
