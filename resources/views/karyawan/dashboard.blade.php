@@ -58,8 +58,8 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Deadline</th>
-                                    <th class="text-center" style="background-color: white; color: black; width: 20%">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Tenggat Waktu</th>
+                                    <th class="text-center" style="background-color: white; color: black; width: 20%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">

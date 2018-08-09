@@ -37,7 +37,7 @@
                                 @endif
                     </div>
                     <div class="form-group">
-                        <input style="text-align: center;" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
+                        <input style="text-align: center;" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Kata Sandi">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert" style="color: white;">
@@ -45,11 +45,11 @@
                                     </span>
                                 @endif
                     </div>
-                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">LOGIN</button>
+                    <button type="submit" style="display: block; margin: 0 auto;" class="btn btn-outline-light">MASUK</button>
                     <div><br></div>
                     <div class="signup mx-auto">
                             <p style="color: white">Belum punya akun?</p>
-                            <a class="login-a" href="{{ route('register_index') }}">Sign up</a>
+                            <a class="login-a" href="{{ route('register_index') }}">Daftar</a>
                     </div>
                 </form>
             </div>
