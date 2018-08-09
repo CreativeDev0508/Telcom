@@ -685,10 +685,11 @@
                                                                         {{ csrf_field() }}
                                                                         <label class="control-label">Upload File</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
