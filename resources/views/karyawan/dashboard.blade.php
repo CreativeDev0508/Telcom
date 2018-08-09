@@ -19,15 +19,13 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
+<!-- CSS tambahan -->
+<link href="css/mystyle.css" rel="stylesheet">
+<!-- Toggle CSS -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{{-- Datatable --}}
+<link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
-<style>
-    .table > .detail-text > tr > td {
-        border-top: 0;
-    }
-    .fuckOffPadding > td{
-        padding: 1%;
-    }
-</style>
 @endsection
 
 @section('content')
@@ -48,10 +46,10 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table">
+                        <table class="table color-table warning-table example">
                             <thead>
                                 <tr>
-                                    <th colspan=10>SEDANG BERJALAN</th>
+                                    <th colspan=8>SEDANG BERJALAN</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
@@ -287,13 +285,13 @@
         </div>
         <!--/.row -->
         <div class="row">
-            <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
+            <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table">
+                        <table class="table color-table success-table example">
                             <thead>
                                 <tr>
-                                    <th colspan=5>SUDAH DISETUJUI</th>
+                                    <th colspan=7>SUDAH DISETUJUI</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
@@ -555,8 +553,61 @@
         new CBPFWTabs(el);
     });
 });
+
+$('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active');  
+    
+    if ($(this).find('.btn-primary').size()>0) {
+        $(this).find('.btn').toggleClass('btn-primary');
+    }
+    if ($(this).find('.btn-danger').size()>0) {
+        $(this).find('.btn').toggleClass('btn-danger');
+    }
+    if ($(this).find('.btn-success').size()>0) {
+        $(this).find('.btn').toggleClass('btn-success');
+    }
+    if ($(this).find('.btn-info').size()>0) {
+        $(this).find('.btn').toggleClass('btn-info');
+    }
+    
+    $(this).find('.btn').toggleClass('btn-default');
+       
+});
+    
 </script>
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('.example').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
+} );
+</script>
+<script>
+    $(document).ready(function(){
+        $('.approved').click(function() {
+            $(this).removeClass('btn-success btn-outline');
+            $(this).addClass('btn-success');
+            $('.notApproved').removeClass('btn-danger');
+            $('.notApproved').addClass('btn-danger btn-outline');
+        });
+        $('.notApproved').click(function() {
+            $('.approved').removeClass('btn-success');
+            $('.approved').addClass('btn-success btn-outline');
+            $(this).removeClass('btn-danger btn-outline');
+            $(this).addClass('btn-danger');
+        });
+    })
+</script>
 @endsection
