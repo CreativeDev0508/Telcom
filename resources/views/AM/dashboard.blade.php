@@ -25,7 +25,7 @@
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <!--alerts CSS -->
-    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+<link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -440,9 +440,9 @@
                                         $ket = $listproyek->keterangan_proyek;
                                         @endphp
                                         @if($listproyek->keterangan_proyek == NULL)
-                                        <p alt="alert" class="img-responsive model_img text-success" id="sa-success"> Telah Disetujui </p>
+                                        <p alt="alert" class="img-responsive model_img text-success sa-success-keterangan"> Telah Disetujui </p>
                                         @else                                        
-                                        <p alt="alert" class="img-responsive model_img text-danger" id="sa-problem"> Bermasalah </p>
+                                        <p alt="alert" class="img-responsive model_img text-danger sa-problem-keterangan" data-keterangan="{{$listproyek->keterangan_proyek}}"> Bermasalah </p>
                                         @endif
                                         </div>
                                     </td>
@@ -813,8 +813,8 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-<script src="/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+<script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
