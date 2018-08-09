@@ -15,6 +15,7 @@
 <link href="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
 <!-- Calendar CSS -->
 <link href="plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet" />
+<link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
@@ -23,6 +24,8 @@
 <link href="css/mystyle.css" rel="stylesheet">
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!--alerts CSS -->
+    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -346,10 +349,11 @@
                                                                         {{ csrf_field() }}
                                                                         <label class="control-label">Upload File</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -360,7 +364,7 @@
                                                                         {{ csrf_field() }}
                                                                         <hr>
                                                                         {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
-                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
                                                                         {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
                                                                     </form>
                                                                         
@@ -429,6 +433,18 @@
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    <td>
+                                      <div class="white-box-2">
+                                        @php
+                                        $ket = $listproyek->keterangan_proyek;
+                                        @endphp
+                                        @if($listproyek->keterangan_proyek == NULL)
+                                        <p alt="alert" class="img-responsive model_img text-success" id="sa-success"> Telah Disetujui </p>
+                                        @else                                        
+                                        <p alt="alert" class="img-responsive model_img text-danger" id="sa-problem"> Bermasalah </p>
+                                        @endif
+                                        </div>
+                                    </td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
@@ -683,10 +699,11 @@
                                                                         {{ csrf_field() }}
                                                                         <label class="control-label">Upload File</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -728,8 +745,6 @@
                                             </div>
                                         </div>                                            
                                     </td>
-                                    <td>
-                                      
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -797,6 +812,8 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
@@ -827,4 +844,41 @@ $(document).ready(function()
         });
     })
 </script>
+    <script src="plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    </script>
 @endsection
