@@ -62,7 +62,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -421,7 +421,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">

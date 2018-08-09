@@ -32,10 +32,10 @@
   <div class="error-box">
     <div class="error-body text-center">
       <h1 class="text-danger" style="color: #d51100">404</h1>
-      <h3 class="text-uppercase">Page Not Found !</h3>
-      <p class="text-muted m-t-30 m-b-30">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
-      <a href="{{ route('index') }}" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Back to home</a> </div>
-    <footer class="footer text-center">2018 &copy; PT. Telekomunikasi Indonesia Tbk.</footer>
+      <h3 class="text-uppercase">Halaman Tidak Ditemukan !</h3>
+      <p class="text-muted m-t-30 m-b-30">Halaman yang Anda cari tidak tersedia atau telah terjadi kesalahan</p>
+      <a href="{{ route('index') }}" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Kembali ke beranda</a> </div>
+    <footer class="footer text-center">2018 &copy; PT Telekomunikasi Indonesia Tbk</footer>
   </div>
 </section>
 <!-- jQuery -->
