@@ -24,6 +24,8 @@
 <link href="css/mystyle.css" rel="stylesheet">
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!--alerts CSS -->
+    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -432,6 +434,18 @@
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    <td>
+                                      <div class="white-box-2">
+                                        @php
+                                        $ket = $listproyek->keterangan_proyek;
+                                        @endphp
+                                        @if($listproyek->keterangan_proyek == NULL)
+                                        <p alt="alert" class="img-responsive model_img text-success" id="sa-success"> Telah Disetujui </p>
+                                        @else                                        
+                                        <p alt="alert" class="img-responsive model_img text-danger" id="sa-problem"> Bermasalah </p>
+                                        @endif
+                                        </div>
+                                    </td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
@@ -731,8 +745,6 @@
                                             </div>
                                         </div>                                            
                                     </td>
-                                    <td>
-                                      
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -800,6 +812,8 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()

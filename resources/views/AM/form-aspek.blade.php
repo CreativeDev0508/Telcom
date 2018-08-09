@@ -11,6 +11,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
+    <!--alerts CSS -->
+    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 @endsection
 
 @section('content')
@@ -103,8 +105,8 @@
                                 </div>
                             </div>
                                 <div class="form-group m-b-0">
-                                    <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Save</button>
+                                    <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
+                                    <button alt="alert" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10 img-responsive model_img" id="sa-save">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -117,7 +119,7 @@
         <!--/.row -->
     </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+    <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
 </div>
 <!-- ============================================================== -->
 <!-- End Page Content -->
@@ -145,6 +147,8 @@
     <script src="{{ asset('plugins/bower_components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript"></script> 
     <script src="{{ asset('plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}" type="text/javascript"></script> 
     <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script> 
+    <script src="{{ asset('/plugins/bower_components/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js') }}"></script>
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script> 
