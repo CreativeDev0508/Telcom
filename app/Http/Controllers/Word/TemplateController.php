@@ -117,6 +117,28 @@ class TemplateController extends Controller
             $templateProcessor->setValue('layanan', '̶B̶u̶l̶a̶n̶a̶n̶ ̶/̶ ̶T̶a̶h̶u̶n̶a̶n̶ ̶/ OTC');
         }
         $templateProcessor->setValue('nilaiKontrak', number_format($proyek->nilai_kontrak));
+        if($proyek->revenue_connectivity != NULL){
+            $templateProcessor->setValue('terdiriDari1', 'Terdiri dari: ');
+            $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
+            $templateProcessor->setValue('flagRevenue', '(Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
+            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
+            $templateProcessor->setValue('colocation', "i.	Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
+            $templateProcessor->setValue('colocationValue', 'Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', 'Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+        }
+        else{
+            $templateProcessor->setValue('terdiriDari1', '');
+            $templateProcessor->setValue('revenueConnectivity', '-');
+            $templateProcessor->setValue('flagRevenue', '');
+            $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->nilai_kontrak));
+            $templateProcessor->setValue('terdiriDari2', '');
+            $templateProcessor->setValue('colocation', '');
+            $templateProcessor->setValue('revenueCPEMitra', '');
+            $templateProcessor->setValue('colocationValue', '');
+            $templateProcessor->setValue('revenueCPEMitraValue', '');
+        }
         $templateProcessor->setValue('marginTg', $proyek->margin_tg);
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 
