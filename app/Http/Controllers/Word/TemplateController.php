@@ -121,6 +121,7 @@ class TemplateController extends Controller
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 
         // H. USULAN MEKANISME PEMBAYARAN PADA MITRA
+        $templateProcessor->setValue('mekanismePembayaran', $proyek->mekanisme_pembayaran);
         $strikethrough = implode('̶', str_split(strtoupper($proyek->jenis_pelanggan)));
         if($proyek->mekanisme_pembayaran == 'Sebelum'){
             $templateProcessor->setValue('rincianPembayaran1', 'Dilakukan dengan menunggu pembayaran dari Pelanggan '.strtoupper($proyek->jenis_pelanggan));

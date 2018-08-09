@@ -152,11 +152,19 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
+                    @if (Request::is('AM'))
+                    <li>
+                        <a href="{{route('index')}}" class="waves-effect active">
+                            <span class="hide-menu"> DASHBOARD </span>
+                        </a>
+                    </li>
+                    @else
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
                             <span class="hide-menu"> DASHBOARD </span>
                         </a>
                     </li>
+                    @endif
                     @if (Request::is('AM-form-*'))
                     <li>
                         <a href="{{route('pelanggan')}}" class="waves-effect active">
