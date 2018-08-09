@@ -185,8 +185,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
+                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Selanjutnya</button>
                                     </div>
                                 </form>
                             </div>

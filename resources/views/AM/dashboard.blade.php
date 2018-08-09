@@ -15,7 +15,6 @@
 <link href="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
 <!-- Calendar CSS -->
 <link href="plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet" />
-<link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
@@ -25,7 +24,7 @@
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <!--alerts CSS -->
-<link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -51,7 +50,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table example">
+                        <table class="table color-table warning-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=6>SEDANG BERJALAN</th>
@@ -62,7 +61,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -160,6 +159,7 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">File</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
@@ -186,9 +186,9 @@
                                                                                                             <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->saat_penggunaan}}</td>
+                                                                                                            <td>{{$listproyek->ready_for_service}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -323,8 +323,7 @@
                                                                         <tr id="footer-padding">
                                                                             <td>
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <hr>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -348,13 +347,12 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Unggah Dokumen</label>
+                                                                        <label class="control-label">Upload File</label>
                                                                         <div class="col-sm-12">
-                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
-                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            <input type="file" class="form-control" name="bukti_scan">
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -365,7 +363,7 @@
                                                                         {{ csrf_field() }}
                                                                         <hr>
                                                                         {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
-                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
                                                                         {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
                                                                     </form>
                                                                         
@@ -409,7 +407,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table example">
+                        <table class="table color-table success-table" id="example">
                             <thead>
                                 <tr>
                                     <th colspan=7>SUDAH DISETUJUI</th>
@@ -420,8 +418,8 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -429,7 +427,7 @@
                                 @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $listproyek)
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
-                                    <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
@@ -440,9 +438,9 @@
                                         $ket = $listproyek->keterangan_proyek;
                                         @endphp
                                         @if($listproyek->keterangan_proyek == NULL)
-                                        <p alt="alert" class="img-responsive model_img text-success sa-success-keterangan"> Telah Disetujui </p>
+                                        <p alt="alert" class="img-responsive model_img text-success" id="sa-success"> Telah Disetujui </p>
                                         @else                                        
-                                        <p alt="alert" class="img-responsive model_img text-danger sa-problem-keterangan" data-keterangan="{{$listproyek->keterangan_proyek}}"> Bermasalah </p>
+                                        <p alt="alert" class="img-responsive model_img text-danger" id="sa-problem"> Bermasalah </p>
                                         @endif
                                         </div>
                                     </td>
@@ -559,9 +557,9 @@
                                                                                                                 <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
+                                                                                                                <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td>{{$listproyek->saat_penggunaan}}</td>
+                                                                                                                <td>{{$listproyek->ready_for_service}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -644,10 +642,10 @@
                                                                                         </div>
                                                                                     </div>    
                                                                                 </div>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                        </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
@@ -673,8 +671,7 @@
                                                                         <tr id="footer-padding">
                                                                             <td>
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <hr>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -698,13 +695,12 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Unggah Dokumen</label>
+                                                                        <label class="control-label">Upload File</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
-                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" class="form-control" name="bukti_scan">
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -813,20 +809,20 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-<script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+<script src="/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('.example').DataTable(
+    $('#example').DataTable(
     {
         "pagingType": "full_numbers"
     } );
-    // $('#example2').DataTable(
-    // {
-    //     "pagingType": "full_numbers"
-    // } );
+    $('#example2').DataTable(
+    {
+        "pagingType": "full_numbers"
+    } );
 } );
 </script>
 <script>
@@ -845,41 +841,4 @@ $(document).ready(function()
         });
     })
 </script>
-    <script src="plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        // Basic
-        $('.dropify').dropify();
-        // Translated
-        $('.dropify-fr').dropify({
-            messages: {
-                default: 'Glissez-déposez un fichier ici ou cliquez',
-                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                remove: 'Supprimer',
-                error: 'Désolé, le fichier trop volumineux'
-            }
-        });
-        // Used events
-        var drEvent = $('#input-file-events').dropify();
-        drEvent.on('dropify.beforeClear', function(event, element) {
-            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-        });
-        drEvent.on('dropify.afterClear', function(event, element) {
-            alert('File deleted');
-        });
-        drEvent.on('dropify.errors', function(event, element) {
-            console.log('Has Errors');
-        });
-        var drDestroy = $('#input-file-to-destroy').dropify();
-        drDestroy = drDestroy.data('dropify')
-        $('#toggleDropify').on('click', function(e) {
-            e.preventDefault();
-            if (drDestroy.isDropified()) {
-                drDestroy.destroy();
-            } else {
-                drDestroy.init();
-            }
-        })
-    });
-    </script>
 @endsection
