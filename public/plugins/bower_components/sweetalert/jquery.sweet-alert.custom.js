@@ -19,7 +19,23 @@
 
     //Success Message
     $('#sa-success').click(function(){
-        swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
+        swal("Proyek Telah Disetujui.", "", "success")
+    });
+    $('.sa-success-keterangan').click(function(){
+        swal("Proyek Telah Disetujui.", "", "success")
+    });
+
+    $('#sa-save').click(function(){
+        swal("Tersimpan!", "Proyek berhasil ditambahkan.", "success")
+    });
+
+    $('#sa-problem').click(function(){
+        swal("Proyek Bermasalah!", "problem", "warning")
+    });
+    $('.sa-problem-keterangan').click(function(){
+        const el = document.querySelector('.sa-problem-keterangan');
+        var ket = el.dataset.keterangan;
+        swal("Proyek Bermasalah!", ket, "warning")
     });
 
     //Warning Message

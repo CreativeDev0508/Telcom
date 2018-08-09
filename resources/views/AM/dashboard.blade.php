@@ -24,6 +24,8 @@
 <link href="css/mystyle.css" rel="stylesheet">
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!--alerts CSS -->
+<link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -306,11 +308,11 @@
                                                                                     </label>
                                                                                 </div> --}}
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
-                                                                                    <label class="btn btn-success active approved">
-                                                                                        <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> APPROVED
+                                                                                    <label class="btn btn-success btn-outline approved">
+                                                                                        <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                                     </label>
-                                                                                    <label class="btn btn-danger btn-outline notApproved">
-                                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> NOT APPROVED
+                                                                                    <label class="btn btn-danger active notApproved">
+                                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
                                                                                     </label>
                                                                                 </div>
                                                                                 @endif
@@ -410,7 +412,7 @@
                         <table class="table color-table success-table" id="example">
                             <thead>
                                 <tr>
-                                    <th colspan=6>SUDAH DISETUJUI</th>
+                                    <th colspan=7>SUDAH DISETUJUI</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
@@ -419,6 +421,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -431,6 +434,18 @@
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    <td>
+                                      <div class="white-box-2">
+                                        @php
+                                        $ket = $listproyek->keterangan_proyek;
+                                        @endphp
+                                        @if($listproyek->keterangan_proyek == NULL)
+                                        <p alt="alert" class="img-responsive model_img text-success sa-success-keterangan"> Telah Disetujui </p>
+                                        @else                                        
+                                        <p alt="alert" class="img-responsive model_img text-danger sa-problem-keterangan" data-keterangan="{{$listproyek->keterangan_proyek}}"> Bermasalah </p>
+                                        @endif
+                                        </div>
+                                    </td>
                                     <td style="vertical-align: middle;">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
@@ -643,10 +658,10 @@
                                                                                 @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
                                                                                         <label class="btn btn-success active approved">
-                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> APPROVED
+                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                                         </label>
                                                                                         <label class="btn btn-danger btn-outline notApproved">
-                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> NOT APPROVED
+                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
                                                                                         </label>
                                                                                     </div>
                                                                                 @endif
@@ -796,6 +811,8 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
