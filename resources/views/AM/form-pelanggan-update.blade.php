@@ -24,7 +24,7 @@
                 @foreach($pelanggan as $listpelanggan)
                 @foreach($proyek as $listproyek)
                 @foreach($aspek as $listaspek)
-                {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }}
+                {{-- {{ $listpelanggan->id_pelanggan }} {{ $listproyek->id_proyek }} {{ $listaspek->id_aspek }} --}}
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">PROFIL PELANGGAN</h1>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="form-group m-b-0">
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Selanjutnya</button>
                             </div>
                             </form>
                         </div>
@@ -84,7 +84,7 @@
              <!--/.row -->
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> 2018 &copy; PT. Telekomunikasi Indonesia Tbk </footer>
+        <footer class="footer text-center"> 2018 &copy; PT Telekomunikasi Indonesia Tbk </footer>
     </div>
     <!-- ============================================================== -->
     <!-- End Page Content -->

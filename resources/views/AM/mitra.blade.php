@@ -54,7 +54,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group m-b-0">
-                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                 </div>
                                             </form>
@@ -68,7 +68,7 @@
                                     <tr>
                                         <th style="text-align: center;">Mitra</th>
                                         <th style="text-align: center;">Deskripsi</th>
-                                        <th style="text-align: center; width: 15%;">Action</th>
+                                        <th style="text-align: center; width: 15%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +89,7 @@
                                                             <form class="form-horizontal form-material" action="{{ route('mitra_delete', ['id'=>$listmitra->id_mitra]) }}" method = "get">
                                                             <h5> Apakah Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
                                                                 <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
                                                                 </div>
                                                             </form>
@@ -103,7 +103,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Edit {{$listmitra->nama_mitra}}</h4>
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting {{$listmitra->nama_mitra}}</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form class="form-horizontal form-material" action="{{ route('mitra_update', ['id'=>$listmitra->id_mitra]) }}" method = "get">
@@ -120,7 +120,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right;">Keluar</a>
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                                                 </div>
                                                             </form>

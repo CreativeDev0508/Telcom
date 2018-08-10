@@ -1,0 +1,19 @@
+.table > .detail-text > tr > td {
+	border-top: 0;
+}
+.fuckOffPadding > td{
+	padding: 1%;
+}
+#footer-padding > td {
+	padding-right: 20px;
+}
+.white-box-2 {
+	padding: 0px;
+}
+
+.disableditem {
+	color: currentColor;
+	cursor: not-allowed;
+	opacity: 0.5;
+	text-decoration: none;
+  }
