@@ -42,11 +42,11 @@
         <br>
         <div class="row">
 
-            {{-- @if (session('status'))
+            @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
-            @endif --}}
+            @endif
             {{-- {{Auth::user()->id_jabatan}} --}}
             <div class="col-sm-12">
                 <div class="white-box">
@@ -58,10 +58,10 @@
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Nama Pelanggan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                    {{-- <th class="text-center" style="background-color: white; color: black;">Ready For Service</th> --}}
+                                    <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
@@ -69,11 +69,11 @@
                                 <?php $x=1; ?>
                                 @foreach($proyek->where('status_pengajuan','=',NULL)->sortBy('id_proyek') as $listproyek)
                                 <tr class="fuckOffPadding">
-                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td> 
-                                    <td style="vertical-align: middle;">{{$listproyek->name}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
+                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    {{-- <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td> --}}
+                                    <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
+                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
                                         <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
@@ -82,17 +82,7 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
-                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
-                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
-                                                @else
-                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
-                                                @endif
-                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
                                         <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
                                         </span>
@@ -499,17 +489,7 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
-                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
-                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
-                                                @else
-                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
-                                                @endif
-                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
                                         <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
                                         </span>
