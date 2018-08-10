@@ -20,18 +20,92 @@ use DB;
 class TemplateController extends Controller
 {
 
-    public function createWordDocxP0(){
-        $templateProcessor = new Template('template/template_p0.docx');
-        $templateProcessor->setValue('rowValue#1', 'Sun');
+    public function createWordDocxP0(Request $request, $id){
+        $settings = new Settings();
+        $settings->setOutputEscapingEnabled(true);
 
-        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
+        $proyek = DB::table('proyek')
+            ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
+            
+            // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
+            // $pelanggan = DB::table('')->where('','=',$id)->first();
+            // $unit_kerja = DB::table('proyek')
+            //     ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+            //     // ->where('proyek.id_unit_kerja', 'unit_kerja.id_unit_kerja')
+            //     ->first();
+            
+            // $pelanggan = DB::table('')->where('','=',$id)->first();
+            // $mitra = DB::table('')->where('','=',$id)->first();
+            // $aspekbisnis = DB::table('AspekBisnis')->where('id_proyek','=',$id)->first();
+            
+            $templateProcessor = new Template('template/template_p0.docx');
+            $templateProcessor->setValue('jenisPelanggan', strtoupper($proyek->jenis_pelanggan));
+            $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
+            $templateProcessor->setValue('unitKerja', $proyek->nama_unit_kerja);
+            $templateProcessor->setValue('judul', $proyek->judul);
+            $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
+            $templateProcessor->setValue('nilaiKontrak', number_format($proyek->nilai_kontrak));
+            setlocale(LC_TIME, 'Indonesian');
+            Carbon::setUtf8(true);
+            $templateProcessor->setValue('saatPenggunaan', Carbon::createFromFormat('Y-m-d', $proyek->saat_penggunaan)->formatLocalized('%B %Y'));
+            setlocale(LC_TIME, '');
+
+        // A. LATAR BELAKANG
+
+        // foreach ($latarbelakang as $lb) {
+            //     $i++;
+            //     $templateProcessor->setValue('lb'.$i, $lb->latar_belakang);
+            // }
+        $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
+        $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
+        $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
+        $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
+        $templateProcessor->setValue('marginTg', $proyek->margin_tg);
+        $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
+            
+        // C. ASPEK BISNIS
+        $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
+        
+        // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
+        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+
+        // K. INFORMASI TAMBAHAN
+        $templateProcessor->setValue('am', 'MUNARTI');
+        $templateProcessor->setValue('nikAm', '720336');
+        $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
+        $templateProcessor->setValue('se', 'I PUTU AGUS PICASTANA');
+        $templateProcessor->setValue('nikSe', '870036');
+        $templateProcessor->setValue('jabatanSe', 'ASMAN GES SALES ENGINEER');
+        $templateProcessor->setValue('bidding', 'DETRI YUSZIANI');
+        $templateProcessor->setValue('nikBidding', '640579');
+        $templateProcessor->setValue('jabatanBidding', 'ASMAN GES OBL & BIDDING MANAGEMENT');
+        $templateProcessor->setValue('manager', 'YUSUF HARYANTO');
+        $templateProcessor->setValue('nikManager', '740290');
+        $templateProcessor->setValue('jabatanManager', 'MGR GOVERNMENT & ENTERPRISE SERVICE');
+        $templateProcessor->setValue('deputy', 'MEYLA KUSUMADIARTI RR,ST');
+        $templateProcessor->setValue('nikDeputy', '720205');
+        $templateProcessor->setValue('jabatanDeputy', 'DEPUTY GM WITEL SURABAYA');
+        $templateProcessor->setValue('gm', 'MUHAMMAD NASRUN IHSAN');
+        $templateProcessor->setValue('nikGm', '720099');
+        $templateProcessor->setValue('jabatanGm', 'GM WITEL SURABAYA');
+        $templateProcessor->setValue('approval', 'IMAM MOENCAR');
+        $templateProcessor->setValue('nikApproval', '650951');
+        $templateProcessor->setValue('jabatanApproval', 'OSM REG ENTERPRISE, GOVERNMENT & BIZ SERV TR V');
+
+        // $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
         try{
-            $objectWriter->save(storage_path('TestWordFile.docx'));
+            $templateProcessor->saveAs('results/P0 - '.$proyek->judul.'.docx');
+            // $objectWriter->save(storage_path('P1 - Pekerjaan Penyediaan CPE Managed Services untuk Layanan Astinet, Indihome dan Wifi Station untuk RSUD Dr Soetomo.docx'));
         }
         catch (Exception $e){
 
         }
-        return response()->download(storage_path('TestWordFile.docx'));
+        return response()->download('results/P0 - '.$proyek->judul.'.docx');
     }
 
     public function createWordDocxP1(Request $request, $id){
@@ -117,6 +191,28 @@ class TemplateController extends Controller
             $templateProcessor->setValue('layanan', '̶B̶u̶l̶a̶n̶a̶n̶ ̶/̶ ̶T̶a̶h̶u̶n̶a̶n̶ ̶/ OTC');
         }
         $templateProcessor->setValue('nilaiKontrak', number_format($proyek->nilai_kontrak));
+        if($proyek->revenue_connectivity != NULL){
+            $templateProcessor->setValue('terdiriDari1', 'Terdiri dari: ');
+            $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
+            $templateProcessor->setValue('flagRevenue', '(Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
+            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
+            $templateProcessor->setValue('colocation', "i.	Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
+            $templateProcessor->setValue('colocationValue', 'Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', 'Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+        }
+        else{
+            $templateProcessor->setValue('terdiriDari1', '');
+            $templateProcessor->setValue('revenueConnectivity', '-');
+            $templateProcessor->setValue('flagRevenue', '');
+            $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->nilai_kontrak));
+            $templateProcessor->setValue('terdiriDari2', '');
+            $templateProcessor->setValue('colocation', '');
+            $templateProcessor->setValue('revenueCPEMitra', '');
+            $templateProcessor->setValue('colocationValue', '');
+            $templateProcessor->setValue('revenueCPEMitraValue', '');
+        }
         $templateProcessor->setValue('marginTg', $proyek->margin_tg);
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 

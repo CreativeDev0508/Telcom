@@ -44,7 +44,8 @@ Route::group(['middleware'=>['auth']], function()
 	{
 		Route::get('/', 'AM\DashboardController@index')->name('am_index');
 		Route::get('/dashboard', 'AM\DashboardController@index')->name('am_index');
-		Route::get('/dashboard/print/{id}', 'Word\TemplateController@createWordDocxP1')->name('print');
+		Route::get('/dashboard/print/p0/{id}', 'Word\TemplateController@createWordDocxP0')->name('print_p0');
+		Route::get('/dashboard/print/p1/{id}', 'Word\TemplateController@createWordDocxP1')->name('print_p1');
 		Route::get('/dashboard/delete/{id_proyek}','AM\DashboardController@deleteProyek')->name('proyek_delete');
 		Route::get('/dashboard/status/{id_proyek}','AM\DashboardController@updateStatus')->name('status_update');
 		Route::post('/dashboard/bukti/insert/{id_proyek}','AM\DashboardController@insertBukti')->name('bukti_insert');
