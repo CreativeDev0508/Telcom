@@ -103,11 +103,15 @@
                                             <div class="row">
                                                 <label class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
+                                                	@if($listpelanggan->jenis_pelanggan == 'Government')
+                                                	<input type="text" class="form-control" id="inputEmail3" name="id_unit_kerja" value="GES" disabled>
+                                                	@else
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
                                                         @foreach ($unit as $listunit)
                                                         <option value="{{$listunit->id_unit_kerja}}" @if($listunit->id_unit_kerja == $listproyek->id_unit_kerja) selected @endif>{{$listunit->nama_unit_kerja}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @endif
                                                 </div>
                                                 <label class="col-sm-3 control-label">Nama Mitra</label>
                                                 <div class="col-sm-9">
