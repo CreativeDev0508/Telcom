@@ -424,7 +424,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Profit</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
                                     <th class="text-center" style="background-color: white; color: black;">Aksi</th>
@@ -432,25 +432,54 @@
                             </thead>
                             <tbody class="text-center">
                                 <?php $y=1; ?>
-                                @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $listproyek)
+                                @foreach($setuju as $listproyek)
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
+                                    {{-- <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td> --}}
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td>
-                                      <div class="white-box-2">
-                                        @php
-                                        $ket = $listproyek->keterangan_proyek;
-                                        @endphp
-                                        @if($listproyek->keterangan_proyek == NULL)
-                                        <p alt="alert" class="img-responsive model_img text-success sa-success-keterangan"> Telah Disetujui </p>
-                                        @else                                        
-                                        <p alt="alert" class="img-responsive model_img text-danger sa-problem-keterangan" data-keterangan="{{$listproyek->keterangan_proyek}}"> Bermasalah </p>
-                                        @endif
+                                        <div class="white-box-2">
+                                        @if($listproyek->status_pengajuan == 1)
+                                        
+                                        <p class="img-responsive model_img text-success" data-toggle="modal" data-target="#lanjut-{{$listproyek->id_proyek}}"> Lanjut </p>
+                                        <div id="lanjut-{{$listproyek->id_proyek}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel"style="font-weight: 450;">Keterangan "{{$listproyek->judul}}"</h4></div>
+                                                    <div class="modal-body">
+                                                        {{$listproyek->keterangan_proyek}}                                                   
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                  
+                                        @elseif($listproyek->status_pengajuan == 2)                                        
+                                        <p class="img-responsive model_img text-danger" data-toggle="modal" data-target="#gagal-{{$listproyek->id_proyek}}"> Gagal Lanjut </p>
+                                         <div id="gagal-{{$listproyek->id_proyek}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel"style="font-weight: 450;">Keterangan "{{$listproyek->judul}}"</h4></div>
+                                                    <div class="modal-body">
+                                                        {{$listproyek->keterangan_proyek}}                                                    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        @endif
+                                    </div>
+
                                     </td>
                                     <td style="vertical-align: middle;">
                                         <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
@@ -666,27 +695,71 @@
                                                                 <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
                                                                     <tbody class="detail-text text-left">
                                                                         <tr id="footer-padding">
-                                                                            <td style="font-weight: 450; color: black" class="m-r-20">Status Pengajuan
-                                                                                @if($listproyek->status_pengajuan == 1)
+                                                                            <td style="font-weight: 450; color: black" class="m-r-20">
+                                                                                <div class="col-sm-2">
+                                                                                Status Pengajuan
+                                                                                </div>
+                                                                                {{-- @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
                                                                                         <label class="btn btn-success active approved">
-                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
+                                                                                            <input type="radio"  checked> Disetujui
                                                                                         </label>
+                                                                                @else
                                                                                         <label class="btn btn-danger btn-outline notApproved">
-                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
+                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> Tidak Disetujui
                                                                                         </label>
                                                                                     </div>
+                                                                                @endif --}}
+                                                                                <div class="col-lg-2 col-sm-4 col-xs-12">
+                                                                                    <button class="btn btn-block btn-success active"><i class="fa fa-check"></i> Disetujui</button>
+                                                                                </div>
+
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black" class="m-r-20">
+                                                                                <div class="col-sm-2">
+                                                                                Gagal Lanjut
+                                                                                </div>
+                                                                                @if($listproyek->status_pengajuan == 1)
+                                                                                <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
+                                                                                        <label class="btn btn-success active approved">
+                                                                                            <input type="radio" autocomplete="off" checked> Lanjut
+                                                                                        </label>
+                                                                                        <label class="btn btn-danger btn-outline notApproved">
+                                                                                            <input type="radio" name="status_pengajuan" value="2" autocomplete="off"> Gagal Lanjut
+                                                                                        </label>
+                                                                                    {{-- @endif --}}
+                                                                                </div>
+                                                                                @else
+                                                                                <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
+                                                                                        <label class="btn btn-success btn-outline approved">
+                                                                                            <input type="radio" autocomplete="off"> Lanjut
+                                                                                        </label>
+                                                                                        <label class="btn btn-danger notApproved active">
+                                                                                            <input type="radio" name="status_pengajuan" value="2" autocomplete="off" checked> Gagal Lanjut
+                                                                                        </label>
+                                                                                    {{-- @endif --}}
+                                                                                </div>
                                                                                 @endif
                                                                             </td>   
                                                                         </tr>
                                                                         <tr id="footer-padding">
-                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                            <td style="font-weight: 450; color: black">
+                                                                            <div class="col-sm-2">
+                                                                                Keterangan
+                                                                            </div>
+                                                                            </td>
                                                                         </tr>
                                                                         <tr id="footer-padding">
                                                                             <td>
+                                                                                <div class="col-sm-12">
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
                                                                                     <hr>
                                                                                     <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
+                                                                                </div>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
