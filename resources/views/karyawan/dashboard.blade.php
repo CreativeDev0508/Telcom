@@ -75,7 +75,17 @@
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-info-circle"></i></button>
-                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <div class="btn-group dropup m-r-10">
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
+                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
+                                                @if(empty($listproyek->colocation))
+                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
+                                                @else
+                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
+                                                @endif
+                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="modal fade" id="edit-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -510,7 +520,17 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
-                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
+                                        <div class="btn-group dropup m-r-10">
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
+                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
+                                                @if(empty($listproyek->colocation))
+                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
+                                                @else
+                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
+                                                @endif
+                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
