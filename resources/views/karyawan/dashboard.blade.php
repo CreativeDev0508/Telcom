@@ -70,7 +70,7 @@
                                     <td style="vertical-align: middle;">{{$listproyek->name}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td> --}}
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">

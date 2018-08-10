@@ -77,8 +77,8 @@ Route::group(['middleware'=>['auth']], function()
 
 	Route::group(['prefix' => 'SE'], function()
 	{
-		Route::get('/', 'SE\DashboardController@index')->name('se_index');
-		Route::get('/dashboard', 'SE\DashboardController@index')->name('se_index');
+		Route::get('/', 'AM\DashboardController@index')->name('se_index');
+		Route::get('/dashboard', 'AM\DashboardController@index')->name('se_index');
 	});
 
 
