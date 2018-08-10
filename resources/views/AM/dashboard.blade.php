@@ -738,25 +738,21 @@
                                                                                 </div>
                                                                                 @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
-                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
                                                                                         <label class="btn btn-success active approved">
                                                                                             <input type="radio" autocomplete="off" checked> Lanjut
                                                                                         </label>
                                                                                         <label class="btn btn-danger btn-outline notApproved">
                                                                                             <input type="radio" name="status_pengajuan" value="2" autocomplete="off"> Gagal Lanjut
                                                                                         </label>
-                                                                                    {{-- @endif --}}
                                                                                 </div>
                                                                                 @else
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
-                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
                                                                                         <label class="btn btn-success btn-outline approved">
-                                                                                            <input type="radio" autocomplete="off"> Lanjut
+                                                                                            <input type="radio" name="status_pengajuan" value="1"autocomplete="off"> Lanjut
                                                                                         </label>
                                                                                         <label class="btn btn-danger notApproved active">
                                                                                             <input type="radio" name="status_pengajuan" value="2" autocomplete="off" checked> Gagal Lanjut
                                                                                         </label>
-                                                                                    {{-- @endif --}}
                                                                                 </div>
                                                                                 @endif
                                                                             </td>   
