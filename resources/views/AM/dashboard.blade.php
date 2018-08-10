@@ -83,6 +83,7 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
+                                        <div class="btn-group dropup m-r-10">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
                                                 @if(empty($listproyek->colocation))
@@ -93,7 +94,6 @@
                                                 <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
                                             </ul>
                                         </div>
-                                        <div class="btn-group dropup m-r-10">
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
