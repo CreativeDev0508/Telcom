@@ -70,13 +70,11 @@
                                     <td style="vertical-align: middle;">{{$listproyek->name}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    {{-- <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td> --}}
+                                    <td style="vertical-align: middle;">{{$listproyek->nilai_kontrak}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
-                                    	<span data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}">
-                                        	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
-                                        </span>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-{{$listproyek->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="btn-group dropup m-r-10">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
@@ -309,7 +307,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
                                     <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Detail</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -321,10 +319,7 @@
                                     <td style="vertical-align: middle;">{{$listproyek->name}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">
-                                    	<span data-toggle="modal" data-target="#approve-{{$listproyek->id_proyek}}">
-                                        	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
-                                        </span>
-                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#approve-{{$listproyek->id_proyek}}"><i class="fa fa-info-circle"></i></button>
                                         <div class="modal fade" id="approve-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
