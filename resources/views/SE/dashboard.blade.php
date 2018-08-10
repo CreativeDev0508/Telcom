@@ -15,6 +15,7 @@
 <link href="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
 <!-- Calendar CSS -->
 <link href="plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet" />
+<link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
@@ -24,7 +25,7 @@
 <!-- Toggle CSS -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <!--alerts CSS -->
-    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+<link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -50,7 +51,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table warning-table" id="example">
+                        <table class="table color-table warning-table example">
                             <thead>
                                 <tr>
                                     <th colspan=6>SEDANG BERJALAN</th>
@@ -61,7 +62,7 @@
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Profit</th>
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -74,11 +75,17 @@
                                     <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td style="vertical-align: middle;">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
-                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
+                                        <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
+                                        </span>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
+                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
+                                        </span>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -159,7 +166,6 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">File</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
@@ -186,9 +192,9 @@
                                                                                                             <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                            <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -323,7 +329,8 @@
                                                                         <tr id="footer-padding">
                                                                             <td>
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                                    <hr>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -347,12 +354,13 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Upload File</label>
+                                                                        <label class="control-label">Unggah Dokumen</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -363,7 +371,7 @@
                                                                         {{ csrf_field() }}
                                                                         <hr>
                                                                         {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
-                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
                                                                         {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
                                                                     </form>
                                                                         
@@ -407,7 +415,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table" id="example">
+                        <table class="table color-table success-table example">
                             <thead>
                                 <tr>
                                     <th colspan=7>SUDAH DISETUJUI</th>
@@ -416,40 +424,75 @@
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Profit</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Profit</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Action</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 <?php $y=1; ?>
-                                @foreach($proyek->where('status_pengajuan','=',1)->sortBy('id_proyek') as $listproyek)
+                                @foreach($setuju as $listproyek)
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
-                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
                                     <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
+                                    {{-- <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td> --}}
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td>
-                                      <div class="white-box-2">
-                                        @php
-                                        $ket = $listproyek->keterangan_proyek;
-                                        @endphp
-                                        @if($listproyek->keterangan_proyek == NULL)
-                                        <p alt="alert" class="img-responsive model_img text-success" id="sa-success"> Telah Disetujui </p>
-                                        @else                                        
-                                        <p alt="alert" class="img-responsive model_img text-danger" id="sa-problem"> Bermasalah </p>
-                                        @endif
+                                        <div class="white-box-2">
+                                        @if($listproyek->status_pengajuan == 1)
+                                        
+                                        <p class="img-responsive model_img text-success" data-toggle="modal" data-target="#lanjut-{{$listproyek->id_proyek}}"> Lanjut </p>
+                                        <div id="lanjut-{{$listproyek->id_proyek}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel"style="font-weight: 450;">Keterangan "{{$listproyek->judul}}"</h4></div>
+                                                    <div class="modal-body">
+                                                        {{$listproyek->keterangan_proyek}}                                                   
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                  
+                                        @elseif($listproyek->status_pengajuan == 2)                                        
+                                        <p class="img-responsive model_img text-danger" data-toggle="modal" data-target="#gagal-{{$listproyek->id_proyek}}"> Gagal Lanjut </p>
+                                         <div id="gagal-{{$listproyek->id_proyek}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel"style="font-weight: 450;">Keterangan "{{$listproyek->judul}}"</h4></div>
+                                                    <div class="modal-body">
+                                                        {{$listproyek->keterangan_proyek}}                                                    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tutup</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        @endif
+                                    </div>
+
                                     </td>
                                     <td style="vertical-align: middle;">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button>
-                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}"><i class="fa fa-upload"></i></button>
-                                        <a href="{{ route('print', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download"></i></a>
-                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"><i class="fa fa-trash"></i></button> --}}
+                                        <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
+                                        </span>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
+                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
+                                        </span>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -557,9 +600,9 @@
                                                                                                                 <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><span class="text-muted" style="font-weight: 500">Deadline</span></td>
+                                                                                                                <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td>{{$listproyek->ready_for_service}}</td>
+                                                                                                                <td>{{$listproyek->saat_penggunaan}}</td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Tanggal Pemasukan dokumen</span></td>
@@ -642,36 +685,81 @@
                                                                                         </div>
                                                                                     </div>    
                                                                                 </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                        </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
                                                             <table class="table table-borderless">
                                                                 <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
                                                                     <tbody class="detail-text text-left">
                                                                         <tr id="footer-padding">
-                                                                            <td style="font-weight: 450; color: black" class="m-r-20">Status Pengajuan
-                                                                                @if($listproyek->status_pengajuan == 1)
+                                                                            <td style="font-weight: 450; color: black" class="m-r-20">
+                                                                                <div class="col-sm-2">
+                                                                                Status Pengajuan
+                                                                                </div>
+                                                                                {{-- @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
                                                                                         <label class="btn btn-success active approved">
-                                                                                            <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
+                                                                                            <input type="radio"  checked> Disetujui
                                                                                         </label>
+                                                                                @else
                                                                                         <label class="btn btn-danger btn-outline notApproved">
-                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
+                                                                                            <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> Tidak Disetujui
                                                                                         </label>
                                                                                     </div>
+                                                                                @endif --}}
+                                                                                <div class="col-lg-2 col-sm-4 col-xs-12">
+                                                                                    <button class="btn btn-block btn-success active"><i class="fa fa-check"></i> Disetujui</button>
+                                                                                </div>
+
+                                                                            </td>   
+                                                                        </tr>
+                                                                        <tr id="footer-padding">
+                                                                            <td style="font-weight: 450; color: black" class="m-r-20">
+                                                                                <div class="col-sm-2">
+                                                                                Gagal Lanjut
+                                                                                </div>
+                                                                                @if($listproyek->status_pengajuan == 1)
+                                                                                <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
+                                                                                        <label class="btn btn-success active approved">
+                                                                                            <input type="radio" autocomplete="off" checked> Lanjut
+                                                                                        </label>
+                                                                                        <label class="btn btn-danger btn-outline notApproved">
+                                                                                            <input type="radio" name="status_pengajuan" value="2" autocomplete="off"> Gagal Lanjut
+                                                                                        </label>
+                                                                                    {{-- @endif --}}
+                                                                                </div>
+                                                                                @else
+                                                                                <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
+                                                                                        <label class="btn btn-success btn-outline approved">
+                                                                                            <input type="radio" autocomplete="off"> Lanjut
+                                                                                        </label>
+                                                                                        <label class="btn btn-danger notApproved active">
+                                                                                            <input type="radio" name="status_pengajuan" value="2" autocomplete="off" checked> Gagal Lanjut
+                                                                                        </label>
+                                                                                    {{-- @endif --}}
+                                                                                </div>
                                                                                 @endif
                                                                             </td>   
                                                                         </tr>
                                                                         <tr id="footer-padding">
-                                                                            <td style="font-weight: 450; color: black">Keterangan</td>
+                                                                            <td style="font-weight: 450; color: black">
+                                                                            <div class="col-sm-2">
+                                                                                Keterangan
+                                                                            </div>
+                                                                            </td>
                                                                         </tr>
                                                                         <tr id="footer-padding">
                                                                             <td>
+                                                                                <div class="col-sm-12">
                                                                                     <textarea class="form-control" rows="5" name="keterangan_proyek" placeholder="Tulis keterangan tentang proyek di sini....">{{$listproyek->keterangan_proyek}}</textarea>
-                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Save</button>
+                                                                                    <hr>
+                                                                                    <button type="submit" style="float: left;" class="btn btn-danger waves-effect waves-light m-l-10">Simpan</button>
+                                                                                </div>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -695,12 +783,13 @@
                                                                 @if($listproyek->bukti_scan == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Upload File</label>
+                                                                        <label class="control-label">Unggah Dokumen</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" class="form-control" name="bukti_scan">
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                         </div>
                                                                         <hr>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
@@ -809,20 +898,20 @@ $('.btn-toggle').click(function() {
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-<script src="/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+<script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('#example').DataTable(
+    $('.example').DataTable(
     {
         "pagingType": "full_numbers"
     } );
-    $('#example2').DataTable(
-    {
-        "pagingType": "full_numbers"
-    } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
 } );
 </script>
 <script>
@@ -841,4 +930,41 @@ $(document).ready(function()
         });
     })
 </script>
+    <script src="plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    </script>
 @endsection
