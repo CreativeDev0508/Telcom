@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\SE;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -48,12 +48,10 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
             ->get(); 
 
-        $setuju = DB::table('proyek')
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
-            ->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
             ->get();
-
-        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
+        return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
     }
 
     public function insertBukti(Request $request,$id_proyek)
