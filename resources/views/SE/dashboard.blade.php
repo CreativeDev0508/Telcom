@@ -432,10 +432,11 @@
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th> --}}
                                     {{-- <th class="text-center" style="background-color: white; color: black;">Profit</th> --}}
-                                    <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Ready For Service</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
                                     <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
@@ -446,10 +447,11 @@
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$listproyek->name}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td> --}}
                                     {{-- <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td> --}}
-                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td> --}}
                                     <td>
                                         <div class="white-box-2">
                                         @if($listproyek->status_pengajuan == 1)
