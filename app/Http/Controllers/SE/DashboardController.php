@@ -48,8 +48,9 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
             ->get(); 
 
-        $setuju = Proyek::where('status_pengajuan',1)->orWhere('status_pengajuan',2)->get();
-
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->get();
         return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
     }
 
