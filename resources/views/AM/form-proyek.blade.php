@@ -103,11 +103,15 @@
                                             <div class="row">
                                                 <label class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
+                                                	@if($listpelanggan->jenis_pelanggan == 'Government')
+                                                	<input type="text" class="form-control" id="inputEmail3" name="id_unit_kerja" value="GES" disabled>
+                                                	@else
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
                                                         @foreach ($unit as $listunit)
                                                         <option value="{{$listunit->id_unit_kerja}}" @if($listunit->id_unit_kerja == $listproyek->id_unit_kerja) selected @endif>{{$listunit->nama_unit_kerja}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @endif
                                                 </div>
                                                 <label class="col-sm-3 control-label">Nama Mitra</label>
                                                 <div class="col-sm-9">
@@ -170,21 +174,31 @@
                                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                                 </div>
                                             </div>
-                                            {{-- @if($listproyek->file != null)
-                                            <div class="form-group">
-                                            </div>
-                                            @else --}}
+                                            @if($listproyek->file == null)
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label">Upload File</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
                                                 </div>
-                                                {{-- <img src="{{asset('images/'. $listproyek->file)}}"> --}}
                                             </div>
-                                            {{-- @endif --}}
+                                            @else
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <div class="col-sm-6">
+                                                    <img src="{{asset('images/'. $listproyek->file)}}" style="width: 250px">
+                                                    
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <form action="{{ route('file_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
+                                                            {{ csrf_field() }}
+                                                            <button type="submit" style="float: right;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
-                                    <div class="form-group m-b-0">
+                                    <div class="row form-group m-b-0">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
                                         <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
                                     </div>

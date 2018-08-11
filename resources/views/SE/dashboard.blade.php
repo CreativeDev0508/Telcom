@@ -17,7 +17,6 @@
 <link href="plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet" />
 <link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
-<link href="css/animate.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
@@ -43,11 +42,11 @@
         <br>
         <div class="row">
 
-            @if (session('status'))
+            {{-- @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
-            @endif
+            @endif --}}
             {{-- {{Auth::user()->id_jabatan}} --}}
             <div class="col-sm-12">
                 <div class="white-box">
@@ -59,10 +58,10 @@
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Nama Pelanggan</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Profit</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Ready For Service</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
                             </thead>
@@ -70,11 +69,11 @@
                                 <?php $x=1; ?>
                                 @foreach($proyek->where('status_pengajuan','=',NULL)->sortBy('id_proyek') as $listproyek)
                                 <tr class="fuckOffPadding">
-                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td> 
+                                    <td style="vertical-align: middle;">{{$listproyek->name}}</td>
+                                    <td style="vertical-align: middle;">{{$listproyek->nama_pelanggan}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
-                                    <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td>
-                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td> --}}
                                     <td style="vertical-align: middle;">
                                         <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
@@ -94,6 +93,9 @@
                                                 <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
                                             </ul>
                                         </div>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -430,10 +432,11 @@
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Account Manager</th>
                                     <th class="text-center" style="background-color: white; color: black;">Nama Kegiatan</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Nilai Kontrak</th> --}}
                                     {{-- <th class="text-center" style="background-color: white; color: black;">Profit</th> --}}
-                                    <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
+                                    {{-- <th class="text-center" style="background-color: white; color: black;">Ready For Service</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
                                     <th class="text-center" style="background-color: white; color: black;">Aksi</th>
                                 </tr>
@@ -444,10 +447,11 @@
                                 {{-- {{ $listproyek->id_proyek }} --}}
                                 <tr class="fuckOffPadding">
                                     <td style="vertical-align: middle;"><?php echo $y; $y=$y+1; ?></td>
+                                    <td style="vertical-align: middle;">{{$listproyek->name}}</td>
                                     <td style="vertical-align: middle;">{{$listproyek->judul}}</td>
-                                    <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{number_format($listproyek->nilai_kontrak)}}</td> --}}
                                     {{-- <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td> --}}
-                                    <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
+                                    {{-- <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td> --}}
                                     <td>
                                         <div class="white-box-2">
                                         @if($listproyek->status_pengajuan == 1)
@@ -508,6 +512,9 @@
                                                 <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
                                             </ul>
                                         </div>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -906,8 +913,6 @@ $('.btn-toggle').click(function() {
 </script>
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
-<script src="js/jquery.slimscroll.js"></script>
-<script src="js/waves.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
@@ -921,6 +926,10 @@ $(document).ready(function()
     {
         "pagingType": "full_numbers"
     } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
 } );
 </script>
 <script>

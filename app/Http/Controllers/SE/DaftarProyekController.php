@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\SE;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +20,7 @@ use Session;
 use Telegram;
 use Telegram\Bot\Api;
 
-class DashboardController extends Controller
+class DaftarProyekController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -55,17 +55,8 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
-
-        // if(Auth::user()->id_jabatan == 2)
-        // {
-        //     return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
-        // }
-        // else
-        // {
-        //     return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
-        // }
-
-        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
+            
+        return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
     }
 
     public function insertBukti(Request $request,$id_proyek)

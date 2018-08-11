@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\SE;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,13 +41,14 @@ class DashboardController extends Controller
     public function index() 
     { 
         $proyek = DB::table('proyek') 
-            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('users','users.id','=','proyek.id_users')
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
             ->get(); 
 
+        // $setuju = Proyek::where('status_pengajuan',1)->orWhere('status_pengajuan',2)->get();
         $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
@@ -56,16 +57,8 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
 
-        // if(Auth::user()->id_jabatan == 2)
-        // {
-        //     return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
-        // }
-        // else
-        // {
-        //     return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
-        // }
 
-        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
+        return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
     }
 
     public function insertBukti(Request $request,$id_proyek)

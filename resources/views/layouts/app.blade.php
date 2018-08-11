@@ -87,6 +87,12 @@
                             <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
+                    @elseif (Request::is('SE'))
+                    <li>
+                        <a href="{{route('index')}}" class="waves-effect active">
+                            <span class="hide-menu"> BERANDA </span>
+                        </a>
+                    </li>
                     @else
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
