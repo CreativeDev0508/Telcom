@@ -176,7 +176,15 @@
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
+                                                                                                            <td>
+                                                                                                            <div class="hoverImage">
+                                                                                                                <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                {{-- <img src="img_avatar.png" alt="Avatar" class="image"> --}}
+                                                                                                                <div class="overlay">
+                                                                                                                    <div class="text">Hello World</div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            </td>
                                                                                                         </tr>
                                                                                                     </tbody>
                                                                                                 </table>
@@ -591,7 +599,15 @@
                                                                                                                 
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
+                                                                                                                <td>
+                                                                                                                    <div class="hoverImage">
+                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        {{-- <img src="img_avatar.png" alt="Avatar" class="image"> --}}
+                                                                                                                        <div class="overlay">
+                                                                                                                            <div class="text">Hello World</div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td>
                                                                                                             </tr>
                                                                                                         </tbody>
                                                                                                     </table>
