@@ -17,7 +17,6 @@
 <link href="plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet" />
 <link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
 <!-- Custom CSS -->
-<link href="css/animate.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="css/colors/default.css" id="theme" rel="stylesheet">
@@ -83,17 +82,10 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
-                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
-                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
-                                                @else
-                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
-                                                @endif
-                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"><i class="fa fa-download"></i></a>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -497,17 +489,10 @@
                                         <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
                                         </span>
-                                        <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
-                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
-                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
-                                                @else
-                                                <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
-                                                @endif
-                                                <li><a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}">P1</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="{{ route('print_p1', ['id' => $listproyek->id_proyek]) }}" class="btn btn-default"><i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Unduh Dokumen P1"></i></a>
+                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}"> 
+                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan"><i class="fa fa-trash"></i></button>
+                                        </span>
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -738,21 +723,25 @@
                                                                                 </div>
                                                                                 @if($listproyek->status_pengajuan == 1)
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
                                                                                         <label class="btn btn-success active approved">
                                                                                             <input type="radio" autocomplete="off" checked> Lanjut
                                                                                         </label>
                                                                                         <label class="btn btn-danger btn-outline notApproved">
                                                                                             <input type="radio" name="status_pengajuan" value="2" autocomplete="off"> Gagal Lanjut
                                                                                         </label>
+                                                                                    {{-- @endif --}}
                                                                                 </div>
                                                                                 @else
                                                                                 <div class="btn-group btn-group-toggle m-l-20" data-toggle="buttons">
+                                                                                    {{-- @if($listproyek->status_pengajuan==1) --}}
                                                                                         <label class="btn btn-success btn-outline approved">
-                                                                                            <input type="radio" name="status_pengajuan" value="1"autocomplete="off"> Lanjut
+                                                                                            <input type="radio" autocomplete="off"> Lanjut
                                                                                         </label>
                                                                                         <label class="btn btn-danger notApproved active">
                                                                                             <input type="radio" name="status_pengajuan" value="2" autocomplete="off" checked> Gagal Lanjut
                                                                                         </label>
+                                                                                    {{-- @endif --}}
                                                                                 </div>
                                                                                 @endif
                                                                             </td>   
@@ -906,8 +895,6 @@ $('.btn-toggle').click(function() {
 </script>
 <script src="js/custom.min.js"></script>
 <script src="js/dashboard1.js"></script>
-<script src="js/jquery.slimscroll.js"></script>
-<script src="js/waves.js"></script>
 <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
@@ -921,6 +908,10 @@ $(document).ready(function()
     {
         "pagingType": "full_numbers"
     } );
+    // $('#example2').DataTable(
+    // {
+    //     "pagingType": "full_numbers"
+    // } );
 } );
 </script>
 <script>
