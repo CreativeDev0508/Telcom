@@ -78,7 +78,7 @@ class TemplateController extends Controller
         
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
         //JIKA LEBIH DARI 1 MITRA
-        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra.' dan '. $proyek->nama_mitra);
+        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1.' dan '. $proyek->nama_mitra_2);
 
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
@@ -170,6 +170,11 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
         // B. LINGKUP PEKERJAAN
+        //JIKA LEBIH DARI 1 MITRA
+        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1 . ' *) dan ' . $proyek->nama_mitra_2 . ' **)');
+        // $templateProcessor->setValue('detailMitra1', $proyek->detail_mitra_1);
+        // $templateProcessor->setValue('detailMitra2', $proyek->detail_mitra_2);
+
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
         // D. WAKTU PENGGUNAAN
@@ -215,8 +220,8 @@ class TemplateController extends Controller
             $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
             $templateProcessor->setValue('colocation', "i.	Colocation");
             $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
-            $templateProcessor->setValue('colocationValue', 'Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
-            $templateProcessor->setValue('revenueCPEMitraValue', 'Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+            $templateProcessor->setValue('colocationValue', number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
         else{
             $templateProcessor->setValue('terdiriDari1', '');
