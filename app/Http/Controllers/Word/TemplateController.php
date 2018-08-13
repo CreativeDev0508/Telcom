@@ -70,9 +70,25 @@ class TemplateController extends Controller
             
         // C. ASPEK BISNIS
         $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
+        $revenueConnectivityTg=$proyek->revenue_connectivity/$proyek->nilai_kontrak*100;
+        $revenueCPEProyekTg=$proyek->revenue_cpe_proyek/$proyek->nilai_kontrak*100;
+        $templateProcessor->setValue('revenueConnectivityTg', number_format($revenueConnectivityTg));
+        $templateProcessor->setValue('revenueCPEProyekTg', number_format($revenueCPEProyekTg));
+
         
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
+        //JIKA LEBIH DARI 1 MITRA
+        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1.' dan '. $proyek->nama_mitra_2);
+
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+
+        // list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
+        // if($width > 495){
+        //     $percentage = 495/$width;
+        //     $width = $width*$percentage;
+        //     $height = $height*$percentage;
+        // }
+        // $templateProcessor->setImg('file',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
@@ -154,6 +170,11 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
         // B. LINGKUP PEKERJAAN
+        //JIKA LEBIH DARI 1 MITRA
+        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1 . ' *) dan ' . $proyek->nama_mitra_2 . ' **)');
+        // $templateProcessor->setValue('detailMitra1', $proyek->detail_mitra_1);
+        // $templateProcessor->setValue('detailMitra2', $proyek->detail_mitra_2);
+
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
         // D. WAKTU PENGGUNAAN
@@ -199,8 +220,8 @@ class TemplateController extends Controller
             $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
             $templateProcessor->setValue('colocation', "i.	Colocation");
             $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
-            $templateProcessor->setValue('colocationValue', 'Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
-            $templateProcessor->setValue('revenueCPEMitraValue', 'Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+            $templateProcessor->setValue('colocationValue', number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
         else{
             $templateProcessor->setValue('terdiriDari1', '');
