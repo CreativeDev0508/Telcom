@@ -74,6 +74,14 @@ class TemplateController extends Controller
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
+        // list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
+        // if($width > 495){
+        //     $percentage = 495/$width;
+        //     $width = $width*$percentage;
+        //     $height = $height*$percentage;
+        // }
+        // $templateProcessor->setImg('file',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
         $templateProcessor->setValue('nikAm', '720336');
