@@ -56,14 +56,16 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
 
-        if(Auth::user()->id_jabatan == 2)
-        {
-            return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
-        }
-        else
-        {
-            return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
-        }
+        // if(Auth::user()->id_jabatan == 2)
+        // {
+        //     return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
+        // }
+        // else
+        // {
+        //     return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
+        // }
+
+        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
     }
 
     public function insertBukti(Request $request,$id_proyek)

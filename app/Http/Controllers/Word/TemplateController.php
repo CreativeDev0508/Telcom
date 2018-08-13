@@ -238,6 +238,11 @@ class TemplateController extends Controller
         setlocale(LC_TIME, '');
 
         list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
+        if($width > 755.2){
+            $percentage = 755.2/$width;
+            $width = $width*$percentage;
+            $height = $height*$percentage;
+        }
         // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
         // $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
         $templateProcessor->setImg('selector',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
