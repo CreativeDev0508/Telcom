@@ -70,8 +70,16 @@ class TemplateController extends Controller
             
         // C. ASPEK BISNIS
         $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
+        $revenueConnectivityTg=$proyek->revenue_connectivity/$proyek->nilai_kontrak*100;
+        $revenueCPEProyekTg=$proyek->revenue_cpe_proyek/$proyek->nilai_kontrak*100;
+        $templateProcessor->setValue('revenueConnectivityTg', number_format($revenueConnectivityTg));
+        $templateProcessor->setValue('revenueCPEProyekTg', number_format($revenueCPEProyekTg));
+
         
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
+        //JIKA LEBIH DARI 1 MITRA
+        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra.' dan '. $proyek->nama_mitra);
+
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
         // list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
