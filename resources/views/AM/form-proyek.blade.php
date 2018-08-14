@@ -104,7 +104,10 @@
                                                 <label class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
                                                 	@if($listpelanggan->jenis_pelanggan == 'Government')
-                                                	<input type="text" class="form-control" id="inputEmail3" name="id_unit_kerja" value="GES" disabled>
+                                                    <select class="selectpicker m-b-20" data-style="form-control" disabled="disabled">
+                                                        <option value="4" selected>GES</option>
+                                                    </select>
+                                                    <input type="hidden" name="id_unit_kerja" value="4" />
                                                 	@else
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
                                                         @foreach ($unit as $listunit)
