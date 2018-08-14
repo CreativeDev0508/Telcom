@@ -217,17 +217,21 @@ class TemplateController extends Controller
             $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
             $templateProcessor->setValue('flagRevenue', '(Sebelum PPN)');
             $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
-            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
-            $templateProcessor->setValue('colocation', "i.	Colocation");
-            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
-            $templateProcessor->setValue('colocationValue', number_format($proyek->colocation).',- (Sebelum PPN)');
-            $templateProcessor->setValue('revenueCPEMitraValue', number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
         else{
             $templateProcessor->setValue('terdiriDari1', '');
             $templateProcessor->setValue('revenueConnectivity', '-');
             $templateProcessor->setValue('flagRevenue', '');
             $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->nilai_kontrak));
+        }
+        if(isset($proyek->colocation)){
+            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
+            $templateProcessor->setValue('colocation', "i.	Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
+            $templateProcessor->setValue('colocationValue', ': Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', ': Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+        }
+        else{
             $templateProcessor->setValue('terdiriDari2', '');
             $templateProcessor->setValue('colocation', '');
             $templateProcessor->setValue('revenueCPEMitra', '');
