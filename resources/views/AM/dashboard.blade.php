@@ -80,11 +80,19 @@
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
                                         </span>
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
-                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
-                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
-                                        </span>
                                         <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i><span class="caret"></span></button>
+                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
+                                                @if(empty($listproyek->file_p0))
+                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
+                                                @else
+                                                <li><a><span data-toggle="modal" data-target="#uploadP0-{{$listproyek->id_proyek}}"> P0</span></a></li>
+                                                @endif
+                                                <li><a><span data-toggle="modal" data-target="#uploadP1-{{$listproyek->id_proyek}}"> P1</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropup m-r-10">
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" title="Unduh Dokumen P0 & P1"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
                                                 @if(empty($listproyek->colocation))
                                                 <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
@@ -365,7 +373,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="upload-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal fade" id="uploadP0-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -375,23 +383,65 @@
                                                     <div class="modal-body">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                @if($listproyek->bukti_scan == NULL)
-                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                @if($listproyek->bukti_scan_p0 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p0_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Unggah Dokumen</label>
+                                                                        <label class="control-label">Unggah Scan Dokumen P0</label>
                                                                         <div class="col-sm-12">
                                                                             {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
-                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan_p0" data-show-remove="false" /> </div>
                                                                         </div>
                                                                         <hr>
                                                                         <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
-                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                        <img src="{{asset('/plugins/images/bukti_scan_p0/'. $listproyek->bukti_scan_p0)}}" style="width: 500px">
                                                                     </div>
                                                                     <div class="row">
-                                                                    <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                    <form action="{{ route('bukti_p0_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <hr>
+                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
+                                                                    </form>
+                                                                        
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="uploadP1-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan_p1 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p1_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Unggah Scan Dokumen P1</label>
+                                                                        <div class="col-sm-12">
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan_p1" data-show-remove="false" /> </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <div class="row">
+                                                                        <img src="{{asset('/plugins/images/bukti_scan_p1/'. $listproyek->bukti_scan_p1)}}" style="width: 500px">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    <form action="{{ route('bukti_p1_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
                                                                         <hr>
                                                                         {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
@@ -510,9 +560,17 @@
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
                                         </span>
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
-                                        <span data-toggle="modal" data-target="#upload-{{$listproyek->id_proyek}}">
-                                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i></button>
-                                        </span>
+                                        <div class="btn-group dropup m-r-10">
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i><span class="caret"></span></button>
+                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
+                                                @if(empty($listproyek->file_p0))
+                                                <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
+                                                @else
+                                                <li><a><span data-toggle="modal" data-target="#uploadP0-{{$listproyek->id_proyek}}"> P0</span></a></li>
+                                                @endif
+                                                <li><a><span data-toggle="modal" data-target="#uploadP1-{{$listproyek->id_proyek}}"> P1</span></a></li>
+                                            </ul>
+                                        </div>
                                         <div class="btn-group dropup m-r-10">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
@@ -813,7 +871,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="upload-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal fade" id="uploadP0-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -823,29 +881,71 @@
                                                     <div class="modal-body">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                @if($listproyek->bukti_scan == NULL)
-                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                @if($listproyek->bukti_scan_p0 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p0_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <label class="control-label">Unggah Dokumen</label>
+                                                                        <label class="control-label">Unggah Scan Dokumen P0</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
                                                                             {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan_p0" data-show-remove="false" /> </div>
                                                                         </div>
                                                                         <hr>
                                                                         <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
-                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                        <img src="{{asset('/plugins/images/bukti_scan_p0/'. $listproyek->bukti_scan_p0)}}" style="width: 500px">
                                                                     </div>
                                                                     <div class="row">
-                                                                        <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
-                                                                            {{ csrf_field() }}
-                                                                            <hr>
-                                                                            {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
-                                                                            <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
-                                                                            {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
-                                                                        </form>
+                                                                    <form action="{{ route('bukti_p0_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <hr>
+                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
+                                                                    </form>
+                                                                        
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="uploadP1-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan_p1 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p1_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Unggah Scan Dokumen P1</label>
+                                                                        <div class="col-sm-12">
+                                                                            {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan_p1" data-show-remove="false" /> </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <div class="row">
+                                                                        <img src="{{asset('/plugins/images/bukti_scan_p1/'. $listproyek->bukti_scan_p1)}}" style="width: 500px">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    <form action="{{ route('bukti_p1_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <hr>
+                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
+                                                                    </form>
                                                                         
                                                                     </div>
                                                                 @endif

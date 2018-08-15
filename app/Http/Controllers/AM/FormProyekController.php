@@ -44,15 +44,10 @@ class FormProyekController extends Controller
     {
     	// $this->validate($request, ['gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ]);
 
-    	// if($request->hasFile('file'))
-    	// {
-		$file = $request->file('file');
-		if($request->hasFile('file'))
-		{	
-			$name = $file->getClientOriginalName();
-			$destinationPath = public_path('/images');
-        	$file->move($destinationPath, $name);
-
+		
+		// dd($find);
+		if(Input::get('myButton') == 'edit_p1')
+		{
 			$proyek = Proyek::find($id_proyek);
 			$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 			$proyek->id_mitra = $request->input('id_mitra');
@@ -69,8 +64,7 @@ class FormProyekController extends Controller
 			$proyek->alamat_delivery = $request->input('alamat_delivery');
 			$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
 			$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
-			$proyek->file = $name;
-			// dd($proyek);
+			$proyek->file_p1 = NULL;
 			$proyek->save();
 
 			$pelanggan = Pelanggan::find($id_pelanggan);
@@ -82,58 +76,168 @@ class FormProyekController extends Controller
 			$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
 			$aspek->save();
 
-		// dd($proyek, $pelanggan, $aspek);
-		return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+			return redirect()->route('proyek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 		}
+
 		else
-        {
-			$proyek = Proyek::find($id_proyek);
-			$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
-			$proyek->id_mitra = $request->input('id_mitra');
-			$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-			$proyek->judul = $request->input('judul');
-			$proyek->id_unit_kerja = $request->input('id_unit_kerja');
-			$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
-			$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
-			$proyek->saat_penggunaan = $request->input('saat_penggunaan');
-			$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
-			$proyek->ready_for_service = $request->input('ready_for_service');
-			$proyek->skema_bisnis = $request->input('skema_bisnis');
-			$proyek->masa_kontrak = $request->input('masa_kontrak');
-			$proyek->alamat_delivery = $request->input('alamat_delivery');
-			$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
-			$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
-			$proyek->file = NULL;
-			// dd($proyek);
-			$proyek->save();
+		{
+			$find = Proyek::find($id_proyek);
+			if($find->file_p1 == NULL)
+			{
+				$file = $request->file('file_p1');
+				$name = $file->getClientOriginalName();
+				$destinationPath = public_path('/plugins/images/file_p1');
+	        	$file->move($destinationPath, $name);
 
-			$pelanggan = Pelanggan::find($id_pelanggan);
-			$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-			$pelanggan->save();
+				$proyek = Proyek::find($id_proyek);
+				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$proyek->id_mitra = $request->input('id_mitra');
+				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$proyek->judul = $request->input('judul');
+				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+				$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+				$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
+				$proyek->saat_penggunaan = $request->input('saat_penggunaan');
+				$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
+				$proyek->ready_for_service = $request->input('ready_for_service');
+				$proyek->skema_bisnis = $request->input('skema_bisnis');
+				$proyek->masa_kontrak = $request->input('masa_kontrak');
+				$proyek->alamat_delivery = $request->input('alamat_delivery');
+				$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
+				$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
+				$proyek->file_p1 = $name;
+				$proyek->save();
 
-			$aspek = AspekBisnis::find($id_aspek);
-			$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
-			$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
-			$aspek->save();
+				$pelanggan = Pelanggan::find($id_pelanggan);
+				$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$pelanggan->save();
 
-		// dd($proyek, $pelanggan, $aspek);
-		return redirect()->route('proyek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
-        }	
-        
+				$aspek = AspekBisnis::find($id_aspek);
+				$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
+				$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$aspek->save();
+
+				return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+			}
+			if($find->file_p0 == NULL)
+			{
+				$file = $request->file('file_p0');
+				$name = $file->getClientOriginalName();
+				$destinationPath = public_path('/plugins/images/file_p0');
+	        	$file->move($destinationPath, $name);
+
+				$proyek = Proyek::find($id_proyek);
+				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$proyek->id_mitra = $request->input('id_mitra');
+				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$proyek->judul = $request->input('judul');
+				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+				$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+				$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
+				$proyek->saat_penggunaan = $request->input('saat_penggunaan');
+				$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
+				$proyek->ready_for_service = $request->input('ready_for_service');
+				$proyek->skema_bisnis = $request->input('skema_bisnis');
+				$proyek->masa_kontrak = $request->input('masa_kontrak');
+				$proyek->alamat_delivery = $request->input('alamat_delivery');
+				$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
+				$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
+				$proyek->file_p0 = $name;
+				$proyek->save();
+
+				$pelanggan = Pelanggan::find($id_pelanggan);
+				$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$pelanggan->save();
+
+				$aspek = AspekBisnis::find($id_aspek);
+				$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
+				$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$aspek->save();
+
+				return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+			}
+			else
+			{
+				$proyek = Proyek::find($id_proyek);
+				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$proyek->id_mitra = $request->input('id_mitra');
+				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$proyek->judul = $request->input('judul');
+				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+				$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+				$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
+				$proyek->saat_penggunaan = $request->input('saat_penggunaan');
+				$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
+				$proyek->ready_for_service = $request->input('ready_for_service');
+				$proyek->skema_bisnis = $request->input('skema_bisnis');
+				$proyek->masa_kontrak = $request->input('masa_kontrak');
+				$proyek->alamat_delivery = $request->input('alamat_delivery');
+				$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
+				$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
+				$proyek->save();
+
+				$pelanggan = Pelanggan::find($id_pelanggan);
+				$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$pelanggan->save();
+
+				$aspek = AspekBisnis::find($id_aspek);
+				$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
+				$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$aspek->save();
+
+				return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+			}
+		}		 
 	}
 
-	public function updateFile(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
+	public function updateFileP0(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
     {
 
-        $proyek = Proyek::find($id_proyek);
-        $proyek->id_proyek = $request->input('id_proyek',$id_proyek);
-        $proyek->file = NULL;
-        $proyek->save();
-            
-        // dd($proyek, $pelanggan, $aspek);
-        return redirect()->route('proyek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+        $data['proyek2'] = Proyek::find($id_proyek);
+        $data['proyek2']->id_proyek = $request->input('id_proyek',$id_proyek);
+        $data['proyek2']->file_p0 = NULL;
+        $data['proyek2']->save();
+
+    	$data['pelanggan'] = Pelanggan::find($id_pelanggan)->select('id_pelanggan','jenis_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
+		$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
+		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
+		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+
+        return view('AM.form-proyek',$data);
     }
 
+    public function updateFileP1(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
+    {
 
+        $data['proyek2'] = Proyek::find($id_proyek);
+        $data['proyek2']->id_proyek = $request->input('id_proyek',$id_proyek);
+        $data['proyek2']->file_p1 = NULL;
+        $data['proyek2']->save();
+
+    	$data['pelanggan'] = Pelanggan::find($id_pelanggan)->select('id_pelanggan','jenis_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
+		$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
+		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
+		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+
+        return view('AM.form-proyek',$data);
+    }
+
+	// public function updateStatus(Request $request, $id) 
+ //    { 
+ //        switch ($request->input('status')) 
+ //        { 
+ //            case 'Approve': 
+ //                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'1'));     
+ //                break; 
+             
+ //            case 'Decline': 
+ //                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'2')); 
+ //                break; 
+ //        } 
+         
+ //        return redirect()->route('index'); 
+ //    }
 
 }
