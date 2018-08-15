@@ -67,7 +67,8 @@ class FormProyekController extends Controller
 				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 				$proyek->id_mitra = $request->input('id_mitra');
 				$proyek->mitra_2 = $request->input('mitra_2');
-				$proyek->keterangan_mitra = $request->input('keterangan_mitra');
+				$proyek->keterangan_mitra_1 = $request->input('keterangan_mitra_1');
+				$proyek->keterangan_mitra_2 = $request->input('keterangan_mitra_2');
 				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 				$proyek->judul = $request->input('judul');
 				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
@@ -112,7 +113,8 @@ class FormProyekController extends Controller
 						$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 						$proyek->id_mitra = $request->input('id_mitra');
 						$proyek->mitra_2 = $request->input('mitra_2');
-						$proyek->keterangan_mitra = $request->input('keterangan_mitra');
+						$proyek->keterangan_mitra_1 = $request->input('keterangan_mitra_1');
+						$proyek->keterangan_mitra_2 = $request->input('keterangan_mitra_2');
 						$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 						$proyek->judul = $request->input('judul');
 						$proyek->id_unit_kerja = $request->input('id_unit_kerja');
@@ -219,21 +221,5 @@ class FormProyekController extends Controller
 
         return view('AM.form-proyek',$data);
     }
-
-	// public function updateStatus(Request $request, $id) 
- //    { 
- //        switch ($request->input('status')) 
- //        { 
- //            case 'Approve': 
- //                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'1'));     
- //                break; 
-             
- //            case 'Decline': 
- //                DB::table('proyek')->where('id_proyek',$id)->update(array('status_pengajuan'=>'2')); 
- //                break; 
- //        } 
-         
- //        return redirect()->route('index'); 
- //    }
 
 }
