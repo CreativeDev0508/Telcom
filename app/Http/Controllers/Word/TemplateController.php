@@ -82,13 +82,13 @@ class TemplateController extends Controller
 
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
-        // list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
-        // if($width > 495){
-        //     $percentage = 495/$width;
-        //     $width = $width*$percentage;
-        //     $height = $height*$percentage;
-        // }
-        // $templateProcessor->setImg('file',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
+        if($width > 495){
+            $percentage = 495/$width;
+            $width = $width*$percentage;
+            $height = $height*$percentage;
+        }
+        $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
@@ -174,8 +174,10 @@ class TemplateController extends Controller
         // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1 . ' *) dan ' . $proyek->nama_mitra_2 . ' **)');
         // $templateProcessor->setValue('detailMitra1','*) '.$proyek->detail_mitra_1);
         // $templateProcessor->setValue('detailMitra2','**) '.$proyek->detail_mitra_2);
-
+        
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        $templateProcessor->setValue('detailMitra1','');
+        $templateProcessor->setValue('detailMitra2','');
 
         // D. WAKTU PENGGUNAAN
         setlocale(LC_TIME, 'Indonesian');
@@ -262,15 +264,13 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
-        list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p1/'. $proyek->file_p1));
         if($width > 755.2){
             $percentage = 755.2/$width;
             $width = $width*$percentage;
             $height = $height*$percentage;
         }
-        // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
-        // $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
-        $templateProcessor->setImg('selector',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
