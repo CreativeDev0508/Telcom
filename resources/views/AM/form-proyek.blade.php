@@ -123,6 +123,19 @@
                                                         <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                         @endforeach
                                                     </select>
+                                                    {{-- <a href="#">Tambah</a> --}}
+                                                    {{-- <a name="hideMitra" id="hideMitra" onclick="hideMitra()"> halo</a> --}}
+                                                    <a onclick="addMitra()"><i class="fa fa-plus"></i> Tambah Mitra</a> 
+                                                    <br><br>
+                                                    <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
+                                                        <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
+                                                            @foreach ($mitra as $listmitra)
+                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2) selected @endif>{{$listmitra->nama_mitra}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <input type="text" name="keterangan_mitra" class="form-control" placeholder="Keterangan mitra" value="{{$listproyek->keterangan_mitra}}">
+                                                        <br>
+                                                    </div>
                                                 </div>
                                                 <label class="col-sm-3 control-label">Skema Bisnis</label>
                                                 <div class="col-sm-9">
@@ -264,73 +277,16 @@
     <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script> 
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
-    {{-- <script> 
-    jQuery(document).ready(function() { 
-        // For select 2 
-        $(".select2").select2(); 
-        $('.selectpicker').selectpicker(); 
-        //Bootstrap-TouchSpin 
-        $(".vertical-spin").TouchSpin({ 
-            verticalbuttons: true, 
-            verticalupclass: 'ti-plus', 
-            verticaldownclass: 'ti-minus' 
-        }); 
-        var vspinTrue = $(".vertical-spin").TouchSpin({ 
-            verticalbuttons: true 
-        }); 
-        if (vspinTrue) { 
-            $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove(); 
-        } 
-        $("input[name='tch1']").TouchSpin({ 
-            min: 0, 
-            max: 100, 
-            step: 0.1, 
-            decimals: 2, 
-            boostat: 5, 
-            maxboostedstep: 10, 
-            postfix: '%' 
-        }); 
-        $("input[name='tch2']").TouchSpin({ 
-            min: -1000000000, 
-            max: 1000000000, 
-            stepinterval: 50, 
-            maxboostedstep: 10000000, 
-            prefix: '$' 
-        }); 
-        $("input[name='tch3']").TouchSpin(); 
-        $("input[name='tch3_22']").TouchSpin({ 
-            initval: 40 
-        }); 
-        $("input[name='tch5']").TouchSpin({ 
-            prefix: "pre", 
-            postfix: "post" 
-        }); 
-        // For multiselect 
-        $('#pre-selected-options').multiSelect(); 
-        $('#optgroup').multiSelect({ 
-            selectableOptgroup: true 
-        }); 
-        $('#public-methods').multiSelect(); 
-        $('#select-all').click(function() { 
-            $('#public-methods').multiSelect('select_all'); 
-            return false; 
-        }); 
-        $('#deselect-all').click(function() { 
-            $('#public-methods').multiSelect('deselect_all'); 
-            return false; 
-        }); 
-        $('#refresh').on('click', function() { 
-            $('#public-methods').multiSelect('refresh'); 
-            return false; 
-        }); 
-        $('#add-option').on('click', function() { 
-            $('#public-methods').multiSelect('addOption', { 
-                value: 42, 
-                text: 'test 42', 
-                index: 0 
-            }); 
-            return false; 
-        }); 
-    }); 
-    </script>  --}}
+    {{-- <script type="text/javascript" src="{{ asset('js/proyek.js') }}"></script> --}}
+    <script type="text/javascript">
+        function addMitra()
+        {
+            var x = document.getElementById("mitra");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 @endsection
