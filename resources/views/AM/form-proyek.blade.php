@@ -284,15 +284,18 @@
     {{-- <script type="text/javascript" src="{{ asset('js/proyek.js') }}"></script> --}}
     <script type="text/javascript">
         var x = document.getElementById("mitra");
-            var y = document.getElementById("ket-mitra");
+        var y = document.getElementById("ket-mitra");
+        
         function open_fun() { 
             document.getElementById('link').innerHTML = "<a id='link' href='javascript:clo_fun()'><i class='fa fa-minus'></i> Hapus Mitra</a>";
             x.style.display = "block";
-                y.style.display = "block";
+            y.style.display = "block";
         }
+        
         function clo_fun() {
             document.getElementById('link').innerHTML = "<a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a>";        
             x.style.display = "none";
+            y.style.display = "none";
         }
     </script>
 @endsection
