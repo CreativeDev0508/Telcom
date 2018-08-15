@@ -125,7 +125,7 @@
                                                     </select>
                                                     {{-- <a href="#">Tambah</a> --}}
                                                     {{-- <a name="hideMitra" id="hideMitra" onclick="hideMitra()"> halo</a> --}}
-                                                    <a onclick="addMitra()"><i class="fa fa-plus"></i> Tambah Mitra</a> 
+                                                    <a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a> 
                                                     <br><br>
                                                     <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
                                                         <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
@@ -279,14 +279,14 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ asset('js/proyek.js') }}"></script> --}}
     <script type="text/javascript">
-        function addMitra()
-        {
-            var x = document.getElementById("mitra");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+        var x = document.getElementById("mitra");
+        function open_fun() { 
+            document.getElementById('link').innerHTML = "<a id='link' href='javascript:clo_fun()'><i class='fa fa-minus'></i> Hapus Mitra</a>";
+            x.style.display = "block";
+        }
+        function clo_fun() {
+            document.getElementById('link').innerHTML = "<a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a>";        
+            x.style.display = "none";
         }
     </script>
 @endsection
