@@ -180,14 +180,14 @@
 
                                             @if($listproyek->file_p0 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file_p0" name="file_p0" value="{{$listproyek->file_p0}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-6">
                                                     <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" style="width: 250px">
                                                     
@@ -200,14 +200,14 @@
 
                                             @if($listproyek->file_p1 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file_p1" name="file_p1" value="{{$listproyek->file_p1}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
                                                 <div class="col-sm-6">
                                                     <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" style="width: 250px">
                                                     
