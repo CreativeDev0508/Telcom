@@ -82,7 +82,7 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{route('index')}}" class="waves-effect">
+                        <a href="{{route('index')}}" class="waves-effect active">
                             <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
