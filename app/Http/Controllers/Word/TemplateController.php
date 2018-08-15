@@ -31,6 +31,10 @@ class TemplateController extends Controller
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->where('proyek.id_proyek','=',$id)
             ->first();
+        $proyek_2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.mitra_2', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
             
             // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
             // $pelanggan = DB::table('')->where('','=',$id)->first();
@@ -78,9 +82,12 @@ class TemplateController extends Controller
         
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
         //JIKA LEBIH DARI 1 MITRA
-        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1.' dan '. $proyek->nama_mitra_2);
-
-        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        if($proyek->mitra_2 != NULL){
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra.' dan '. $proyek_2->nama_mitra);
+        }
+        else{
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        }
 
         list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
         if($width > 495){
@@ -136,6 +143,11 @@ class TemplateController extends Controller
             ->where('proyek.id_proyek','=',$id)
             ->first();
 
+        $proyek_2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.mitra_2', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
+
         // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
         // $pelanggan = DB::table('')->where('','=',$id)->first();
         // $unit_kerja = DB::table('proyek')
@@ -171,13 +183,17 @@ class TemplateController extends Controller
 
         // B. LINGKUP PEKERJAAN
         //JIKA LEBIH DARI 1 MITRA
-        // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1 . ' *) dan ' . $proyek->nama_mitra_2 . ' **)');
-        // $templateProcessor->setValue('detailMitra1','*) '.$proyek->detail_mitra_1);
-        // $templateProcessor->setValue('detailMitra2','**) '.$proyek->detail_mitra_2);
-        
-        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
-        $templateProcessor->setValue('detailMitra1','');
-        $templateProcessor->setValue('detailMitra2','');
+        if($proyek->mitra_2 != NULL){
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra . ' *) dan ' . $proyek_2->nama_mitra . ' **)');
+            $templateProcessor->setValue('detailMitra1','*) '.$proyek->keterangan_mitra_1);
+            $templateProcessor->setValue('detailMitra2','**) '.$proyek->keterangan_mitra_2);
+        }
+
+        else{
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+            $templateProcessor->setValue('detailMitra1','');
+            $templateProcessor->setValue('detailMitra2','');
+        }
 
         // D. WAKTU PENGGUNAAN
         setlocale(LC_TIME, 'Indonesian');
