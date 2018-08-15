@@ -176,7 +176,7 @@
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
+                                                                                                            <td><img src="{{asset('images/'. $listproyek->file_p1)}}" style="width: 200px"></td>
                                                                                                         </tr>
                                                                                                     </tbody>
                                                                                                 </table>
@@ -359,7 +359,7 @@
                                                     <div class="modal-body">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                @if($listproyek->bukti_scan == NULL)
+                                                                @if($listproyek->bukti_scan_p1 == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
                                                                         <label class="control-label">Unggah Dokumen</label>
@@ -372,7 +372,7 @@
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
-                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan_p1)}}" style="width: 500px">
                                                                     </div>
                                                                     <div class="row">
                                                                     <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
@@ -591,7 +591,7 @@
                                                                                                                 
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><img src="{{asset('images/'. $listproyek->file)}}" style="width: 200px"></td>
+                                                                                                                <td><img src="{{asset('images/'. $listproyek->file_p1)}}" style="width: 200px"></td>
                                                                                                             </tr>
                                                                                                         </tbody>
                                                                                                     </table>
@@ -791,12 +791,12 @@
                                                     <div class="modal-body">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                @if($listproyek->bukti_scan == NULL)
+                                                                @if($listproyek->bukti_scan_p1 == NULL)
                                                                     <form enctype="multipart/form-data" action="{{ route('bukti_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
                                                                         <label class="control-label">Unggah Dokumen</label>
                                                                         <div class="col-sm-12">
-                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan" data-show-remove="false" /> </div>
+                                                                            <input type="file" id="input-file-disable-remove" class="dropify" name="bukti_scan_p1" data-show-remove="false" /> </div>
                                                                             {{-- <input type="file" class="form-control" name="bukti_scan"> --}}
                                                                         </div>
                                                                         <hr>
@@ -804,7 +804,7 @@
                                                                     </form>
                                                                 @else
                                                                     <div class="row">
-                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan)}}" style="width: 500px">
+                                                                        <img src="{{asset('bukti_scan/'. $listproyek->bukti_scan_p1)}}" style="width: 500px">
                                                                     </div>
                                                                     <div class="row">
                                                                         <form action="{{ route('bukti_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">

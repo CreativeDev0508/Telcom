@@ -174,25 +174,43 @@
                                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                                 </div>
                                             </div>
-                                            @if($listproyek->file == null)
+
+                                            @if($listproyek->file_p0 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <label class="col-sm-3 control-label">Upload File P0</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
+                                                    <input type="file" class="form-control" id="file_p0" name="file_p0" value="{{$listproyek->file_p0}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <label class="col-sm-3 control-label">Upload File P0</label>
                                                 <div class="col-sm-6">
-                                                    <img src="{{asset('images/'. $listproyek->file)}}" style="width: 250px">
+                                                    <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" style="width: 250px">
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <form action="{{ route('file_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" style="float: right;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
-                                                    </form>
+                                                    <a href="{{ route('file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            @if($listproyek->file_p1 == null)
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Upload File P1</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" id="file_p1" name="file_p1" value="{{$listproyek->file_p1}}">
+                                                </div>
+                                            </div>
+                                            @else
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Upload File P1</label>
+                                                <div class="col-sm-6">
+                                                    <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" style="width: 250px">
+                                                    
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <a href="{{ route('file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
                                                 </div>
                                             </div>
                                             @endif
@@ -200,7 +218,7 @@
                                     </div>
                                     <div class="row form-group m-b-0">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10"  name="myButton" value="save">Next</button>
                                     </div>
                                 </form>
                             </div>
