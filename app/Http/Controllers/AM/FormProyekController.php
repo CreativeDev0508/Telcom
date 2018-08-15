@@ -170,7 +170,25 @@ class FormProyekController extends Controller
 			{
 				$proyek = Proyek::find($id_proyek);
 				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+				$proyek->id_mitra = $request->input('id_mitra');
+				$proyek->mitra_2 = $request->input('mitra_2');
+				$proyek->keterangan_mitra_1 = $request->input('keterangan_mitra_1');
+				$proyek->keterangan_mitra_2 = $request->input('keterangan_mitra_2');
 				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+				$proyek->judul = $request->input('judul');
+				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
+				$proyek->latar_belakang_1 = $request->input('latar_belakang_1');
+				$proyek->latar_belakang_2 = $request->input('latar_belakang_2');
+				$proyek->saat_penggunaan = $request->input('saat_penggunaan');
+				$proyek->pemasukan_dokumen = $request->input('pemasukan_dokumen');
+				$proyek->ready_for_service = $request->input('ready_for_service');
+				$proyek->skema_bisnis = $request->input('skema_bisnis');
+				$proyek->masa_kontrak = $request->input('masa_kontrak');
+				$proyek->alamat_delivery = $request->input('alamat_delivery');
+				$proyek->mekanisme_pembayaran = $request->input('mekanisme_pembayaran');
+				$proyek->rincian_pembayaran = $request->input('rincian_pembayaran');
+				// $proyek->file_p0 = $name_p0;
+				// $proyek->file_p1 = $name_p1;
 				$proyek->save();
 
 				$pelanggan = Pelanggan::find($id_pelanggan);
