@@ -172,8 +172,8 @@ class TemplateController extends Controller
         // B. LINGKUP PEKERJAAN
         //JIKA LEBIH DARI 1 MITRA
         // $templateProcessor->setValue('namaMitra', $proyek->nama_mitra_1 . ' *) dan ' . $proyek->nama_mitra_2 . ' **)');
-        // $templateProcessor->setValue('detailMitra1', $proyek->detail_mitra_1);
-        // $templateProcessor->setValue('detailMitra2', $proyek->detail_mitra_2);
+        // $templateProcessor->setValue('detailMitra1','*) '.$proyek->detail_mitra_1);
+        // $templateProcessor->setValue('detailMitra2','**) '.$proyek->detail_mitra_2);
 
         $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
 
