@@ -123,9 +123,13 @@
                                                         <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                         @endforeach
                                                     </select>
+                                                    <div id="ket-mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
+                                                        <input type="text" name="keterangan_mitra_1" class="form-control" placeholder="Keterangan mitra 1" value="{{$listproyek->keterangan_mitra_1}}">
+                                                        <br>
+                                                    </div>
                                                     {{-- <a href="#">Tambah</a> --}}
                                                     {{-- <a name="hideMitra" id="hideMitra" onclick="hideMitra()"> halo</a> --}}
-                                                    <a onclick="addMitra()"><i class="fa fa-plus"></i> Tambah Mitra</a> 
+                                                    <a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a> 
                                                     <br><br>
                                                     <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
                                                         <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
@@ -133,7 +137,7 @@
                                                             <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                             @endforeach
                                                         </select>
-                                                        <input type="text" name="keterangan_mitra" class="form-control" placeholder="Keterangan mitra" value="{{$listproyek->keterangan_mitra}}">
+                                                        <input type="text" name="keterangan_mitra_2" class="form-control" placeholder="Keterangan mitra 2" value="{{$listproyek->keterangan_mitra_2}}">
                                                         <br>
                                                     </div>
                                                 </div>
@@ -279,14 +283,19 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ asset('js/proyek.js') }}"></script> --}}
     <script type="text/javascript">
-        function addMitra()
-        {
-            var x = document.getElementById("mitra");
-            if (x.style.display == "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+        var x = document.getElementById("mitra");
+        var y = document.getElementById("ket-mitra");
+        
+        function open_fun() { 
+            document.getElementById('link').innerHTML = "<a id='link' href='javascript:clo_fun()'><i class='fa fa-minus'></i> Hapus Mitra</a>";
+            x.style.display = "block";
+            y.style.display = "block";
+        }
+        
+        function clo_fun() {
+            document.getElementById('link').innerHTML = "<a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a>";        
+            x.style.display = "none";
+            y.style.display = "none";
         }
     </script>
 @endsection

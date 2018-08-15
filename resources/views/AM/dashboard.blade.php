@@ -147,12 +147,12 @@
                                                                             <div id="proyekkegiatan-onprogress-{{$listproyek->id_proyek}}" class="tab-pane">
                                                                                     <div class="row">
                                                                                             <div class="col-sm-12 col-lg-6">
-                                                                                                <table class="table table-borderless">
+                                                                                                <table class="table table-borderless" style="table-layout: fixed">
                                                                                                     <tbody class="detail-text text-left">
                                                                                                         <tr>
-                                                                                                            <td style="width: 32%"><span class="text-muted" style="font-weight: 500;">Judul Kegiatan</span></td>
+                                                                                                            <td style="width: 1%"><span class="text-muted" style="font-weight: 500;">Judul Kegiatan</span></td>
                                                                                                             <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
-                                                                                                            <td><span>{{$listproyek->judul}}</span></td>
+                                                                                                            <td style="width: 1%"><span>{{$listproyek->judul}}</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Latar Belakang 1</span></td>
@@ -194,6 +194,7 @@
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </td>
+                                                                                                            <td></td>
                                                                                                             @endif
                                                                                                             <td>
                                                                                                                 <div class="hoverImage">
@@ -629,12 +630,12 @@
                                                                                 <div id="proyekkegiatan-onprogress-{{$listproyek->id_proyek}}" class="tab-pane">
                                                                                         <div class="row">
                                                                                                 <div class="col-sm-12 col-lg-6">
-                                                                                                    <table class="table table-borderless">
+                                                                                                    <table class="table table-borderless" style="table-layout: fixed;">
                                                                                                         <tbody class="detail-text text-left">
                                                                                                             <tr>
-                                                                                                                <td style="width: 32%"><span class="text-muted" style="font-weight: 500;">Judul Kegiatan</span></td>
+                                                                                                                <td style="width: 1%"><span class="text-muted" style="font-weight: 500;">Judul Kegiatan</span></td>
                                                                                                                 <td style="width: 0%"><span class="text-muted" style="font-weight: 500;">:</span></td>
-                                                                                                                <td><span>{{$listproyek->judul}}</span></td>
+                                                                                                                <td style="width: 1%"><span>{{$listproyek->judul}}</span></td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Latar Belakang 1</span></td>
@@ -676,6 +677,7 @@
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </td>
+                                                                                                                <td></td>
                                                                                                                 @endif
                                                                                                                 <td>
                                                                                                                     <div class="hoverImage">
