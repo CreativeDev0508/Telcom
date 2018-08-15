@@ -123,6 +123,11 @@
                             <span class="hide-menu"> MITRA </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('jabatan')}}" class="waves-effect">
+                            <span class="hide-menu"> JABATAN </span>
+                        </a>
+                    </li>
                     <li class="devider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="waves-effect">
