@@ -104,7 +104,10 @@
                                                 <label class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
                                                 	@if($listpelanggan->jenis_pelanggan == 'Government')
-                                                	<input type="text" class="form-control" id="inputEmail3" name="id_unit_kerja" value="GES" disabled>
+                                                    <select class="selectpicker m-b-20" data-style="form-control" disabled="disabled">
+                                                        <option value="4" selected>GES</option>
+                                                    </select>
+                                                    <input type="hidden" name="id_unit_kerja" value="4" />
                                                 	@else
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
                                                         @foreach ($unit as $listunit)
@@ -120,6 +123,19 @@
                                                         <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                         @endforeach
                                                     </select>
+                                                    {{-- <a href="#">Tambah</a> --}}
+                                                    {{-- <a name="hideMitra" id="hideMitra" onclick="hideMitra()"> halo</a> --}}
+                                                    <a onclick="addMitra()"><i class="fa fa-plus"></i> Tambah Mitra</a> 
+                                                    <br><br>
+                                                    <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
+                                                        <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
+                                                            @foreach ($mitra as $listmitra)
+                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2) selected @endif>{{$listmitra->nama_mitra}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <input type="text" name="keterangan_mitra" class="form-control" placeholder="Keterangan mitra" value="{{$listproyek->keterangan_mitra}}">
+                                                        <br>
+                                                    </div>
                                                 </div>
                                                 <label class="col-sm-3 control-label">Skema Bisnis</label>
                                                 <div class="col-sm-9">
@@ -174,25 +190,43 @@
                                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Masa Kontrak" name="masa_kontrak" value="{{$listproyek->masa_kontrak}}">
                                                 </div>
                                             </div>
-                                            @if($listproyek->file == null)
+
+                                            @if($listproyek->file_p0 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" id="file" name="file" value="{{$listproyek->file}}">
+                                                    <input type="file" class="form-control" id="file_p0" name="file_p0" value="{{$listproyek->file_p0}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-6">
-                                                    <img src="{{asset('images/'. $listproyek->file)}}" style="width: 250px">
+                                                    <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" style="width: 250px">
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <form action="{{ route('file_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" style="float: right;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</button>
-                                                    </form>
+                                                    <a href="{{ route('file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            @if($listproyek->file_p1 == null)
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" class="form-control" id="file_p1" name="file_p1" value="{{$listproyek->file_p1}}">
+                                                </div>
+                                            </div>
+                                            @else
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
+                                                <div class="col-sm-6">
+                                                    <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" style="width: 250px">
+                                                    
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <a href="{{ route('file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
                                                 </div>
                                             </div>
                                             @endif
@@ -200,7 +234,7 @@
                                     </div>
                                     <div class="row form-group m-b-0">
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Next</button>
+                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10"  name="myButton" value="save">Next</button>
                                     </div>
                                 </form>
                             </div>
@@ -243,73 +277,16 @@
     <script type="text/javascript" src="{{ asset('plugins/bower_components/multiselect/js/jquery.multi-select.js') }}"></script> 
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
-    {{-- <script> 
-    jQuery(document).ready(function() { 
-        // For select 2 
-        $(".select2").select2(); 
-        $('.selectpicker').selectpicker(); 
-        //Bootstrap-TouchSpin 
-        $(".vertical-spin").TouchSpin({ 
-            verticalbuttons: true, 
-            verticalupclass: 'ti-plus', 
-            verticaldownclass: 'ti-minus' 
-        }); 
-        var vspinTrue = $(".vertical-spin").TouchSpin({ 
-            verticalbuttons: true 
-        }); 
-        if (vspinTrue) { 
-            $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove(); 
-        } 
-        $("input[name='tch1']").TouchSpin({ 
-            min: 0, 
-            max: 100, 
-            step: 0.1, 
-            decimals: 2, 
-            boostat: 5, 
-            maxboostedstep: 10, 
-            postfix: '%' 
-        }); 
-        $("input[name='tch2']").TouchSpin({ 
-            min: -1000000000, 
-            max: 1000000000, 
-            stepinterval: 50, 
-            maxboostedstep: 10000000, 
-            prefix: '$' 
-        }); 
-        $("input[name='tch3']").TouchSpin(); 
-        $("input[name='tch3_22']").TouchSpin({ 
-            initval: 40 
-        }); 
-        $("input[name='tch5']").TouchSpin({ 
-            prefix: "pre", 
-            postfix: "post" 
-        }); 
-        // For multiselect 
-        $('#pre-selected-options').multiSelect(); 
-        $('#optgroup').multiSelect({ 
-            selectableOptgroup: true 
-        }); 
-        $('#public-methods').multiSelect(); 
-        $('#select-all').click(function() { 
-            $('#public-methods').multiSelect('select_all'); 
-            return false; 
-        }); 
-        $('#deselect-all').click(function() { 
-            $('#public-methods').multiSelect('deselect_all'); 
-            return false; 
-        }); 
-        $('#refresh').on('click', function() { 
-            $('#public-methods').multiSelect('refresh'); 
-            return false; 
-        }); 
-        $('#add-option').on('click', function() { 
-            $('#public-methods').multiSelect('addOption', { 
-                value: 42, 
-                text: 'test 42', 
-                index: 0 
-            }); 
-            return false; 
-        }); 
-    }); 
-    </script>  --}}
+    {{-- <script type="text/javascript" src="{{ asset('js/proyek.js') }}"></script> --}}
+    <script type="text/javascript">
+        function addMitra()
+        {
+            var x = document.getElementById("mitra");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 @endsection

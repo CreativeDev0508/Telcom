@@ -48,8 +48,10 @@ Route::group(['middleware'=>['auth']], function()
 		Route::get('/dashboard/print/p1/{id}', 'Word\TemplateController@createWordDocxP1')->name('print_p1');
 		Route::get('/dashboard/delete/{id_proyek}','AM\DashboardController@deleteProyek')->name('proyek_delete');
 		Route::get('/dashboard/status/{id_proyek}','AM\DashboardController@updateStatus')->name('status_update');
-		Route::post('/dashboard/bukti/insert/{id_proyek}','AM\DashboardController@insertBukti')->name('bukti_insert');
-		Route::post('/dashboard/bukti/update/{id_proyek}','AM\DashboardController@updateBukti')->name('bukti_update');
+		Route::post('/dashboard/bukti_p1/insert/{id_proyek}','AM\DashboardController@insertBuktiP1')->name('bukti_p1_insert');
+		Route::post('/dashboard/bukti_p1/update/{id_proyek}','AM\DashboardController@updateBuktiP1')->name('bukti_p1_update');
+		Route::post('/dashboard/bukti_p0/insert/{id_proyek}','AM\DashboardController@insertBuktiP0')->name('bukti_p0_insert');
+		Route::post('/dashboard/bukti_p0/update/{id_proyek}','AM\DashboardController@updateBuktiP0')->name('bukti_p0_update');
 
 		Route::get('/form-pelanggan','AM\FormPelangganController@indexPelanggan')->name('pelanggan');
 		Route::post('/form-pelanggan/insert','AM\FormPelangganController@insertPelanggan')->name('pelanggan_insert');
@@ -58,7 +60,8 @@ Route::group(['middleware'=>['auth']], function()
 
 		Route::get('/form-proyek/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@indexProyek')->name('proyek_single');
 		Route::post('/form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@insertProyek')->name('proyek_insert');
-		Route::post('/form-proyek/file/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFile')->name('file_update');
+		Route::get('/form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP0')->name('file_p0_update');
+		Route::get('/form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP1')->name('file_p1_update');
 
 		Route::get('/form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@indexAspek')->name('aspek_single');
 		Route::get('/form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@insertAspek')->name('aspek_insert');
