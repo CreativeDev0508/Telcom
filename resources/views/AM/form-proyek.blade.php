@@ -104,7 +104,10 @@
                                                 <label class="col-sm-3 control-label">Unit Kerja</label>
                                                 <div class="col-sm-9">
                                                 	@if($listpelanggan->jenis_pelanggan == 'Government')
-                                                	<input type="text" class="form-control" id="inputEmail3" name="id_unit_kerja" value="GES" disabled>
+                                                    <select class="selectpicker m-b-20" data-style="form-control" disabled="disabled">
+                                                        <option value="4" selected>GES</option>
+                                                    </select>
+                                                    <input type="hidden" name="id_unit_kerja" value="4" />
                                                 	@else
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_unit_kerja">
                                                         @foreach ($unit as $listunit)
@@ -177,14 +180,14 @@
 
                                             @if($listproyek->file_p0 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File P0</label>
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file_p0" name="file_p0" value="{{$listproyek->file_p0}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File P0</label>
+                                                <label class="col-sm-3 control-label">Tabel Rincian Pekerjaan</label>
                                                 <div class="col-sm-6">
                                                     <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" style="width: 250px">
                                                     
@@ -197,14 +200,14 @@
 
                                             @if($listproyek->file_p1 == null)
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File P1</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="file_p1" name="file_p1" value="{{$listproyek->file_p1}}">
                                                 </div>
                                             </div>
                                             @else
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Upload File P1</label>
+                                                <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
                                                 <div class="col-sm-6">
                                                     <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" style="width: 250px">
                                                     

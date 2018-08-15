@@ -184,8 +184,24 @@
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><img src="{{asset('images/'. $listproyek->file_p1)}}" style="width: 200px"></td>
-                                                                                                        </tr>
+                                                                                                                {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
+                                                                                                                {{-- <td>
+                                                                                                                    <div class="hoverImage">
+                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <div class="overlay">
+                                                                                                                            <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td> --}}
+                                                                                                                <td>
+                                                                                                                    <div class="hoverImage">
+                                                                                                                        <img src="{{asset('plugins/images/file_p1'. $listproyek->file_p1)}}" class="image">
+                                                                                                                        <div class="overlay">
+                                                                                                                            <div class="text">Tabel Rincian Pekerjaan (P1)</div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td>
+                                                                                                            </tr>
                                                                                                     </tbody>
                                                                                                 </table>
                                                                                             </div>
@@ -649,7 +665,23 @@
                                                                                                                 
                                                                                                             </tr>
                                                                                                             <tr>
-                                                                                                                <td><img src="{{asset('images/'. $listproyek->file_p1)}}" style="width: 200px"></td>
+                                                                                                                {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
+                                                                                                                {{-- <td>
+                                                                                                                    <div class="hoverImage">
+                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <div class="overlay">
+                                                                                                                            <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td> --}}
+                                                                                                                <td>
+                                                                                                                    <div class="hoverImage">
+                                                                                                                        <img src="{{asset('plugins/images/file_p1'. $listproyek->file_p1)}}" class="image">
+                                                                                                                        <div class="overlay">
+                                                                                                                            <div class="text">Tabel Rincian Pekerjaan (P1)</div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td>
                                                                                                             </tr>
                                                                                                         </tbody>
                                                                                                     </table>
