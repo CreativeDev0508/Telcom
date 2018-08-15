@@ -94,7 +94,7 @@
                                         <div class="btn-group dropup m-r-10">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" title="Unduh Dokumen P0 & P1"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
+                                                @if(empty($listproyek->file_p0))
                                                 <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
                                                 @else
                                                 <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
@@ -185,17 +185,17 @@
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                                 {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
-                                                                                                                {{-- <td>
+                                                                                                                <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
                                                                                                                         </div>
                                                                                                                     </div>
-                                                                                                                </td> --}}
+                                                                                                                </td>
                                                                                                                 <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('plugins/images/file_p1'. $listproyek->file_p1)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Rincian Pekerjaan (P1)</div>
                                                                                                                         </div>
@@ -574,7 +574,7 @@
                                         <div class="btn-group dropup m-r-10">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-download"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
-                                                @if(empty($listproyek->colocation))
+                                                @if(empty($listproyek->file_p0))
                                                 <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
                                                 @else
                                                 <li><a href="{{ route('print_p0', ['id' => $listproyek->id_proyek]) }}">P0</a></li>
@@ -666,17 +666,17 @@
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
-                                                                                                                {{-- <td>
+                                                                                                                <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
                                                                                                                         </div>
                                                                                                                     </div>
-                                                                                                                </td> --}}
+                                                                                                                </td>
                                                                                                                 <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('plugins/images/file_p1'. $listproyek->file_p1)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Rincian Pekerjaan (P1)</div>
                                                                                                                         </div>

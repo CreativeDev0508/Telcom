@@ -179,17 +179,17 @@
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
-                                                                                                            {{-- <td>
+                                                                                                            <td>
                                                                                                                 <div class="hoverImage">
-                                                                                                                    <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                    <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" class="image">
                                                                                                                     <div class="overlay">
                                                                                                                         <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                            </td> --}}
+                                                                                                            </td>
                                                                                                             <td>
                                                                                                                 <div class="hoverImage">
-                                                                                                                    <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                    <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" class="image">
                                                                                                                     <div class="overlay">
                                                                                                                         <div class="text">Tabel Rincian Pekerjaan (P1)</div>
                                                                                                                     </div>
@@ -615,17 +615,17 @@
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
-                                                                                                                {{-- <td>
+                                                                                                                <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p0/'. $listproyek->file_p0)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Ruang Lingkup Pekerjaan (P0)</div>
                                                                                                                         </div>
                                                                                                                     </div>
-                                                                                                                </td> --}}
+                                                                                                                </td>
                                                                                                                 <td>
                                                                                                                     <div class="hoverImage">
-                                                                                                                        <img src="{{asset('images/'. $listproyek->file)}}" class="image">
+                                                                                                                        <img src="{{asset('plugins/images/file_p1/'. $listproyek->file_p1)}}" class="image">
                                                                                                                         <div class="overlay">
                                                                                                                             <div class="text">Tabel Rincian Pekerjaan (P1)</div>
                                                                                                                         </div>
