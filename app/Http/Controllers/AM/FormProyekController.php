@@ -66,6 +66,8 @@ class FormProyekController extends Controller
 	        	$proyek = Proyek::find($id_proyek);
 				$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 				$proyek->id_mitra = $request->input('id_mitra');
+				$proyek->mitra_2 = $request->input('mitra_2');
+				$proyek->keterangan_mitra = $request->input('keterangan_mitra');
 				$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 				$proyek->judul = $request->input('judul');
 				$proyek->id_unit_kerja = $request->input('id_unit_kerja');
@@ -109,6 +111,8 @@ class FormProyekController extends Controller
 						$proyek = Proyek::find($id_proyek);
 						$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
 						$proyek->id_mitra = $request->input('id_mitra');
+						$proyek->mitra_2 = $request->input('mitra_2');
+						$proyek->keterangan_mitra = $request->input('keterangan_mitra');
 						$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
 						$proyek->judul = $request->input('judul');
 						$proyek->id_unit_kerja = $request->input('id_unit_kerja');
