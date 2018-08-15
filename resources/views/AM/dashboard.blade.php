@@ -662,7 +662,6 @@
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">File</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 {{-- DIPERUNTUKKAN UNTUK TABEL RUANG LINGKUP PEKERJAAN (P0) --}}
