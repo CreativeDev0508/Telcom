@@ -3,6 +3,8 @@
 @section('link')
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{{ asset('plugins/bower_components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
     <!-- animation CSS -->
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -71,10 +73,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
-                                <div class="col-sm-9">
-                                    <select class="custom-select" name="id_wilayah">
+                                <div class="col-sm-5">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
                                         @foreach ($wilayah as $listwilayah)
                                             <option value="{{$listwilayah->id_wilayah}}" @if($listproyek->id_wilayah == $listwilayah->id_wilayah) selected @endif>{{$listwilayah->nama_wilayah}}</option>
                                         @endforeach
