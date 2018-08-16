@@ -15,6 +15,7 @@ use App\Pelanggan;
 use App\Proyek;
 use App\User;
 use App\UnitKerja;
+use Auth;
 use DB;
 
 class TemplateController extends Controller
@@ -128,8 +129,8 @@ class TemplateController extends Controller
         $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
-        $templateProcessor->setValue('am', 'MUNARTI');
-        $templateProcessor->setValue('nikAm', '720336');
+        $templateProcessor->setValue('am', Auth::user()->name);
+        $templateProcessor->setValue('nikAm', Auth::user()->nik);
         $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
         $templateProcessor->setValue('se', $se->name);
         $templateProcessor->setValue('nikSe', $se->nik);
@@ -354,8 +355,8 @@ class TemplateController extends Controller
         $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
-        $templateProcessor->setValue('am', 'MUNARTI');
-        $templateProcessor->setValue('nikAm', '720336');
+        $templateProcessor->setValue('am', Auth::user()->name);
+        $templateProcessor->setValue('nikAm', Auth::user()->nik);
         $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
         $templateProcessor->setValue('se', $se->name);
         $templateProcessor->setValue('nikSe', $se->nik);
