@@ -77,28 +77,7 @@
                                         <td align="center" style="width: 9%;">{{$listmitra->nama_mitra}}</td>
                                         <td style="text-align: justify;">{{$listmitra->deskripsi_mitra}}</td>
                                         <td align="center">
-                                            <br>
-                                            <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#delete-{{$listmitra->id_mitra}}"><i class="ti-trash"></i></button>
-                                            <div class="modal fade" id="delete-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus {{$listmitra->nama_mitra}}</h4> 
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form class="form-horizontal form-material" action="{{ route('mitra_delete', ['id'=>$listmitra->id_mitra]) }}" method = "get">
-                                                            <h5> Apakah Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
-                                                                <div class="form-group m-b-0">
-                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
-                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                                                                       
-                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
+                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -122,6 +101,25 @@
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listmitra->id_mitra}}"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus {{$listmitra->nama_mitra}}</h4> 
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('mitra_delete', ['id'=>$listmitra->id_mitra]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus mitra "{{$listmitra->nama_mitra}}"? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
                                                                 </div>
                                                             </form>
                                                         </div>

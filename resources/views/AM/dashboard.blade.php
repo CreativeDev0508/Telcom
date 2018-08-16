@@ -81,7 +81,7 @@
                                         </span>
                                         <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
                                         <div class="btn-group dropup m-r-10">
-                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i><span class="caret"></span></button>
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-file-image-o"></i><span class="caret"></span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
                                                 @if(empty($listproyek->file_p0))
                                                 <li><a href="#" class="disableditem" aria-disabled="true">P0</a></li>
