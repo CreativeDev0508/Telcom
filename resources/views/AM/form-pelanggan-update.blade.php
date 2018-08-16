@@ -71,6 +71,16 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
+                                <div class="col-sm-9">
+                                    <select class="custom-select" name="id_wilayah">
+                                        @foreach ($wilayah as $listwilayah)
+                                            <option value="{{$listwilayah->id_wilayah}}" @if($listproyek->id_wilayah == $listwilayah->id_wilayah) selected @endif>{{$listwilayah->nama_wilayah}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group m-b-0">
                                 <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Selanjutnya</button>
                             </div>
