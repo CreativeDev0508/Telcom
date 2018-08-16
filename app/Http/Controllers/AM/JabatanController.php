@@ -75,16 +75,28 @@ class JabatanController extends Controller
 		return redirect()->route('witel');
 	}
 
-	// public function updateUnitKerja(Request $request, $id)
-	// {
-	// 	DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
-	// 	return redirect()->route('unit');
-	// }
+	public function updateWitel(Request $request,$id)
+	{
+		// dd($id);
+		$wilayah = Wilayah::find($id);
+		$wilayah->id_wilayah = $request->input('id_wilayah',$id);
+		$wilayah->nama_wilayah = $request->input('nama_wilayah');
+		$wilayah->se = $request->input('se');
+		$wilayah->bidding = $request->input('bidding');
+		$wilayah->manager = $request->input('manager');
+		$wilayah->deputy = $request->input('deputy');
+		$wilayah->gm = $request->input('gm');
+		$wilayah->approval = $request->input('approval');
+		$wilayah->save();
+		
+		// dd($wilayah);
+		return redirect()->route('witel');
+	}
 
 	public function deleteWitel($id)
 	{
 		DB::table('wilayah')->where('id_wilayah',$id)->delete();
-		return redirect()->route('jabatan');
+		return redirect()->route('witel');
 	}
 
 	

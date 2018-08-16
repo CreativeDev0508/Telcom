@@ -78,6 +78,7 @@ Route::group(['middleware'=>['auth']], function()
 
 		Route::get('/witel','AM\JabatanController@indexWitel')->name('witel');
 		Route::get('/witel/insert','AM\JabatanController@insertWitel')->name('witel_insert');
+		Route::get('/witel/update/{id}','AM\JabatanController@updateWitel')->name('witel_update');
 		Route::get('/jabatan/delete/{id}','AM\JabatanController@deleteWitel')->name('witel_delete');
 	});
 
