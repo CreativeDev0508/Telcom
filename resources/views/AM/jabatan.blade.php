@@ -44,7 +44,7 @@
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja" name="nama_unit_kerja">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_wilayah">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
