@@ -134,7 +134,8 @@
                                                     <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
                                                         <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
                                                             @foreach ($mitra as $listmitra)
-                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2) selected @endif>{{$listmitra->nama_mitra}}</option>
+                                                            <option></option>
+                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2 && $listproyek->mitra_2 != NULL) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                             @endforeach
                                                         </select>
                                                         <input type="text" name="keterangan_mitra_2" class="form-control" placeholder="Keterangan mitra 2" value="{{$listproyek->keterangan_mitra_2}}">
