@@ -124,7 +124,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('jabatan')}}" class="waves-effect">
+                        <a href="{{route('witel')}}" class="waves-effect">
                             <span class="hide-menu"> WITEL </span>
                         </a>
                     </li>
