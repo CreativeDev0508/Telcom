@@ -36,24 +36,25 @@ class JabatanController extends Controller
 		// ->get();
 		// $data = DB::table('wilayah AS u')
 		// ->select('u.*', DB::raw('(select name FROM users WHERE id = u.SE) AS SE', '(select name FROM users WHERE id = u.Bidding) AS Bidding', '(select name FROM users WHERE id = u.Manager) AS Manager'))->get();
-		$wilayah = DB::table('wilayah')->get(); 
+		$wilayah = DB::table('wilayah')->get();
+		// dd($wilayah);
 		$se = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.se')->select('users.name','wilayah.nama_wilayah')
-            ->get(); 
+            ->leftjoin('users','users.id','=','wilayah.se')
+            ->get();
         $bidding = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.bidding')->select('name')
+            ->leftjoin('users','users.id','=','wilayah.bidding')
             ->get();
         $manager = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.manager')->select('name')
+            ->leftjoin('users','users.id','=','wilayah.manager')
             ->get();
         $deputy = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.deputy')->select('name')
+            ->leftjoin('users','users.id','=','wilayah.deputy')
             ->get();
         $gm = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.gm')->select('name')
+            ->leftjoin('users','users.id','=','wilayah.gm')
             ->get();
         $approval = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.approval')->select('name')
+            ->leftjoin('users','users.id','=','wilayah.approval')
             ->get();
 		return view('AM.jabatan', ['wilayah'=>$wilayah, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}

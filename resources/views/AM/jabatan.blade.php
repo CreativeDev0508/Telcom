@@ -82,30 +82,30 @@
                                     <tr>
                                         <td align="center" style="width: 9%;">{{$listwilayah->nama_wilayah}}</td>
                                         <td style="text-align: justify;">
-                                            @foreach($se as $listse)
+                                            @foreach($se->where('id_wilayah','=',$listwilayah->id_wilayah) as $listse)
                                             {{$listse->name}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
-                                            @foreach($bidding as $listbidding)
+                                            @foreach($bidding->where('id_wilayah','=',$listwilayah->id_wilayah) as $listbidding)
                                             {{$listbidding->name}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
-                                            @foreach($manager as $listmanager)
+                                            @foreach($manager->where('id_wilayah','=',$listwilayah->id_wilayah) as $listmanager)
                                             {{$listmanager->name}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($deputy as $listdeputy)
+                                            @foreach($deputy->where('id_wilayah','=',$listwilayah->id_wilayah) as $listdeputy)
                                             {{$listdeputy->name}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($gm as $listgm)
+                                            @foreach($gm->where('id_wilayah','=',$listwilayah->id_wilayah) as $listgm)
                                             {{$listgm->name}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($approval as $listapproval)
+                                            @foreach($approval->where('id_wilayah','=',$listwilayah->id_wilayah) as $listapproval)
                                             {{$listapproval->name}}
                                             @endforeach
                                         </td>
