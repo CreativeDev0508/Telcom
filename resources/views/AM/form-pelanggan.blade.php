@@ -69,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-5">
                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
                                         @foreach ($wilayah as $listwilayah)
                                             <option value="{{$listwilayah->id_wilayah}}">{{$listwilayah->nama_wilayah}}</option>
