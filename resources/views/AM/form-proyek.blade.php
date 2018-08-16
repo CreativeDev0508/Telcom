@@ -210,7 +210,7 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <a href="{{ route('file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
+                                                    <a href="{{ route('file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                 </div>
                                             </div>
                                             @endif
@@ -230,15 +230,15 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <a href="{{ route('file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Edit</a>
+                                                    <a href="{{ route('file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                 </div>
                                             </div>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="row form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Previous</a>
-                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10"  name="myButton" value="save">Next</button>
+                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
+                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10"  name="myButton" value="save">Selanjutnya</button>
                                     </div>
                                 </form>
                             </div>
