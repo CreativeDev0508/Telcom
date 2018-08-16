@@ -71,6 +71,16 @@
                                             <label for="radio2">Enterprise</label>
                                         </div>
                                     </label>
+                                    <label class="radio-inline p-0">
+                                        <div class="radio radio">
+                                            @if($listpelanggan->jenis_pelanggan == 'Bisnis')
+                                            <input active checked="checked" id="radio2" value="Enterprise" type="radio" name="jenis_pelanggan">
+                                            @else
+                                            <input active id="radio1" value="Bisnis" type="radio" name="jenis_pelanggan">
+                                            @endif
+                                            <label for="radio2">Bisnis</label>
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
