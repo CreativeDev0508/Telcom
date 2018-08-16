@@ -52,8 +52,12 @@ class DashboardController extends Controller
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
-            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.mitra_2')
             ->get();
 
         // if(Auth::user()->id_jabatan == 2)
@@ -65,7 +69,7 @@ class DashboardController extends Controller
         //     return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
         // }
 
-        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
+        return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
     public function insertBuktiP1(Request $request,$id_proyek)
