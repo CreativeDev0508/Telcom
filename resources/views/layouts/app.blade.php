@@ -100,7 +100,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (Request::is('AM-form-*'))
+                    @if (Request::is('*/form-*'))
                     <li>
                         <a href="{{route('pelanggan')}}" class="waves-effect active">
                             <span class="hide-menu"> FORM JUSTIFIKASI </span>
@@ -121,6 +121,11 @@
                     <li>
                         <a href="{{route('mitra')}}" class="waves-effect">
                             <span class="hide-menu"> MITRA </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('witel')}}" class="waves-effect">
+                            <span class="hide-menu"> WITEL </span>
                         </a>
                     </li>
                     <li class="devider"></li>

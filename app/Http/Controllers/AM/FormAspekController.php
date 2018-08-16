@@ -33,7 +33,7 @@ class FormAspekController extends Controller
 	public function indexAspek($id_pelanggan,$id_proyek,$id_aspek)
 	{
 		$data['pelanggan'] = Pelanggan::find($id_pelanggan)->select('id_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
-		$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek')->where('id_proyek',$id_proyek)->get();
+		$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek','mitra_2')->where('id_proyek',$id_proyek)->get();
 		$data['aspek'] = AspekBisnis::find($id_aspek)->where('id_aspek',$id_aspek)->get();
 		
 		return view('AM.form-aspek',$data);
