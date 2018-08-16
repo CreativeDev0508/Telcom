@@ -181,6 +181,114 @@
                                             {{$listapproval->nik}}
                                             @endforeach
                                         </td>
+                                        <td align="center">
+                                            <br>
+                                            <button type="submit" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#delete-{{$listwilayah->id_wilayah}}"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listwilayah->id_wilayah}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus </h4> 
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('witel_delete', ['id' => $listwilayah->id_wilayah]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus "{{$listwilayah->nama_wilayah}}" "? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5" data-toggle="modal" data-target="#edit-witel"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="edit-witel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                            <form class="form-horizontal form-material" action="" method = "post">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_wilayah">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-0">
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

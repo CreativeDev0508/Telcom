@@ -81,11 +81,11 @@ class JabatanController extends Controller
 	// 	return redirect()->route('unit');
 	// }
 
-	// public function deleteUnitKerja($id)
-	// {
-	// 	DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
-	// 	return redirect()->route('unit');
-	// }
+	public function deleteWitel($id)
+	{
+		DB::table('wilayah')->where('id_wilayah',$id)->delete();
+		return redirect()->route('jabatan');
+	}
 
 	
 }
