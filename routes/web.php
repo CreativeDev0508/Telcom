@@ -76,10 +76,13 @@ Route::group(['middleware'=>['auth']], function()
 		Route::get('/mitra/update/{id}','AM\MitraController@updateMitra')->name('mitra_update');
 		Route::get('/mitra/delete/{id}','AM\MitraController@deleteMitra')->name('mitra_delete');
 
-		Route::get('/jabatan','AM\JabatanController@indexJabatan')->name('jabatan');
-		// Route::post('/mitra/insert','AM\MitraController@insertMitra')->name('mitra_insert');
-		// Route::get('/mitra/update/{id}','AM\MitraController@updateMitra')->name('mitra_update');
-		// Route::get('/mitra/delete/{id}','AM\MitraController@deleteMitra')->name('mitra_delete');
+		Route::get('/witel','AM\JabatanController@indexWitel')->name('witel');
+		Route::get('/witel/insert','AM\JabatanController@insertWitel')->name('witel_insert');
+		Route::get('/witel/update/{id}','AM\JabatanController@updateWitel')->name('witel_update');
+		Route::get('/witel/delete/{id}','AM\JabatanController@deleteWitel')->name('witel_delete');
+		Route::get('/user/insert','AM\JabatanController@insertPejabat')->name('user_insert');
+		Route::get('/user/update/{id}','AM\JabatanController@updatePejabat')->name('user_update');
+		Route::get('/user/delete/{id}','AM\JabatanController@deletePejabat')->name('user_delete');
 	});
 
 

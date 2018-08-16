@@ -30,27 +30,81 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">JABATAN</h1>
-                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-unit"><i class="fa fa-plus"></i>  WITEL</button>
-                            <!-- <div class="modal fade" id="tambah-unit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">WITEL</h1>
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-witel"><i class="fa fa-plus"></i>  WITEL</button>
+                            <div class="modal fade" id="tambah-witel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah Witel</h4>
+                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah WITEL</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-horizontal form-material" action="{{ route('unit_insert') }}" method = "post">
-                                                {{ csrf_field() }}
+                                            <form class="form-horizontal form-material" action="{{ route('witel_insert') }}" method = "get">
+                                                {{-- {{ csrf_field() }} --}}
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja" name="nama_unit_kerja">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_wilayah">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja" name="deskripsi_unit_kerja"></textarea>
+                                                       <select class="custom-select" name="se">
+                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="bidding">
+                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="manager">
+                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="deputy">
+                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="gm">
+                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="approval">
+                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group m-b-0">
@@ -61,7 +115,48 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
+
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-jabatan"><i class="fa fa-plus"></i>  PEJABAT</button>
+                            <div class="modal fade" id="tambah-jabatan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah PEJABAT</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal form-material" action="{{ route('user_insert') }}" method = "get">
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Pejabat</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pejabat" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">NIK</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="NIK Pejabat" name="nik">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Jabatan</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                        @foreach ($jabatan as $listjabatan)
+                                                            <option value="{{$listjabatan->id_jabatan}}">{{$listjabatan->nama_jabatan}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-0">
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                 
                             <table class="table table-hover">
                                 <thead>
@@ -83,31 +178,144 @@
                                         <td align="center" style="width: 9%;">{{$listwilayah->nama_wilayah}}</td>
                                         <td style="text-align: justify;">
                                             @foreach($se->where('id_wilayah','=',$listwilayah->id_wilayah) as $listse)
-                                            {{$listse->name}}
+                                            {{$listse->name}}<br>
+                                            {{$listse->nik}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
                                             @foreach($bidding->where('id_wilayah','=',$listwilayah->id_wilayah) as $listbidding)
-                                            {{$listbidding->name}}
+                                            {{$listbidding->name}}<br>
+                                            {{$listbidding->nik}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
                                             @foreach($manager->where('id_wilayah','=',$listwilayah->id_wilayah) as $listmanager)
-                                            {{$listmanager->name}}
+                                            {{$listmanager->name}}<br>
+                                            {{$listmanager->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($deputy->where('id_wilayah','=',$listwilayah->id_wilayah) as $listdeputy)
-                                            {{$listdeputy->name}}
+                                            {{$listdeputy->name}}<br>
+                                            {{$listdeputy->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($gm->where('id_wilayah','=',$listwilayah->id_wilayah) as $listgm)
-                                            {{$listgm->name}}
+                                            {{$listgm->name}}<br>
+                                            {{$listgm->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($approval->where('id_wilayah','=',$listwilayah->id_wilayah) as $listapproval)
-                                            {{$listapproval->name}}
+                                            {{$listapproval->name}}<br>
+                                            {{$listapproval->nik}}
                                             @endforeach
+                                        </td>
+                                        <td align="center">
+                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listwilayah->id_wilayah}}"><i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="edit-{{$listwilayah->id_wilayah}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('witel_update', ['id_wilayah' => $listwilayah->id_wilayah]) }}" method = "get">
+                                                                {{-- {{ csrf_field() }} --}}
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_wilayah" value="{{$listwilayah->nama_wilayah}}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="se">
+                                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->se == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="bidding">
+                                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->bidding == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="manager">
+                                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->manager == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="deputy">
+                                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->deputy == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="gm">
+                                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->gm == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="custom-select" name="approval">
+                                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
+                                                                            <option value="{{$listuser->id}}" @if($listwilayah->approval == $listuser->id) selected @endif>{{$listuser->name}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwilayah->id_wilayah}}"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listwilayah->id_wilayah}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus </h4> 
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('witel_delete', ['id' => $listwilayah->id_wilayah]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus "{{$listwilayah->nama_wilayah}}" "? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
