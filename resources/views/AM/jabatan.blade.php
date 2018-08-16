@@ -30,27 +30,81 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">JABATAN</h1>
-                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-unit"><i class="fa fa-plus"></i>  WITEL</button>
-                            <!-- <div class="modal fade" id="tambah-unit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">WITEL</h1>
+                           <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-witel"><i class="fa fa-plus"></i>  WITEL</button>
+                            <div class="modal fade" id="tambah-witel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah Witel</h4>
+                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah WITEL</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal form-material" action="{{ route('unit_insert') }}" method = "post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Unit Kerja</label>
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Unit Kerja" name="nama_unit_kerja">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi Unit Kerja</label>
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" rows="5" placeholder="Deskripsi Unit Kerja" name="deskripsi_unit_kerja"></textarea>
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                            <!-- @foreach ($se as $listse) -->
+                                                            <option value=""></option>
+                                                            <!-- @endforeach -->
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group m-b-0">
@@ -61,7 +115,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                                 
                             <table class="table table-hover">
                                 <thead>
