@@ -38,6 +38,7 @@ class JabatanController extends Controller
 		// ->select('u.*', DB::raw('(select name FROM users WHERE id = u.SE) AS SE', '(select name FROM users WHERE id = u.Bidding) AS Bidding', '(select name FROM users WHERE id = u.Manager) AS Manager'))->get();
 		$wilayah = DB::table('wilayah')->get();
 		$user = DB::table('users')->get();
+		$jabatan = DB::table('jabatan')->get();
 		// dd($wilayah);
 		$se = DB::table('wilayah') 
             ->leftjoin('users','users.id','=','wilayah.se')->where('id_jabatan',2)
@@ -57,7 +58,7 @@ class JabatanController extends Controller
         $approval = DB::table('wilayah') 
             ->leftjoin('users','users.id','=','wilayah.approval')->where('id_jabatan',7)
             ->get();
-		return view('AM.jabatan', ['wilayah'=>$wilayah, 'user'=>$user, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
+		return view('AM.jabatan', ['wilayah'=>$wilayah, 'user'=>$user, 'jabatan'=>$jabatan, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}
 
 	public function insertWitel(Request $request)
@@ -94,6 +95,42 @@ class JabatanController extends Controller
 	}
 
 	public function deleteWitel($id)
+	{
+		DB::table('wilayah')->where('id_wilayah',$id)->delete();
+		return redirect()->route('witel');
+	}
+
+
+	public function insertPejabat(Request $request)
+	{
+
+		$user = new User;
+		$user->name = $request->input('name');
+		$user->nik = $request->input('nik');
+		$user->id_jabatan = $request->input('id_jabatan');
+		$user->password = $request->input('password','halohalo');
+		$user->email = $request->input('email',$user->nik.'@gmail.com');
+		$user->save();
+
+		// dd($user);
+		return redirect()->route('witel');
+	}
+
+	public function updatePejabat(Request $request,$id)
+	{
+		// dd($id);
+		$user = Wilayah::find($id);
+		$user->id = $request->input('id',$id);
+		$user->name = $request->input('name');
+		$user->nik = $request->input('nik');
+		$user->id_jabatan = $request->input('id_jabatan');
+		$user->save();
+		
+		// dd($wilayah);
+		return redirect()->route('witel');
+	}
+
+	public function deletePejabat($id)
 	{
 		DB::table('wilayah')->where('id_wilayah',$id)->delete();
 		return redirect()->route('witel');

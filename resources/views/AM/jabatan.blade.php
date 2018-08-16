@@ -31,7 +31,7 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">WITEL</h1>
-                           <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-witel"><i class="fa fa-plus"></i>  WITEL</button>
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-witel"><i class="fa fa-plus"></i>  WITEL</button>
                             <div class="modal fade" id="tambah-witel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -52,9 +52,7 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="se">
                                                         @foreach ($user->where('id_jabatan','=',2) as $listuser)
-                                                            @foreach ($se as $listse)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -64,9 +62,7 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="bidding">
                                                         @foreach ($user->where('id_jabatan','=',3) as $listuser)
-                                                            @foreach ($bidding as $listbidding)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -76,9 +72,7 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="manager">
                                                         @foreach ($user->where('id_jabatan','=',4) as $listuser)
-                                                            @foreach ($manager as $listmanager)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -88,9 +82,7 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="deputy">
                                                         @foreach ($user->where('id_jabatan','=',5) as $listuser)
-                                                            @foreach ($deputy as $listdeputy)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -100,9 +92,7 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="gm">
                                                         @foreach ($user->where('id_jabatan','=',6) as $listuser)
-                                                            @foreach ($gm as $listgm)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -112,9 +102,48 @@
                                                     <div class="col-sm-9">
                                                        <select class="custom-select" name="approval">
                                                         @foreach ($user->where('id_jabatan','=',7) as $listuser)
-                                                            @foreach ($approval as $listapproval)
                                                             <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                            @endforeach
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-0">
+                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-jabatan"><i class="fa fa-plus"></i>  PEJABAT</button>
+                            <div class="modal fade" id="tambah-jabatan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah PEJABAT</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal form-material" action="{{ route('user_insert') }}" method = "get">
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Pejabat</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pejabat" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">NIK</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="NIK Pejabat" name="nik">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Jabatan</label>
+                                                    <div class="col-sm-9">
+                                                       <select class="custom-select" name="id_jabatan">
+                                                        @foreach ($jabatan as $listjabatan)
+                                                            <option value="{{$listjabatan->id_jabatan}}">{{$listjabatan->nama_jabatan}}</option>
                                                         @endforeach
                                                         </select>
                                                     </div>
@@ -203,9 +232,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="se">
                                                                         @foreach ($user->where('id_jabatan','=',2) as $listuser)
-                                                                            @foreach ($se as $listse)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->se == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -215,9 +242,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="bidding">
                                                                         @foreach ($user->where('id_jabatan','=',3) as $listuser)
-                                                                            @foreach ($bidding as $listbidding)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->bidding == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -227,9 +252,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="manager">
                                                                         @foreach ($user->where('id_jabatan','=',4) as $listuser)
-                                                                            @foreach ($manager as $listmanager)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->manager == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -239,9 +262,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="deputy">
                                                                         @foreach ($user->where('id_jabatan','=',5) as $listuser)
-                                                                            @foreach ($deputy as $listdeputy)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->deputy == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -251,9 +272,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="gm">
                                                                         @foreach ($user->where('id_jabatan','=',6) as $listuser)
-                                                                            @foreach ($gm as $listgm)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->gm == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -263,9 +282,7 @@
                                                                     <div class="col-sm-9">
                                                                        <select class="custom-select" name="approval">
                                                                         @foreach ($user->where('id_jabatan','=',7) as $listuser)
-                                                                            @foreach ($approval as $listapproval)
                                                                             <option value="{{$listuser->id}}" @if($listwilayah->approval == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                            @endforeach
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
