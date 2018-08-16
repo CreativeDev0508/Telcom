@@ -54,7 +54,11 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
 
-        return view('karyawan.dashboard', ['proyek'=>$proyek]);
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.mitra_2')
+            ->get();
+
+        return view('karyawan.dashboard', ['proyek'=>$proyek,'mitra'=>$mitra]);
         // return view('AM.dashboard');
     }
 
