@@ -78,13 +78,13 @@
                                 </thead>
                                 <tbody>
                                 
-                                @foreach($se as $listse)
-                                
-                                
+                                @foreach($wilayah as $listwilayah)                             
                                     <tr>
-                                        <td align="center" style="width: 9%;">{{$listse->nama_wilayah}}</td>
-                                        <td style="text-align: justify;">{{$listse->name}} </td>
-
+                                        <td align="center" style="width: 9%;">{{$listwilayah->nama_wilayah}}</td>
+                                        <td style="text-align: justify;">
+                                            @foreach($se as $listse)
+                                            {{$listse->name}}
+                                            @endforeach</td>
                                         <td style="text-align: justify;">
                                             @foreach($bidding as $listbidding)
                                             {{$listbidding->name}}
@@ -92,6 +92,21 @@
                                         <td style="text-align: justify;">
                                             @foreach($manager as $listmanager)
                                             {{$listmanager->name}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($deputy as $listdeputy)
+                                            {{$listdeputy->name}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($gm as $listgm)
+                                            {{$listgm->name}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($approval as $listapproval)
+                                            {{$listapproval->name}}
                                             @endforeach
                                         </td>
                                     </tr>

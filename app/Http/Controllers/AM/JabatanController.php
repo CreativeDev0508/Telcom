@@ -36,6 +36,7 @@ class JabatanController extends Controller
 		// ->get();
 		// $data = DB::table('wilayah AS u')
 		// ->select('u.*', DB::raw('(select name FROM users WHERE id = u.SE) AS SE', '(select name FROM users WHERE id = u.Bidding) AS Bidding', '(select name FROM users WHERE id = u.Manager) AS Manager'))->get();
+		$wilayah = DB::table('wilayah')->get(); 
 		$se = DB::table('wilayah') 
             ->leftjoin('users','users.id','=','wilayah.se')->select('users.name','wilayah.nama_wilayah')
             ->get(); 
@@ -45,7 +46,16 @@ class JabatanController extends Controller
         $manager = DB::table('wilayah') 
             ->leftjoin('users','users.id','=','wilayah.manager')->select('name')
             ->get();
-		return view('AM.jabatan', ['se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager]);
+        $deputy = DB::table('wilayah') 
+            ->leftjoin('users','users.id','=','wilayah.deputy')->select('name')
+            ->get();
+        $gm = DB::table('wilayah') 
+            ->leftjoin('users','users.id','=','wilayah.gm')->select('name')
+            ->get();
+        $approval = DB::table('wilayah') 
+            ->leftjoin('users','users.id','=','wilayah.approval')->select('name')
+            ->get();
+		return view('AM.jabatan', ['wilayah'=>$wilayah, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}
 
 	// public function insertUnitKerja(Request $request)
