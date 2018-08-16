@@ -30,44 +30,50 @@ class JabatanController extends Controller
 	}
 
 
-	public function indexJabatan()
+	public function indexWitel()
 	{
 		// $wilayah = DB::table('wilayah')
 		// ->get();
 		// $data = DB::table('wilayah AS u')
 		// ->select('u.*', DB::raw('(select name FROM users WHERE id = u.SE) AS SE', '(select name FROM users WHERE id = u.Bidding) AS Bidding', '(select name FROM users WHERE id = u.Manager) AS Manager'))->get();
 		$wilayah = DB::table('wilayah')->get();
+		$user = DB::table('users')->get();
 		// dd($wilayah);
 		$se = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.se')
+            ->leftjoin('users','users.id','=','wilayah.se')->where('id_jabatan',2)
             ->get();
         $bidding = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.bidding')
+            ->leftjoin('users','users.id','=','wilayah.bidding')->where('id_jabatan',3)
             ->get();
         $manager = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.manager')
+            ->leftjoin('users','users.id','=','wilayah.manager')->where('id_jabatan',4)
             ->get();
         $deputy = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.deputy')
+            ->leftjoin('users','users.id','=','wilayah.deputy')->where('id_jabatan',5)
             ->get();
         $gm = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.gm')
+            ->leftjoin('users','users.id','=','wilayah.gm')->where('id_jabatan',6)
             ->get();
         $approval = DB::table('wilayah') 
-            ->leftjoin('users','users.id','=','wilayah.approval')
+            ->leftjoin('users','users.id','=','wilayah.approval')->where('id_jabatan',7)
             ->get();
-		return view('AM.jabatan', ['wilayah'=>$wilayah, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
+		return view('AM.jabatan', ['wilayah'=>$wilayah, 'user'=>$user, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}
 
-	// public function insertUnitKerja(Request $request)
-	// {
-	// 	$unit_kerja = new UnitKerja;
-	// 	$unit_kerja->id_unit_kerja = $request->input('id_unit_kerja');
-	// 	$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
-	// 	$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
-	// 	$unit_kerja->save();
-	// 	return redirect()->route('unit');
-	// }
+	public function insertWitel(Request $request)
+	{
+
+		$wilayah = new Wilayah;
+		$wilayah->nama_wilayah = $request->input('nama_wilayah');
+		$wilayah->se = $request->input('se');
+		$wilayah->bidding = $request->input('bidding');
+		$wilayah->manager = $request->input('manager');
+		$wilayah->deputy = $request->input('deputy');
+		$wilayah->gm = $request->input('gm');
+		$wilayah->approval = $request->input('approval');
+		$wilayah->save();
+		return redirect()->route('witel');
+	}
 
 	// public function updateUnitKerja(Request $request, $id)
 	// {

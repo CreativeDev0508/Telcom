@@ -39,8 +39,8 @@
                                             <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah WITEL</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-horizontal form-material" action="{{ route('unit_insert') }}" method = "post">
-                                                {{ csrf_field() }}
+                                            <form class="form-horizontal form-material" action="{{ route('witel_insert') }}" method = "get">
+                                                {{-- {{ csrf_field() }} --}}
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
                                                     <div class="col-sm-9">
@@ -50,60 +50,72 @@
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="se">
+                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
+                                                            @foreach ($se as $listse)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="bidding">
+                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
+                                                            @foreach ($bidding as $listbidding)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="manager">
+                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
+                                                            @foreach ($manager as $listmanager)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="deputy">
+                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
+                                                            @foreach ($deputy as $listdeputy)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="gm">
+                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
+                                                            @foreach ($gm as $listgm)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
                                                     <div class="col-sm-9">
-                                                       <select class="custom-select" name="id_jabatan">
-                                                            <!-- @foreach ($se as $listse) -->
-                                                            <option value=""></option>
-                                                            <!-- @endforeach -->
+                                                       <select class="custom-select" name="approval">
+                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
+                                                            @foreach ($approval as $listapproval)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                            @endforeach
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -137,30 +149,36 @@
                                         <td align="center" style="width: 9%;">{{$listwilayah->nama_wilayah}}</td>
                                         <td style="text-align: justify;">
                                             @foreach($se->where('id_wilayah','=',$listwilayah->id_wilayah) as $listse)
-                                            {{$listse->name}}
+                                            {{$listse->name}}<br>
+                                            {{$listse->nik}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
                                             @foreach($bidding->where('id_wilayah','=',$listwilayah->id_wilayah) as $listbidding)
-                                            {{$listbidding->name}}
+                                            {{$listbidding->name}}<br>
+                                            {{$listbidding->nik}}
                                             @endforeach</td>
                                         <td style="text-align: justify;">
                                             @foreach($manager->where('id_wilayah','=',$listwilayah->id_wilayah) as $listmanager)
-                                            {{$listmanager->name}}
+                                            {{$listmanager->name}}<br>
+                                            {{$listmanager->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($deputy->where('id_wilayah','=',$listwilayah->id_wilayah) as $listdeputy)
-                                            {{$listdeputy->name}}
+                                            {{$listdeputy->name}}<br>
+                                            {{$listdeputy->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($gm->where('id_wilayah','=',$listwilayah->id_wilayah) as $listgm)
-                                            {{$listgm->name}}
+                                            {{$listgm->name}}<br>
+                                            {{$listgm->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
                                             @foreach($approval->where('id_wilayah','=',$listwilayah->id_wilayah) as $listapproval)
-                                            {{$listapproval->name}}
+                                            {{$listapproval->name}}<br>
+                                            {{$listapproval->nik}}
                                             @endforeach
                                         </td>
                                     </tr>
