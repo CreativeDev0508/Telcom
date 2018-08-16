@@ -224,7 +224,7 @@ class TemplateController extends Controller
         // $mitra = DB::table('')->where('','=',$id)->first();
         // $aspekbisnis = DB::table('AspekBisnis')->where('id_proyek','=',$id)->first();
         
-        $templateProcessor = new Template('template/template_p1_v2.docx');
+        $templateProcessor = new Template('template/template_p1.docx');
         $templateProcessor->setValue('jenisPelanggan', strtoupper($proyek->jenis_pelanggan));
         $templateProcessor->setValue('judul', $proyek->judul);
         $templateProcessor->setValue('tahun', Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now())->format('Y'));
