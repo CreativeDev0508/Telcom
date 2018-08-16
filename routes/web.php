@@ -78,8 +78,7 @@ Route::group(['middleware'=>['auth']], function()
 
 		Route::get('/jabatan','AM\JabatanController@indexJabatan')->name('jabatan');
 		Route::post('/mitra/insert','AM\JabatanController@insertWilayah')->name('wilayah_insert');
-		// Route::get('/mitra/update/{id}','AM\MitraController@updateMitra')->name('mitra_update');
-		// Route::get('/mitra/delete/{id}','AM\MitraController@deleteMitra')->name('mitra_delete');
+		Route::get('/jabatan/delete/{id}','AM\JabatanController@deleteWitel')->name('witel_delete');
 	});
 
 
