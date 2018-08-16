@@ -31,6 +31,10 @@ class TemplateController extends Controller
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->where('proyek.id_proyek','=',$id)
             ->first();
+        $proyek_2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.mitra_2', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
             
             // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
             // $pelanggan = DB::table('')->where('','=',$id)->first();
@@ -70,9 +74,28 @@ class TemplateController extends Controller
             
         // C. ASPEK BISNIS
         $templateProcessor->setValue('bebanMitra', number_format($proyek->beban_mitra));
+        $revenueConnectivityTg=$proyek->revenue_connectivity/$proyek->nilai_kontrak*100;
+        $revenueCPEProyekTg=$proyek->revenue_cpe_proyek/$proyek->nilai_kontrak*100;
+        $templateProcessor->setValue('revenueConnectivityTg', number_format($revenueConnectivityTg));
+        $templateProcessor->setValue('revenueCPEProyekTg', number_format($revenueCPEProyekTg));
+
         
         // D. MITRA YANG AKAN DILIBATKAN ATAU SPESIFIKASI TEKNIS BARANG DAN JASANYA.
-        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        //JIKA LEBIH DARI 1 MITRA
+        if($proyek->mitra_2 != NULL){
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra.' dan '. $proyek_2->nama_mitra);
+        }
+        else{
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        }
+
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
+        if($width > 495){
+            $percentage = 495/$width;
+            $width = $width*$percentage;
+            $height = $height*$percentage;
+        }
+        $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
@@ -120,6 +143,11 @@ class TemplateController extends Controller
             ->where('proyek.id_proyek','=',$id)
             ->first();
 
+        $proyek_2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.mitra_2', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
+
         // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
         // $pelanggan = DB::table('')->where('','=',$id)->first();
         // $unit_kerja = DB::table('proyek')
@@ -154,7 +182,18 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
         // B. LINGKUP PEKERJAAN
-        $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+        //JIKA LEBIH DARI 1 MITRA
+        if($proyek->mitra_2 != NULL){
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra . ' *) dan ' . $proyek_2->nama_mitra . ' **)');
+            $templateProcessor->setValue('detailMitra1','*) '.$proyek->keterangan_mitra_1);
+            $templateProcessor->setValue('detailMitra2','**) '.$proyek->keterangan_mitra_2);
+        }
+
+        else{
+            $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
+            $templateProcessor->setValue('detailMitra1','');
+            $templateProcessor->setValue('detailMitra2','');
+        }
 
         // D. WAKTU PENGGUNAAN
         setlocale(LC_TIME, 'Indonesian');
@@ -196,17 +235,21 @@ class TemplateController extends Controller
             $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
             $templateProcessor->setValue('flagRevenue', '(Sebelum PPN)');
             $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
-            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
-            $templateProcessor->setValue('colocation', "i.	Colocation");
-            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
-            $templateProcessor->setValue('colocationValue', 'Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
-            $templateProcessor->setValue('revenueCPEMitraValue', 'Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
         else{
             $templateProcessor->setValue('terdiriDari1', '');
             $templateProcessor->setValue('revenueConnectivity', '-');
             $templateProcessor->setValue('flagRevenue', '');
             $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->nilai_kontrak));
+        }
+        if(isset($proyek->colocation)){
+            $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
+            $templateProcessor->setValue('colocation', "i.	Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
+            $templateProcessor->setValue('colocationValue', ': Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
+            $templateProcessor->setValue('revenueCPEMitraValue', ': Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
+        }
+        else{
             $templateProcessor->setValue('terdiriDari2', '');
             $templateProcessor->setValue('colocation', '');
             $templateProcessor->setValue('revenueCPEMitra', '');
@@ -237,15 +280,13 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
-        list($width, $height) = getimagesize(public_path('images/'. $proyek->file));
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p1/'. $proyek->file_p1));
         if($width > 755.2){
             $percentage = 755.2/$width;
             $width = $width*$percentage;
             $height = $height*$percentage;
         }
-        // $templateProcessor->setValue('file', asset('images/'. $proyek->file));
-        // $templateProcessor->setImageValue('image1.png', public_path('images/'. $proyek->file));
-        $templateProcessor->setImg('selector',array('src' => public_path('images/'. $proyek->file),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         $templateProcessor->setValue('am', 'MUNARTI');
