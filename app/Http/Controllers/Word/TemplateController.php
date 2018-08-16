@@ -242,7 +242,7 @@ class TemplateController extends Controller
             $templateProcessor->setValue('flagRevenue', '');
             $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->nilai_kontrak));
         }
-        if(isset($proyek->colocation)){
+        if(isset($proyek->mitra_2)){
             $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
             $templateProcessor->setValue('colocation', "i.	Colocation");
             $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
