@@ -211,7 +211,7 @@
                                             @endforeach
                                         </td>
                                         <td align="center">
-                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listwilayah->id_wilayah}}"><i class="ti-pencil-alt"></i></button>
+                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listwilayah->id_wilayah}}" data-plaement="top" title="Ubah WITEL"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listwilayah->id_wilayah}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -297,7 +297,7 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwilayah->id_wilayah}}"><i class="ti-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwilayah->id_wilayah}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i></button>
                                             <div class="modal fade" id="delete-{{$listwilayah->id_wilayah}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">

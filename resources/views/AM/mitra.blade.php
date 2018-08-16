@@ -77,7 +77,7 @@
                                         <td align="center" style="width: 9%;">{{$listmitra->nama_mitra}}</td>
                                         <td style="text-align: justify;">{{$listmitra->deskripsi_mitra}}</td>
                                         <td align="center">
-                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}"><i class="ti-pencil-alt"></i></button>
+                                            <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}" data-plaement="top" title="Ubah Mitra"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listmitra->id_mitra}}"><i class="ti-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listmitra->id_mitra}}" data-plaement="top" title="Hapus Mitra"><i class="ti-trash"></i></button>
                                             <div class="modal fade" id="delete-{{$listmitra->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
