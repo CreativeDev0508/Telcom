@@ -137,7 +137,8 @@
                                                             <option></option>
                                                             <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2 && $listproyek->mitra_2 != NULL) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                             @endforeach
-                                                        </select>
+                                                        </select>                                                        
+                                                        <a href="{{ route('mitra2_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                         <input type="text" name="keterangan_mitra_2" class="form-control" placeholder="Keterangan mitra 2" value="{{$listproyek->keterangan_mitra_2}}">
                                                         <br>
                                                     </div>

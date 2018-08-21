@@ -62,6 +62,7 @@ Route::group(['middleware'=>['auth']], function()
 		Route::post('/form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@insertProyek')->name('proyek_insert');
 		Route::get('/form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP0')->name('file_p0_update');
 		Route::get('/form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP1')->name('file_p1_update');
+		Route::get('/form-proyek/mitra/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateMitra')->name('mitra2_update');
 
 		Route::get('/form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@indexAspek')->name('aspek_single');
 		Route::get('/form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@insertAspek')->name('aspek_insert');
