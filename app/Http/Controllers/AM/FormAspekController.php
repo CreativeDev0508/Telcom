@@ -38,32 +38,33 @@ class FormAspekController extends Controller
 		
 		return view('AM.form-aspek',$data);
 	}
-
+	
     public function insertAspek(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
     {
+		$pelanggan = Pelanggan::find($id_pelanggan);
+		$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+		$pelanggan->save();
+	
+		$proyek = Proyek::find($id_proyek);
+		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
+		$proyek->id_users = Auth::user()->id;
+		$proyek->save();
+
 		$aspek = AspekBisnis::find($id_aspek);
 		$aspek->id_aspek = $request->input('id_aspek',$id_aspek);
 		$aspek->id_proyek = $request->input('id_proyek',$id_proyek);
 		$aspek->layanan_revenue = $request->input('layanan_revenue');
 		$aspek->beban_mitra = $request->input('beban_mitra');
 		$aspek->nilai_kontrak = $request->input('nilai_kontrak');
-		$aspek->margin_tg = $request->input('margin_tg');
 		$aspek->rp_margin = $request->input('rp_margin');
 		$aspek->colocation = $request->input('colocation');
 		$aspek->revenue_connectivity = $request->input('revenue_connectivity');
 		$aspek->revenue_cpe_proyek = $request->input('revenue_cpe_proyek');
 		$aspek->revenue_cpe_mitra = $request->input('revenue_cpe_mitra');
+		$aspek->margin_tg = number_format(($aspek->revenue_cpe_proyek - $aspek->beban_mitra)/$aspek->revenue_cpe_proyek*100);
 		$aspek->save();
 
-		$pelanggan = Pelanggan::find($id_pelanggan);
-		$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-		$pelanggan->save();
-
-		$proyek = Proyek::find($id_proyek);
-		$proyek->id_proyek = $request->input('id_proyek',$id_proyek);
-		$proyek->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-		$proyek->id_users = Auth::user()->id;
-		$proyek->save();
 
 		return redirect()->route('index');
 
