@@ -100,7 +100,8 @@ class TemplateController extends Controller
         $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
         $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
         $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
-        $templateProcessor->setValue('marginTg', $proyek->margin_tg);
+        $marginTg=($proyek->revenue_cpe_proyek - $proyek->beban_mitra)/$proyek->revenue_cpe_proyek*100;
+        $templateProcessor->setValue('marginTg', $marginTg);
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
             
         // C. ASPEK BISNIS
@@ -322,7 +323,8 @@ class TemplateController extends Controller
             $templateProcessor->setValue('colocationValue', '');
             $templateProcessor->setValue('revenueCPEMitraValue', '');
         }
-        $templateProcessor->setValue('marginTg', $proyek->margin_tg);
+        $marginTg=($proyek->revenue_cpe_proyek - $proyek->beban_mitra)/$proyek->revenue_cpe_proyek*100;
+        $templateProcessor->setValue('marginTg', number_format($marginTg));
         $templateProcessor->setValue('rpMargin', number_format($proyek->rp_margin));
 
         // H. USULAN MEKANISME PEMBAYARAN PADA MITRA
