@@ -112,47 +112,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <button type="button" class="btn btn-danger btn-rounded" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-jabatan"><i class="fa fa-plus"></i>  PEJABAT</button>
-                            <div class="modal fade" id="tambah-jabatan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel" style="text-align: center; font-weight: 450;">Tambah PEJABAT</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal form-material" action="{{ route('user_insert') }}" method = "get">
-                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Pejabat</label>
-                                                    <div class="col-sm-5">
-                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Pejabat" name="name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">NIK</label>
-                                                    <div class="col-sm-5">
-                                                        <input type="text" class="form-control" id="inputEmail3" placeholder="NIK Pejabat" name="nik">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Jabatan</label>
-                                                    <div class="col-sm-4">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="id_jabatan">
-                                                        @foreach ($jabatan as $listjabatan)
-                                                            <option value="{{$listjabatan->id_jabatan}}">{{$listjabatan->nama_jabatan}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group m-b-0">
-                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
-                                                    <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                                 
                             <table class="table table-hover">
                                 <thead>
