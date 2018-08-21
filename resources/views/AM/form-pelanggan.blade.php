@@ -65,11 +65,17 @@
                                             <label for="radio2">Enterprise</label>
                                         </div>
                                     </label>
+                                    <label class="radio-inline p-0">
+                                        <div class="radio radio">
+                                            <input id="radio3" value="Bisnis" type="radio" name="jenis_pelanggan">
+                                            <label for="radio3">Bisnis</label>
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-5">
                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
                                         @foreach ($wilayah as $listwilayah)
                                             <option value="{{$listwilayah->id_wilayah}}">{{$listwilayah->nama_wilayah}}</option>

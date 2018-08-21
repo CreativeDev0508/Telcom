@@ -203,12 +203,19 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Nama Mitra</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->nama_mitra}}</td>
+                                                                                                            <td>{{$listproyek->nama_mitra}}
+                                                                                                            @if($listproyek->mitra_2) dan
+                                                                                                                @foreach($mitra as $listmitra)
+                                                                                                                    @if($listmitra->id_proyek==$listproyek->id_proyek)
+                                                                                                                    {{$listmitra->nama_mitra}}
+                                                                                                                    @endif
+                                                                                                                @endforeach
+                                                                                                            @endif</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Skema Bisnis</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>17 Juli 2018</td>
+                                                                                                            <td>{{$listproyek->skema_bisnis}}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Saat Penggunaan</span></td>
@@ -236,6 +243,7 @@
                                                                                         </div>
                                                                             </div>
                                                                             <div id="aspekbisnis-onprogress-{{$listproyek->id_proyek}}" class="tab-pane">
+                                                                            @if($listproyek->mitra_2)
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12 col-lg-6">
                                                                                         <table class="table table-borderless">
@@ -272,14 +280,14 @@
                                                                                         <table class="table table-borderless">
                                                                                             <tbody class="detail-text text-left">
                                                                                                 <tr>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">Colocation</span></td>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td><span>{{number_format($listproyek->colocation)}}</span></td>
-                                                                                                </tr>
-                                                                                                <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Revenue Connectivity</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                      <td>{{number_format($listproyek->revenue_connectivity)}}</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td><span class="text-muted" style="font-weight: 500">Harga Produk</span></td>
+                                                                                                    <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                    <td><span>{{number_format($listproyek->colocation)}}</span></td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Revenue CPE Proyek</span></td>
@@ -295,6 +303,46 @@
                                                                                         </table>
                                                                                     </div>
                                                                                 </div>
+                                                                                @else
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 col-lg-12">
+                                                                                            <table class="table table-borderless">
+                                                                                                <tbody class="detail-text text-left">
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Layanan Revenue</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td><span>{{$listproyek->layanan_revenue}}</span></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Beban Mitra</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->beban_mitra)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Nilai Kontrak</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->nilai_kontrak)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Margin (Rp)</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->rp_margin)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Margin (%)</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{$listproyek->margin_tg}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Revenue Connectivity</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->revenue_connectivity)}}</td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -456,7 +504,14 @@
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Nama Mitra</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                                <td>{{$listproyek->nama_mitra}}</td>
+                                                                                                                <td>{{$listproyek->nama_mitra}}
+                                                                                                                @if($listproyek->mitra_2) dan
+                                                                                                                    @foreach($mitra as $listmitra)
+                                                                                                                        @if($listmitra->id_proyek==$listproyek->id_proyek)
+                                                                                                                        {{$listmitra->nama_mitra}}
+                                                                                                                        @endif
+                                                                                                                    @endforeach
+                                                                                                                @endif</td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Skema Bisnis</span></td>
@@ -489,7 +544,8 @@
                                                                                             </div>
                                                                                 </div>
                                                                                 <div id="aspekbisnis-approved-{{$listproyek->id_proyek}}" class="tab-pane">
-                                                                                    <div class="row">
+                                                                                @if($listproyek->mitra_2)
+                                                                                <div class="row">
                                                                                     <div class="col-sm-12 col-lg-6">
                                                                                         <table class="table table-borderless">
                                                                                             <tbody class="detail-text text-left">
@@ -525,14 +581,14 @@
                                                                                         <table class="table table-borderless">
                                                                                             <tbody class="detail-text text-left">
                                                                                                 <tr>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">Colocation</span></td>
-                                                                                                    <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td><span>{{number_format($listproyek->colocation)}}</span></td>
-                                                                                                </tr>
-                                                                                                <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Revenue Connectivity</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                      <td>{{number_format($listproyek->revenue_connectivity)}}</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td><span class="text-muted" style="font-weight: 500">Harga Produk</span></td>
+                                                                                                    <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                    <td><span>{{number_format($listproyek->colocation)}}</span></td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Revenue CPE Proyek</span></td>
@@ -548,6 +604,46 @@
                                                                                         </table>
                                                                                     </div>
                                                                                 </div>
+                                                                                @else
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 col-lg-12">
+                                                                                            <table class="table table-borderless">
+                                                                                                <tbody class="detail-text text-left">
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Layanan Revenue</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td><span>{{$listproyek->layanan_revenue}}</span></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Beban Mitra</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->beban_mitra)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Nilai Kontrak</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->nilai_kontrak)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Margin (Rp)</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{number_format($listproyek->rp_margin)}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Margin (%)</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                            <td>{{$listproyek->margin_tg}}</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">Revenue Connectivity</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 500">:</span></td>
+                                                                                                             <td>{{number_format($listproyek->revenue_connectivity)}}</td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endif
                                                                                 </div>
                                                                             </div>
                                                                         </div>
