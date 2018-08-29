@@ -60,15 +60,6 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.mitra_2')
             ->get();
 
-        // if(Auth::user()->id_jabatan == 2)
-        // {
-        //     return view('SE.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]);
-        // }
-        // else
-        // {
-        //     return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,]); 
-        // }
-
         return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 

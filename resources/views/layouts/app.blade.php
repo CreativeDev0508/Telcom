@@ -128,6 +128,11 @@
                             <span class="hide-menu"> WITEL </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('pejabat')}}" class="waves-effect">
+                            <span class="hide-menu"> PEJABAT </span>
+                        </a>
+                    </li>
                     <li class="devider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="waves-effect">

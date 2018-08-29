@@ -76,15 +76,20 @@
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Revenue Connectivity</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue Connectivity" name="revenue_connectivity" value="{{$listaspek->revenue_connectivity}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Revenue CPE Proyek</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue CPE Proyek" name="revenue_cpe_proyek" value="{{$listaspek->revenue_cpe_proyek}}"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -130,11 +135,11 @@
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (Rp)" name="rp_margin" value="{{$listaspek->rp_margin}}"> </div>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Margin (%)</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Margin (%)" name="margin_tg" value="{{$listaspek->margin_tg}}"> </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row col-sm-12 col-lg-6">
                                 	<div class="form-group">

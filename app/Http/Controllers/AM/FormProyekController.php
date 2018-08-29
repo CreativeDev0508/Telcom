@@ -37,6 +37,7 @@ class FormProyekController extends Controller
 		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+		// dd($data);
     	return view('AM.form-proyek',$data);
     }
 
@@ -298,6 +299,23 @@ class FormProyekController extends Controller
         $data['proyek2']->id_proyek = $request->input('id_proyek',$id_proyek);
         $data['proyek2']->file_p1 = NULL;
         $data['proyek2']->save();
+
+    	$data['pelanggan'] = Pelanggan::find($id_pelanggan)->select('id_pelanggan','jenis_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
+		$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
+		$data['aspek'] = AspekBisnis::find($id_aspek)->select('id_aspek')->where('id_aspek',$id_aspek)->get();
+		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
+		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
+
+        return view('AM.form-proyek',$data);
+    }
+
+    public function updateMitra(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
+    {
+
+        $data['proyek3'] = Proyek::find($id_proyek);
+        $data['proyek3']->id_proyek = $request->input('id_proyek',$id_proyek);
+        $data['proyek3']->mitra_2 = NULL;
+        $data['proyek3']->save();
 
     	$data['pelanggan'] = Pelanggan::find($id_pelanggan)->select('id_pelanggan','jenis_pelanggan')->where('id_pelanggan',$id_pelanggan)->get();
 		$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();

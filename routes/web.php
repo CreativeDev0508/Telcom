@@ -62,6 +62,7 @@ Route::group(['middleware'=>['auth']], function()
 		Route::post('/form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@insertProyek')->name('proyek_insert');
 		Route::get('/form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP0')->name('file_p0_update');
 		Route::get('/form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateFileP1')->name('file_p1_update');
+		Route::get('/form-proyek/mitra/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormProyekController@updateMitra')->name('mitra2_update');
 
 		Route::get('/form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@indexAspek')->name('aspek_single');
 		Route::get('/form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','AM\FormAspekController@insertAspek')->name('aspek_insert');
@@ -76,13 +77,15 @@ Route::group(['middleware'=>['auth']], function()
 		Route::get('/mitra/update/{id}','AM\MitraController@updateMitra')->name('mitra_update');
 		Route::get('/mitra/delete/{id}','AM\MitraController@deleteMitra')->name('mitra_delete');
 
-		Route::get('/witel','AM\JabatanController@indexWitel')->name('witel');
-		Route::get('/witel/insert','AM\JabatanController@insertWitel')->name('witel_insert');
-		Route::get('/witel/update/{id}','AM\JabatanController@updateWitel')->name('witel_update');
-		Route::get('/witel/delete/{id}','AM\JabatanController@deleteWitel')->name('witel_delete');
-		Route::get('/user/insert','AM\JabatanController@insertPejabat')->name('user_insert');
-		Route::get('/user/update/{id}','AM\JabatanController@updatePejabat')->name('user_update');
-		Route::get('/user/delete/{id}','AM\JabatanController@deletePejabat')->name('user_delete');
+		Route::get('/witel','AM\WitelController@indexWitel')->name('witel');
+		Route::get('/witel/insert','AM\WitelController@insertWitel')->name('witel_insert');
+		Route::get('/witel/update/{id}','AM\WitelController@updateWitel')->name('witel_update');
+		Route::get('/witel/delete/{id}','AM\WitelController@deleteWitel')->name('witel_delete');
+
+		Route::get('/user','AM\PejabatController@indexPejabat')->name('pejabat');
+		Route::get('/user/insert','AM\PejabatController@insertPejabat')->name('user_insert');
+		Route::get('/user/update/{id}','AM\PejabatController@updatePejabat')->name('user_update');
+		Route::get('/user/delete/{id}','AM\PejabatController@deletePejabat')->name('user_delete');
 	});
 
 
