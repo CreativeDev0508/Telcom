@@ -86,6 +86,11 @@
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue Connectivity" name="revenue_connectivity" value="{{$listaspek->revenue_connectivity}}"> </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Revenue CPE Proyek</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Revenue CPE Proyek" name="revenue_cpe_proyek" value="{{$listaspek->revenue_cpe_proyek}}"> </div>
+                                    </div>
                                 </div>
                             </div>
                             @else
